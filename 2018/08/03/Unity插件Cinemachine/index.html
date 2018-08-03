@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Unity相机插件之Cinemachine  游戏设计中的镜头语言: 跟踪 瞄准 物理相关: 碰撞,视线遮挡 镜头特效 镜头切换   Cinemachine程序化相机系统: 构建虚拟世界的相机系统,模拟真实相机的行为; 通过程序化方式,提高开发效率;     Unity官方的教学 Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity插件之Cinemachine">
+<meta property="og:url" content="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="Unity相机插件之Cinemachine  游戏设计中的镜头语言: 跟踪 瞄准 物理相关: 碰撞,视线遮挡 镜头特效 镜头切换   Cinemachine程序化相机系统: 构建虚拟世界的相机系统,模拟真实相机的行为; 通过程序化方式,提高开发效率;     Unity官方的教学 Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtcTg.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBt2kQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtRYj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtWfs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBthpn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBt4lq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBt560.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtTmT.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBt70U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtH7F.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtjpR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtv11.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtx6x.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNpnK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNC7D.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNFtH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNkhd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNZct.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBNejP.png">
+<meta property="og:updated_time" content="2018-08-03T18:24:09.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity插件之Cinemachine">
+<meta name="twitter:description" content="Unity相机插件之Cinemachine  游戏设计中的镜头语言: 跟踪 瞄准 物理相关: 碰撞,视线遮挡 镜头特效 镜头切换   Cinemachine程序化相机系统: 构建虚拟世界的相机系统,模拟真实相机的行为; 通过程序化方式,提高开发效率;     Unity官方的教学 Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/03/PBtcTg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/"/>
+
+
+
+
+
+  <title>Unity插件之Cinemachine | HusbandMan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity插件之Cinemachine</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:01+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity插件Cinemachine/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/03/Unity插件Cinemachine/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,761
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Unity相机插件之Cinemachine"><a href="#Unity相机插件之Cinemachine" class="headerlink" title="Unity相机插件之Cinemachine"></a>Unity相机插件之Cinemachine</h4><hr>
+<ul>
+<li>游戏设计中的镜头语言:<ul>
+<li>跟踪</li>
+<li>瞄准</li>
+<li>物理相关: 碰撞,视线遮挡</li>
+<li>镜头特效</li>
+<li>镜头切换</li>
+</ul>
+</li>
+<li>Cinemachine程序化相机系统:<ul>
+<li>构建虚拟世界的相机系统,模拟真实相机的行为;</li>
+<li>通过程序化方式,提高开发效率;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Unity官方的教学"><a href="#Unity官方的教学" class="headerlink" title="Unity官方的教学"></a>Unity官方的教学</h4><ul>
+<li><p>Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过提前预置行为，可以帮助我们非常方便的来实现游戏中的功能。也就是通过程序化的方式，提升我们的开发效率。</p>
+</li>
+<li><p>Cinemachine核心组件包括Brain和Virtual Camera（虚拟相机），Brain负责相机的切换。虚拟相机复杂拍摄。</p>
+</li>
+<li><p>通常我们的场景中不是单一的虚拟摄像机，而是由很多台虚拟相机来完成拍摄任务，如下图所示。因此大家在制作游戏的时候更像是一个电影导演，可以通过各种相机实现各种炫酷的镜头，完成各种不同角度到拍摄。<br><a href="https://imgchr.com/i/PBtcTg" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtcTg.png" alt="PBtcTg.png"></a></p>
+</li>
+</ul>
+<h5 id="虚拟相机详解"><a href="#虚拟相机详解" class="headerlink" title="虚拟相机详解:"></a>虚拟相机详解:</h5><p>虚拟相机主要由六个模块组成，分别是：</p>
+<ul>
+<li>Lens：包括调整FOV等参数；</li>
+<li>Body：负责处理相机和跟踪目标之间的相对位置的这样一个关系；</li>
+<li>Aim：负责处理焦点和跟踪目标在镜头中的相对位置；</li>
+<li>Noise：模拟手持相机的晃动；</li>
+<li>后处理模块：让每个镜头有不同的后处理效果；</li>
+<li>Extnesions可扩展模块：包括碰撞处理等功能。</li>
+</ul>
+<hr>
+<p><a href="https://imgchr.com/i/PBt2kQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt2kQ.png" alt="PBt2kQ.png"></a><br>Body模块，在代码层面称为Transposer，它的主要功能是处理场景中相机和它的目标之间的位置关系。我们可以把它用数学变量表示就是Offset，Offset是一个向量，不仅有大小还有方向。那么Offset的计算方式不同，可以带来不同的跟踪效果。<br><a href="https://imgchr.com/i/PBtRYj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtRYj.png" alt="PBtRYj.png"></a></p>
+<a id="more"></a>
+<hr>
+<p>Transposer的类型目前有五类：</p>
+<ul>
+<li>Ransposer：基本类型；</li>
+<li>Obital Transposer：可以根据用户输入绕目标旋转；</li>
+<li>Framing Tansposer：在屏幕空间中计算相机和目标的Offset;</li>
+<li>Racked Dolly：把相机设置到一个轨道上；</li>
+<li>HardLockToTarget：把相机和目标的位置和朝向进行绑定，常用于第一人称模式。<br><a href="https://imgchr.com/i/PBtWfs" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtWfs.png" alt="PBtWfs.png"></a><br>Transposer类型。它的参数里面包括了相机和跟踪目标的偏移量，缓动参数，还有绑定的模式。  </li>
+</ul>
+<p>绑定模式目前是支持六种的绑定模式，大家看到前四种和LockToTarget相关，第五种是WorldSpace，第六种是SimpleFollowWithWorldUp。那么前四种其实它主要的意思是摄像机和目标之间的Offset的计算是以目标为参考系，也就是Offset是在目标的局部空间中，目标转动相机会跟着目标进行旋转，下面这些参数会有一些调整和变化，但是基本上大家理解之后就没有什么问题。WorldSpace则是把Offset放在世界坐标中计算，不会算目标旋转而选择。最后的SimpleFollowWithWorldUp则是把Offset放到相机的坐标系中进行计算。<br><a href="https://imgchr.com/i/PBthpn" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBthpn.png" alt="PBthpn.png"></a></p>
+<hr>
+<h5 id="Obital-Transposer"><a href="#Obital-Transposer" class="headerlink" title="Obital Transposer"></a>Obital Transposer</h5><p>Obital Transposer能接受用户的输入，并根据这个输入控制相机绕着目标进行旋转，主要是运用在第三人称游戏。由于旋转的时候需要一个基准的方向，而这个方向我们称之为Heading。<br><a href="https://imgchr.com/i/PBt4lq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt4lq.png" alt="PBt4lq.png"></a></p>
+<hr>
+<h5 id="Framing-Transposer"><a href="#Framing-Transposer" class="headerlink" title="Framing Transposer"></a>Framing Transposer</h5><p>计算屏幕空间中相机和目标的相对位置，常用于2D游戏。</p>
+<p><a href="https://imgchr.com/i/PBt560" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt560.png" alt="PBt560.png"></a></p>
+<hr>
+<h5 id="虚拟相机的另一个重要组件Aim"><a href="#虚拟相机的另一个重要组件Aim" class="headerlink" title="虚拟相机的另一个重要组件Aim"></a>虚拟相机的另一个重要组件Aim</h5><p>在代码层面我们也称之为Composer。其中包含基本类型Composer；Group Composer不是跟踪单一目标，是跟踪群体中的某个位置；然后是POV，类似于第一人称相机的模式，没有具体跟踪到某一个目标，但是根据输入进行自由旋转。然后Hard Look At是锁死某一个目标，然后还有Same As Follow主要是对Follow的目标，保持同样的旋转和朝向。<br><a href="https://imgchr.com/i/PBtTmT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtTmT.png" alt="PBtTmT.png"></a></p>
+<p>在Composer中可以设置焦点和目标之间的偏移，追踪目标时候的缓动。在下图中的红色区域我们称之为是DeadZone，当相机和目标距离相对位置超出边界的时候，相机才进行追踪，这也是为了实现一些缓动的效果。那么除此之外还可以设置整个焦点的偏移，我可以把整个相机的焦点区域往任何一个屏幕方向进行偏移。</p>
+<p><a href="https://imgchr.com/i/PBt70U" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt70U.png" alt="PBt70U.png"></a></p>
+<hr>
+<h5 id="POV-Composer通常和Hard-lock-To-Targt来结合实现第一人称视角相机"><a href="#POV-Composer通常和Hard-lock-To-Targt来结合实现第一人称视角相机" class="headerlink" title="POV Composer通常和Hard lock To Targt来结合实现第一人称视角相机"></a>POV Composer通常和Hard lock To Targt来结合实现第一人称视角相机</h5><p><a href="https://imgchr.com/i/PBtH7F" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtH7F.png" alt="PBtH7F.png"></a></p>
+<hr>
+<h5 id="Noise组件用于实现相机和目标之间的晃动效果。"><a href="#Noise组件用于实现相机和目标之间的晃动效果。" class="headerlink" title="Noise组件用于实现相机和目标之间的晃动效果。"></a>Noise组件用于实现相机和目标之间的晃动效果。</h5><p><a href="https://imgchr.com/i/PBtjpR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtjpR.png" alt="PBtjpR.png"></a></p>
+<hr>
+<h5 id="Postprocessing组件，每个相机都可以添加一组后处理效果。"><a href="#Postprocessing组件，每个相机都可以添加一组后处理效果。" class="headerlink" title="Postprocessing组件，每个相机都可以添加一组后处理效果。"></a>Postprocessing组件，每个相机都可以添加一组后处理效果。</h5><p><a href="https://imgchr.com/i/PBtv11" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtv11.png" alt="PBtv11.png"></a></p>
+<hr>
+<p>扩展组件，有Collider负责相机碰撞检测以及视线遮挡等功能；Confiner负责定义相机的活动范围；FollowZoom动态调整镜头FOV，以便目标在移动的时候会在镜头中保持同样的大小；Story Board是最新的功能，可以在镜头中放置一副参考图，便于摆放位置和调色。<br><a href="https://imgchr.com/i/PBtx6x" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtx6x.png" alt="PBtx6x.png"></a></p>
+<hr>
+<h5 id="组合虚拟相机介绍"><a href="#组合虚拟相机介绍" class="headerlink" title="组合虚拟相机介绍"></a>组合虚拟相机介绍</h5><p>Unity提供了种类比较丰富的组合相机，包括：FreeLook，BlendList，State Driven，Dolly Camera，2D Camera等.<br><a href="https://imgchr.com/i/PBNpnK" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNpnK.png" alt="PBNpnK.png"></a></p>
+<hr>
+<h5 id="FreeLook"><a href="#FreeLook" class="headerlink" title="FreeLook"></a>FreeLook</h5><p>FreeLook可以围绕目标水平和竖直转动，实际上由三个Body组件为Obit Transposer的虚拟相机构成。我们可以利用FreeLook很轻易的实现第三人称相机。<br><a href="https://imgchr.com/i/PBNC7D" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNC7D.png" alt="PBNC7D.png"></a></p>
+<hr>
+<h5 id="State-Driven"><a href="#State-Driven" class="headerlink" title="State Driven"></a>State Driven</h5><p>State Driven相机可以把动画状态和相机进行绑定，当动画状态切换的时候，相机自动进行切换。<br><a href="https://imgchr.com/i/PBNFtH" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNFtH.png" alt="PBNFtH.png"></a></p>
+<hr>
+<h5 id="Clear-Shot"><a href="#Clear-Shot" class="headerlink" title="Clear Shot"></a>Clear Shot</h5><p>Clear Shot相机可以管理一组相机，自动选择进行最佳拍摄的距离。<br><a href="https://imgchr.com/i/PBNkhd" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNkhd.png" alt="PBNkhd.png"></a></p>
+<hr>
+<h5 id="Target-Group"><a href="#Target-Group" class="headerlink" title="Target Group"></a>Target Group</h5><p>Target Group相机可以设置相机焦点到多个拍摄目标的中间。比如两个人谈话的时候相机不是对着某个人，而是直接对他们的中间，并且我们可以设置权重调整焦点的偏移。<br><a href="https://imgchr.com/i/PBNZct" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNZct.png" alt="PBNZct.png"></a></p>
+<hr>
+<h5 id="Cinemachine和Timeline"><a href="#Cinemachine和Timeline" class="headerlink" title="Cinemachine和Timeline"></a>Cinemachine和Timeline</h5><p>Cinemachine提供了Timeline轨道，因此我们可以用Timeline管理场景中的虚拟相机，让虚拟相机更精确的在时间轴上面进行动画的播放以及镜头的混合。<br><a href="https://imgchr.com/i/PBNejP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBNejP.png" alt="PBNejP.png"></a></p>
+<hr>
+<h5 id="详细的API可以在CinemachinePakge中查看API手册"><a href="#详细的API可以在CinemachinePakge中查看API手册" class="headerlink" title="详细的API可以在CinemachinePakge中查看API手册"></a>详细的API可以在CinemachinePakge中查看API手册</h5><ul>
+<li>例子:用Cinemachine作一个在一定范围中跟随角色缓动;<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">using</span> Cinemachine;</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 设置摄像机的参数与关卡地图匹配</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ResetCamera</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    CinemachineVirtualCamera vCam = GameObject.Find(<span class="string">"Vcam"</span>).GetComponent&lt;CinemachineVirtualCamera&gt;();</span><br><span class="line">    vCam.m_Lens.OrthographicSize = (mapHieght + <span class="number">3</span>) / <span class="number">2</span>f;</span><br><span class="line">    CinemachineFramingTransposer ft = vCam.GetCinemachineComponent(CinemachineCore.Stage.Body) <span class="keyword">as</span> CinemachineFramingTransposer;</span><br><span class="line">    ft.m_DeadZoneHeight = (mapHieght * <span class="number">100</span>) / (<span class="number">300</span> + mapHieght * <span class="number">100</span>f);</span><br><span class="line">    ft.m_DeadZoneWidth = (mapHieght * <span class="number">100</span>) / (<span class="number">300</span> + mapHieght * <span class="number">100</span>f) / <span class="number">9</span> * <span class="number">16</span> / mapHieght;</span><br><span class="line">    GetComponent&lt;PolygonCollider2D&gt;().SetPath(<span class="number">0</span>,</span><br><span class="line">        <span class="keyword">new</span> Vector2[] &#123;</span><br><span class="line">            <span class="keyword">new</span> Vector2(<span class="number">-2</span>f,<span class="number">-2</span>f),</span><br><span class="line">        <span class="keyword">new</span> Vector2(<span class="number">-2</span>f,mapHieght+<span class="number">1</span>f),</span><br><span class="line">        <span class="keyword">new</span> Vector2(mapWeight+<span class="number">1</span>f,mapHieght+<span class="number">1</span>f),</span><br><span class="line">            <span class="keyword">new</span> Vector2(mapWeight+<span class="number">1</span>f,<span class="number">-2</span>f)</span><br><span class="line">        &#125;);</span><br><span class="line">    Camera.main.transform.GetChild(<span class="number">0</span>).transform.localPosition = <span class="keyword">new</span> Vector3(<span class="number">0</span>, vCam.m_Lens.OrthographicSize, <span class="number">0</span>);</span><br><span class="line">    ParticleSystem.ShapeModule sm = Camera.main.transform.GetChild(<span class="number">0</span>).GetComponent&lt;ParticleSystem&gt;().shape;</span><br><span class="line">    sm.scale = <span class="keyword">new</span> Vector3(vCam.m_Lens.OrthographicSize * <span class="number">35.5</span>f / <span class="number">10</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/03/Unity插件Cinemachine/">Unity插件之Cinemachine</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2018年08月03日 - 19:08</p>
+  <p><span>最后更新:</span>2018年08月04日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/03/Unity插件Cinemachine/" title="Unity插件之Cinemachine">http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/03/ShardSDK集成/" rel="next" title="ShardSDK集成">
+                <i class="fa fa-chevron-left"></i> ShardSDK集成
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/03/Unity性能优化篇一/" rel="prev" title="Unity性能优化篇一">
+                Unity性能优化篇一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity相机插件之Cinemachine"><span class="nav-number">1.</span> <span class="nav-text">Unity相机插件之Cinemachine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity官方的教学"><span class="nav-number">2.</span> <span class="nav-text">Unity官方的教学</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟相机详解"><span class="nav-number">2.1.</span> <span class="nav-text">虚拟相机详解:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Obital-Transposer"><span class="nav-number">2.2.</span> <span class="nav-text">Obital Transposer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Framing-Transposer"><span class="nav-number">2.3.</span> <span class="nav-text">Framing Transposer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#虚拟相机的另一个重要组件Aim"><span class="nav-number">2.4.</span> <span class="nav-text">虚拟相机的另一个重要组件Aim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#POV-Composer通常和Hard-lock-To-Targt来结合实现第一人称视角相机"><span class="nav-number">2.5.</span> <span class="nav-text">POV Composer通常和Hard lock To Targt来结合实现第一人称视角相机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Noise组件用于实现相机和目标之间的晃动效果。"><span class="nav-number">2.6.</span> <span class="nav-text">Noise组件用于实现相机和目标之间的晃动效果。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Postprocessing组件，每个相机都可以添加一组后处理效果。"><span class="nav-number">2.7.</span> <span class="nav-text">Postprocessing组件，每个相机都可以添加一组后处理效果。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组合虚拟相机介绍"><span class="nav-number">2.8.</span> <span class="nav-text">组合虚拟相机介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FreeLook"><span class="nav-number">2.9.</span> <span class="nav-text">FreeLook</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#State-Driven"><span class="nav-number">2.10.</span> <span class="nav-text">State Driven</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Clear-Shot"><span class="nav-number">2.11.</span> <span class="nav-text">Clear Shot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Target-Group"><span class="nav-number">2.12.</span> <span class="nav-text">Target Group</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cinemachine和Timeline"><span class="nav-number">2.13.</span> <span class="nav-text">Cinemachine和Timeline</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#详细的API可以在CinemachinePakge中查看API手册"><span class="nav-number">2.14.</span> <span class="nav-text">详细的API可以在CinemachinePakge中查看API手册</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.8k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Unity 移动 在Unity3d中,有很多方式可以改变物体的坐标,实现移动的目的,其本质是每一帧修改物体的Position; 1.通过Transfrom组件移动物体  Transfrom组件用于描述物体在空间中的状态,它包括 位置(Position),旋转(Rotation)和缩放(Scale). Transfrom.Translate该方法可以移动物体从当前位置,移动到指定位置,并且可以选择参">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity移动">
+<meta property="og:url" content="http://www.Husbandman.top/2018/08/04/Unity移动/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="Unity 移动 在Unity3d中,有很多方式可以改变物体的坐标,实现移动的目的,其本质是每一帧修改物体的Position; 1.通过Transfrom组件移动物体  Transfrom组件用于描述物体在空间中的状态,它包括 位置(Position),旋转(Rotation)和缩放(Scale). Transfrom.Translate该方法可以移动物体从当前位置,移动到指定位置,并且可以选择参">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-03T18:24:36.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity移动">
+<meta name="twitter:description" content="Unity 移动 在Unity3d中,有很多方式可以改变物体的坐标,实现移动的目的,其本质是每一帧修改物体的Position; 1.通过Transfrom组件移动物体  Transfrom组件用于描述物体在空间中的状态,它包括 位置(Position),旋转(Rotation)和缩放(Scale). Transfrom.Translate该方法可以移动物体从当前位置,移动到指定位置,并且可以选择参">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2018/08/04/Unity移动/"/>
+
+
+
+
+
+  <title>Unity移动 | HusbandMan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Unity移动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity移动</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:37:06+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/Unity移动/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/04/Unity移动/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,611
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Unity-移动"><a href="#Unity-移动" class="headerlink" title="Unity 移动"></a>Unity 移动</h3><hr>
+<p>在Unity3d中,有很多方式可以改变物体的坐标,实现移动的目的,其本质是每一帧修改物体的Position;</p>
+<h4 id="1-通过Transfrom组件移动物体"><a href="#1-通过Transfrom组件移动物体" class="headerlink" title="1.通过Transfrom组件移动物体"></a>1.通过Transfrom组件移动物体</h4><p>  Transfrom组件用于描述物体在空间中的状态,它包括 位置(Position),旋转(Rotation)和缩放(Scale).</p>
+<h5 id="Transfrom-Translate"><a href="#Transfrom-Translate" class="headerlink" title="Transfrom.Translate"></a>Transfrom.Translate</h5><p>该方法可以移动物体从当前位置,移动到指定位置,并且可以选择参照的坐标系. 当需要进行坐标系转换时,可以考虑使用<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Translate</span>(<span class="params">Vector <span class="number">3</span> translation,Space relativeTo = Space.Self</span>)</span>;</span><br></pre></td></tr></table></figure></p>
+<p>描述:</p>
+<ul>
+<li>移动变换的方向和距离translation。如果relativeTo被忽略或设置为Space.Self，则运动将相对于变换的局部坐标轴应用。（在场景视图中选择对象时显示的x，y和z轴。）如果relativeTo是Space.World，则相对于世界坐标系应用该运动.<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        transform.Translate(Vector3.forward * Time.deltaTime);</span><br><span class="line">        transform.Translate(Vector3.up * Time.deltaTime, Space.World);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> Translate（<span class="keyword">float</span> x，<span class="keyword">float</span> y，<span class="keyword">float</span> z， Space relativeTo = Space.Self;</span><br></pre></td></tr></table></figure>
+<p>描述:</p>
+<ul>
+<li>x沿着x轴，y沿着y轴和z沿着z轴移动变换。如果relativeTo被忽略或设置为Space.Self，则运动将相对于变换的局部坐标轴应用。（在场景视图中选择对象时显示的x，y和z轴。）如果relativeTo是Space.World，则相对于世界坐标系应用该运动。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        transform.Translate(<span class="number">0</span>, <span class="number">0</span>, Time.deltaTime);</span><br><span class="line">        transform.Translate(<span class="number">0</span>, Time.deltaTime, <span class="number">0</span>, Space.World);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> Translate（Vector3 translation， Transform relativeTo）;</span><br></pre></td></tr></table></figure>
+<p>描述:</p>
+<ul>
+<li>移动变换的方向和距离translation。该运动是相对于relativeTo本地坐标系应用的。如果relativeTo为null，则运动相对于世界坐标系应用。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        transform.Translate(Vector3.right * Time.deltaTime, Camera.main.transform);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> Translate（<span class="keyword">float</span> x，<span class="keyword">float</span> y，<span class="keyword">float</span> z， Transform relativeTo）;</span><br></pre></td></tr></table></figure>
+<p>描述:</p>
+<ul>
+<li>x沿着x轴，y沿着y轴和z沿着z轴移动变换。该运动是相对于relativeTo本地坐标系应用的。如果relativeTo为null，则运动相对于世界坐标系应用。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        transform.Translate(Time.deltaTime, <span class="number">0</span>, <span class="number">0</span>, Camera.main.transform);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="Vector3"><a href="#Vector3" class="headerlink" title="Vector3"></a>Vector3</h4><h5 id="Vector3-Lerp-Vector3-Slerp-Vector3-MoveTowards"><a href="#Vector3-Lerp-Vector3-Slerp-Vector3-MoveTowards" class="headerlink" title="Vector3.Lerp, Vector3.Slerp, Vector3.MoveTowards"></a>Vector3.Lerp, Vector3.Slerp, Vector3.MoveTowards</h5><p>既可以表示三维空间中的一个点,也可以表示一个向量,这三个方法均为插值方法,Lerp为线性插值,Slerp为球形插值,MoveTowards在Lerp的基础上增加了限制最大速度的功能,当需要从指定A点移动到B点时,可以考虑使用这些方法;<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 Lerp（Vector3 a， Vector3 b，<span class="keyword">float</span> t）</span><br></pre></td></tr></table></figure></p>
+<p>描述:</p>
+<ul>
+<li>在两个向量之间进行线性插值。在矢量a和插值之间b进行插值t。该参数t被钳位到范围[0，1]。这通常用于沿着两个端点之间的线找出点的一小部分（例如，在这些点之间逐渐移动一个对象）。<br>当t= 0返回时a。当t= 1时返回b。当t= 0.5时返回中间点a和b。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform startMarker;</span><br><span class="line">    <span class="keyword">public</span> Transform endMarker;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> speed = <span class="number">1.0</span>F;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> startTime;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> journeyLength;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        startTime = Time.time;</span><br><span class="line">        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> distCovered = (Time.time - startTime) * speed;</span><br><span class="line">        <span class="keyword">float</span> fracJourney = distCovered / journeyLength;</span><br><span class="line">        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 Slerp（Vector3 a， Vector3 b，<span class="keyword">float</span> t）;</span><br></pre></td></tr></table></figure>
+<p>描述:</p>
+<ul>
+<li>在两个向量之间进行球形插值。在数量a和b数量之间进行插值t。这与线性插值（又名“lerp”）之间的区别在于矢量被视为方向而不是空间中的点。返回的矢量的方向是由内插的角度和它的 大小是的大小之间内插from和to。<br>该参数t被钳位到范围[0，1]。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform sunrise;</span><br><span class="line">    <span class="keyword">public</span> Transform sunset;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> journeyTime = <span class="number">1.0</span>F;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> startTime;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        startTime = Time.time;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        Vector3 center = (sunrise.position + sunset.position) * <span class="number">0.5</span>F;</span><br><span class="line">        center -= <span class="keyword">new</span> Vector3(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        Vector3 riseRelCenter = sunrise.position - center;</span><br><span class="line">        Vector3 setRelCenter = sunset.position - center;</span><br><span class="line">        <span class="keyword">float</span> fracComplete = (Time.time - startTime) / journeyTime;</span><br><span class="line">        transform.position = Vector3.Slerp(riseRelCenter, setRelCenter, fracComplete);</span><br><span class="line">        transform.position += center;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 MoveTowards（Vector3 current， Vector3 target，<span class="keyword">float</span> maxDistanceDelta）;</span><br></pre></td></tr></table></figure>
+<p>描述:</p>
+<ul>
+<li>current向一个target点移动一条直线。该函数返回的值是maxDistanceDelta更接近于和target/ 之间的一个点的点单位。如果目标距离较近， 则返回的值将等于目标值（即，该移动不会超过目标）。可以使用负值来将点从目标推开。currenttargetmaxDistanceDelta/maxDistanceDelta<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform target;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> speed;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> step = speed * Time.deltaTime;</span><br><span class="line">        transform.position = Vector3.MoveTowards(transform.position, target.position, step);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="Vector3-SmoothDamp"><a href="#Vector3-SmoothDamp" class="headerlink" title="Vector3.SmoothDamp"></a>Vector3.SmoothDamp</h5><p>该方法是可以平滑的从A逐渐移动到B点，并且可以控制速度，最常见的用法是相机跟随目标。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 SmoothDamp（Vector3 current， Vector3 target，<span class="keyword">ref</span> Vector3 currentVelocity，<span class="keyword">float</span> smoothTime，<span class="keyword">float</span> maxSpeed = Mathf.Infinity，<span class="keyword">float</span> deltaTime = Time.deltaTime）;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>current: 当前位置</li>
+<li>target: 需要达到的目标位置</li>
+<li>currentVelocity: 当前的速度,每次调用该函数值都会被该函数修改</li>
+<li>smoothTime: 到达目标位置需要的时间,较小的值将更快到达目标位置</li>
+<li>maxSpeed: 选择性的允许限制最大虚度</li>
+<li>deltaTime: 帧间隔时间<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Transform target;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> smoothTime = <span class="number">0.3</span>F;</span><br><span class="line">    <span class="keyword">private</span> Vector3 velocity = Vector3.zero;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        Vector3 targetPosition = target.TransformPoint(<span class="keyword">new</span> Vector3(<span class="number">0</span>, <span class="number">5</span>, <span class="number">-10</span>));</span><br><span class="line">        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, <span class="keyword">ref</span> velocity, smoothTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h4><h5 id="Transform-position"><a href="#Transform-position" class="headerlink" title="Transform.position"></a>Transform.position</h5><p>世界空间变换的位置</p>
+<p>下面的例子通过更新位置使一个附加的球体反弹。这种反弹慢慢地结束了。这个位置也可以用来确定三维空间中的变换。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use Transform.position to bounce a sphere.</span></span><br><span class="line"><span class="comment">// The sphere and a quad are colored using materials.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleScript</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    Vector3 velocity     = <span class="keyword">new</span> Vector3(<span class="number">0.0</span>f, <span class="number">1.0</span>f, <span class="number">0.0</span>f);</span><br><span class="line">    <span class="keyword">float</span> floorHeight    = <span class="number">0.0</span>f;</span><br><span class="line">    <span class="keyword">float</span> sleepThreshold = <span class="number">0.05</span>f;</span><br><span class="line">    <span class="keyword">float</span> gravity        = <span class="number">-9.8</span>f;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        transform.position = <span class="keyword">new</span> Vector3(<span class="number">0.0</span>f, <span class="number">1.5</span>f, <span class="number">0.0</span>f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (velocity.magnitude &gt; sleepThreshold || transform.position.y &gt; floorHeight)</span><br><span class="line">        &#123;</span><br><span class="line">            velocity += <span class="keyword">new</span> Vector3(<span class="number">0.0</span>f, gravity * Time.fixedDeltaTime, <span class="number">0.0</span>f);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        transform.position += velocity * Time.fixedDeltaTime;</span><br><span class="line">        <span class="keyword">if</span> (transform.position.y &lt;= floorHeight)</span><br><span class="line">        &#123;</span><br><span class="line">            transform.position = <span class="keyword">new</span> Vector3(<span class="number">0.0</span>f, floorHeight, <span class="number">0.0</span>f);</span><br><span class="line">            velocity.y = -velocity.y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="通过Rigidbody组件移动物体"><a href="#通过Rigidbody组件移动物体" class="headerlink" title="通过Rigidbody组件移动物体"></a>通过Rigidbody组件移动物体</h4><p>Rigidbody组件用于模拟物体的物理状态，比如物体受重力影响，物体被碰撞后的击飞等等。<br><strong>Rigidbody组件用于模拟物体的物理状态，比如物体受重力影响，物体被碰撞后的击飞等等。<br>注意：关于Rigidbody的调用均应放在FixedUpdate方法中，该方法会在每一次执行物理模拟前被调用。Unity5更改：是rigidbody变量未定义为Rigidbody类型，所以提示rigidbody无法访问velocity。Rigidbody都要定义一个变量(Rigidbody rigidbody;)，然后让该变量指向Rigidbody组件才能访问 rigidbody =GetComponent ();</strong></p>
+<hr>
+<hr>
+<h5 id="Rigidbody-velocity"><a href="#Rigidbody-velocity" class="headerlink" title="Rigidbody.velocity"></a>Rigidbody.velocity</h5><ul>
+<li>设置刚体速度可以让物体运动并且忽略静摩擦力，这会让物体快速从静止状态进入运动状态。</li>
+<li>在大多数情况下，不应该直接修改速度，因为这会导致不切实际的行为。不要在每个物理步骤设置对象的速度，这会导致不切实际的物理模拟<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> Rigidbody rb;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        rb = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetButtonDown(<span class="string">"Jump"</span>))</span><br><span class="line">            rb.velocity = <span class="keyword">new</span> Vector3(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="Rigidbody-AddForce"><a href="#Rigidbody-AddForce" class="headerlink" title="Rigidbody.AddForce"></a>Rigidbody.AddForce</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> AddForce（Vector3 force， ForceMode mode = ForceMode.Force）;</span><br></pre></td></tr></table></figure>
+<p><strong>给Rigidbody增加一个力量。</strong></p>
+<ul>
+<li>沿force矢量方向连续施加力。指定ForceMode mode可以将力的类型更改为加速度，脉冲或速度变化。力量只能应用于活动的刚体。如果GameObject处于非活动状态，则AddForce不起作用。<br>默认情况下，一旦施加力，刚体的状态就设置为醒来，除非力是Vector3.zero。<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> thrust;</span><br><span class="line">    <span class="keyword">public</span> Rigidbody rb;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        rb = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        rb.AddForce(transform.forward * thrust);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="Rigidbody-MovePosition"><a href="#Rigidbody-MovePosition" class="headerlink" title="Rigidbody.MovePosition"></a>Rigidbody.MovePosition</h5><p>刚体受到物理约束的情况下，移动到指定点<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> MovePosition（Vector3 position）;</span><br></pre></td></tr></table></figure></p>
+<p>移动刚体position。<br>使用Rigidbody.MovePosition移动刚体，符合刚体的插值设置。<br>如果在Rigidbody上启用了Rigidbody插值，调用Rigidbody.MovePosition会导致渲染的任何中间帧中两个位置之间的平滑过渡。如果要在每个FixedUpdate中连续移动刚体，则应该使用此选项<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> Vector3 teleportPoint;</span><br><span class="line">    <span class="keyword">public</span> Rigidbody rb;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        rb = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">FixedUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        rb.MovePosition(transform.position + transform.forward * Time.deltaTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="通过CharacterController组件移动物体"><a href="#通过CharacterController组件移动物体" class="headerlink" title="通过CharacterController组件移动物体"></a>通过CharacterController组件移动物体</h4><p>CharacterController用于控制第一人称或第三人称角色的运动，使用这种方式可以模拟人的一些行为，比如限制角色爬坡的最大斜度,步伐的高度等。</p>
+<hr>
+<h5 id="CharacterController-SimpleMove"><a href="#CharacterController-SimpleMove" class="headerlink" title="CharacterController.SimpleMove"></a>CharacterController.SimpleMove</h5><p>用于模拟简单运动，并且自动应用重力，返回值表示角色当前是否着地。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">bool</span> SimpleMove（Vector3 speed）;</span><br></pre></td></tr></table></figure></p>
+<p>移动角色speed。<br>沿y轴的速度被忽略。速度以米/秒为单位。重力是自动应用的。如果角色接地，则返回。建议您每帧仅对Move或SimpleMove进行一次调用。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line">[<span class="meta">RequireComponent(typeof(CharacterController))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> speed = <span class="number">3.0</span>F;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> rotateSpeed = <span class="number">3.0</span>F;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        CharacterController controller = GetComponent&lt;CharacterController&gt;();</span><br><span class="line">        transform.Rotate(<span class="number">0</span>, Input.GetAxis(<span class="string">"Horizontal"</span>) * rotateSpeed, <span class="number">0</span>);</span><br><span class="line">        Vector3 forward = transform.TransformDirection(Vector3.forward);</span><br><span class="line">        <span class="keyword">float</span> curSpeed = speed * Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line">        controller.SimpleMove(forward * curSpeed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="CharacterController-Move"><a href="#CharacterController-Move" class="headerlink" title="CharacterController.Move"></a>CharacterController.Move</h5><p>模拟更复杂的运动,重力需要通过代码实现，返回值表示角色与周围的碰撞信息。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> CollisionFlags <span class="title">Move</span>(<span class="params">Vector3 motion</span>)</span>;</span><br></pre></td></tr></table></figure></p>
+<p>一个更复杂的移动功能，采取绝对移动增量。<br>试图通过移动控制器motion，运动只会受到碰撞的限制。它会沿着对撞机滑动。 CollisionFlags是移动过程中发生的碰撞汇总。此功能不适用于任何重力<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> speed = <span class="number">6.0</span>F;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> jumpSpeed = <span class="number">8.0</span>F;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> gravity = <span class="number">20.0</span>F;</span><br><span class="line">    <span class="keyword">private</span> Vector3 moveDirection = Vector3.zero;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        CharacterController controller = GetComponent&lt;CharacterController&gt;();</span><br><span class="line">        <span class="keyword">if</span> (controller.isGrounded) &#123;</span><br><span class="line">            moveDirection = <span class="keyword">new</span> Vector3(Input.GetAxis(<span class="string">"Horizontal"</span>), <span class="number">0</span>, Input.GetAxis(<span class="string">"Vertical"</span>));</span><br><span class="line">            moveDirection = transform.TransformDirection(moveDirection);</span><br><span class="line">            moveDirection *= speed;</span><br><span class="line">            <span class="keyword">if</span> (Input.GetButton(<span class="string">"Jump"</span>))</span><br><span class="line">                moveDirection.y = jumpSpeed;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        moveDirection.y -= gravity * Time.deltaTime;</span><br><span class="line">        controller.Move(moveDirection * Time.deltaTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/04/Unity移动/">Unity移动</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2018年08月04日 - 01:08</p>
+  <p><span>最后更新:</span>2018年08月04日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/04/Unity移动/" title="Unity移动">http://www.Husbandman.top/2018/08/04/Unity移动/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2018/08/04/Unity移动/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/04/GoogleAdMob广告接入/" rel="next" title="GoogleAdMob广告接入">
+                <i class="fa fa-chevron-left"></i> GoogleAdMob广告接入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unity-移动"><span class="nav-number">1.</span> <span class="nav-text">Unity 移动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-通过Transfrom组件移动物体"><span class="nav-number">1.1.</span> <span class="nav-text">1.通过Transfrom组件移动物体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transfrom-Translate"><span class="nav-number">1.1.1.</span> <span class="nav-text">Transfrom.Translate</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vector3"><span class="nav-number">1.2.</span> <span class="nav-text">Vector3</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Vector3-Lerp-Vector3-Slerp-Vector3-MoveTowards"><span class="nav-number">1.2.1.</span> <span class="nav-text">Vector3.Lerp, Vector3.Slerp, Vector3.MoveTowards</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vector3-SmoothDamp"><span class="nav-number">1.2.2.</span> <span class="nav-text">Vector3.SmoothDamp</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transform"><span class="nav-number">1.3.</span> <span class="nav-text">Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transform-position"><span class="nav-number">1.3.1.</span> <span class="nav-text">Transform.position</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Rigidbody组件移动物体"><span class="nav-number">1.4.</span> <span class="nav-text">通过Rigidbody组件移动物体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Rigidbody-velocity"><span class="nav-number">1.4.1.</span> <span class="nav-text">Rigidbody.velocity</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Rigidbody-AddForce"><span class="nav-number">1.4.2.</span> <span class="nav-text">Rigidbody.AddForce</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Rigidbody-MovePosition"><span class="nav-number">1.4.3.</span> <span class="nav-text">Rigidbody.MovePosition</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过CharacterController组件移动物体"><span class="nav-number">1.5.</span> <span class="nav-text">通过CharacterController组件移动物体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CharacterController-SimpleMove"><span class="nav-number">1.5.1.</span> <span class="nav-text">CharacterController.SimpleMove</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CharacterController-Move"><span class="nav-number">1.5.2.</span> <span class="nav-text">CharacterController.Move</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.8k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

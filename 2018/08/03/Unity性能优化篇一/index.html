@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Unity性能优化篇(一) Unity游戏安装包大/运行卡的原因Mono虚拟机 因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.Drawcall 什么是Drawcall: https://www.zhihu.com/question/36357893 其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity性能优化篇一">
+<meta property="og:url" content="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="Unity性能优化篇(一) Unity游戏安装包大/运行卡的原因Mono虚拟机 因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.Drawcall 什么是Drawcall: https://www.zhihu.com/question/36357893 其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYdMV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYsIJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYcGR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBY2xx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYWM6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYfsK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYIde.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYoIH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBY7id.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBYXsf.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/03/PBtCJs.png">
+<meta property="og:updated_time" content="2018-08-03T18:23:51.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity性能优化篇一">
+<meta name="twitter:description" content="Unity性能优化篇(一) Unity游戏安装包大/运行卡的原因Mono虚拟机 因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.Drawcall 什么是Drawcall: https://www.zhihu.com/question/36357893 其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/03/PBYdMV.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/"/>
+
+
+
+
+
+  <title>Unity性能优化篇一 | HusbandMan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity性能优化篇一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:48+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity性能优化篇一/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/03/Unity性能优化篇一/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,630
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Unity性能优化篇-一"><a href="#Unity性能优化篇-一" class="headerlink" title="Unity性能优化篇(一)"></a>Unity性能优化篇(一)</h3><hr>
+<h4 id="Unity游戏安装包大-运行卡的原因"><a href="#Unity游戏安装包大-运行卡的原因" class="headerlink" title="Unity游戏安装包大/运行卡的原因"></a>Unity游戏安装包大/运行卡的原因</h4><h5 id="Mono虚拟机"><a href="#Mono虚拟机" class="headerlink" title="Mono虚拟机"></a>Mono虚拟机</h5><ul>
+<li>因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.<h5 id="Drawcall"><a href="#Drawcall" class="headerlink" title="Drawcall"></a>Drawcall</h5></li>
+<li>什么是Drawcall: <a href="https://www.zhihu.com/question/36357893" target="_blank" rel="noopener">https://www.zhihu.com/question/36357893</a><ul>
+<li>其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)接口,命令GPU进行渲染操作(每一次CPU去调用图形库接口命令GPU渲染即为一次Drawcall)</li>
+<li>很多时候我们会误认为是Drawcall造成的性能问题是GPU谢欢渲染状态导致,其实这里的元凶是CPU</li>
+<li>CPU和GPU是如何进行并行工作和交互的<ul>
+<li>试想，渲染流程没用采用流水线的工作方式：CPU发送一个渲染命令之后，GPU立即执行渲染命令绘制图形，等到渲染任务结束之后，CPU才可以继续发送下一个渲染命令，这样显然影响工作效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>采用渲染流水线后，CPU与GPU并行工作，独立而不相互依赖。这是通过命令缓冲区来实现的：命令缓冲区维护一个命令队列，CPU向其中发送命令，GPU从中取出命令并执行。命令有很多种，DrawCall是一种，其他命令还有改变渲染状态、设置渲染数据流等。</p>
+<p>这种方式就类似于游戏开发的网络通信：维持一个消息队列，网络线程接收解析消息并将之添加到消息队列，游戏主线程更新时从中取出消息并做派发处理。</p>
+<ul>
+<li>DrawCall是如何影响性能的？<ul>
+<li>每一次绘制CPU都要调用DrawCall，而在调动DrawCall前，CPU还要进行很多准备工作：检测渲染状态、提交渲染所需要的数据、提交渲染所需要的状态。<br>而GPU本身具有很强大的计算能力，可以很快就处理完渲染任务。</li>
+</ul>
+</li>
+</ul>
+<p>当DrawCall过多，CPU就会很多额外开销用于准备工作，CPU本身负载，而这时GPU可能闲置了。</p>
+<p>做个试验：拷贝1000个总大小1M的文件和单个大小为1M的文件，明显拷贝1000个文件要慢很多，DrawCall调用和这个很类似</p>
+<ul>
+<li>DrawCall优化：减少DrawCall<br><a href="https://zhuanlan.zhihu.com/p/26386905" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26386905</a></li>
+</ul>
+<h5 id="Unity-Profiler"><a href="#Unity-Profiler" class="headerlink" title="Unity Profiler"></a>Unity Profiler</h5><h6 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h6><p>Profiler官方概述:Unity Profiler窗口可帮助您优化游戏。它会为您报告在游戏的各个区域花了多少时间。例如，它可以报告渲染，动画或游戏逻辑所花时间的百分比。<br>您可以分析GPU，CPU，内存，渲染和音频的性能。<br>要查看性能分析数据，请在编辑器中使用性能分析在游戏中进行游戏，并记录性能数据。Profiler窗口随后在时间轴中显示数据，以便您可以看到比其他帧更快的帧（或更多时间）。通过点击时间线中的任何位置，Profiler窗口的底部将显示所选帧的详细信息。<br>请注意，性能分析必须测试您的代码（即：添加一些说明以方便检查）。虽然这对游戏的性能影响很小，但开销足够小，不会影响游戏帧率<br><a href="https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html" target="_blank" rel="noopener">https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html</a></p>
+<h6 id="Unity-Statistics统计面板"><a href="#Unity-Statistics统计面板" class="headerlink" title="Unity Statistics统计面板"></a>Unity Statistics统计面板</h6><p>Statistics窗口，全称叫做 Rendering Statistics Window，即渲染统计窗口（或渲染数据统计窗口）,窗口中罗列出关于声音、图像、网络状况等多种统计信息</p>
+<ul>
+<li>FPS(Time per frame andFPS):frames per seconds表示引擎处理和渲染一个游戏帧所花费的时间,该数字主要受到场景中渲染物体数量和 GPU性能的影响，FPS数值越高，游戏场景的动画显示会更加平滑和流畅。一般来说，超过30FPS的画面人眼不会感觉到卡，由于视觉残留的特性，光在视网膜上停止总用后人眼还会保持1/24秒左右的时间，因此游戏画面每秒帧数至少要保证在30以上。另外，Unity中的FPS数值仅包括此游戏Scene里更新和渲染的帧，编辑器中绘制的Scene和其它监视窗口的进程不包括在内。</li>
+<li>CPU:获取到当前占用CPU进行计算的时间绝对值，或时间点，如果Unity主进程处于挂断或休眠状态时，CPU time将会保持不变。</li>
+<li>Render thread:GPU渲染线程处理图像所花费的时间，具体数值由GPU性能来决定，</li>
+<li>Batches(批处理):即Batched Draw Calls,是Unity内置的Draw Call Batching技术。</li>
+</ul>
+<p>解释下什么叫做“Draw call”，CPU每次通知GPU发出一个glDrawElements（OpenGl中的图元渲染函数)或者 DrawIndexedPrimitive（DirectX中的顶点绘制方法）的过程称为一次Draw call,一般来说，引擎每对一个物体进行一次DrawCall，就会产生一个Batch,这个Batch里包含着该物体所有的网格和顶点数据，当渲染另一个相同的物体时，引擎会直接调用Batch里的信息，将相关顶点数据直接送到GPU,从而让渲染过程更加高效，即Batching技术是将所有材质相近的物体进行合并渲染。</p>
+<p>对于含有多个不同Shader和Material的物体，渲染的过程比较耗时，因为会产生多个Batches。每次对物体的材质或者贴图进行修改，都会影响Batches里数据集的构成。因此，如果场景中有大量材质不同的物体，会很明显的影响到GPU的渲染效率</p>
+<ul>
+<li>Verts：摄像机视野(field of view)内渲染的顶点总数。</li>
+<li>Tris: 摄像机视野(field of view)内渲染的的三角面总数量。</li>
+<li>Screen:获当前Game屏幕的分辨率大小，后边的2.1MB表示总的内存使用数值。</li>
+<li>Shadow casters：表示场景中有多少个可以投射阴影的物体，一般这些物体都作为场景中的光源。</li>
+<li>visible skinned meshed：渲染皮肤网格的数量。</li>
+<li>Animations:正在播放动画的数量。</li>
+<li>SetPass calls:<ul>
+<li>场景上有1个gameobject，希望能显示很酷炫的效果，它的Material上带有许多特定的Shader。为了实现相应的效果，Shader里或许会包含很多的Pass,每当GPU即将去运行一个Pass之前，就会产生一个“SetPass call”，因此在描述渲染性能开销上，“SetPass calls”更加有说服力<br><a href="https://blog.csdn.net/wdmzjzlym/article/details/51335915" target="_blank" rel="noopener">https://blog.csdn.net/wdmzjzlym/article/details/51335915</a></li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h4 id="资源优化"><a href="#资源优化" class="headerlink" title="资源优化"></a>资源优化</h4><h5 id="资源优化标准"><a href="#资源优化标准" class="headerlink" title="资源优化标准"></a>资源优化标准</h5><ul>
+<li>对动态模型的面数,材质数量,骨骼数量限定在一定范围之内</li>
+<li>对静态模型的顶点数量进行控制</li>
+<li>对长短时间音乐的压缩格式选择</li>
+<li>对贴图大小选择</li>
+<li>对Sharder的运算控制<h5 id="如何减少冗余的资源和重复资源"><a href="#如何减少冗余的资源和重复资源" class="headerlink" title="如何减少冗余的资源和重复资源"></a>如何减少冗余的资源和重复资源</h5></li>
+<li>Resources目录下的资源不管是否被引用,都会打包进安装包,不适用的资源不要放在Resources目录下;</li>
+<li>不同目录下的相同资源文件,如果都被引用,那么都会打包进资源包,造成冗余;保证同一个资源文件在项目中只存放在一个目录位置<h5 id="资源监测与分析"><a href="#资源监测与分析" class="headerlink" title="资源监测与分析"></a>资源监测与分析</h5><a href="https://www.uwa4d.com/#assetbundle" target="_blank" rel="noopener">https://www.uwa4d.com/#assetbundle</a></li>
+<li>使用uwa工具优化安装包大小,和程序运行性能</li>
+</ul>
+<hr>
+<h4 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h4><h5 id="CPU-GPU分工"><a href="#CPU-GPU分工" class="headerlink" title="CPU/GPU分工"></a>CPU/GPU分工</h5><ul>
+<li>GPU比较适合大量可并行的简单任务,比如场景渲染,光照处理等,你看到的图像都是显卡渲染出出来的,同时现在的GPU也支持一些其他的运算,比如通过GLSL,HLSL和cg执行并行运算等,GPU同时也对游戏中的一些物理效果提供支持,比如PhysX.</li>
+<li>一般CPU用于一些数值运算,逻辑运算,比如伤害,随机数等,同时你的敌人的AI也是CPU运算出来的</li>
+</ul>
+<h5 id="LOD-层级细节"><a href="#LOD-层级细节" class="headerlink" title="LOD-层级细节"></a>LOD-层级细节</h5><ul>
+<li>层级细节（LOD）全称为Level of Detail。它是根据物体在游戏画面中所占的像素多少（所占游戏视图的百分比）来调用不同复杂度的模型，简单地理解就是同一个物体离摄像机比较远时使用复杂度低的模型，当物体离摄像机比较近时使用复杂度高的模型。这也是一种优化游戏渲染效率的方法。</li>
+<li>在第三方建模软件中制作好各个层级（不同复杂程度）的模型。并按照复杂程度自高向低地为模型命名为“模型名字_LOD0”、“模型名字_LOD1”等等，最后的数字序号越低，表示复杂程度越高，这样的命名规则使得Unity3D能够自动为模型添加LOD组（LODGroup）</li>
+<li>在导出为FBX之前，需要这两个模型的位置重合，其他的导出设置与普通模型导出一致</li>
+<li><p>把包含了两个层级的FBX模型文件导入到Unity3D之后，Unity3D会根据模型的命名方式自动添加LODGroup。</p>
+</li>
+<li><p>LOD Group组件</p>
+<ul>
+<li>层次细节,它是根据物体在游戏画面中所占视图的百分比来调用不用复杂度的模型,简单来说,就是当一个物体距离相机比较远的时候适用低模,当物体距离相机比较近的时候适用高模,缺点就是占用大量内存.</li>
+<li>适用这个技术,一般是在解决运行时流畅的问题,采用的是空间换时间的方式;<br>-<a href="https://imgchr.com/i/PBYdMV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYdMV.png" alt="PBYdMV.png"></a></li>
+<li><strong>分别将准备好的三种不同精细程度的模型放到LOD Group对应的LOD0/LOD1/LOD2中(LOD0显示的是距离相机最近的时候显示的模型,LOD3显示距离相机较远的时候显示的模型)</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="Occlucion-Culling遮挡剔除"><a href="#Occlucion-Culling遮挡剔除" class="headerlink" title="Occlucion Culling遮挡剔除"></a>Occlucion Culling遮挡剔除</h5><ul>
+<li>遮挡剔除</li>
+<li>当场景中势必包含大量的模型时，会造成渲染效率的降低，如果使用遮挡剔除（Occlusion Culling）技术，可以使得那些被阻挡的物体不被渲染，从而达到提高渲染效率的目的。</li>
+<li>在默认的渲染管线中也会根据摄像机的视见体的范围对场景模型进行剔除操作，在视见体以外的物体不被渲染，但是在视见体中的物体会以离摄像机最远的物体开始渲染，接着逐渐渲染靠近摄像机的物体，后渲染的物体会覆盖先前渲染的物体，该种技术一般被称为视锥体剔除（Frustum Culling）。</li>
+<li>锥体剔除只剔除摄像机视角范围外的物体而对于被包含在视见体中而由被其他物体遮挡的物体还是会进行渲染。而遮挡剔除（Occlusion Culling）技术是同时剔除一个在视见体内但是被其他物体所遮挡住的物体，此时该物体也不会被渲染</li>
+<li>使用遮挡剔除时，需要进行手动设置。该技术的基本原理是在场景空间中创建一个遮挡区域，该遮挡区域由单元格（Cell）组成，每个单元格构成了整个场景的遮挡区域的一部分，这些单元格会把整个场景拆分成多个部分。</li>
+<li><p>当摄像机能够看到该单元格时，表示该单元格中的物体会被渲染出来，而被其他单元格挡住的不被摄像机看到的单元格中的物体将不会被渲染。<br><a href="https://imgchr.com/i/PBYsIJ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYsIJ.png" alt="PBYsIJ.png"></a></p>
+<ul>
+<li>将所需要进行遮挡剔除的物体全部设置为静态的occ模式</li>
+</ul>
+<p><a href="https://imgchr.com/i/PBYcGR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYcGR.png" alt="PBYcGR.png"></a></p>
+</li>
+<li>选择Occlusion Culling<br><a href="https://imgchr.com/i/PBY2xx" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBY2xx.png" alt="PBY2xx.png"></a><br><a href="https://docs.unity3d.com/Manual/OcclusionCulling.html" target="_blank" rel="noopener">https://docs.unity3d.com/Manual/OcclusionCulling.html</a><br><a href="https://blog.csdn.net/cartzhang/article/details/52684127" target="_blank" rel="noopener">https://blog.csdn.net/cartzhang/article/details/52684127</a><h5 id="Lightmapping-光照贴图"><a href="#Lightmapping-光照贴图" class="headerlink" title="Lightmapping-光照贴图"></a>Lightmapping-光照贴图</h5></li>
+<li>减少实时光照,利用光照贴图来节约性能</li>
+<li>把需要灯光烘焙的物体勾选上LightMap static</li>
+<li>把需要进行灯光烘焙的灯光Model设置为Baked</li>
+</ul>
+<h5 id="合并Mesh"><a href="#合并Mesh" class="headerlink" title="合并Mesh"></a>合并Mesh</h5><p><a href="https://imgchr.com/i/PBYWM6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYWM6.png" alt="PBYWM6.png"></a><br><a href="https://imgchr.com/i/PBYfsK" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYfsK.png" alt="PBYfsK.png"></a></p>
+<ul>
+<li>sharedMesh:当前的mesh</li>
+<li>conbinerss[i].transfrom: 不是Transfrom组件,转换坐标的矩阵</li>
+<li>finalMesh: 合并后的Mesh</li>
+</ul>
+<hr>
+<h4 id="渲染途径"><a href="#渲染途径" class="headerlink" title="渲染途径"></a>渲染途径</h4><ul>
+<li>Unity 提供不同的渲染途径（Rendering Path）。这些渲染途径用于决定灯光和阴影在场景中的计算方法，不同的渲染途径具有不同的性能特性和渲染效果。</li>
+<li>在Unity3D中，提供了三种渲染途径，分别是顶点光照（Vertex Lit）、前向渲染（Forward Rendering）和延时光照（Deferred Lighting）</li>
+<li><p>渲染途径的选择可以通过在Player Settings中来设置，或者为场景中的不同摄像机设置不同的渲染路径，同一个场景中的不同摄像机可以设置不同的渲染途径。<br><a href="https://imgchr.com/i/PBYIde" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYIde.png" alt="PBYIde.png"></a></p>
+<p><a href="https://imgchr.com/i/PBYoIH" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYoIH.png" alt="PBYoIH.png"></a></p>
+</li>
+<li><p>延时光照是具有最高保真度的光照和阴影的渲染途径。如果场景中有很多实时灯光，最好使用延时光照。但它需要一定水平的硬件支持，目前移动设备上不支持该渲染途径。</p>
+</li>
+<li><p>使用延迟光照的主要优点是对于能影响物体的光线数量没有上限；完全采用以每像素的方式进行光线计算，这等于意味着场景中全部的灯光将以正常的光照模式作用于物体的材质上，从而保证了灯光计算的一致性；所有光线都可以使用灯光Cookie；所有的光线都能产生阴影；光照计算的开销与屏幕的光线尺寸成正比，因此不用担心光线所照射的物品的数量；但是它也有它的缺点，比如没有实时抗锯齿支持；不能处理半透明物体，也不能用在那些使用前向渲染的物体之上；不能取消物体的接受阴影属性（Receive Shadow），也就是说物体将永远接受其他物体所投射的阴影；灯光组件中的Cull Mask属性设置也会失效。</p>
+</li>
+<li>使用延迟光照时需要注意影响它的计算性能的因素：分别是被照亮的物体在屏幕上的像素数量和投射阴影的灯光的数量。延迟光照中实时光线的开销和光线照亮的像素的数量成正比，而不取决于场景的复杂性。</li>
+<li>前向渲染路径（Forward Rendering Path）是基于着色器的渲染途径。它支持逐像素计算光照（包括法线贴图和灯光Cookies）以及来自一个平行光的实时阴影。</li>
+<li>顶点光照（Vertex Lit） 是最低保真度的光照、不支持实时阴影的渲染路径。支持顶点光照渲染途径只对所有物体渲染一次（或称为一个通道Pass，或者一个渲染阶段），所有光源的照明都是在物体的顶点上进行计算的。这对于需要发布到比较旧的机器上或者受限制的移动平台上是非常合适的。由于顶点光照对硬件要求不高，所以它是最快的渲染途径并且据有最广泛的硬件，但是由于所有的光照都是在顶点层级上计算的，因此此渲染途径不支持大部分的逐像素渲染效果：如阴影、法线贴图、灯光遮罩、高精度的高光。</li>
+</ul>
+<hr>
+<h4 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h4><p><a href="https://imgchr.com/i/PBY7id" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBY7id.png" alt="PBY7id.png"></a></p>
+<h5 id="资源池-Object-Pooling"><a href="#资源池-Object-Pooling" class="headerlink" title="资源池-Object Pooling"></a>资源池-Object Pooling</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ObjectPool</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> ObjectPool instance;</span><br><span class="line">  <span class="comment">//存储对象池</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Dictionary&lt;<span class="keyword">string</span>,ArrayList&gt; pool = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>,ArrayList&gt;&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    instacnce = <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//从资源池取出数据</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">GetInstance</span>(<span class="params"><span class="keyword">string</span> name,Vector3 position,Quaternion rotation</span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">string</span> key = name+<span class="string">"Clone"</span>;</span><br><span class="line">    Object obj;</span><br><span class="line">    <span class="comment">//判断是否有该名字的对象池,且对象池对象个数大于0</span></span><br><span class="line">    <span class="keyword">if</span>(pool.ContainsKey(key) &amp;&amp; pool[key].Count&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ArrayList list = pool[key];</span><br><span class="line">        obj = list[<span class="number">0</span>] <span class="keyword">as</span> Object;</span><br><span class="line">        <span class="comment">//从对象池中移除该对象</span></span><br><span class="line">        list.RemoveAt(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//重新初始化相关状态</span></span><br><span class="line">        (obj <span class="keyword">as</span> GameObject).SetActive(<span class="literal">true</span>);</span><br><span class="line">        (obj <span class="keyword">as</span> GameObject).transfrom.position = position;</span><br><span class="line">        (obj <span class="keyword">as</span> GameObject).transfrom.rotation = rotation;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        obj = Instantiate(Resources.Load(name),position,rotation);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//每次把对象从池子里拿出来的时候要初始化对象属性</span></span><br><span class="line">    DelayDestory destory = (obj <span class="keyword">as</span> GameObject).GetComponent&lt;DelayDestory&gt;().Init();</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据回收到资源池</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">Return</span>(<span class="params">GameObject obj</span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">string</span> key = obj.name;</span><br><span class="line">      <span class="comment">//如果这个字典中有这个key的话;判断是否有该对象的对象池</span></span><br><span class="line">      <span class="keyword">if</span>(pool.ContainsKey(key))</span><br><span class="line">      &#123;</span><br><span class="line">        ArrayList list = pool[key];</span><br><span class="line">        <span class="comment">//放置到对象池中</span></span><br><span class="line">        list.Add(obj);</span><br><span class="line">      &#125;<span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//创建该类型的池子,将对象放入</span></span><br><span class="line">        pool[key] = <span class="keyword">new</span> ArrayList()&#123;obj&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">      obj.SetActive(<span class="literal">false</span>);</span><br><span class="line">      <span class="keyword">return</span> obj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DelayDestory</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//初始化</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> vodi <span class="title">Init</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    StartCoroutine(ReturnToPool());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2s后自动把对象回收到对象池中</span></span><br><span class="line">  <span class="function">IEnumerator <span class="title">ReturnToPool</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">2</span>f</span>)</span>;</span><br><span class="line">    ObjectPool.instance.Return(<span class="keyword">this</span>.gameobject);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="事件调用顺序"><a href="#事件调用顺序" class="headerlink" title="事件调用顺序"></a>事件调用顺序</h5><ul>
+<li>在Unity3D的脚本当中，提供了一些按照预定顺序执行的事件函数。熟悉这些事件函数的调用时机，才能把合适的代码放在合适的事件函数中，通过对这些函数进行重写来覆盖默认的函数功能。下图展示了这些事件函数的调用时机。<br><a href="https://imgchr.com/i/PBYXsf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBYXsf.png" alt="PBYXsf.png"></a></li>
+<li><p>Awake函数：</p>
+<ul>
+<li>也被称为唤醒函数，当一个脚本实例被载入的时候调用，它的调用时机先于Start函数。该方法一般用于游戏开始之前初始化引用或设置游戏状态，与对象构造函数功能相似。该函数在整个脚本的生命周期内只被调用一次，而且它是在场景中所有的对象被实例化之后才被调用，因此可以在该函数中与其他游戏对象进行对话或者使用GameObject中寻找场景对象相关函数如FindWithTag等来寻找场景中的对象，而且一般在该函数中进行脚本或者对象间的引用设置。场景中所有对象脚本中的Awake方法的调用顺序是随机的，也就是说没有按照某种规则先执行哪个对象的Awake函数。这里需要注意的是，Awake函数并不是对象的构造函数，而且不能在该函数中执行协同程序（coroutine）。</li>
+</ul>
+</li>
+<li><p>Start函数</p>
+<p>-称为开始函数，它是在第一次执行Update函数之前，Awake函数执行之后被调用。一般Awake用于初始化对象或者脚本、组件之间的引用，而Start函数用于做数值的初始化设置。而且它同awake一样，在整个脚本生命周期中只被调用一次。在该函数中执行协同程序，用于调整程序执行的节奏，比如等待一个音频素材的导入之后再执行下面的代码等等。</p>
+</li>
+<li><p>Update函数</p>
+<ul>
+<li>也被称为更新函数。该函数游戏运行时每一帧之前被调用一次，是用于更新每帧游戏逻辑数据（比如角色的位置更新）的最常用函数。该函数的调用频率时基于游戏目前的帧速率的，所以其调用频率是由当前游戏的运行速度来决定</li>
+</ul>
+</li>
+<li><p>LateUpdate函数</p>
+<ul>
+<li><p>更新函数。它在Update函数调用之后被调用，它也是每帧被调用一次。在Update()中执行的任何算都会在LateUpdate()开始之前完成。    </p>
+<ul>
+<li>LateUpdate()的一个常见应用就是第三人称控制器的相机跟随。如果把角色的移动和旋转放在Update()中，那么就可以把所有相机的移动旋转放在LateUpdate()。这是为了在相机追踪角色位置之前，确保角色已经完成移动</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>FixedUpdate函数：</p>
+<ul>
+<li><p>FixedUpdate()比Update()函数调用的更频繁，它的调用频率是基于整个游戏的固定定时器的。当帧速率较低时，它每帧可能被调用多次，如果帧速率比较高，它有可能就不会被调用了。</p>
+</li>
+<li><p>所有的物理计算和更新都发生在FixedUpdate()之后。当在FixedUpdate()中计算物体移动时，不需要乘以Time.deltaTime（当然要获得最后一次调用FixedUpdate所用的时间，也可以用Time.deltaTime。）。因为FixedUpdate()是基于可靠的定时器的，不受帧速率的影响。这里需要注意的是，处理Rigidbody相关物理运算时，需要用FixedUpdate来代替Update。例如:给刚体加一个作用力时，必须在FixedUpdate里应用作用力，而不是在Update中，因为物理模拟计算的频率与帧更新的调用频率不同。</p>
+</li>
+</ul>
+</li>
+<li><p>OnApplicationFocus函数</p>
+<ul>
+<li>也被称为应用程序聚焦函数。现在的操作系统都是多任务多窗口运行系统，也就是说可以同时打开多个应用程序，当前被激活的应用程序也可以成为被聚焦（激活），其他的应用程序失焦。例如现在窗口中打开了网页浏览器，Word，当你激活页面浏览器时，Word就失去焦点，当切换到Word软件时，页面浏览器失焦，而Word软件被激活。当玩家从其他的应用程序聚焦到当前游戏时，OnApplicationFocus函数会被调用。</li>
+</ul>
+</li>
+<li><p>OnApplicationPause函数:</p>
+<ul>
+<li>也被称为应用程序暂停函数。当游戏暂停时在当前帧更新之后被调用。一般是当程序失焦的时候被调用。对于使用Time.scaleTime = 0的方法来暂停游戏，该函数不会被调用。</li>
+</ul>
+</li>
+<li><p>OnApplicationQuit函数:</p>
+<ul>
+<li>也称为应用程序退出函数。在应用退出之前所有的游戏对象都会调用这个函数。当游戏退出时，有可能要对游戏进行一些善后的处理，比如可以在该函数中做数据永久化保存的工作。</li>
+</ul>
+</li>
+</ul>
+<p>游戏对象当前状态的事件函数:</p>
+<ul>
+<li>在Unity3D中，游戏对象的状态可以分为实例化、初始化、激活、注销、销毁等。游戏对象的实例化由游戏对象的构造函数来完成，一般的游戏对象其实例化的过程不用人工参与（有时只是为构造函数提供属性值而已），游戏对象实例化之后，其初始化过程由Awake函数和Start函数来完成，而对于激活、注销和销毁等状态，则会分别调用一下四个函数：</li>
+<li>OnEnable函数，也被称为激活函数。当游戏对象从注销状态转到激活状态时被调用。</li>
+<li>OnDisable函数:也被称为注销函数。当游戏对象从激活状态转到注销状态时被调用。</li>
+<li>OnDestroy函数：<ul>
+<li>也被称为对象销毁函数，当场景中的对象被销毁时而且所有帧更新之后被调用（也就是在对象存在的最后一帧）。该函数一般用于相应Destroy函数或者场景关闭时。使用该函数，可以对对象销毁前做善后工作。OnDestroy不能用于协同程序。</li>
+</ul>
+</li>
+<li>Reset函数<ul>
+<li>也被称为重置函数。Reset是在用户点击Inspector面板的Reset按钮或者首次添加该组件时被调用。此函数只在编辑模式下被调用。Reset最常用于在检视面板中给定一个最常用的默认值<br><a href="https://imgchr.com/i/PBtCJs" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtCJs.png" alt="PBtCJs.png"></a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="优化工具-UWA-Game-Optimization-Toolkit"><a href="#优化工具-UWA-Game-Optimization-Toolkit" class="headerlink" title="优化工具 UWA Game Optimization Toolkit"></a>优化工具 UWA Game Optimization Toolkit</h5><p><strong>编译性能优化</strong><br><a href="http://forum.china.unity3d.com/thread-13028-1-1.html" target="_blank" rel="noopener">http://forum.china.unity3d.com/thread-13028-1-1.html</a><br><a href="http://gad.qq.com/article/detail/27927" target="_blank" rel="noopener">http://gad.qq.com/article/detail/27927</a></p>
+<hr>
+<h4 id="优化运行效率"><a href="#优化运行效率" class="headerlink" title="优化运行效率"></a>优化运行效率</h4><h5 id="降低绘制调用（Draw-Call）数量"><a href="#降低绘制调用（Draw-Call）数量" class="headerlink" title="降低绘制调用（Draw Call）数量"></a>降低绘制调用（Draw Call）数量</h5><ul>
+<li>随着图形卡性能的提高，处理大量多边形数据的能力也在增长。比如现在一个具有100个三角面的物体和渲染一个具有1500个三角面的物体所需要的渲染开销是差不多的。当处于摄像机视见体内，而且添加了网格渲染器（Mesh Renderer）组件的对象才会产生渲染的开销，而空的游戏对象并不会产生渲染开销。但当模型是分开独立时，从程序把一个模型的数据经过CPU传输到GPU并命令GPU进行绘制时（称为一个Draw Call，也就是绘制调用过程），会产生大量的CPU开销。</li>
+<li>Unity3D在运行时可以将一些物体对象进行合并，也就是把多个物体打包再使用一个Draw Call来渲染他们，这一操作被称为“批处理” （Batching）</li>
+<li>一般来说，Unity3D批处理的物体越多，便会得到越好的渲染性能。Unity3D中内建的批处理机制所达到的效果要明显强于使用第三方建模软件</li>
+<li>使用共享贴图减少Draw Call。Unity3D判断对哪些物体对象进行批处理，一般是根据这些物体是否具有共同的材质和贴图，也就是说，拥有相同材质的物体才可以进行批处理。因此，如果想要得到更好的批处理效果，需要在场景中尽可能地复用材质到不同的物体上。</li>
+<li>只合并两个物体而没有共享材质，也是不会启用批处理操作。如果想有效地合并，你需要确保网格结合后，只使用一种材质。</li>
+<li>如果需要通过脚本来访问复用材质属性，那么如果使用Renderer.material来改变贴图将会造成一份材质的拷贝。因此，一般应该使用Renderer.sharedMaterial 来保证材质的共享状态。<h5 id="动态批处理"><a href="#动态批处理" class="headerlink" title="动态批处理"></a>动态批处理</h5></li>
+<li><p>Unity3D内置的批处理对共享贴图的动态物体也同样有效。只是需要注意的地方有：由于批处理动态物体需要在每个顶点上进行一定的开销，所以动态批处理仅支持小于900顶点的网格物体。</p>
+</li>
+<li><p>不要使用缩放。分别拥有缩放大小(1,1,1) 和(2,2,2)的两个物体将不会进行批处理。统一缩放的物体不会与非统一缩放的物体进行批处理。</p>
+</li>
+<li><p>使用不同材质的物体将会不能被批处理。<br>多通道的shader会妨碍批处理操作。比如，几乎unity中所有的着色器在前向渲染（Forward Rendering）中都支持多个光源，因此为它们开辟多个通道，所以对批处理有影响。<br>使用预设生成的对象会自动地使用相同的网格模型和材质，因此会被批处理。</p>
+<h5 id="静态批处理"><a href="#静态批处理" class="headerlink" title="静态批处理"></a>静态批处理</h5></li>
+<li>相对而言，静态批处理操作允许引擎对任意大小的几何物体进行批处理操作来降低绘制调用（只要这些物体不移动，并且拥有相同的材质）。因此，静态批处理比动态批处理更加有效，应该尽量地使用它，因为它需要更少的CPU开销。</li>
+<li>为了更好地使用静态批处理，需要明确指出哪些物体是静止的，并且在游戏中永远不会移动、旋转和缩放。可以通过在Inspector窗口中将Static复选框勾选即可。<h5 id="在前向渲染途径（Forward-Rendering-Path）模式下减少像素灯的数量"><a href="#在前向渲染途径（Forward-Rendering-Path）模式下减少像素灯的数量" class="headerlink" title="在前向渲染途径（Forward Rendering Path）模式下减少像素灯的数量"></a>在前向渲染途径（Forward Rendering Path）模式下减少像素灯的数量</h5>根据影响物体的光源的不同，前向渲染途径用单个或多个通道来渲染物体。在前向渲染中，光源本身也会根据他们的设置和强度受到不同级别的对待。<h5 id="使用层消隐距离来优化场景。"><a href="#使用层消隐距离来优化场景。" class="headerlink" title="使用层消隐距离来优化场景。"></a>使用层消隐距离来优化场景。</h5>在一些游戏中，可能需要将小物件剔除，以减少绘图调用的数量。例如，在足够远的距离，大型建筑物仍然可见，小石块和碎片可以隐藏掉。要做到这一点，<strong>可以小物件放入一个单独的层（separate layer）中，并使用Camera.layerCullDistances函数来设置每一层的消隐距离。</strong><h5 id="注意阴影的数量和质量"><a href="#注意阴影的数量和质量" class="headerlink" title="注意阴影的数量和质量"></a>注意阴影的数量和质量</h5>如果游戏的发布目标平台是台式机，那么需要注意实时阴影的设置;产生实时阴影一般开销是较大的。如果不正确使用，它们可能造成大量的性能开销。阴影影响渲染速度的主要因素有：产生实时阴影的灯光数量、投射阴影和接收阴影的物体数量（在物体Mesh Renderer组件中设置）、阴影是硬阴影（Hard Shadows，速度快，边缘锐利）还是软阴影（Soft Shadows，速度慢，边缘柔和）、阴影的分辨率以及阴影的柔和度。这些属性基本可以在灯光组件属性面板中设置。如果有需要的话，把一些阴影烘焙在光照贴图上是提高渲染效率的一种方法（此时灯光需要设置成“静态”static物体）。最后还有一个设置可以提高阴影的渲染效率，便是在“质量设置”（Quality Settings）<strong>面板中的Shadow Distance属性上设置阴影的显示距离</strong>，该距离是根据当前摄像机作为参考的，当可以生成阴影的地方与当前摄像机之间的距离超过该值时，将不生成阴影。<h5 id="优化模型几何体"><a href="#优化模型几何体" class="headerlink" title="优化模型几何体"></a>优化模型几何体</h5>在渲染流水线中，模型的数据量越大，需要对这些数据进行处理的时间也会越长，当然随着渲染技术的发展，处理模型数据的数量也在提升。但是，经量地使用优化的模型可以使得游戏运行更加有效率。那么对模型的优化主要是顶点、三角形面片数目不要太多；<h5 id="使用贴图压缩优化"><a href="#使用贴图压缩优化" class="headerlink" title="使用贴图压缩优化"></a>使用贴图压缩优化</h5>尺寸越小、压缩比率越高的贴图，占用的内存空间也会降低，也可以降低对它的渲染处理时间，同时也会减少游戏文件的体积。修改贴图的尺寸以及压缩格式可以通过贴图的属性面板来设置。最后在整个场景中尽量减少贴图的数量。<h5 id="蒙皮动画模型优化"><a href="#蒙皮动画模型优化" class="headerlink" title="蒙皮动画模型优化"></a>蒙皮动画模型优化</h5>蒙皮动画主要针对添加骨骼的模型，对这些模型的优化也对渲染效率起到不可低估的提升作用。只使用一个蒙皮网格渲染器。在Unity中每个角色仅使用一个蒙皮网格渲染器（skinned mesh renderer）来绘制。</li>
+<li>使用尽可能少的材质。应该尽可能地减少网格所用材质的数量。除非想使用不同的着色器来实现不同部位的材质效果（例如，角色身体和眼睛使用不同的着色器）。但是，大多数情况下，每个角色使用2-3个材质就够了</li>
+<li>尽可能减少骨骼数量。中型的PC游戏每个角色一般使用15-60个骨骼。骨骼越少，性能越好。一般用30个骨骼就可以在台式机上（Desktop platforms）获得很好的表现效果，同时在手机平台（Mobile Platforms）上质量也相当不错。理想的情况是，在手机平台（Mobile Platforms）上单角色的骨骼不要超过30个，在台式机（ Desktop platforms）上也尽量只用30个左右的骨骼。<h5 id="物理性能优化"><a href="#物理性能优化" class="headerlink" title="物理性能优化"></a>物理性能优化</h5>如果对于台式机，对于稍微复杂一些的物理模拟运算来说是绰绰有余的，但是如果是开发移动终端的游戏，那么就需要更加注意物理性能的优化了。         </li>
+</ul>
+<p>调整“固定时钟步调”（Fixed Timestep，该时间间隔与帧速率无关，用于控制物理计算和执行FixedUpdate事件的频率）设置（Time manager，在主菜单中选择【Edit】-&gt;【Project Settings】-&gt;【Time】。</p>
+<ul>
+<li><p>这里顺便介绍一下，在这个面板中的最后一个属性“时间缩放因子”（Time Scale），如果该值为1，表示按照正常时钟运行游戏，当该值为0时，游戏暂停运行，如果设置成2，游戏运行时间将加快两倍，当为0.5时，运行时间减慢到一半），以减少对物理更新所花费的时间。 增加时间步长将减少CPU开销，但物理模拟的精度会下降。通常情况下，为增加速度而降低精度是可以接受的折中方案。<br>设置第二个属性中的“最大允许时钟步调”（Maximum Allowed Timestep，物理计算和FixedUpdate() 执行不会超过该指定的时间）在0.1-0.125范围之内，使得在最坏的情况下封顶物理花费的时间。</p>
+</li>
+<li><p>网格碰撞盒比基本碰撞盒需要更高的性能开销，因此应该尽量少使用。通过把基本碰撞盒作为物体的子对象，来尽可能地近似网格的形状。子碰撞盒将作为单一复合碰撞盒共同控制其父级的刚体。车轮碰撞盒不是严格意义上的固体物体的碰撞，以及布料模拟，都会造成很高的CPU开销。</p>
+</li>
+<li><p>物理模拟计算的开销取决于场景中非休眠刚体和碰撞盒的数量以及碰撞盒的复杂度。在游戏测试运行的时候，可以在场景中使用分析器来跟踪当前有多少个物理物体在起作用</p>
+</li>
+</ul>
+<h5 id="优化脚本性能"><a href="#优化脚本性能" class="headerlink" title="优化脚本性能"></a>优化脚本性能</h5><ul>
+<li>减少固定的增量时间。设置fixedTimeStep值在0.04～0.067秒之间（也就是每秒15～25帧之间）。这降低了FixedUpdate被调用和物理引擎执行碰撞检测和刚体更新的频率。如果为主角色添加了刚体，可以在刚体组件启用“插值”（interpolation）来平滑降低固定增量时间步。</li>
+<li>减少GetComponent的调用。使用GetComponent或内置的组件访问函数将带来明显的性能开销。可以通过获取一次组件的引用并指定给变量来避免这个操作（有时也被称为”缓存”的引用）。例如未优化的代码如下：</li>
+<li>避免分配内存。除非确实需要，否则应该尽量避免实时生成新的对象，因为当它们不再使用时，为这些废弃的对象进行垃圾回收会造成一定的开销。可以通过使用数组结构来减少垃圾收集。</li>
+</ul>
+<hr>
+<h4 id="性能优化文章参考"><a href="#性能优化文章参考" class="headerlink" title="性能优化文章参考"></a>性能优化文章参考</h4><p><a href="https://blog.csdn.net/candycat1992/article/details/42127811" target="_blank" rel="noopener">https://blog.csdn.net/candycat1992/article/details/42127811</a></p>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/03/Unity性能优化篇一/">Unity性能优化篇一</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2018年08月03日 - 19:08</p>
+  <p><span>最后更新:</span>2018年08月04日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/03/Unity性能优化篇一/" title="Unity性能优化篇一">http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/03/Unity插件Cinemachine/" rel="next" title="Unity插件之Cinemachine">
+                <i class="fa fa-chevron-left"></i> Unity插件之Cinemachine
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/03/FSM状态机之UnityWIKI/" rel="prev" title="FSM状态机之UnityWIKI">
+                FSM状态机之UnityWIKI <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unity性能优化篇-一"><span class="nav-number">1.</span> <span class="nav-text">Unity性能优化篇(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity游戏安装包大-运行卡的原因"><span class="nav-number">1.1.</span> <span class="nav-text">Unity游戏安装包大/运行卡的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Mono虚拟机"><span class="nav-number">1.1.1.</span> <span class="nav-text">Mono虚拟机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Drawcall"><span class="nav-number">1.1.2.</span> <span class="nav-text">Drawcall</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unity-Profiler"><span class="nav-number">1.1.3.</span> <span class="nav-text">Unity Profiler</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Profiler"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Profiler</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Unity-Statistics统计面板"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Unity Statistics统计面板</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#资源优化"><span class="nav-number">1.2.</span> <span class="nav-text">资源优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#资源优化标准"><span class="nav-number">1.2.1.</span> <span class="nav-text">资源优化标准</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何减少冗余的资源和重复资源"><span class="nav-number">1.2.2.</span> <span class="nav-text">如何减少冗余的资源和重复资源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#资源监测与分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">资源监测与分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染优化"><span class="nav-number">1.3.</span> <span class="nav-text">渲染优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU-GPU分工"><span class="nav-number">1.3.1.</span> <span class="nav-text">CPU/GPU分工</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LOD-层级细节"><span class="nav-number">1.3.2.</span> <span class="nav-text">LOD-层级细节</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Occlucion-Culling遮挡剔除"><span class="nav-number">1.3.3.</span> <span class="nav-text">Occlucion Culling遮挡剔除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lightmapping-光照贴图"><span class="nav-number">1.3.4.</span> <span class="nav-text">Lightmapping-光照贴图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合并Mesh"><span class="nav-number">1.3.5.</span> <span class="nav-text">合并Mesh</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染途径"><span class="nav-number">1.4.</span> <span class="nav-text">渲染途径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码优化"><span class="nav-number">1.5.</span> <span class="nav-text">代码优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#资源池-Object-Pooling"><span class="nav-number">1.5.1.</span> <span class="nav-text">资源池-Object Pooling</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件调用顺序"><span class="nav-number">1.5.2.</span> <span class="nav-text">事件调用顺序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化工具-UWA-Game-Optimization-Toolkit"><span class="nav-number">1.5.3.</span> <span class="nav-text">优化工具 UWA Game Optimization Toolkit</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化运行效率"><span class="nav-number">1.6.</span> <span class="nav-text">优化运行效率</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#降低绘制调用（Draw-Call）数量"><span class="nav-number">1.6.1.</span> <span class="nav-text">降低绘制调用（Draw Call）数量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态批处理"><span class="nav-number">1.6.2.</span> <span class="nav-text">动态批处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#静态批处理"><span class="nav-number">1.6.3.</span> <span class="nav-text">静态批处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在前向渲染途径（Forward-Rendering-Path）模式下减少像素灯的数量"><span class="nav-number">1.6.4.</span> <span class="nav-text">在前向渲染途径（Forward Rendering Path）模式下减少像素灯的数量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用层消隐距离来优化场景。"><span class="nav-number">1.6.5.</span> <span class="nav-text">使用层消隐距离来优化场景。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意阴影的数量和质量"><span class="nav-number">1.6.6.</span> <span class="nav-text">注意阴影的数量和质量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化模型几何体"><span class="nav-number">1.6.7.</span> <span class="nav-text">优化模型几何体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用贴图压缩优化"><span class="nav-number">1.6.8.</span> <span class="nav-text">使用贴图压缩优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#蒙皮动画模型优化"><span class="nav-number">1.6.9.</span> <span class="nav-text">蒙皮动画模型优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#物理性能优化"><span class="nav-number">1.6.10.</span> <span class="nav-text">物理性能优化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化脚本性能"><span class="nav-number">1.6.11.</span> <span class="nav-text">优化脚本性能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能优化文章参考"><span class="nav-number">1.7.</span> <span class="nav-text">性能优化文章参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.8k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

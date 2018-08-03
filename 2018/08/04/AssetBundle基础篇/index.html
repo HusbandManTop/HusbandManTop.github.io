@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="热更新," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="AssetsBundle基础篇(一) Unity 之 AssetsBundle官方文档  AssetsBundle的定义和作用 AssetsBundle是一个压缩包,包含模型/贴图/预制体/声音/甚至整个场景,可以在游戏运行的时候被加载; AssetsBundle自身保存着相互依赖的关系; 压缩包可以使用LZMA和LZ4压缩算法,减少包大小,更快的进行网络传输; LZMA: LZ4:   把一些可">
+<meta name="keywords" content="热更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AssetBundle基础篇">
+<meta property="og:url" content="http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="AssetsBundle基础篇(一) Unity 之 AssetsBundle官方文档  AssetsBundle的定义和作用 AssetsBundle是一个压缩包,包含模型/贴图/预制体/声音/甚至整个场景,可以在游戏运行的时候被加载; AssetsBundle自身保存着相互依赖的关系; 压缩包可以使用LZMA和LZ4压缩算法,减少包大小,更快的进行网络传输; LZMA: LZ4:   把一些可">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/04/PBBUD1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/04/PBBaHx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/04/PBB0UK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/04/PBBB4O.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/04/PBBrCD.png">
+<meta property="og:updated_time" content="2018-08-03T18:20:57.560Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AssetBundle基础篇">
+<meta name="twitter:description" content="AssetsBundle基础篇(一) Unity 之 AssetsBundle官方文档  AssetsBundle的定义和作用 AssetsBundle是一个压缩包,包含模型/贴图/预制体/声音/甚至整个场景,可以在游戏运行的时候被加载; AssetsBundle自身保存着相互依赖的关系; 压缩包可以使用LZMA和LZ4压缩算法,减少包大小,更快的进行网络传输; LZMA: LZ4:   把一些可">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/04/PBBUD1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/"/>
+
+
+
+
+
+  <title>AssetBundle基础篇 | HusbandMan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AssetBundle基础篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:36:28+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/热更新/" itemprop="url" rel="index">
+                    <span itemprop="name">热更新</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/热更新/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/AssetBundle基础篇/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/04/AssetBundle基础篇/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,838
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="AssetsBundle基础篇-一"><a href="#AssetsBundle基础篇-一" class="headerlink" title="AssetsBundle基础篇(一)"></a>AssetsBundle基础篇(一)</h3><hr>
+<h4 id="Unity-之-AssetsBundle"><a href="#Unity-之-AssetsBundle" class="headerlink" title="Unity 之 AssetsBundle"></a>Unity 之 AssetsBundle</h4><p><a href="https://docs.unity3d.com/2017.4/Documentation/Manual/AssetBundlesIntro.html" target="_blank" rel="noopener">官方文档</a></p>
+<hr>
+<h4 id="AssetsBundle的定义和作用"><a href="#AssetsBundle的定义和作用" class="headerlink" title="AssetsBundle的定义和作用"></a>AssetsBundle的定义和作用</h4><ul>
+<li>AssetsBundle是一个压缩包,包含模型/贴图/预制体/声音/甚至整个场景,可以在游戏运行的时候被加载;</li>
+<li>AssetsBundle自身保存着相互依赖的关系;</li>
+<li>压缩包可以使用LZMA和LZ4压缩算法,减少包大小,更快的进行网络传输;<ul>
+<li>LZMA:</li>
+<li>LZ4:</li>
+</ul>
+</li>
+<li>把一些可以下载的内容放在AssetsBundle里面,可以减少安装包的大小;<br>什么是AssetsBundle</li>
+<li>它是一个存在于硬盘上的文件,可以称为压缩包,这个压缩包可以认为是一个文件夹,里面包含了很多个文件,这些文件可以分为两类:<ul>
+<li>serialized file(序列化文件)<ul>
+<li>serialized file:资源被打碎放在一个对象中,最后统一被写进一个单独的文件(只有一个)</li>
+</ul>
+</li>
+<li>resource file(源文件)<ul>
+<li>resource file:某些二进制资源(图片,声音)被单独保存,方便快速加载</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>它是一个AssetsBundle对象,我们可以通过代码从一个特定的压缩包加载出来的对象,这个对象包含了所有我们当初添加到这个压缩包里面的内容,我们可以通过这个对象加载出来使用</li>
+</ul>
+<hr>
+<h4 id="AssetsBundle使用流程"><a href="#AssetsBundle使用流程" class="headerlink" title="AssetsBundle使用流程"></a>AssetsBundle使用流程</h4><ul>
+<li><p>指定资源的AssetsBundle属性</p>
+<ul>
+<li>指定要打包的物品的AssetsBundle名字和后缀(<font color="1F89">在指定AB包名字的时候可以直接自定义目录AssetScene/AssetsBundle</font>)当AssetsBundle包多的时候可以进行目录结构的划分<br><a href="https://imgchr.com/i/PBBUD1" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBBUD1.png" alt="PBBUD1.png"></a></li>
+</ul>
+</li>
+<li><p>构建AB包(打包AssetsBundle包)</p>
+<ul>
+<li>构建AB包的脚本一般都是在Editor模式下运行;<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> [<span class="meta">MenuItem(<span class="meta-string">"MyTools/BuildBundles"</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BuildBundles</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> buildPath = Application.dataPath + <span class="string">"/AssetsBundles"</span>;</span><br><span class="line">    <span class="keyword">if</span>(Directory.Exists(buildPath) == <span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Directory.CreateDirectory(buildPath);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//构建AB包</span></span><br><span class="line">    BuildPipeline.BuildAssetBundles(buildPath, BuildAssetBundleOptions.None, BuildTarget.Android);</span><br><span class="line">    AssetDatabase.Refresh();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>上传AB包(把AssetsBundle包上传到服务器)</li>
+<li>加载AB包里面的资源<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      loadPath = Application.dataPath + <span class="string">"/AssetsBundles/scene/cube.unityasset"</span>;</span><br><span class="line">      LoadAsset();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LoadAsset</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//加载AssetsBundle包</span></span><br><span class="line">    AssetBundle ab =  AssetBundle.LoadFromFile(loadPath);</span><br><span class="line">    <span class="comment">//从AssetsBundle包取得资源</span></span><br><span class="line">    GameObject cube = ab.LoadAsset&lt;GameObject&gt;(<span class="string">"Cube"</span>);</span><br><span class="line">    Instantiate(cube);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="AssetsBundle的打包参考分组策略"><a href="#AssetsBundle的打包参考分组策略" class="headerlink" title="AssetsBundle的打包参考分组策略"></a>AssetsBundle的打包参考分组策略</h4><ul>
+<li>逻辑实体分组<ul>
+<li>一个UI界面或者所以得UI界面打成一个包(这个界面里面的贴图和布局信息一个包)</li>
+<li>一个角色或者所有角色一个包(这个角色里面的模型/动画一个包)</li>
+<li>所有场景所共享的部分打成打一个包(包括贴图和模型)</li>
+</ul>
+</li>
+<li>按照类型分组<ul>
+<li>所有声音资源打成一个包,所有Shader打成一个包,所有模型打成一个包,所有材质打成一个包</li>
+</ul>
+</li>
+<li>按照使用分组<ul>
+<li>把某一时间内使用的所有资源打成一个包.可以按照关卡分,一个关卡所需要的所有资源包括角色/贴图/声音等打成打一个包;也可以按照场景划分,一个场景所需要的资源一个包</li>
+</ul>
+</li>
+</ul>
+<h5 id="分组策略"><a href="#分组策略" class="headerlink" title="分组策略"></a>分组策略</h5><ul>
+<li>把经常更新的资源放在一个单独的包里面,跟不经常更新的资源分离</li>
+<li>把需要同时加载的资源放在一个包里面</li>
+<li>可以把其他包共享的资源放在一个单独的包里面(根据依赖关系打包,减少重复打包重复资源,减小AB包大小)<br><a href="https://imgchr.com/i/PBBaHx" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBBaHx.png" alt="PBBaHx.png"></a></li>
+<li>把一些需要同时加载的小资源打包成一个包</li>
+<li>如果对于一个同一个资源有两个版本,可以考虑通过后缀来区分</li>
+</ul>
+<hr>
+<h4 id="AssetBundle压缩方式"><a href="#AssetBundle压缩方式" class="headerlink" title="AssetBundle压缩方式"></a>AssetBundle压缩方式</h4><p>BuildAssetBundles(paramter 1,paramter 2,paramter 3);</p>
+<ul>
+<li>paramter 1: build的路径(任意本地路径)</li>
+<li>paramter 2: BuildAssetsBundleOptions:<ul>
+<li>BuildAssetsBundleOptions.None: 使用LZMA算法,压缩包更小,但是加载时间更长.使用之前需要整体解压,一旦被解压,这个包会使用LZ4算法重新压缩.使用资源的时候不需要整体解压.在下载的时候可以使用LZMA算法,一旦被下载了之后,它会使用LZ4算法保存到本地;</li>
+<li>BuildAssetsBundleOptions.UncompressedAssetBundle: 不使用压缩,包体大,但是加载速度快;</li>
+<li>BuildAssetsBundleOptions.ChunkBasedCompression: 使用LZ4算法压缩,压缩率没有LZMA高,但是我们可以加载指定资源而不用解压全部</li>
+</ul>
+</li>
+</ul>
+<font color="F011" size="4">注意:使用LZ4压缩,可以获得跟不压缩相媲美的加载速度,而且比不压缩文件包体要小</font><br>  - paramter 3: 构建平台,不同平台构建出来的包会有差异;<br><br>##### Manifest文件<br>- CRC: 文件校验码<br>- Assets: Assetbundle包含的资源<br>- Dependencies: 依赖的资源路径<br>##### 资源的依赖关系<br>- 如果一个或多个AssetBundle UnityEngine.Objects包含对UnityEngine.Object位于另一个包中的引用，则AssetBundles可以依赖于其他AssetBundle 。如果UnityEngine.Object包含对UnityEngine.Object不包含在任何AssetBundle 中的引用，则不会发生依赖关系。在这种情况下，在构建AssetBundle时，捆绑包所依赖的对象的副本将复制到捆绑包中。如果多个捆绑包中的多个对象包含对未分配到捆绑包的同一对象的引用，则每个对该对象具有依赖关系的捆绑包都将生成其自己的对象副本并将其打包到构建的AssetBundle中。<br>- 如果一个AssetBundle包含一个依赖项，那么在你试图实例化的对象被加载之前，加载包含这些依赖项的包是很重要的。Unity不会尝试自动加载依赖关系。<br>before loading the Material from Bun<br>- <font color="0Y993">before loading the Material from Bundle 1, you would need to load Bundle 2 into memory. It does not matter which order you load Bundle 1 and Bundle 2, the important takeaway is that Bundle 2 is loaded before loading the Material from Bundle 1. In the next section, we’ll discuss how you can use the AssetBundleManifest objects we touched on in the previous section to determine, and load, dependencies at runtime.(在从Bundle 1加载材料之前，需要将Bundle 2加载到内存中。加载Bundle 1和Bundle 2的顺序无关紧要，重要的是Bundle 2在加载Bundle 1的材料之前就已经加载好了)</font>
+
+<h4 id="加载AssetsBundle加载"><a href="#加载AssetsBundle加载" class="headerlink" title="加载AssetsBundle加载"></a>加载AssetsBundle加载</h4><p><a href="https://docs.unity3d.com/2017.4/Documentation/Manual/AssetBundles-Native.html" target="_blank" rel="noopener">https://docs.unity3d.com/2017.4/Documentation/Manual/AssetBundles-Native.html</a></p>
+<ul>
+<li><strong>AssetBundle.LoadFromMemory(); //内存加载方式</strong></li>
+<li><p><strong>AssetBundle.LoadFromFile(); //文件加载方式</strong></p>
+<ul>
+<li>从本地存储装载未压缩的包时，此API非常高效。如果捆绑包未压缩或压缩块（LZ4），LoadFromFile将直接从磁盘加载捆绑包。使用此方法加载完全压缩（LZMA）捆绑包将首先解压缩捆绑包，然后再将其加载到内存中<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LoadFromFileExample</span> <span class="title">extends</span> <span class="title">MonoBehaviour</span> &#123;</span><br><span class="line">    <span class="function">function <span class="title">Start</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> myLoadedAssetBundle AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, <span class="string">"myassetBundle"</span>));</span><br><span class="line">        <span class="keyword">if</span> (myLoadedAssetBundle == <span class="literal">null</span>) &#123;</span><br><span class="line">            Debug.Log(<span class="string">"Failed to load AssetBundle!"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> prefab = myLoadedAssetBundle.LoadAsset.&lt;GameObject&gt;(<span class="string">"MyObject"</span>);</span><br><span class="line">        Instantiate(prefab);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>AssetBundle.LoadFromFileAsync();//文件异步加载方式</strong><br>该函数接收包含AssetBundle数据的字节数组。也可以根据需要传递CRC值。如果捆绑包是LZMA压缩的，它将在加载时解压缩AssetBundle。LZ4压缩束以其压缩状态加载.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">LoadFromMemoryAsync</span>(<span class="params"><span class="keyword">string</span> path</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AssetBundleCreateRequest createRequest = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(path));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> createRequest;</span><br><span class="line"></span><br><span class="line">    AssetBundle bundle = createRequest.assetBundle;</span><br><span class="line">    <span class="keyword">var</span> prefab = bundle.LoadAsset.&lt;GameObject&gt;(<span class="string">"MyObject"</span>);</span><br><span class="line">    Instantiate(prefab);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>WWW.LoadFromCacheOrDownload(); //从服务器或者本地加载(不在推荐的API)</strong><br>此API对于从远程服务器下载AssetBundles或加载本地AssetBundles</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LoadFromCacheOrDownloadExample</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">IEnumerator <span class="title">Start</span> (<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (!Caching.ready)</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">var</span> www = WWW.LoadFromCacheOrDownload(<span class="string">"http://myserver.com/myassetBundle"</span>, <span class="number">5</span>);</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> www;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">string</span>.IsNullOrEmpty(www.error))</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(www.error);</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> myLoadedAssetBundle = www.assetBundle;</span><br><span class="line">        <span class="keyword">var</span> asset = myLoadedAssetBundle.mainAsset;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>UnityWebRequest //web加载(支持Unity5.3+)</strong><br>UnityWebRequest有一个特定的API调用来处理AssetBundles。首先，需要使用创建网络请求UnityWebRequest.GetAssetBundle。在返回请求之后，将请求对象传入DownloadHandlerAssetBundle.GetContent(UnityWebRequest)。此GetContent调用将返回您的AssetBundle对象。<br>也可以在下载捆绑包后assetBundle以DownloadHandlerAssetBundle类的属性加载AssetBundle，其效率为AssetBundle.LoadFromFile</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">InstantiateObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">string</span> uri = <span class="string">"file:///"</span> + Application.dataPath + <span class="string">"/AssetBundles/"</span> + assetBundleName;        UnityEngine.Networking.UnityWebRequest request = UnityEngine.Networking.UnityWebRequest.GetAssetBundle(uri, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> request.Send();</span><br><span class="line">        AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);</span><br><span class="line">        <span class="comment">//还可以</span></span><br><span class="line">        AssetsBundle ab = (request.downloadHandler <span class="keyword">as</span> DownloadHandlerAssetBundle).assetBundle;</span><br><span class="line"></span><br><span class="line">        GameObject cube1 = ab.LoadAsset&lt;GameObject&gt;(<span class="string">"Cube1"</span>);</span><br><span class="line">        GameObject cube = bundle.LoadAsset&lt;GameObject&gt;(<span class="string">"Cube"</span>);</span><br><span class="line">        GameObject sprite = bundle.LoadAsset&lt;GameObject&gt;(<span class="string">"Sprite"</span>);</span><br><span class="line">        Instantiate(cube);</span><br><span class="line">        Instantiate(sprite);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="AssetBundleManifest文件加载"><a href="#AssetBundleManifest文件加载" class="headerlink" title="AssetBundleManifest文件加载"></a>AssetBundleManifest文件加载</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AssetBundle assetBundle = AssetBundle.LoadFromFile(manifestFilePath);</span><br><span class="line">AssetBundleManifest manifest = assetBundle.LoadAsset&lt;AssetBundleManifest&gt;(<span class="string">"AssetBundleManifest"</span>);</span><br><span class="line"><span class="comment">//获取这个包所以依赖的包的包名</span></span><br><span class="line"><span class="keyword">string</span>[] dependencies = manifest.GetAllDependencies(<span class="string">"assetBundle"</span>); <span class="comment">//Pass the name of the bundle you want the dependencies for.传递想要依赖项的包的名称。</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="keyword">string</span> dependency <span class="keyword">in</span> dependencies)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//遍历包名去加载需要的包</span></span><br><span class="line">    AssetBundle.LoadFromFile(Path.Combine(assetBundlePath, dependency));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="AssetsBundle卸载"><a href="#AssetsBundle卸载" class="headerlink" title="AssetsBundle卸载"></a>AssetsBundle卸载</h4><ul>
+<li>减少内存的使用(从活动场景中移除时，Unity不会自动卸载对象)</li>
+<li>可能导致丢失(不正确地卸载AssetBundle可能导致在内存中复制对象或其他不合需要的情况，例如缺少纹理)<br>什么时候去卸载资源</li>
+<li>AssetsBundle.Unload(true):<ul>
+<li>卸载从AssetBundle加载的所有GameObjects（及其依赖项）。这不包括复制的GameObjects（例如实例化的GameObjects），因为它们不再属于AssetBundle。发生这种情况时，从该资产包中加载（并且仍属于它）的纹理从场景中的GameObjects中消失，并且Unity将它们视为缺失的纹理。</li>
+</ul>
+</li>
+<li><p>AssetsBundle.Unload(false):</p>
+<ul>
+<li>卸载所有没有被使用的资源</li>
+</ul>
+<p>如果AB.Unload（true）被调用。活动场景中的任何M实例也将被卸载并销毁。<br>如果改为调用AB.Unload（false），它会打破M和AB当前实例的关联。<br><a href="https://imgchr.com/i/PBB0UK" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBB0UK.png" alt="PBB0UK.png"></a><br>如果稍后再次加载AB并调用AB.LoadAsset（），Unity将不会将M的现有副本重新链接到新加载的材质。反而会有两个M加载的副本。<br><a href="https://imgchr.com/i/PBBB4O" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBBB4O.png" alt="PBBB4O.png"></a></p>
+<p><a href="https://imgchr.com/i/PBBrCD" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBBrCD.png" alt="PBBrCD.png"></a></p>
+<p>Generally, using AssetBundle.Unload(false) does not lead to an ideal situation. Most projects should use AssetBundle.Unload(true) to keep from duplicating objects in memory.</p>
+</li>
+</ul>
+<p>Most projects should use AssetBundle.Unload(true) and adopt a method to ensure that Objects are not duplicated. Two common methods are:</p>
+<ul>
+<li><p>Having well-defined points during the application’s lifetime at which transient AssetBundles are unloaded, such as between levels or during a loading screen.</p>
+</li>
+<li><p>Maintaining reference-counts for individual Objects and unload AssetBundles only when all of their constituent Objects are unused. This permits an application to unload &amp; reload individual Objects without duplicating memory.</p>
+</li>
+</ul>
+<p>If an application must use AssetBundle.Unload(false), then individual Objects can only be unloaded in two ways:</p>
+<ul>
+<li><p>Eliminate all references to an unwanted Object, both in the scene and in code. After this is done, call Resources.UnloadUnusedAssets.</p>
+</li>
+<li><p>Load a scene non-additively. This will destroy all Objects in the current scene and invoke Resources.UnloadUnusedAssets automatically.</p>
+</li>
+</ul>
+<p>If you’d rather not manage loading Asset Bundes, dependencies, and Assets yourself, you might find yourself in need of the AssetBundle Manager.</p>
+<hr>
+<h4 id="文件校验"><a href="#文件校验" class="headerlink" title="文件校验"></a>文件校验</h4><p>CRC/ MD5/ SHA1</p>
+<ul>
+<li>相同点<ul>
+<li>CRC/ MD5/ SHA1都是通过对数据进行计算,来生成一个校验值,该校验值用来校验数据的完整性</li>
+</ul>
+</li>
+<li>不同点</li>
+<li>算法不同:CRC采用多项式除法,MD5和SHA1使用的是替换,轮转等方法</li>
+<li>校验值长度不同: CRC校验的长度跟其多项式有关系,一般为16或者32位,MD5是16字节(128位),SHA1是20个字节(160位)</li>
+<li>校验值的称呼不同: CRC一般称为CRC值;MD5和SHA1一般叫做哈希值或者散列值;</li>
+<li>安全性不同: 指的是检错的能力,即数据的错误能通过校验位检测出来,CRC的安全性跟多项式有很大关系,相对于MD5和SHA1要弱很多;MD5的安全性很搞(不过已经被破解了);SHA1的安全性最高;</li>
+<li>效率不同: CRC的效率很高,MD5和SHA1比较慢</li>
+<li>用途不同: CRC一般用作通讯数据检验,MD5和SHA1用于安全领域,比如文件校验,数字签名</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/08/04/AssetBundle基础篇/">AssetBundle基础篇</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2018年08月04日 - 01:08</p>
+  <p><span>最后更新:</span>2018年08月04日 - 02:08</p>
+  <p><span>原始链接:</span><a href="/2018/08/04/AssetBundle基础篇/" title="AssetBundle基础篇">http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/热更新/" rel="tag"><i class="fa fa-tag"></i> 热更新</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/04/Bmob支付/" rel="next" title="Bmob支付">
+                <i class="fa fa-chevron-left"></i> Bmob支付
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/04/GoogleAdMob广告接入/" rel="prev" title="GoogleAdMob广告接入">
+                GoogleAdMob广告接入 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AssetsBundle基础篇-一"><span class="nav-number">1.</span> <span class="nav-text">AssetsBundle基础篇(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity-之-AssetsBundle"><span class="nav-number">1.1.</span> <span class="nav-text">Unity 之 AssetsBundle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetsBundle的定义和作用"><span class="nav-number">1.2.</span> <span class="nav-text">AssetsBundle的定义和作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetsBundle使用流程"><span class="nav-number">1.3.</span> <span class="nav-text">AssetsBundle使用流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetsBundle的打包参考分组策略"><span class="nav-number">1.4.</span> <span class="nav-text">AssetsBundle的打包参考分组策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分组策略"><span class="nav-number">1.4.1.</span> <span class="nav-text">分组策略</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundle压缩方式"><span class="nav-number">1.5.</span> <span class="nav-text">AssetBundle压缩方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载AssetsBundle加载"><span class="nav-number">1.6.</span> <span class="nav-text">加载AssetsBundle加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetBundleManifest文件加载"><span class="nav-number">1.7.</span> <span class="nav-text">AssetBundleManifest文件加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssetsBundle卸载"><span class="nav-number">1.8.</span> <span class="nav-text">AssetsBundle卸载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件校验"><span class="nav-number">1.9.</span> <span class="nav-text">文件校验</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.8k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

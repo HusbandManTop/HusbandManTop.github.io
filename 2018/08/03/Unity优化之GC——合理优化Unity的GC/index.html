@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Unity优化之GC——合理优化Unity的GC转载:http://www.cnblogs.com/zblade/  介绍：　　在游戏运行的时候，数据主要存储在内存中，当游戏的数据在不需要的时候，存储当前数据的内存就可以被回收以再次使用。内存垃圾是指当前废弃数据所占用的内存，垃圾回收（GC）是指将废弃的内存重新回收再次使用的过程。 　　Unity中将垃圾回收当作内存管理的一部分，如果游戏中废弃数据">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity优化之GC——合理优化Unity的GC">
+<meta property="og:url" content="http://www.Husbandman.top/2018/08/03/Unity优化之GC——合理优化Unity的GC/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="Unity优化之GC——合理优化Unity的GC转载:http://www.cnblogs.com/zblade/  介绍：　　在游戏运行的时候，数据主要存储在内存中，当游戏的数据在不需要的时候，存储当前数据的内存就可以被回收以再次使用。内存垃圾是指当前废弃数据所占用的内存，垃圾回收（GC）是指将废弃的内存重新回收再次使用的过程。 　　Unity中将垃圾回收当作内存管理的一部分，如果游戏中废弃数据">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-03T18:23:26.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity优化之GC——合理优化Unity的GC">
+<meta name="twitter:description" content="Unity优化之GC——合理优化Unity的GC转载:http://www.cnblogs.com/zblade/  介绍：　　在游戏运行的时候，数据主要存储在内存中，当游戏的数据在不需要的时候，存储当前数据的内存就可以被回收以再次使用。内存垃圾是指当前废弃数据所占用的内存，垃圾回收（GC）是指将废弃的内存重新回收再次使用的过程。 　　Unity中将垃圾回收当作内存管理的一部分，如果游戏中废弃数据">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2018/08/03/Unity优化之GC——合理优化Unity的GC/"/>
+
+
+
+
+
+  <title>Unity优化之GC——合理优化Unity的GC | HusbandMan</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity优化之GC——合理优化Unity的GC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity优化之GC——合理优化Unity的GC</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:08:34+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity优化之GC——合理优化Unity的GC/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/03/Unity优化之GC——合理优化Unity的GC/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,847
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Unity优化之GC——合理优化Unity的GC"><a href="#Unity优化之GC——合理优化Unity的GC" class="headerlink" title="Unity优化之GC——合理优化Unity的GC"></a>Unity优化之GC——合理优化Unity的GC</h4><p>转载:<a href="http://www.cnblogs.com/zblade/" target="_blank" rel="noopener">http://www.cnblogs.com/zblade/</a></p>
+<hr>
+<h5 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h5><p>　　在游戏运行的时候，数据主要存储在内存中，当游戏的数据在不需要的时候，存储当前数据的内存就可以被回收以再次使用。内存垃圾是指当前废弃数据所占用的内存，垃圾回收（GC）是指将废弃的内存重新回收再次使用的过程。</p>
+<p>　　Unity中将垃圾回收当作内存管理的一部分，如果游戏中废弃数据占用内存较大，则游戏的性能会受到极大影响，此时垃圾回收会成为游戏性能的一大障碍点。</p>
+<p>　　本文我们主要学习垃圾回收的机制，垃圾回收如何被触发以及如何提GC收效率来提高游戏的性能。</p>
+<h5 id="Unity内存管理机制简介"><a href="#Unity内存管理机制简介" class="headerlink" title="Unity内存管理机制简介"></a>Unity内存管理机制简介</h5><p>　　要想了解垃圾回收如何工作以及何时被触发，我们首先需要了解unity的内存管理机制。Unity主要采用自动内存管理的机制，开发时在代码中不需要详细地告诉unity如何进行内存管理，unity内部自身会进行内存管理。这和使用C++开发需要随时管理内存相比，有一定的优势，当然带来的劣势就是需要随时关注内存的增长，不要让游戏在手机上跑“飞”了。</p>
+<ul>
+<li>unity的自动内存管理可以理解为以下几个部分：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1）unity内部有两个内存管理池：堆内存和堆栈内存。堆栈内存(stack)主要用来存储较小的和短暂的数据，堆内存(heap)主要用来存储较大的和存储时间较长的数据。  </span><br><span class="line"></span><br><span class="line">2）unity中的变量只会在堆栈或者堆内存上进行内存分配，变量要么存储在堆栈内存上，要么处于堆内存上。  </span><br><span class="line"></span><br><span class="line">3）只要变量处于激活状态，则其占用的内存会被标记为使用状态，则该部分的内存处于被分配的状态。  </span><br><span class="line"></span><br><span class="line">4）一旦变量不再激活，则其所占用的内存不再需要，该部分内存可以被回收到内存池中被再次使用，这样的操作就是内存回收。处于堆栈上的内存回收及其快速，处于堆上的内存并不是及时回收的，此时其对应的内存依然会被标记为使用状态。  </span><br><span class="line"></span><br><span class="line">5) 垃圾回收主要是指堆上的内存分配和回收，unity中会定时对堆内存进行GC操作。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<p>在了解了GC的过程后，下面详细了解堆内存和堆栈内存的分配和回收机制的差别。</p>
+<hr>
+<!--more-->
+<h6 id="堆栈内存分配和回收机制"><a href="#堆栈内存分配和回收机制" class="headerlink" title="堆栈内存分配和回收机制"></a>堆栈内存分配和回收机制</h6><p>　　堆栈上的内存分配和回收十分快捷简单，因为堆栈上只会存储短暂的或者较小的变量。内存分配和回收都会以一种顺序和大小可控制的形式进行。</p>
+<h6 id="堆栈的运行方式就像stack-其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。"><a href="#堆栈的运行方式就像stack-其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。" class="headerlink" title="堆栈的运行方式就像stack: 其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。"></a>堆栈的运行方式就像stack: 其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。</h6><h6 id="堆内存分配和回收机制"><a href="#堆内存分配和回收机制" class="headerlink" title="堆内存分配和回收机制"></a>堆内存分配和回收机制</h6><p>　　堆内存上的内存分配和存储相对而言更加复杂，主要是堆内存上可以存储短期较小的数据，也可以存储各种类型和大小的数据。其上的内存分配和回收顺序并不可控，可能会要求分配不同大小的内存单元来存储数据。</p>
+<ul>
+<li>堆上的变量在存储的时候，主要分为以下几步：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）首先，unity检测是否有足够的闲置内存单元用来存储数据，如果有，则分配对应大小的内存单元;  </span><br><span class="line">2）如果没有足够的存储单元，unity会触发垃圾回收来释放不再被使用的堆内存。这步操作是一步缓慢的操作，如果垃圾回收后有足够大小的内存单元，则进行内存分配。  </span><br><span class="line">3）如果垃圾回收后并没有足够的内存单元，则unity会扩展堆内存的大小，这步操作会很缓慢，然后分配对应大小的内存单元给变量。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>　　堆内存的分配有可能会变得十分缓慢，特别是在需要垃圾回收和堆内存需要扩展的情况下，通常需要减少这样的操作次数。</p>
+<h6 id="垃圾回收时的操作"><a href="#垃圾回收时的操作" class="headerlink" title="垃圾回收时的操作"></a>垃圾回收时的操作</h6><p>　　当堆内存上一个变量不再处于激活状态的时候，其所占用的内存并不会立刻被回收，不再使用的内存只会在GC的时候才会被回收。</p>
+<ul>
+<li>每次运行GC的时候，主要进行下面的操作：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1）GC会检查堆内存上的每个存储变量;  </span><br><span class="line">2）对每个变量会检测其引用是否处于激活状态；  </span><br><span class="line">3）如果变量的引用不再处于激活状态，则会被标记为可回收；  </span><br><span class="line">4）被标记的变量会被移除，其所占有的内存会被回收到堆内存上。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>GC操作是一个极其耗费的操作，堆内存上的变量或者引用越多则其运行的操作会更多，耗费的时间越长。</p>
+<h6 id="何时会触发垃圾回收"><a href="#何时会触发垃圾回收" class="headerlink" title="何时会触发垃圾回收"></a>何时会触发垃圾回收</h6><ul>
+<li>主要有三个操作会触发垃圾回收：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1） 在堆内存上进行内存分配操作而内存不够的时候都会触发垃圾回收来利用闲置的内存；</span><br><span class="line">2） GC会自动的触发，不同平台运行频率不一样；</span><br><span class="line">3） GC可以被强制执行。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>特别是在堆内存上进行内存分配时内存单元不足够的时候，GC会被频繁触发，这就意味着频繁在堆内存上进行内存分配和回收会触发频繁的GC操作。</p>
+<hr>
+<h5 id="GC操作带来的问题"><a href="#GC操作带来的问题" class="headerlink" title="GC操作带来的问题"></a>GC操作带来的问题</h5><p>在了解GC在unity内存管理中的作用后，我们需要考虑其带来的问题。最明显的问题是GC操作会需要大量的时间来运行，如果堆内存上有大量的变量或者引用需要检查，则检查的操作会十分缓慢，这就会使得游戏运行缓慢。其次GC可能会在关键时候运行，例如在CPU处于游戏的性能运行关键时刻，此时任何一个额外的操作都可能会带来极大的影响，使得游戏帧率下降。</p>
+<p>　　另外一个GC带来的问题是堆内存的碎片划。当一个内存单元从堆内存上分配出来，其大小取决于其存储的变量的大小。当该内存被回收到堆内存上的时候，有可能使得堆内存被分割成碎片化的单元。也就是说堆内存总体可以使用的内存单元较大，但是单独的内存单元较小，在下次内存分配的时候不能找到合适大小的存储单元，这也会触发GC操作或者堆内存扩展操作。</p>
+<p>　　堆内存碎片会造成两个结果，一个是游戏占用的内存会越来越大，一个是GC会更加频繁地被触发。</p>
+<hr>
+<h5 id="分析GC带来的问题"><a href="#分析GC带来的问题" class="headerlink" title="分析GC带来的问题"></a>分析GC带来的问题</h5><p>GC操作带来的问题主要表现为帧率运行低，性能间歇中断或者降低。如果游戏有这样的表现，则首先需要打开unity中的profiler window来确定是否是GC造成。</p>
+<p>　　了解如何运用profiler window，可以参考此处，如果游戏确实是由GC造成的，可以继续阅读下面的内容。</p>
+<p>分析堆内存的分配<br>　　如果GC造成游戏的性能问题，我们需要知道游戏中的哪部分代码会造成GC，内存垃圾在变量不再激活的时候产生，所以首先我们需要知道堆内存上分配的是什么变量。</p>
+<h6 id="分析堆内存的分配"><a href="#分析堆内存的分配" class="headerlink" title="分析堆内存的分配"></a>分析堆内存的分配</h6><p>如果GC造成游戏的性能问题，我们需要知道游戏中的哪部分代码会造成GC，内存垃圾在变量不再激活的时候产生，所以首先我们需要知道堆内存上分配的是什么变量。</p>
+<h6 id="堆内存和堆栈内存分配的变量类型"><a href="#堆内存和堆栈内存分配的变量类型" class="headerlink" title="堆内存和堆栈内存分配的变量类型"></a>堆内存和堆栈内存分配的变量类型</h6><p>　　在Unity中，值类型变量都在堆栈上进行内存分配，其他类型的变量都在堆内存上分配。如果你不知道值类型和引用类型的差别，可以查看此处。</p>
+<p>　　下面的代码可以用来理解值类型的分配和释放,其对应的变量在函数调用完后会立即回收：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunciton</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> localInt = <span class="number">5</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对应的引用类型的参考代码如下，其对应的变量在GC的时候才回收：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  List localList = <span class="keyword">new</span> List();      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="利用profiler-window-来检测堆内存分配："><a href="#利用profiler-window-来检测堆内存分配：" class="headerlink" title="利用profiler window 来检测堆内存分配："></a>利用profiler window 来检测堆内存分配：</h6><p>　　我们可以在profier window中检查堆内存的分配操作：在CPU usage分析窗口中，我们可以检测任何一帧cpu的内存分配情况。其中一个选项是GC Alloc，通过分析其来定位是什么函数造成大量的堆内存分配操作。一旦定位该函数，我们就可以分析解决其造成问题的原因从而减少内存垃圾的产生。现在Unity5.5的版本，还提供了deep profiler的方式深度分析GC垃圾的产生。</p>
+<hr>
+<h5 id="降低GC的影响的方法"><a href="#降低GC的影响的方法" class="headerlink" title="降低GC的影响的方法"></a>降低GC的影响的方法</h5><ul>
+<li><p>大体上来说，我们可以通过三种方法来降低GC的影响：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1）减少GC的运行次数；</span><br><span class="line"></span><br><span class="line">　2）减少单次GC的运行时间；</span><br><span class="line"></span><br><span class="line">　3）将GC的运行时间延迟，避免在关键时候触发，比如可以在场景加载的时候调用GC</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>似乎看起来很简单，基于此，我们可以采用三种策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1）对游戏进行重构，减少堆内存的分配和引用的分配。更少的变量和引用会减少GC操作中的检测个数从而提高GC的运行效率。</span><br><span class="line"></span><br><span class="line">2）降低堆内存分配和回收的频率，尤其是在关键时刻。也就是说更少的事件触发GC操作，同时也降低堆内存的碎片化。</span><br><span class="line"></span><br><span class="line">3）我们可以试着测量GC和堆内存扩展的时间，使其按照可预测的顺序执行。当然这样操作的难度极大，但是这会大大降低GC的影响。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="减少内存垃圾的数量"><a href="#减少内存垃圾的数量" class="headerlink" title="减少内存垃圾的数量"></a>减少内存垃圾的数量</h5><p>　　减少内存垃圾主要可以通过一些方法来减少：</p>
+<p>缓存<br>　　如果在代码中反复调用某些造成堆内存分配的函数但是其返回结果并没有使用，这就会造成不必要的内存垃圾，我们可以缓存这些变量来重复利用，这就是缓存。</p>
+<p>　　 例如下面的代码每次调用的时候就会造成堆内存分配，主要是每次都会分配一个新的数组：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     Renderer[] allRenderers = FindObjectsOfType&lt;Renderer&gt;();</span><br><span class="line">     ExampleFunction(allRenderers);      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对比下面的代码，只会生产一个数组用来缓存数据，实现反复利用而不需要造成更多的内存垃圾：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Renderer[] allRenderers;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   allRenderers = FindObjectsOfType&lt;Renderer&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ExampleFunction(allRenderers);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="不要在频繁调用的函数中反复进行堆内存分配"><a href="#不要在频繁调用的函数中反复进行堆内存分配" class="headerlink" title="不要在频繁调用的函数中反复进行堆内存分配"></a>不要在频繁调用的函数中反复进行堆内存分配</h5><p>　　在MonoBehaviour中，如果我们需要进行堆内存分配，最坏的情况就是在其反复调用的函数中进行堆内存分配，例如Update()和LateUpdate()函数这种每帧都调用的函数，这会造成大量的内存垃圾。我们可以考虑在Start()或者Awake()函数中进行内存分配，这样可以减少内存垃圾。</p>
+<p>　　下面的例子中，update函数会多次触发内存垃圾的产生：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ExampleGarbageGenerationFunction(transform.position.x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过一个简单的改变，我们可以确保每次在x改变的时候才触发函数调用，这样避免每帧都进行堆内存分配：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> previousTransformPositionX;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> transformPositionX = transform.position.x;</span><br><span class="line">    <span class="keyword">if</span>(transfromPositionX != previousTransformPositionX)</span><br><span class="line">    &#123;</span><br><span class="line">        ExampleGarbageGenerationFunction(transformPositionX);    </span><br><span class="line">        previousTransformPositionX = trasnformPositionX;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另外的一种方法是在update中采用计时器，特别是在运行有规律但是不需要每帧都运行的代码中，例如：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ExampleGarbageGeneratiingFunction()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过添加一个计时器，我们可以确保每隔1s才触发该函数一次：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> timeSinceLastCalled;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> delay = <span class="number">1</span>f;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    timSinceLastCalled += Time.deltaTime;</span><br><span class="line">    <span class="keyword">if</span>(timeSinceLastCalled &gt; delay)</span><br><span class="line">    &#123;</span><br><span class="line">         ExampleGarbageGenerationFunction();</span><br><span class="line">         timeSinceLastCalled = <span class="number">0</span>f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过这样细小的改变，我们可以使得代码运行的更快同时减少内存垃圾的产生。</p>
+<font color="#F001" size="3">　附： 不要忽略这一个方法，在最近的项目性能优化中，我经常采用这样的方法来优化游戏的性能，很多对于固定时间的事件回调函数中，如果每次都分配新的缓存，但是在操作完后并不释放，这样就会造成大量的内存垃圾，对于这样的缓存，最好的办法就是当前周期回调后执行清除或者标志为废弃。</font>
+
+<hr>
+<h5 id="清除链表"><a href="#清除链表" class="headerlink" title="清除链表"></a>清除链表</h5><p>　　在堆内存上进行链表的分配的时候，如果该链表需要多次反复的分配，我们可以采用链表的clear函数来清空链表从而替代反复多次的创建分配链表。<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    List myList = <span class="keyword">new</span> List();</span><br><span class="line">    PopulateList(myList);       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过改进，我们可以将该链表只在第一次创建或者该链表必须重新设置的时候才进行堆内存分配，从而大大减少内存垃圾的产生：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> List myList = <span class="keyword">new</span> List();</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    myList.Clear();</span><br><span class="line">    PopulateList(myList);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="对象池"><a href="#对象池" class="headerlink" title="对象池"></a>对象池</h5><p>　　即便我们在代码中尽可能地减少堆内存的分配行为，但是如果游戏有大量的对象需要产生和销毁依然会造成GC。对象池技术可以通过重复使用对象来降低堆内存的分配和回收频率。对象池在游戏中广泛的使用，特别是在游戏中需要频繁的创建和销毁相同的游戏对象的时候，例如枪的子弹这种会频繁生成和销毁的对象。</p>
+<p>　　要详细的讲解对象池已经超出本文的范围，但是该技术值得我们深入的研究This tutorial on object pooling on the Unity Learn site对于对象池有详细深入的讲解。  </p>
+<font color="#f298" size="3">附：对象池技术属于游戏中比较通用的技术，如果有闲余时间，大家可以学习一下这方面的知识。</font>
+
+<hr>
+<h5 id="造成不必要的堆内存分配的因素"><a href="#造成不必要的堆内存分配的因素" class="headerlink" title="造成不必要的堆内存分配的因素"></a>造成不必要的堆内存分配的因素</h5><p>　　我们已经知道值类型变量在堆栈上分配，其他的变量在堆内存上分配，但是任然有一些情况下的堆内存分配会让我们感到吃惊。下面让我们分析一些常见的不必要的堆内存分配行为并对其进行优化。</p>
+<h6 id="字符串"><a href="#字符串" class="headerlink" title="字符串　　"></a>字符串　　</h6><p>　　在c#中，字符串是引用类型变量而不是值类型变量，即使看起来它是存储字符串的值的。这就意味着字符串会造成一定的内存垃圾，由于代码中经常使用字符串，所以我们需要对其格外小心。</p>
+<p>　　c#中的字符串是不可变更的，也就是说其内部的值在创建后是不可被变更的。每次在对字符串进行操作的时候（例如运用字符串的“加”操作），unity会新建一个字符串用来存储新的字符串，使得旧的字符串被废弃，这样就会造成内存垃圾。</p>
+<ul>
+<li>我们可以采用以下的一些方法来最小化字符串的影响：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1）减少不必要的字符串的创建，如果一个字符串被多次利用，我们可以创建并缓存该字符串。</span><br><span class="line"></span><br><span class="line">2）减少不必要的字符串操作，例如如果在Text组件中，有一部分字符串需要经常改变，但是其他部分不会，则我们可以将其分为两个部分的组件，对于不变的部分就设置为类似常量字符串即可，见下面的例子。</span><br><span class="line"></span><br><span class="line">3）如果我们需要实时的创建字符串，我们可以采用StringBuilderClass来代替，StringBuilder专为不需要进行内存分配而设计，从而减少字符串产生的内存垃圾。</span><br><span class="line"></span><br><span class="line">4）移除游戏中的Debug.Log()函数的代码，尽管该函数可能输出为空，对该函数的调用依然会执行，该函数会创建至少一个字符（空字符）的字符串。如果游戏中有大量的该函数的调用，这会造成内存垃圾的增加。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>　在下面的代码中，在Update函数中会进行一个string的操作，这样的操作就会造成不必要的内存垃圾：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Text timerText;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> timer;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    timer += Time.deltaTime;</span><br><span class="line">    timerText.text = <span class="string">"Time:"</span>+ timer.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过将字符串进行分隔，我们可以剔除字符串的加操作，从而减少不必要的内存垃圾：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Text timerHeaderText;</span><br><span class="line"><span class="keyword">public</span> Text timerValueText;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> timer;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    timerHeaderText.text = <span class="string">"TIME:"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   timerValueText.text = timer.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="Unity函数调用"><a href="#Unity函数调用" class="headerlink" title="Unity函数调用"></a>Unity函数调用</h6><p>　　在代码编程中，当我们调用不是我们自己编写的代码，无论是Unity自带的还是插件中的，我们都可能会产生内存垃圾。Unity的某些函数调用会产生内存垃圾，我们在使用的时候需要注意它的使用。</p>
+<p>　　这儿没有明确的列表指出哪些函数需要注意，每个函数在不同的情况下有不同的使用，所以最好仔细地分析游戏，定位内存垃圾的产生原因以及如何解决问题。有时候缓存是一种有效的办法，有时候尽量降低函数的调用频率是一种办法，有时候用其他函数来重构代码是一种办法。现在来分析unity中常见的造成堆内存分配的函数调用。</p>
+<p>　　在Unity中如果函数需要返回一个数组，则一个新的数组会被分配出来用作结果返回，这不容易被注意到，特别是如果该函数含有迭代器，下面的代码中对于每个迭代器都会产生一个新的数组：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; myMesh.normals.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 normal = myMesh.normals[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于这样的问题，我们可以缓存一个数组的引用，这样只需要分配一个数组就可以实现相同的功能，从而减少内存垃圾的产生：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector3[] meshNormals = myMesh.normals;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; meshNormals.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 normal = meshNormals[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此外另外的一个函数调用GameObject.name 或者 GameObject.tag也会造成预想不到的堆内存分配，这两个函数都会将结果存为新的字符串返回，这就会造成不必要的内存垃圾，对结果进行缓存是一种有效的办法，但是在Unity中都对应的有相关的函数来替代。对于比较gameObject的tag，可以采用GameObject.CompareTag()来替代。</p>
+<p>　　在下面的代码中，调用gameobject.tag就会产生内存垃圾：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> playerTag=<span class="string">"Player"</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> isPlayer = other.gameObject.tag == playerTag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>采用GameObject.CompareTag()可以避免内存垃圾的产生：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vate <span class="keyword">string</span> playerTag = <span class="string">"Player"</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> isPlayer = other.gameObject.CompareTag(playerTag);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不只是GameObject.CompareTag，unity中许多其他的函数也可以避免内存垃圾的生成。比如我们可以用Input.GetTouch()和Input.touchCount()来代替Input.touches，或者用Physics.SphereCastNonAlloc()来代替Physics.SphereCastAll()。</p>
+<h6 id="装箱操作"><a href="#装箱操作" class="headerlink" title="装箱操作"></a>装箱操作</h6><p>　　装箱操作是指一个值类型变量被用作引用类型变量时候的内部变换过程，如果我们向带有对象类型参数的函数传入值类型，这就会触发装箱操作。比如String.Format()函数需要传入字符串和对象类型参数，如果传入字符串和int类型数据，就会触发装箱操作。如下面代码所示：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cost = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">string</span> displayString = String.Format(<span class="string">"Price:&#123;0&#125; gold"</span>,cost);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Unity的装箱操作中，对于值类型会在堆内存上分配一个System.Object类型的引用来封装该值类型变量，其对应的缓存就会产生内存垃圾。装箱操作是非常普遍的一种产生内存垃圾的行为，即使代码中没有直接的对变量进行装箱操作，在插件或者其他的函数中也有可能会产生。最好的解决办法是尽可能的避免或者移除造成装箱操作的代码。</p>
+<h6 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h6><p>　　调用 StartCoroutine()会产生少量的内存垃圾，因为unity会生成实体来管理协程。所以在游戏的关键时刻应该限制该函数的调用。基于此，任何在游戏关键时刻调用的协程都需要特别的注意，特别是包含延迟回调的协程。</p>
+<p>　　yield在协程中不会产生堆内存分配，但是如果yield带有参数返回，则会造成不必要的内存垃圾，例如：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>由于需要返回0，引发了装箱操作，所以会产生内存垃圾。这种情况下，为了避免内存垃圾，我们可以这样返回：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>另外一种对协程的错误使用是每次返回的时候都new同一个变量，例如：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!isComplete)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">1</span>f</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以采用缓存来避免这样的内存垃圾产生：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WaitForSeconds delay = <span class="keyword">new</span> WaiForSeconds(<span class="number">1</span>f);</span><br><span class="line"><span class="keyword">while</span>(!isComplete)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果游戏中的协程产生了内存垃圾，我们可以考虑用其他的方式来替代协程。重构代码对于游戏而言十分复杂，但是对于协程而言我们也可以注意一些常见的操作，比如如果用协程来管理时间，最好在update函数中保持对时间的记录。如果用协程来控制游戏中事件的发生顺序，最好对于不同事件之间有一定的信息通信的方式。对于协程而言没有适合各种情况的方法，只有根据具体的代码来选择最好的解决办法。</p>
+<h6 id="foreach-循环"><a href="#foreach-循环" class="headerlink" title="foreach 循环"></a>foreach 循环</h6><p>　　在unity5.5以前的版本中，在foreach的迭代中都会生成内存垃圾，主要来自于其后的装箱操作。每次在foreach迭代的时候，都会在堆内存上生产一个System.Object用来实现迭代循环操作。在unity5.5中解决了这个问题，比如，在unity5.5以前的版本中，用foreach实现循环：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params">List listOfInts</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="keyword">int</span> currentInt <span class="keyword">in</span> listOfInts)</span><br><span class="line">    &#123;</span><br><span class="line">        DoSomething(currentInt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果游戏工程不能升级到5.5以上，则可以用for或者while循环来解决这个问题，所以可以改为：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>(<span class="params">List listOfInts</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; listOfInts.Count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> currentInt = listOfInts[i];</span><br><span class="line">        DoSomething(currentInt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h6 id="函数引用"><a href="#函数引用" class="headerlink" title="函数引用"></a>函数引用</h6><p>　　函数的引用，无论是指向匿名函数还是显式函数，在unity中都是引用类型变量，这都会在堆内存上进行分配。匿名函数的调用完成后都会增加内存的使用和堆内存的分配。具体函数的引用和终止都取决于操作平台和编译器设置，但是如果想减少GC最好减少函数的引用。</p>
+<h6 id="LINQ和常量表达式"><a href="#LINQ和常量表达式" class="headerlink" title="LINQ和常量表达式"></a>LINQ和常量表达式</h6><p>　　由于LINQ和常量表达式以装箱的方式实现，所以在使用的时候最好进行性能测试。</p>
+<hr>
+<h5 id="重构代码来减小GC的影响"><a href="#重构代码来减小GC的影响" class="headerlink" title="重构代码来减小GC的影响"></a>重构代码来减小GC的影响</h5><p>　　即使我们减小了代码在堆内存上的分配操作，代码也会增加GC的工作量。最常见的增加GC工作量的方式是让其检查它不必检查的对象。struct是值类型的变量，但是如果struct中包含有引用类型的变量，那么GC就必须检测整个struct。如果这样的操作很多，那么GC的工作量就大大增加。在下面的例子中struct包含一个string，那么整个struct都必须在GC中被检查：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> ItemData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> cost;</span><br><span class="line">    <span class="keyword">public</span> Vector3 position;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> ItemData[] itemData;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以将该struct拆分为多个数组的形式，从而减小GC的工作量<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">string</span>[] itemNames;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] itemCosts;</span><br><span class="line"><span class="keyword">private</span> Vector3[] itemPositions;</span><br></pre></td></tr></table></figure></p>
+<p>　 另外一种在代码中增加GC工作量的方式是保存不必要的Object引用，在进行GC操作的时候会对堆内存上的object引用进行检查，越少的引用就意味着越少的检查工作量。在下面的例子中，当前的对话框中包含一个对下一个对话框引用，这就使得GC的时候会去检查下一个对象框：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DialogData</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">private</span> DialogData nextDialog;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> DialogData <span class="title">GetNextDialog</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> nextDialog;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过重构代码，我们可以返回下一个对话框实体的标记，而不是对话框实体本身，这样就没有多余的object引用，从而减少GC的工作量：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DialogData</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextDialogID;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">GetNextDialogID</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> nextDialogID;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然这个例子本身并不重要，但是如果我们的游戏中包含大量的含有对其他Object引用的object，我们可以考虑通过重构代码来减少GC的工作量。</p>
+<hr>
+<h5 id="定时执行GC操作"><a href="#定时执行GC操作" class="headerlink" title="定时执行GC操作"></a>定时执行GC操作</h5><h6 id="主动调用GC操作"><a href="#主动调用GC操作" class="headerlink" title="主动调用GC操作"></a>主动调用GC操作</h6><p>　　如果我们知道堆内存在被分配后并没有被使用，我们希望可以主动地调用GC操作，或者在GC操作并不影响游戏体验的时候（例如场景切换的时候），我们可以主动的调用GC操作：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.GC.Collect()</span><br></pre></td></tr></table></figure></p>
+<p>通过主动的调用，我们可以主动驱使GC操作来回收堆内存。</p>
+<hr>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>　　通过本文对于unity中的GC有了一定的了解，对于GC对于游戏性能的影响以及如何解决都有一定的了解。通过定位造成GC问题的代码以及代码重构我们可以更有效的管理游戏的内存。</p>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/03/扩展方法/" rel="prev" title="扩展方法">
+                扩展方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unity优化之GC——合理优化Unity的GC"><span class="nav-number">1.</span> <span class="nav-text">Unity优化之GC——合理优化Unity的GC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#介绍："><span class="nav-number">1.1.</span> <span class="nav-text">介绍：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unity内存管理机制简介"><span class="nav-number">1.2.</span> <span class="nav-text">Unity内存管理机制简介</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#堆栈内存分配和回收机制"><span class="nav-number">1.2.1.</span> <span class="nav-text">堆栈内存分配和回收机制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#堆栈的运行方式就像stack-其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。"><span class="nav-number">1.2.2.</span> <span class="nav-text">堆栈的运行方式就像stack: 其本质只是一个数据的集合，数据的进出都以一种固定的方式运行。正是这种简洁性和固定性使得堆栈的操作十分快捷。当数据被存储在堆栈上的时候，只需要简单地在其后进行扩展。当数据失效的时候，只需要将其从堆栈上移除。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#堆内存分配和回收机制"><span class="nav-number">1.2.3.</span> <span class="nav-text">堆内存分配和回收机制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#垃圾回收时的操作"><span class="nav-number">1.2.4.</span> <span class="nav-text">垃圾回收时的操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#何时会触发垃圾回收"><span class="nav-number">1.2.5.</span> <span class="nav-text">何时会触发垃圾回收</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#GC操作带来的问题"><span class="nav-number">1.3.</span> <span class="nav-text">GC操作带来的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析GC带来的问题"><span class="nav-number">1.4.</span> <span class="nav-text">分析GC带来的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#分析堆内存的分配"><span class="nav-number">1.4.1.</span> <span class="nav-text">分析堆内存的分配</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#堆内存和堆栈内存分配的变量类型"><span class="nav-number">1.4.2.</span> <span class="nav-text">堆内存和堆栈内存分配的变量类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#利用profiler-window-来检测堆内存分配："><span class="nav-number">1.4.3.</span> <span class="nav-text">利用profiler window 来检测堆内存分配：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#降低GC的影响的方法"><span class="nav-number">1.5.</span> <span class="nav-text">降低GC的影响的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#减少内存垃圾的数量"><span class="nav-number">1.6.</span> <span class="nav-text">减少内存垃圾的数量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不要在频繁调用的函数中反复进行堆内存分配"><span class="nav-number">1.7.</span> <span class="nav-text">不要在频繁调用的函数中反复进行堆内存分配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#清除链表"><span class="nav-number">1.8.</span> <span class="nav-text">清除链表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象池"><span class="nav-number">1.9.</span> <span class="nav-text">对象池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#造成不必要的堆内存分配的因素"><span class="nav-number">1.10.</span> <span class="nav-text">造成不必要的堆内存分配的因素</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串"><span class="nav-number">1.10.1.</span> <span class="nav-text">字符串　　</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Unity函数调用"><span class="nav-number">1.10.2.</span> <span class="nav-text">Unity函数调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#装箱操作"><span class="nav-number">1.10.3.</span> <span class="nav-text">装箱操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#协程"><span class="nav-number">1.10.4.</span> <span class="nav-text">协程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#foreach-循环"><span class="nav-number">1.10.5.</span> <span class="nav-text">foreach 循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#函数引用"><span class="nav-number">1.10.6.</span> <span class="nav-text">函数引用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LINQ和常量表达式"><span class="nav-number">1.10.7.</span> <span class="nav-text">LINQ和常量表达式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重构代码来减小GC的影响"><span class="nav-number">1.11.</span> <span class="nav-text">重构代码来减小GC的影响</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定时执行GC操作"><span class="nav-number">1.12.</span> <span class="nav-text">定时执行GC操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#主动调用GC操作"><span class="nav-number">1.12.1.</span> <span class="nav-text">主动调用GC操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">43.8k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共43.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
