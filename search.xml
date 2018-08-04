@@ -680,27 +680,6 @@
     </entry>
     
     <entry>
-      <title>获取App Store引用下载地址</title>
-      <link href="/2018/08/03/%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/"/>
-      <url>/2018/08/03/%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</url>
-      <content type="html"><![CDATA[<font size="5">一般苹果的下载地址都是: <a href="https://itunes.apple.com/cn/app/id1253355672?mt=8" target="_blank" rel="noopener">https://itunes.apple.com/cn/app/id1253355672?mt=8</a></font><p><strong>如果你的应用上传了AppStore那么就会分配一个id,替换上面的链接的 IDxxxxxxxxx?mt=8<br> 中的 xxxxxxx 就是AppId号</strong>s</p>]]></content>
-      
-      <categories>
-          
-          <category> IOS </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> IOS </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>背包系统之显示物品简介</title>
       <link href="/2018/08/03/%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E4%B9%8B%E6%98%BE%E7%A4%BA%E7%89%A9%E5%93%81%E7%AE%80%E4%BB%8B/"/>
       <url>/2018/08/03/%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E4%B9%8B%E6%98%BE%E7%A4%BA%E7%89%A9%E5%93%81%E7%AE%80%E4%BB%8B/</url>
@@ -718,6 +697,27 @@
         <tags>
             
             <tag> Unity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>获取App Store引用下载地址</title>
+      <link href="/2018/08/03/%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/"/>
+      <url>/2018/08/03/%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</url>
+      <content type="html"><![CDATA[<font size="5">一般苹果的下载地址都是: <a href="https://itunes.apple.com/cn/app/id1253355672?mt=8" target="_blank" rel="noopener">https://itunes.apple.com/cn/app/id1253355672?mt=8</a></font><p><strong>如果你的应用上传了AppStore那么就会分配一个id,替换上面的链接的 IDxxxxxxxxx?mt=8<br> 中的 xxxxxxx 就是AppId号</strong>s</p>]]></content>
+      
+      <categories>
+          
+          <category> IOS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> IOS </tag>
             
         </tags>
       
