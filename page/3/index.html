@@ -330,6 +330,226 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Unity创建解析Json/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/Unity创建解析Json/" itemprop="url">Unity创建解析Json</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:04+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Json/" itemprop="url" rel="index">
+                    <span itemprop="name">Json</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Json/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/Unity创建解析Json/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/04/Unity创建解析Json/" class="cy_cmt_count" data-xid="2018/08/04/Unity创建解析Json/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  721
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Json操作-两种方式"><a href="#Json操作-两种方式" class="headerlink" title="Json操作 两种方式:"></a>Json操作 两种方式:</h3><ul>
+<li>一.<a href="https://litjson.net/" target="_blank" rel="noopener">LitJson</a></li>
+<li>二.Unity自带的解析类:JsonUtility</li>
+</ul>
+<hr>
+<h4 id="1-Josn的描述"><a href="#1-Josn的描述" class="headerlink" title="1.Josn的描述"></a>1.Josn的描述</h4><ul>
+<li><p>{“key”:”val”,”key”,”val”}</p>
+<ul>
+<li>//{“name”:”张三”,”age”:”18”}</li>
+</ul>
+</li>
+<li><p>Json中{} == C#中的对象</p>
+</li>
+<li><p>Json中[] == C#中的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.(json)[1,2,3] == (C#)int[]</span><br><span class="line"></span><br><span class="line">2.(json)[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;] == (C#)string[]</span><br><span class="line"></span><br><span class="line">3.(json)[&#123;&quot;name&quot;:&quot;Lili&quot;&#125;,&#123;&quot;age&quot;:&quot;16&quot;,&#123;&quot;gender&quot;:&quot;girl&quot;&#125;&#125;,</span><br><span class="line">  &#123;&quot;name&quot;:&quot;dashan&quot;&#125;,&#123;&quot;age&quot;:&quot;18&quot;,&#123;&quot;gender&quot;:&quot;boy&quot;&#125;&#125;] == (C#)Person[]</span><br><span class="line"></span><br><span class="line">Class Person</span><br><span class="line">&#123;</span><br><span class="line">  string name;</span><br><span class="line">  int age;</span><br><span class="line">  string gender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-1-使用JSonUtility创建Json"><a href="#1-1-使用JSonUtility创建Json" class="headerlink" title="1.1 使用JSonUtility创建Json"></a>1.1 使用JSonUtility创建Json</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatJson</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="comment">//&#123;"name":"Lili" , "age":20 &#125;</span></span><br><span class="line"></span><br><span class="line">     Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">     p1.name = <span class="string">"Lili"</span>;</span><br><span class="line">     p1.age = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">     <span class="comment">//转换为Json字符串</span></span><br><span class="line">     <span class="keyword">string</span> jsonStr = JsonUtility.ToJson(p1);</span><br><span class="line"></span><br><span class="line">     <span class="comment">/*------------------------------------*/</span></span><br><span class="line"></span><br><span class="line">     <span class="comment">/*&#123;"Person":</span></span><br><span class="line"><span class="comment">      *  [</span></span><br><span class="line"><span class="comment">      *    &#123;</span></span><br><span class="line"><span class="comment">      *      "name" : "hehe",</span></span><br><span class="line"><span class="comment">      *      "age" : 34,</span></span><br><span class="line"><span class="comment">      *      "gender" : "boy"</span></span><br><span class="line"><span class="comment">      *    &#125;,</span></span><br><span class="line"><span class="comment">      *    &#123;</span></span><br><span class="line"><span class="comment">      *      "name" : "dada",</span></span><br><span class="line"><span class="comment">      *      "age" : 19,</span></span><br><span class="line"><span class="comment">      *      "gender" : "girl"</span></span><br><span class="line"><span class="comment">      *     &#125;</span></span><br><span class="line"><span class="comment">      *  ]</span></span><br><span class="line"><span class="comment">      * &#125;</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line"></span><br><span class="line">     Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line">     p2.name = <span class="string">"hehe"</span>;</span><br><span class="line">     p2.age = <span class="number">34</span>;</span><br><span class="line">     p2.gender = <span class="string">"boy"</span>;</span><br><span class="line"></span><br><span class="line">     Person p3 = <span class="keyword">new</span> Person();</span><br><span class="line">     p3.name = <span class="string">"dada"</span>;</span><br><span class="line">     p3.age = <span class="number">19</span>;</span><br><span class="line">     p3.gender = <span class="string">"girl"</span>;</span><br><span class="line"></span><br><span class="line">     Person[] ps = <span class="keyword">new</span> Person[] &#123; p2, p3 &#125;;</span><br><span class="line">     Persons pers = <span class="keyword">new</span> Persons();</span><br><span class="line">     pers.persons = ps;</span><br><span class="line"></span><br><span class="line">     jsonStr = JsonUtility.ToJson(pers);</span><br><span class="line">     print(jsonStr);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Serializable</span>]<span class="comment">//要跟Json之间相互转换需要先序列化</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">string</span> name;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">string</span> gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Serializable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Persons</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">public</span> Person[] persons;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/04/Unity创建解析Json/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Array-ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2157,219 +2377,11 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/渲染与光照/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/渲染与光照/" itemprop="url">渲染与光照</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:51:01+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/渲染与光照/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/渲染与光照/" class="cy_cmt_count" data-xid="2018/08/03/渲染与光照/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  170
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="渲染与光照"><a href="#渲染与光照" class="headerlink" title="渲染与光照"></a>渲染与光照</h4><hr>
-<ul>
-<li><p>环境光对材质的影响<br>Environment Reflections: Resoulution的位数大小影响材质反射环境的清晰度,位数越高,反射环境越清晰,但是消耗性能越大</p>
-</li>
-<li><p>如果在烘焙灯光时出现的灯光UV不匹配错误时:选中模型/勾上Generate LightMap</p>
-</li>
-<li><p>建议在PlayerSetting中Other Setting/Color Space中选择线性光照,线性光照光感会更好,如果在运行平台不支持的时候选择Gamma</p>
-</li>
-</ul>
-<h5 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h5><ul>
-<li><p>如果场景中物体没有产生阴影的时候:</p>
-<ul>
-<li><p>Project Setting/QualitySetting/Shadows;是不是选择了Display Shadow</p>
-</li>
-<li><p>查看模型MeshRender/Cast shadow是否选择on</p>
-</li>
-<li><p>shader是否是透明材质</p>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2419,7 +2431,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2430,7 +2442,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2441,7 +2453,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
