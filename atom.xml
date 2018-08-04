@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.Husbandman.top/"/>
-  <updated>2018-08-04T04:14:20.518Z</updated>
+  <updated>2018-08-04T05:03:48.333Z</updated>
   <id>http://www.Husbandman.top/</id>
   
   <author>
@@ -17,44 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>PDFBooks</title>
-    <link href="http://www.Husbandman.top/2018/08/04/PDFBooks/"/>
-    <id>http://www.Husbandman.top/2018/08/04/PDFBooks/</id>
-    <published>2018-08-04T04:12:40.000Z</published>
-    <updated>2018-08-04T04:14:20.518Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;center&gt;&lt;strong&gt;C# 数据结构与算法&lt;/strong&gt;&lt;/center&gt;
-
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-
-	&lt;div class=&quot;row&quot;&gt;
-    &lt;embed src=&quot;PDFBooks.pdf&quot; width=&quot;100%&quot; height=&quot;550&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="PDF" scheme="http://www.Husbandman.top/categories/PDF/"/>
-    
-    
-      <category term="PDF" scheme="http://www.Husbandman.top/tags/PDF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Unity移动</title>
     <link href="http://www.Husbandman.top/2018/08/04/Unity%E7%A7%BB%E5%8A%A8/"/>
     <id>http://www.Husbandman.top/2018/08/04/Unity移动/</id>
     <published>2018-08-03T17:37:06.000Z</published>
-    <updated>2018-08-04T04:08:05.290Z</updated>
+    <updated>2018-08-04T05:03:48.333Z</updated>
     
     <summary type="html">
     
@@ -96,7 +63,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/GoogleAdMob%E5%B9%BF%E5%91%8A%E6%8E%A5%E5%85%A5/"/>
     <id>http://www.Husbandman.top/2018/08/04/GoogleAdMob广告接入/</id>
     <published>2018-08-03T17:36:49.000Z</published>
-    <updated>2018-08-04T04:06:46.117Z</updated>
+    <updated>2018-08-04T05:02:55.734Z</updated>
     
     <summary type="html">
     
@@ -126,7 +93,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/AssetBundle%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/</id>
     <published>2018-08-03T17:36:28.000Z</published>
-    <updated>2018-08-04T04:06:13.687Z</updated>
+    <updated>2018-08-04T05:02:27.304Z</updated>
     
     <summary type="html">
     
@@ -186,7 +153,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Bmob%E6%94%AF%E4%BB%98/"/>
     <id>http://www.Husbandman.top/2018/08/04/Bmob支付/</id>
     <published>2018-08-03T17:34:57.000Z</published>
-    <updated>2018-08-04T04:06:22.424Z</updated>
+    <updated>2018-08-04T05:02:36.831Z</updated>
     
     <summary type="html">
     
@@ -213,7 +180,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/BlendTree/"/>
     <id>http://www.Husbandman.top/2018/08/04/BlendTree/</id>
     <published>2018-08-03T17:22:33.000Z</published>
-    <updated>2018-08-04T04:06:18.634Z</updated>
+    <updated>2018-08-04T05:02:33.257Z</updated>
     
     <summary type="html">
     
@@ -241,7 +208,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/UnityAPS%E5%B9%BF%E5%91%8A%E7%B3%BB%E7%BB%9F/"/>
     <id>http://www.Husbandman.top/2018/08/04/UnityAPS广告系统/</id>
     <published>2018-08-03T17:19:26.000Z</published>
-    <updated>2018-08-04T04:07:20.815Z</updated>
+    <updated>2018-08-04T05:03:21.283Z</updated>
     
     <summary type="html">
     
@@ -268,7 +235,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/UnityAPI%E8%A7%A3%E6%9E%90/"/>
     <id>http://www.Husbandman.top/2018/08/04/UnityAPI解析/</id>
     <published>2018-08-03T17:16:45.000Z</published>
-    <updated>2018-08-04T04:07:16.600Z</updated>
+    <updated>2018-08-04T05:03:18.630Z</updated>
     
     <summary type="html">
     
@@ -319,7 +286,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Unity%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E5%9C%BA%E6%99%AF/"/>
     <id>http://www.Husbandman.top/2018/08/04/Unity异步加载场景/</id>
     <published>2018-08-03T17:14:52.000Z</published>
-    <updated>2018-08-04T04:08:07.956Z</updated>
+    <updated>2018-08-04T05:03:50.700Z</updated>
     
     <summary type="html">
     
@@ -345,7 +312,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/EasyAR%E5%AF%B9%E7%84%A6/"/>
     <id>http://www.Husbandman.top/2018/08/04/EasyAR对焦/</id>
     <published>2018-08-03T17:01:09.000Z</published>
-    <updated>2018-08-04T04:06:36.826Z</updated>
+    <updated>2018-08-04T05:02:47.705Z</updated>
     
     <summary type="html">
     
@@ -372,7 +339,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Vuforia%E5%AF%B9%E7%84%A6/"/>
     <id>http://www.Husbandman.top/2018/08/04/Vuforia对焦/</id>
     <published>2018-08-03T17:00:58.000Z</published>
-    <updated>2018-08-04T04:08:18.572Z</updated>
+    <updated>2018-08-04T05:03:55.621Z</updated>
     
     <summary type="html">
     
@@ -400,7 +367,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/%E4%B8%8D%E7%94%A8%E7%AC%AC%E4%B8%89%E5%8F%98%E9%87%8F%E4%BA%A4%E6%8D%A2%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC/"/>
     <id>http://www.Husbandman.top/2018/08/04/不用第三变量交换两个变量的值/</id>
     <published>2018-08-03T17:00:31.000Z</published>
-    <updated>2018-08-04T04:08:27.473Z</updated>
+    <updated>2018-08-04T05:04:03.506Z</updated>
     
     <summary type="html">
     
@@ -423,7 +390,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Unity%E8%8E%B7%E5%8F%96%E8%AE%BE%E5%A4%87%E5%88%86%E8%BE%A8%E7%8E%87/"/>
     <id>http://www.Husbandman.top/2018/08/04/Unity获取设备分辨率/</id>
     <published>2018-08-03T17:00:17.000Z</published>
-    <updated>2018-08-04T04:07:36.556Z</updated>
+    <updated>2018-08-04T05:03:33.734Z</updated>
     
     <summary type="html">
     
@@ -450,7 +417,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Unity%E5%88%9B%E5%BB%BA%E8%A7%A3%E6%9E%90Json/"/>
     <id>http://www.Husbandman.top/2018/08/04/Unity创建解析Json/</id>
     <published>2018-08-03T17:00:04.000Z</published>
-    <updated>2018-08-04T04:07:33.264Z</updated>
+    <updated>2018-08-04T05:03:30.449Z</updated>
     
     <summary type="html">
     
@@ -489,7 +456,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Lua%E5%AD%A6%E4%B9%A0%E4%B9%8B%E4%B8%80/"/>
     <id>http://www.Husbandman.top/2018/08/04/Lua学习之一/</id>
     <published>2018-08-03T16:59:42.000Z</published>
-    <updated>2018-08-04T04:06:56.915Z</updated>
+    <updated>2018-08-04T05:03:03.570Z</updated>
     
     <summary type="html">
     
@@ -503,7 +470,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/UnityAPI-Mathf%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0/"/>
     <id>http://www.Husbandman.top/2018/08/04/UnityAPI-Mathf数学函数/</id>
     <published>2018-08-03T16:58:57.000Z</published>
-    <updated>2018-08-04T04:07:13.826Z</updated>
+    <updated>2018-08-04T05:03:14.834Z</updated>
     
     <summary type="html">
     
@@ -517,7 +484,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/IOS%E4%B8%8A%E7%BA%BF%E6%9D%83%E9%99%90/"/>
     <id>http://www.Husbandman.top/2018/08/04/IOS上线权限/</id>
     <published>2018-08-03T16:58:24.000Z</published>
-    <updated>2018-08-04T04:06:54.064Z</updated>
+    <updated>2018-08-04T05:03:00.286Z</updated>
     
     <summary type="html">
     
@@ -543,7 +510,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/Mac%E4%B8%8B%E7%9A%84%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/"/>
     <id>http://www.Husbandman.top/2018/08/04/Mac下的动态链接库/</id>
     <published>2018-08-03T16:58:15.000Z</published>
-    <updated>2018-08-04T04:07:00.087Z</updated>
+    <updated>2018-08-04T05:03:06.895Z</updated>
     
     <summary type="html">
     
@@ -574,7 +541,7 @@
     <link href="http://www.Husbandman.top/2018/08/04/%E7%BC%96%E7%A8%8B%E6%9D%82%E8%B0%88/"/>
     <id>http://www.Husbandman.top/2018/08/04/编程杂谈/</id>
     <published>2018-08-03T16:50:55.000Z</published>
-    <updated>2018-08-04T04:08:24.468Z</updated>
+    <updated>2018-08-04T05:04:00.755Z</updated>
     
     <summary type="html">
     
@@ -603,7 +570,7 @@
     <link href="http://www.Husbandman.top/2018/08/03/Array-ArrayList/"/>
     <id>http://www.Husbandman.top/2018/08/03/Array-ArrayList/</id>
     <published>2018-08-03T15:22:14.000Z</published>
-    <updated>2018-08-04T04:06:07.269Z</updated>
+    <updated>2018-08-04T05:04:22.734Z</updated>
     
     <summary type="html">
     
@@ -629,6 +596,44 @@
     
     
       <category term="C#" scheme="http://www.Husbandman.top/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity截屏</title>
+    <link href="http://www.Husbandman.top/2018/08/03/Unity%E6%88%AA%E5%B1%8F/"/>
+    <id>http://www.Husbandman.top/2018/08/03/Unity截屏/</id>
+    <published>2018-08-03T15:22:02.000Z</published>
+    <updated>2018-08-04T05:03:36.389Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Unity截屏&quot;&gt;&lt;a href=&quot;#Unity截屏&quot; class=&quot;headerlink&quot; title=&quot;Unity截屏&quot;&gt;&lt;/a&gt;Unity截屏&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;内置API&quot;&gt;&lt;a href=&quot;#内置API&quot; class=&quot;headerlink&quot; title=&quot;内置API&quot;&gt;&lt;/a&gt;内置API&lt;/h4&gt;&lt;p&gt;//Application.CaptureScreenshot 这个已经被Unity废弃掉&lt;br&gt;ScreenCapture.CaptureScreenshot//这个代替了上面的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;优点：简单，可以快速地截取某一帧的画面、全屏截图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.不能针对摄像机截图&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.定制大小截图不方便&lt;/p&gt;
+&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnMouseDown&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Application.CaptureScreenshot(Application.persistentDataPath + &lt;span class=&quot;string&quot;&gt;&quot;/CaptureScreenshot.png&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Texture2D-ReadPixels&quot;&gt;&lt;a href=&quot;#Texture2D-ReadPixels&quot; class=&quot;headerlink&quot; title=&quot;Texture2D.ReadPixels&quot;&gt;&lt;/a&gt;Texture2D.ReadPixels&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;自定义截图的大小（包括UI）&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnScreenShot&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//获取当前系统时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    System.DateTime nowTime = System.DateTime.Now;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; times = nowTime.ToString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    times = times.Trim();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    times = times.Replace(&lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;-&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; fileName = &lt;span class=&quot;string&quot;&gt;&quot;ScreenShot&quot;&lt;/span&gt; + times + &lt;span class=&quot;string&quot;&gt;&quot;.png&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//判断运行的平台&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(Application.platform == RuntimePlatform.Android)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Texture2D texture = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        texture.ReadPixels(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Rect(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,Screen.width,Screen.height),&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        texture.Apply();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;[] bytes = texture.EncodeToPNG();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; destination = &lt;span class=&quot;string&quot;&gt;&quot;/sdcard/DCIM/Screenshots&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!Directory.Exists(destination))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Directory.CreateDirectory(destination);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; pathSave = destination + &lt;span class=&quot;string&quot;&gt;&quot;/&quot;&lt;/span&gt; + fileName;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        File.WriteAllBytes(pathSave,bytes);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
     
   </entry>
   
