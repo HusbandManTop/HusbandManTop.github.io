@@ -338,6 +338,390 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/不用第三变量交换两个变量的值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/不用第三变量交换两个变量的值/" itemprop="url">不用第三变量交换两个变量的值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:31+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/不用第三变量交换两个变量的值/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/04/不用第三变量交换两个变量的值/" class="cy_cmt_count" data-xid="2018/08/04/不用第三变量交换两个变量的值/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,125
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="C-不使用第三变量交换两个变量的值"><a href="#C-不使用第三变量交换两个变量的值" class="headerlink" title="C#不使用第三变量交换两个变量的值"></a>C#不使用第三变量交换两个变量的值</h3><hr>
+<h4 id="1-算术运算"><a href="#1-算术运算" class="headerlink" title="1.算术运算"></a>1.算术运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">简单来说，就是通过普通的+和-运算来实现。代码如下：  </span><br><span class="line">int a,b;  </span><br><span class="line">a=10;b=12;  </span><br><span class="line">a=b-a;  //a=2;b=12  </span><br><span class="line">b=b-a;  //a=2;b=10  </span><br><span class="line">a=b+a;  //a=10;b=10</span><br><span class="line">通过以上运算，a和b中的值就进行了交换。表面上看起来很简单，但是不容易想到，尤其是在习惯标准算法之后。  </span><br><span class="line">它的原理是：把a、b看做数轴上的点，围绕两点间的距离来进行计算。  </span><br><span class="line">具体过程：第一句“a=b-a”求出ab两点的距离，并且将其保存在a中；第二句“b=b-a”求出a到原点的距离（b到原点的距离与ab两点距离之差），并且将其保存在b中；第三句“a=b+a”求出b到原点的距离（a到原点距离与ab两点距离之和），并且将其保存在a中。完成交换。  </span><br><span class="line">此算法与标准算法相比，多了三个计算的过程，但是没有借助临时变量。（以下称为算术算法）</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-位运算"><a href="#2-位运算" class="headerlink" title="2.位运算"></a>2.位运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通过异或运算也能实现变量的交换，这也许是最为神奇的，请看以下代码：  </span><br><span class="line">int a=10,b=12; //a=1010^b=1100;  </span><br><span class="line">a=a^b;         //a=0110^b=1100;  </span><br><span class="line">b=a^b;         //a=0110^b=1010;  </span><br><span class="line">a=a^b;         //a=1100=12;b=1010;  </span><br><span class="line">此算法能够实现是由异或运算的特点决定的，通过异或运算能够使数据中的某些位翻转，其他位不变。这就意味着任意一个数与任意一个给定的值连续异或两次，值不变。  </span><br><span class="line">即：a^b^b=a。将a=a^b代入b=a^b则得b=a^b^b=a;同理可以得到a=b^a^a=b;轻松完成交换。</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/04/不用第三变量交换两个变量的值/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Unity获取设备分辨率/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/Unity获取设备分辨率/" itemprop="url">Unity获取设备分辨率</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:17+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/Unity获取设备分辨率/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/04/Unity获取设备分辨率/" class="cy_cmt_count" data-xid="2018/08/04/Unity获取设备分辨率/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  39
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Unity获取设备分辨率"><a href="#Unity获取设备分辨率" class="headerlink" title="Unity获取设备分辨率"></a>Unity获取设备分辨率</h3><hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">        Resolution[] resolutions = Screen.resolutions;    </span><br><span class="line">        <span class="comment">//设置分辨率</span></span><br><span class="line">        Screen.SetResolution(resolutions[<span class="number">0</span>].width, resolutions[<span class="number">0</span>].height, <span class="literal">true</span>);    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Unity创建解析Json/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -558,7 +942,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Array-ArrayList/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity屏幕分辨率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -577,7 +961,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/Array-ArrayList/" itemprop="url">Array/ArrayList</a></h1>
+                <a class="post-title-link" href="/2018/08/03/Unity屏幕分辨率/" itemprop="url">Unity强制屏幕分辨率</a></h1>
         
 
         <div class="post-meta">
@@ -612,8 +996,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C#</span>
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
                   </a>
                 </span>
 
@@ -631,8 +1015,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/Array-ArrayList/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Array-ArrayList/" class="cy_cmt_count" data-xid="2018/08/03/Array-ArrayList/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/Unity屏幕分辨率/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity屏幕分辨率/" class="cy_cmt_count" data-xid="2018/08/03/Unity屏幕分辨率/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -654,7 +1038,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  829
+                  96
                 </span>
               
 
@@ -670,7 +1054,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -692,28 +1076,11 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h3 id="Array-ArrayList-List之间的区别"><a href="#Array-ArrayList-List之间的区别" class="headerlink" title="Array/ArrayList/List之间的区别"></a>Array/ArrayList/List之间的区别</h3><hr>
-<h5 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组:"></a>1.数组:</h5><ul>
-<li>优点:在内存中是连续的,速度较快,操作简单;</li>
-<li>缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int [] i = new int[2];</span><br><span class="line">i[0] = 111;</span><br><span class="line">i[1] = 222;//赋值</span><br><span class="line">i[1] = 123; //修改</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="2-集合ArrayList"><a href="#2-集合ArrayList" class="headerlink" title="2.集合ArrayList:"></a>2.集合ArrayList:</h5><ul>
-<li>优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除;</li>
-<li><p>缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list = new ArrayList();</span><br><span class="line">list.Add(“aa”);</span><br><span class="line">list.Add(123);</span><br><span class="line">list[1] = 1;//修改值</span><br><span class="line">list.Remove(123);//移除</span><br><span class="line">list.RemoveAt(0);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>(装箱与拆箱:)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">装箱:就是想值类型转换为引用类型</span><br><span class="line">拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)</span><br><span class="line">int n = 10;</span><br><span class="line">object o = n;//装箱</span><br><span class="line">int b = (int)0;//拆箱</span><br><span class="line">看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;</span><br><span class="line">string  str = &quot;123&quot;;</span><br><span class="line">int n = Conver.Toint32(str);</span><br><span class="line">//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系</span><br><span class="line"></span><br><span class="line">int n = 10;</span><br><span class="line">IComparable  i = n;</span><br><span class="line">//这里发生了装箱.int32继承自IComparable;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Array-ArrayList/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Unity强制屏幕分辨率"><a href="#Unity强制屏幕分辨率" class="headerlink" title="Unity强制屏幕分辨率"></a>Unity强制屏幕分辨率</h3><hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetResolution</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> heightScal = <span class="number">9.0</span>f;</span><br><span class="line">        <span class="keyword">float</span> widthScal = <span class="number">16.0</span>f;</span><br><span class="line">        <span class="keyword">int</span> screenWidth = Screen.currentResolution.width;</span><br><span class="line">        <span class="keyword">int</span> screenHeight = Screen.currentResolution.height;</span><br><span class="line">        <span class="keyword">int</span> width = Screen.width;</span><br><span class="line">        <span class="keyword">int</span> height = Screen.height;</span><br><span class="line">        <span class="keyword">if</span> (((widthScal * height) / heightScal) &gt; screenWidth)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * h) / heightScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * screenHeight) / heightScal);</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -910,196 +1277,6 @@ alt="Fork me on GitHub"></a>
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Dropdow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Dropdow/" itemprop="url">Dropdow</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/UGUI/" itemprop="url" rel="index">
-                    <span itemprop="name">UGUI</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Dropdow/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Dropdow/" class="cy_cmt_count" data-xid="2018/08/03/Dropdow/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  129
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Dropdow"><a href="#Dropdow" class="headerlink" title="Dropdow"></a>Dropdow</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dropdown dropdownItem;</span><br><span class="line">List&lt;<span class="keyword">string</span>&gt; tempNames;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化Dropdow列表</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UpdateDropdownView</span>(<span class="params">List&lt;<span class="keyword">string</span>&gt; showNames</span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     dropdownItem.options.Clear();</span><br><span class="line">     Dropdown.OptionData tempData;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; showNames.Count; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         tempData = <span class="keyword">new</span> Dropdown.OptionData();</span><br><span class="line">         tempData.text = showNames[i];</span><br><span class="line">         dropdownItem.options.Add(tempData);</span><br><span class="line">     &#125;</span><br><span class="line">     dropdownItem.captionText.text = showNames[<span class="number">0</span>];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>核心的一句话就是在刷数据那个方法里，先定义一个Dropdown.OptionData类型的，然后往里面填数据，最后别忘了最后一句话，把显示的值换成选项里的第一个也就是ShowNames[0]</p>
-
-          
         
       
     </div>
@@ -1560,7 +1737,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity屏幕分辨率/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Dropdow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1579,7 +1756,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/Unity屏幕分辨率/" itemprop="url">Unity强制屏幕分辨率</a></h1>
+                <a class="post-title-link" href="/2018/08/03/Dropdow/" itemprop="url">Dropdow</a></h1>
         
 
         <div class="post-meta">
@@ -1614,8 +1791,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
+                  <a href="/categories/UGUI/" itemprop="url" rel="index">
+                    <span itemprop="name">UGUI</span>
                   </a>
                 </span>
 
@@ -1633,8 +1810,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/Unity屏幕分辨率/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity屏幕分辨率/" class="cy_cmt_count" data-xid="2018/08/03/Unity屏幕分辨率/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/Dropdow/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Dropdow/" class="cy_cmt_count" data-xid="2018/08/03/Dropdow/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1656,7 +1833,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  96
+                  129
                 </span>
               
 
@@ -1695,10 +1872,217 @@ alt="Fork me on GitHub"></a>
       
         
           
-            <h3 id="Unity强制屏幕分辨率"><a href="#Unity强制屏幕分辨率" class="headerlink" title="Unity强制屏幕分辨率"></a>Unity强制屏幕分辨率</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetResolution</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> heightScal = <span class="number">9.0</span>f;</span><br><span class="line">        <span class="keyword">float</span> widthScal = <span class="number">16.0</span>f;</span><br><span class="line">        <span class="keyword">int</span> screenWidth = Screen.currentResolution.width;</span><br><span class="line">        <span class="keyword">int</span> screenHeight = Screen.currentResolution.height;</span><br><span class="line">        <span class="keyword">int</span> width = Screen.width;</span><br><span class="line">        <span class="keyword">int</span> height = Screen.height;</span><br><span class="line">        <span class="keyword">if</span> (((widthScal * height) / heightScal) &gt; screenWidth)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * h) / heightScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * screenHeight) / heightScal);</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+            <h3 id="Dropdow"><a href="#Dropdow" class="headerlink" title="Dropdow"></a>Dropdow</h3><hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dropdown dropdownItem;</span><br><span class="line">List&lt;<span class="keyword">string</span>&gt; tempNames;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化Dropdow列表</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UpdateDropdownView</span>(<span class="params">List&lt;<span class="keyword">string</span>&gt; showNames</span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     dropdownItem.options.Clear();</span><br><span class="line">     Dropdown.OptionData tempData;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; showNames.Count; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         tempData = <span class="keyword">new</span> Dropdown.OptionData();</span><br><span class="line">         tempData.text = showNames[i];</span><br><span class="line">         dropdownItem.options.Add(tempData);</span><br><span class="line">     &#125;</span><br><span class="line">     dropdownItem.captionText.text = showNames[<span class="number">0</span>];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>核心的一句话就是在刷数据那个方法里，先定义一个Dropdown.OptionData类型的，然后往里面填数据，最后别忘了最后一句话，把显示的值换成选项里的第一个也就是ShowNames[0]</p>
 
           
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Array-ArrayList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Array-ArrayList/" itemprop="url">Array/ArrayList</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Array-ArrayList/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Array-ArrayList/" class="cy_cmt_count" data-xid="2018/08/03/Array-ArrayList/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  829
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Array-ArrayList-List之间的区别"><a href="#Array-ArrayList-List之间的区别" class="headerlink" title="Array/ArrayList/List之间的区别"></a>Array/ArrayList/List之间的区别</h3><hr>
+<h5 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组:"></a>1.数组:</h5><ul>
+<li>优点:在内存中是连续的,速度较快,操作简单;</li>
+<li>缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int [] i = new int[2];</span><br><span class="line">i[0] = 111;</span><br><span class="line">i[1] = 222;//赋值</span><br><span class="line">i[1] = 123; //修改</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-集合ArrayList"><a href="#2-集合ArrayList" class="headerlink" title="2.集合ArrayList:"></a>2.集合ArrayList:</h5><ul>
+<li>优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除;</li>
+<li><p>缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list = new ArrayList();</span><br><span class="line">list.Add(“aa”);</span><br><span class="line">list.Add(123);</span><br><span class="line">list[1] = 1;//修改值</span><br><span class="line">list.Remove(123);//移除</span><br><span class="line">list.RemoveAt(0);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(装箱与拆箱:)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">装箱:就是想值类型转换为引用类型</span><br><span class="line">拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)</span><br><span class="line">int n = 10;</span><br><span class="line">object o = n;//装箱</span><br><span class="line">int b = (int)0;//拆箱</span><br><span class="line">看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;</span><br><span class="line">string  str = &quot;123&quot;;</span><br><span class="line">int n = Conver.Toint32(str);</span><br><span class="line">//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系</span><br><span class="line"></span><br><span class="line">int n = 10;</span><br><span class="line">IComparable  i = n;</span><br><span class="line">//这里发生了装箱.int32继承自IComparable;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Array-ArrayList/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1946,411 +2330,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/协程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/协程/" itemprop="url">协程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:50+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/协程/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/协程/" class="cy_cmt_count" data-xid="2018/08/03/协程/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  347
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Unity协程"><a href="#Unity协程" class="headerlink" title="Unity协程"></a>Unity协程</h3><hr>
-<h4 id="Invoke延迟执行"><a href="#Invoke延迟执行" class="headerlink" title="Invoke延迟执行"></a>Invoke延迟执行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.invoke(function_Name,time);</span><br><span class="line">  第一为为无参函数,第二个为执行时间  </span><br><span class="line"></span><br><span class="line">2.invokeRpeating(function_Namem,frist_time,time);</span><br><span class="line">  无参函数名,首次执行时间,执行间隔时间  </span><br><span class="line"></span><br><span class="line">3.Cancelinvoke(function_Name);//取消延迟函数</span><br><span class="line">  如果不写参数则取消所有invoke函数</span><br></pre></td></tr></table></figure>
-<h4 id="Coroutine"><a href="#Coroutine" class="headerlink" title="Coroutine"></a>Coroutine</h4><ul>
-<li>协程是一个分部执行的方法,遇到条件(yield return)会挂起,知道条件满足才继续执行后面的代码</li>
-<li>协程其实就是一个IEnumerator(迭代器)</li>
-<li><p>协程和invoke函数最大的不同是可以在执行时添加参数</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">function_Name</span>(<span class="params">parameter,parameter,...</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="keyword">return</span> ....;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>例如:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">RunTimes</span>(<span class="params"><span class="keyword">float</span> time</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params">time</span>)</span>;</span><br><span class="line">  Debug.Log(<span class="string">" is Run"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>例如参数time = 3f,协程执行遇到yield return语句后就会停止在yield reurn语句位置等待3s后在继续往下面去执行</strong><br><a href="https://imgchr.com/i/PBdguq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBdguq.png" alt="PBdguq.png"></a></p>
-<hr>
-<ul>
-<li><p>开启协程:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StartCoroutine(协程函数名());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止协程:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>通过字符串方法可以停止一个协程;</span><br><span class="line"><span class="number">2.</span>注意:直接用StopCoroutine直接像StartCoroutine一样里面加方法是不能停止该协程的,通过把协程赋予到变量在控制此变量来停止才能中断此协程;</span><br><span class="line">StartCoroutine(<span class="string">"function_Name"</span>,time);<span class="comment">//如果用字符串传参的话可能效率会低一些</span></span><br><span class="line">StopCoroutine(<span class="string">"function_Name"</span>);</span><br><span class="line">StopAllCoroutine();<span class="comment">//停止所有这个类中的协程函数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity解析Text文本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Unity解析Text文本/" itemprop="url">Unity解析Text文本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:27+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Unity解析Text文本/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity解析Text文本/" class="cy_cmt_count" data-xid="2018/08/03/Unity解析Text文本/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  190
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Unity解析Text文本"><a href="#Unity解析Text文本" class="headerlink" title="Unity解析Text文本"></a>Unity解析Text文本</h3><hr>
-<h4 id="Unity中解析Text文本有四种方式"><a href="#Unity中解析Text文本有四种方式" class="headerlink" title="Unity中解析Text文本有四种方式:"></a>Unity中解析Text文本有四种方式:</h4><h5 id="1-TextAsset解析"><a href="#1-TextAsset解析" class="headerlink" title="1.TextAsset解析"></a>1.TextAsset解析</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TestAsset loadText;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadText</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">string</span> str = loadText.text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-协程加WWW类"><a href="#2-协程加WWW类" class="headerlink" title="2.协程加WWW类"></a>2.协程加WWW类</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    WWW www = <span class="keyword">new</span> WWW(<span class="string">"file://"</span>+Application.dataPath + <span class="string">"/text.text"</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> www;</span><br><span class="line">    s = www.text;</span><br><span class="line">    print(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="3-Resources-Load-“text”-as-TextAsset"><a href="#3-Resources-Load-“text”-as-TextAsset" class="headerlink" title="3.Resources.Load(“text”) as TextAsset;"></a>3.Resources.Load<textasset>(“text”) as TextAsset;</textasset></h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextAsset resouse = GameObject.Instantiate (Resources.Load&lt;TextAsset&gt;(<span class="string">"1111"</span>)) <span class="keyword">as</span> TextAsset;</span><br></pre></td></tr></table></figure>
-<h5 id="4-StreamReader"><a href="#4-StreamReader" class="headerlink" title="4.StreamReader"></a>4.StreamReader</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">RendFile</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//StreamReader读取的文件位置是在Application.dataPath+"/../"</span></span><br><span class="line">    StreamReader sr = <span class="keyword">new</span> StreamReader(<span class="string">"1111.text"</span>);</span><br><span class="line">    <span class="keyword">string</span> str = sr.ReadToEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Unity解析Text文本/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2405,7 +2384,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2416,7 +2395,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2427,7 +2406,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2564,7 +2543,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.1k</span>
+    <span title="Site words total count">47.8k</span>
   
 </div>
 -->
@@ -2585,7 +2564,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.1k字</span>
+  <span class="post-count">博客全站共47.8k字</span>
 </div>
         
 

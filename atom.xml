@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.Husbandman.top/"/>
-  <updated>2018-08-07T11:18:36.000Z</updated>
+  <updated>2018-08-08T11:04:46.945Z</updated>
   <id>http://www.Husbandman.top/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>获取AnimatorClip动画的时间长度</title>
+    <link href="http://www.Husbandman.top/2018/08/08/%E8%8E%B7%E5%8F%96AnimatorClip%E5%8A%A8%E7%94%BB%E7%9A%84%E6%97%B6%E9%97%B4%E9%95%BF%E5%BA%A6/"/>
+    <id>http://www.Husbandman.top/2018/08/08/获取AnimatorClip动画的时间长度/</id>
+    <published>2018-08-08T09:22:14.000Z</published>
+    <updated>2018-08-08T11:04:46.945Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;获取AnimatorClip&quot;&gt;&lt;a href=&quot;#获取AnimatorClip&quot; class=&quot;headerlink&quot; title=&quot;获取AnimatorClip&quot;&gt;&lt;/a&gt;获取AnimatorClip&lt;/h3&gt;&lt;hr&gt;
+&lt;h4
+        
+      
+    
+    </summary>
+    
+      <category term="Sprite" scheme="http://www.Husbandman.top/categories/Sprite/"/>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+      <category term="Sprite" scheme="http://www.Husbandman.top/tags/Sprite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果</title>
+    <link href="http://www.Husbandman.top/2018/08/08/%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90Texture2D%E5%B9%B6%E5%88%9B%E5%BB%BASprite/"/>
+    <id>http://www.Husbandman.top/2018/08/08/使用程序生成Texture2D并创建Sprite/</id>
+    <published>2018-08-08T07:22:14.000Z</published>
+    <updated>2018-08-08T11:04:28.987Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果&quot;&gt;&lt;a href=&quot;#转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Sprite" scheme="http://www.Husbandman.top/categories/Sprite/"/>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+      <category term="Sprite" scheme="http://www.Husbandman.top/tags/Sprite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式之状态模式</title>
+    <link href="http://www.Husbandman.top/2018/08/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.Husbandman.top/2018/08/07/设计模式之状态模式/</id>
+    <published>2018-08-07T14:14:40.000Z</published>
+    <updated>2018-08-07T14:16:17.787Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;设计模式与游戏开发之状态模式-State&quot;&gt;&lt;a href=&quot;#设计模式与游戏开发之状态模式-State&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://www.Husbandman.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="http://www.Husbandman.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity2D之精灵Sprite与屏幕之间的关系</title>
@@ -530,100 +613,6 @@
     
     
       <category term="IOS" scheme="http://www.Husbandman.top/tags/IOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac下的动态链接库</title>
-    <link href="http://www.Husbandman.top/2018/08/04/Mac%E4%B8%8B%E7%9A%84%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/"/>
-    <id>http://www.Husbandman.top/2018/08/04/Mac下的动态链接库/</id>
-    <published>2018-08-03T16:58:15.000Z</published>
-    <updated>2018-08-04T05:03:06.895Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;转载-MAC下的动态链接库&quot;&gt;&lt;a href=&quot;#转载-MAC下的动态链接库&quot; class=&quot;headerlink&quot; title=&quot;(转载)MAC下的动态链接库&quot;&gt;&lt;/a&gt;(转载)MAC下的动态链接库&lt;/h3&gt;&lt;p&gt;原文地址:&lt;a href=&quot;https://blog.csdn.net/cbbbc/article/details/50319885&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/cbbbc/article/details/50319885&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;动态链接库已成为现代操作系统的基本组成部分，比如Windows下数不清的.DLL文件和臭名昭著的DLL地狱，Linux下成千上万的.so文件。Mac OS X下也有许多动态链接库，他们的扩展名是.dylib。&lt;br&gt;.dylib是Mach-O格式，也就是Mac OS X下的二进制文件格式。Mac OS X提供了一系列工具，用于创建和访问动态链接库。&lt;br&gt;编译器/usr/bin/cc，也就是gcc了，Apple改过的。这个主要还是一个壳，去调用其他的一些部件。当然同时还有/usr/bin/c++，等等。&lt;/p&gt;
-&lt;p&gt;汇编器/usr/bin/as&lt;/p&gt;
-&lt;p&gt;链接器/usr/bin/ld&lt;br&gt;Mac OS X有个自己的工具，/usr/bin/libtool，来创建动态链接库。这个libtool不是GNU的那个同名的libtool。我记得GNU libtool可以从Fink（&lt;a href=&quot;http://fink.sf.net）下载，编译后得到glibtool。&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://fink.sf.net）下载，编译后得到glibtool。&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下面来看看如何创建动态链接库。&lt;br&gt;首先是生成module文件，也就是.o文件。这跟一般的unix没什么区别。例如&lt;br&gt;cc -c a.c b.c&lt;br&gt;就得到a.o和b.o&lt;/p&gt;
-&lt;p&gt;可以用ld来合并.o文件，比如&lt;br&gt;ld -r -o c.o a.o b.o&lt;br&gt;这个也没什么特别。&lt;/p&gt;
-&lt;p&gt;然后可以用libtool来创建动态链接库。&lt;br&gt;libtool -dynamic -o c.dylib a.o b.o&lt;br&gt;（ 这里也可以用libtool -static -o c.a a.o b.o就创建静态库）&lt;/p&gt;
-&lt;p&gt;如果用gcc直接编译，我记得linux下一般是可以&lt;br&gt;gcc -shared -o c.so a.c b.c&lt;br&gt;而在Mac OS X下需要&lt;br&gt;gcc -dynamiclib -o c.dylib a.c b.c&lt;/p&gt;
-&lt;p&gt;这往往也是向Mac OS X移植unix程序常出问题的地方。如果用autoconf/automake等工具，出错的几率应该小一些。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="IOS" scheme="http://www.Husbandman.top/categories/IOS/"/>
-    
-      <category term="MACOS" scheme="http://www.Husbandman.top/categories/IOS/MACOS/"/>
-    
-    
-      <category term="IOS" scheme="http://www.Husbandman.top/tags/IOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编程杂谈</title>
-    <link href="http://www.Husbandman.top/2018/08/04/%E7%BC%96%E7%A8%8B%E6%9D%82%E8%B0%88/"/>
-    <id>http://www.Husbandman.top/2018/08/04/编程杂谈/</id>
-    <published>2018-08-03T16:50:55.000Z</published>
-    <updated>2018-08-04T05:04:00.755Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;编程杂谈&quot;&gt;&lt;a href=&quot;#编程杂谈&quot; class=&quot;headerlink&quot; title=&quot;编程杂谈&quot;&gt;&lt;/a&gt;编程杂谈&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;1-为什么使用面向对象编程&quot;&gt;&lt;a href=&quot;#1-为什么使用面向对象编程&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="C#" scheme="http://www.Husbandman.top/categories/C/"/>
-    
-      <category term="编程杂谈" scheme="http://www.Husbandman.top/categories/C/%E7%BC%96%E7%A8%8B%E6%9D%82%E8%B0%88/"/>
-    
-    
-      <category term="编程杂谈" scheme="http://www.Husbandman.top/tags/%E7%BC%96%E7%A8%8B%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Array/ArrayList</title>
-    <link href="http://www.Husbandman.top/2018/08/03/Array-ArrayList/"/>
-    <id>http://www.Husbandman.top/2018/08/03/Array-ArrayList/</id>
-    <published>2018-08-03T15:22:14.000Z</published>
-    <updated>2018-08-04T05:04:22.734Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Array-ArrayList-List之间的区别&quot;&gt;&lt;a href=&quot;#Array-ArrayList-List之间的区别&quot; class=&quot;headerlink&quot; title=&quot;Array/ArrayList/List之间的区别&quot;&gt;&lt;/a&gt;Array/ArrayList/List之间的区别&lt;/h3&gt;&lt;hr&gt;
-&lt;h5 id=&quot;1-数组&quot;&gt;&lt;a href=&quot;#1-数组&quot; class=&quot;headerlink&quot; title=&quot;1.数组:&quot;&gt;&lt;/a&gt;1.数组:&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;优点:在内存中是连续的,速度较快,操作简单;&lt;/li&gt;
-&lt;li&gt;缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int [] i = new int[2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i[0] = 111;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i[1] = 222;//赋值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i[1] = 123; //修改&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;2-集合ArrayList&quot;&gt;&lt;a href=&quot;#2-集合ArrayList&quot; class=&quot;headerlink&quot; title=&quot;2.集合ArrayList:&quot;&gt;&lt;/a&gt;2.集合ArrayList:&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ArrayList list = new ArrayList();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;list.Add(“aa”);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;list.Add(123);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;list[1] = 1;//修改值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;list.Remove(123);//移除&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;list.RemoveAt(0);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;(装箱与拆箱:)&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;装箱:就是想值类型转换为引用类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int n = 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;object o = n;//装箱&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int b = (int)0;//拆箱&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;string  str = &amp;quot;123&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int n = Conver.Toint32(str);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int n = 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;IComparable  i = n;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//这里发生了装箱.int32继承自IComparable;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="C#" scheme="http://www.Husbandman.top/categories/C/"/>
-    
-    
-      <category term="C#" scheme="http://www.Husbandman.top/tags/C/"/>
     
   </entry>
   

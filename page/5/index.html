@@ -338,6 +338,695 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/UnityAPI解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/UnityAPI解析/" itemprop="url">UnityAPI解析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:16:45+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/UnityAPI解析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/04/UnityAPI解析/" class="cy_cmt_count" data-xid="2018/08/04/UnityAPI解析/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  936
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="UnityAPI文档"><a href="#UnityAPI文档" class="headerlink" title="UnityAPI文档"></a>UnityAPI文档</h3><p><a href="http://www.ceeger.com/Manual/" target="_blank" rel="noopener">Unity圣典</a><br><a href="https://docs.unity3d.com/ScriptReference/" target="_blank" rel="noopener">Unity官方手册</a><br><a href="http://docs.manew.com/" target="_blank" rel="noopener">蛮牛手册</a></p>
+<p><strong>API(Application Programming Interface),即应用程序编程接口,是一些预定义的函数,目的是提供应用程序与开发人员基于某软件或者硬件得以访问一组例程的能力,而无需访问源码,或去理解内部工作机制细节</strong></p>
+<h4 id="Unity-脚本事件函数执行顺序和生命周期"><a href="#Unity-脚本事件函数执行顺序和生命周期" class="headerlink" title="Unity 脚本事件函数执行顺序和生命周期:"></a>Unity 脚本事件函数执行顺序和生命周期:</h4><p><a href="https://imgchr.com/i/PB0AyR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PB0AyR.png" alt="PB0AyR.png"></a></p>
+<hr>
+<h4 id="第一章-Application类"><a href="#第一章-Application类" class="headerlink" title="第一章: Application类"></a>第一章: Application类</h4><p>Application类不含实例属性和实例方法,在脚本中通过直接调用Application类的静态属性和方法来控制程序的运行时的数据;<br>Application静态属性:</p>
+<ul>
+<li>1.dataPath属性: 数据文件路径 {public static string dataPath{get;}}</li>
+<li>2.Application.dataPath: 返回程序的数据文件所在文件夹的路径(只读).返回路径为相对路径,不同游戏平台的数据文件保存路径不同;</li>
+<li>3.Application.PersistentDataPath: 返回一个持久化数据存储目录的路径(只读),可以在此路径下存储一些持久化的数据文件.同一平台,不同程序中调用此属性,返回值相同.</li>
+<li>4.Application.streamingAssetsPath: 此属性用于返回流数据的缓存目录,返回路径为相对路径,适合设置一些外部文件的路径.</li>
+<li>5.Application.temporaryCachePath: 此属性用于返回一个临时数据目录(只读),对于同一平台,不同程序调用此属性,返回值相同.<br>loadedLevel属性 : 关卡索引</li>
+<li>1.public static int loadedLevel{ get; }</li>
+<li>2.Application.loadedLevel 返回当前场景的索引值</li>
+<li>3.Application.loadedLevelName 返回当前场景的名字</li>
+<li>4.Application.isLoadingLevel 是否有场景被加载</li>
+<li>5.Application.LevelCount 游戏中可被加载的场景数量</li>
+<li>6.Application.platform 当前游戏的运行平台,返回值为枚举类型</li>
+<li>7.Application.isPlaying 当前游戏是否正在运行</li>
+<li>8.Application.isEditor 游戏是否处于Unity编辑模式<br>Application类静态方法:</li>
+<li>1.CaptureScreenshot方法 : 截屏</li>
+<li>2.public static void CaptureScreenshot(string filename);</li>
+<li>3.public static void CaptureScreenshot(string filename, int superSize);<br>  参数filename 截屏文件名称 superSize放大系数,默认为0,即不放大<br>  此方法截取当前游戏画面并保存为PNG格式,文件默认保存在根目录下,若有重名文件则替换.</li>
+<li>4.LoadLevelAdditiveAsync方法 : 异步加载关卡</li>
+<li>5.public static AsynvOperation LoadLevelAdditiveAsync(int index);//参数关卡索引值</li>
+<li>6.public static AsynvOperation</li>
+<li>LoadLevelAdditiveAsync(string levelName);//参数关卡名称<br>  此方法用于按照关卡名字在后台异步加载关卡到当前场景中,此方法只是将新关卡加载到当前场景,当前场景的原有内容不会被销毁.</li>
+<li>7.AsynvOperation colve = public static AsynvOperation &gt;&gt;LoadLevelAdditiveAsync(int index);</li>
+<li>8.colve.isDone 是否加载完成</li>
+<li>9.colve.progress 加载进度</li>
+<li>10.RegisterLogCallback方法 :注册委托<br>  public static void RegisterLogCallback(Application.LogCallback handler);参数是委托的名字<br>  此方法用于注册一个委托来调用日志信息</li>
+</ul>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/04/UnityAPI解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Unity性能优化篇一/" itemprop="url">Unity性能优化篇一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:48+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity性能优化篇一/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/" class="cy_cmt_count" data-xid="2018/08/03/Unity性能优化篇一/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,630
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Unity性能优化篇-一"><a href="#Unity性能优化篇-一" class="headerlink" title="Unity性能优化篇(一)"></a>Unity性能优化篇(一)</h3><hr>
+<h4 id="Unity游戏安装包大-运行卡的原因"><a href="#Unity游戏安装包大-运行卡的原因" class="headerlink" title="Unity游戏安装包大/运行卡的原因"></a>Unity游戏安装包大/运行卡的原因</h4><h5 id="Mono虚拟机"><a href="#Mono虚拟机" class="headerlink" title="Mono虚拟机"></a>Mono虚拟机</h5><ul>
+<li>因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.<h5 id="Drawcall"><a href="#Drawcall" class="headerlink" title="Drawcall"></a>Drawcall</h5></li>
+<li>什么是Drawcall: <a href="https://www.zhihu.com/question/36357893" target="_blank" rel="noopener">https://www.zhihu.com/question/36357893</a><ul>
+<li>其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)接口,命令GPU进行渲染操作(每一次CPU去调用图形库接口命令GPU渲染即为一次Drawcall)</li>
+<li>很多时候我们会误认为是Drawcall造成的性能问题是GPU谢欢渲染状态导致,其实这里的元凶是CPU</li>
+<li>CPU和GPU是如何进行并行工作和交互的<ul>
+<li>试想，渲染流程没用采用流水线的工作方式：CPU发送一个渲染命令之后，GPU立即执行渲染命令绘制图形，等到渲染任务结束之后，CPU才可以继续发送下一个渲染命令，这样显然影响工作效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>采用渲染流水线后，CPU与GPU并行工作，独立而不相互依赖。这是通过命令缓冲区来实现的：命令缓冲区维护一个命令队列，CPU向其中发送命令，GPU从中取出命令并执行。命令有很多种，DrawCall是一种，其他命令还有改变渲染状态、设置渲染数据流等。</p>
+<p>这种方式就类似于游戏开发的网络通信：维持一个消息队列，网络线程接收解析消息并将之添加到消息队列，游戏主线程更新时从中取出消息并做派发处理。</p>
+<ul>
+<li>DrawCall是如何影响性能的？<ul>
+<li>每一次绘制CPU都要调用DrawCall，而在调动DrawCall前，CPU还要进行很多准备工作：检测渲染状态、提交渲染所需要的数据、提交渲染所需要的状态。<br>而GPU本身具有很强大的计算能力，可以很快就处理完渲染任务。</li>
+</ul>
+</li>
+</ul>
+<p>当DrawCall过多，CPU就会很多额外开销用于准备工作，CPU本身负载，而这时GPU可能闲置了。</p>
+<p>做个试验：拷贝1000个总大小1M的文件和单个大小为1M的文件，明显拷贝1000个文件要慢很多，DrawCall调用和这个很类似</p>
+<ul>
+<li>DrawCall优化：减少DrawCall<br><a href="https://zhuanlan.zhihu.com/p/26386905" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26386905</a></li>
+</ul>
+<h5 id="Unity-Profiler"><a href="#Unity-Profiler" class="headerlink" title="Unity Profiler"></a>Unity Profiler</h5><h6 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h6><p>Profiler官方概述:Unity Profiler窗口可帮助您优化游戏。它会为您报告在游戏的各个区域花了多少时间。例如，它可以报告渲染，动画或游戏逻辑所花时间的百分比。<br>您可以分析GPU，CPU，内存，渲染和音频的性能。<br>要查看性能分析数据，请在编辑器中使用性能分析在游戏中进行游戏，并记录性能数据。Profiler窗口随后在时间轴中显示数据，以便您可以看到比其他帧更快的帧（或更多时间）。通过点击时间线中的任何位置，Profiler窗口的底部将显示所选帧的详细信息。<br>请注意，性能分析必须测试您的代码（即：添加一些说明以方便检查）。虽然这对游戏的性能影响很小，但开销足够小，不会影响游戏帧率<br><a href="https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html" target="_blank" rel="noopener">https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html</a></p>
+<h6 id="Unity-Statistics统计面板"><a href="#Unity-Statistics统计面板" class="headerlink" title="Unity Statistics统计面板"></a>Unity Statistics统计面板</h6><p>Statistics窗口，全称叫做 Rendering Statistics Window，即渲染统计窗口（或渲染数据统计窗口）,窗口中罗列出关于声音、图像、网络状况等多种统计信息</p>
+<ul>
+<li>FPS(Time per frame andFPS):frames per seconds表示引擎处理和渲染一个游戏帧所花费的时间,该数字主要受到场景中渲染物体数量和 GPU性能的影响，FPS数值越高，游戏场景的动画显示会更加平滑和流畅。一般来说，超过30FPS的画面人眼不会感觉到卡，由于视觉残留的特性，光在视网膜上停止总用后人眼还会保持1/24秒左右的时间，因此游戏画面每秒帧数至少要保证在30以上。另外，Unity中的FPS数值仅包括此游戏Scene里更新和渲染的帧，编辑器中绘制的Scene和其它监视窗口的进程不包括在内。</li>
+<li>CPU:获取到当前占用CPU进行计算的时间绝对值，或时间点，如果Unity主进程处于挂断或休眠状态时，CPU time将会保持不变。</li>
+<li>Render thread:GPU渲染线程处理图像所花费的时间，具体数值由GPU性能来决定，</li>
+<li>Batches(批处理):即Batched Draw Calls,是Unity内置的Draw Call Batching技术。</li>
+</ul>
+<p>解释下什么叫做“Draw call”，CPU每次通知GPU发出一个glDrawElements（OpenGl中的图元渲染函数)或者 DrawIndexedPrimitive（DirectX中的顶点绘制方法）的过程称为一次Draw call,一般来说，引擎每对一个物体进行一次DrawCall，就会产生一个Batch,这个Batch里包含着该物体所有的网格和顶点数据，当渲染另一个相同的物体时，引擎会直接调用Batch里的信息，将相关顶点数据直接送到GPU,从而让渲染过程更加高效，即Batching技术是将所有材质相近的物体进行合并渲染。</p>
+<p>对于含有多个不同Shader和Material的物体，渲染的过程比较耗时，因为会产生多个Batches。每次对物体的材质或者贴图进行修改，都会影响Batches里数据集的构成。因此，如果场景中有大量材质不同的物体，会很明显的影响到GPU的渲染效率</p>
+<ul>
+<li>Verts：摄像机视野(field of view)内渲染的顶点总数。</li>
+<li>Tris: 摄像机视野(field of view)内渲染的的三角面总数量。</li>
+<li>Screen:获当前Game屏幕的分辨率大小，后边的2.1MB表示总的内存使用数值。</li>
+<li>Shadow casters：表示场景中有多少个可以投射阴影的物体，一般这些物体都作为场景中的光源。</li>
+<li>visible skinned meshed：渲染皮肤网格的数量。</li>
+<li>Animations:正在播放动画的数量。</li>
+<li>SetPass calls:<ul>
+<li>场景上有1个gameobject，希望能显示很酷炫的效果，它的Material上带有许多特定的Shader。为了实现相应的效果，Shader里或许会包含很多的Pass,每当GPU即将去运行一个Pass之前，就会产生一个“SetPass call”，因此在描述渲染性能开销上，“SetPass calls”更加有说服力<br><a href="https://blog.csdn.net/wdmzjzlym/article/details/51335915" target="_blank" rel="noopener">https://blog.csdn.net/wdmzjzlym/article/details/51335915</a></li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Unity性能优化篇一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Unity插件Cinemachine/" itemprop="url">Unity插件之Cinemachine</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:01+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity插件Cinemachine/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/" class="cy_cmt_count" data-xid="2018/08/03/Unity插件Cinemachine/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,761
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Unity相机插件之Cinemachine"><a href="#Unity相机插件之Cinemachine" class="headerlink" title="Unity相机插件之Cinemachine"></a>Unity相机插件之Cinemachine</h4><hr>
+<ul>
+<li>游戏设计中的镜头语言:<ul>
+<li>跟踪</li>
+<li>瞄准</li>
+<li>物理相关: 碰撞,视线遮挡</li>
+<li>镜头特效</li>
+<li>镜头切换</li>
+</ul>
+</li>
+<li>Cinemachine程序化相机系统:<ul>
+<li>构建虚拟世界的相机系统,模拟真实相机的行为;</li>
+<li>通过程序化方式,提高开发效率;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="Unity官方的教学"><a href="#Unity官方的教学" class="headerlink" title="Unity官方的教学"></a>Unity官方的教学</h4><ul>
+<li><p>Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过提前预置行为，可以帮助我们非常方便的来实现游戏中的功能。也就是通过程序化的方式，提升我们的开发效率。</p>
+</li>
+<li><p>Cinemachine核心组件包括Brain和Virtual Camera（虚拟相机），Brain负责相机的切换。虚拟相机复杂拍摄。</p>
+</li>
+<li><p>通常我们的场景中不是单一的虚拟摄像机，而是由很多台虚拟相机来完成拍摄任务，如下图所示。因此大家在制作游戏的时候更像是一个电影导演，可以通过各种相机实现各种炫酷的镜头，完成各种不同角度到拍摄。<br><a href="https://imgchr.com/i/PBtcTg" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtcTg.png" alt="PBtcTg.png"></a></p>
+</li>
+</ul>
+<h5 id="虚拟相机详解"><a href="#虚拟相机详解" class="headerlink" title="虚拟相机详解:"></a>虚拟相机详解:</h5><p>虚拟相机主要由六个模块组成，分别是：</p>
+<ul>
+<li>Lens：包括调整FOV等参数；</li>
+<li>Body：负责处理相机和跟踪目标之间的相对位置的这样一个关系；</li>
+<li>Aim：负责处理焦点和跟踪目标在镜头中的相对位置；</li>
+<li>Noise：模拟手持相机的晃动；</li>
+<li>后处理模块：让每个镜头有不同的后处理效果；</li>
+<li>Extnesions可扩展模块：包括碰撞处理等功能。</li>
+</ul>
+<hr>
+<p><a href="https://imgchr.com/i/PBt2kQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt2kQ.png" alt="PBt2kQ.png"></a><br>Body模块，在代码层面称为Transposer，它的主要功能是处理场景中相机和它的目标之间的位置关系。我们可以把它用数学变量表示就是Offset，Offset是一个向量，不仅有大小还有方向。那么Offset的计算方式不同，可以带来不同的跟踪效果。<br><a href="https://imgchr.com/i/PBtRYj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtRYj.png" alt="PBtRYj.png"></a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Unity插件Cinemachine/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/获取AppStore引用下载地址/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1508,7 +2197,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1519,7 +2208,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1530,7 +2219,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1667,7 +2356,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.1k</span>
+    <span title="Site words total count">47.8k</span>
   
 </div>
 -->
@@ -1688,7 +2377,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.1k字</span>
+  <span class="post-count">博客全站共47.8k字</span>
 </div>
         
 

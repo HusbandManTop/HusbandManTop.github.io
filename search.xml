@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[获取AnimatorClip动画的时间长度]]></title>
+    <url>%2F2018%2F08%2F08%2F%E8%8E%B7%E5%8F%96AnimatorClip%E5%8A%A8%E7%94%BB%E7%9A%84%E6%97%B6%E9%97%B4%E9%95%BF%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[获取AnimatorClip 获取帧动画的动画长度12345678910private Animator anim;void Start()&#123; anim = Getcomponent&lt;Animator&gt;(); RuntimeAnimatorController rn = anim.runtimeAnimatorController; print(rn.name); AnimationClip[] clip = rn.animationClips; print(clip[0].leng);&#125; 判断动画是否播放完毕12345AnimatorStateInfo stateinfo = anim.GetCurrentAnimatorStateInfo(0);if (stateinfo.normalizedTime &gt;= 1)&#123; animIsPlaying = false;&#125;]]></content>
+      <categories>
+        <category>Sprite</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
+        <tag>Sprite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果]]></title>
+    <url>%2F2018%2F08%2F08%2F%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90Texture2D%E5%B9%B6%E5%88%9B%E5%BB%BASprite%2F</url>
+    <content type="text"><![CDATA[(转)unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果原贴地址:https://blog.csdn.net/zgjllf1011/article/details/79261491尊重作者原创 首先创建脚本，命名为ScriptTexture. 声明一个引用:1SpriteRenderer sr; 然后在初始化中创建我们需要的物体:123456void Start () &#123; GameObject obj = new GameObject("spriet"); sr = obj.AddComponent&lt;SpriteRenderer&gt;(); &#125; 这里首先创意一个gameobject，然后给这个物体添加一个SpriteRenderer脚本并保存到我们之前的全局变量中。接下来生成纹理:123456789101112void GenerateSprite () &#123; Texture2D t = new Texture2D(256, 512); for (int w = 0; w &lt; width; w++)&#123; for (int h = 0; h &lt; height; h ++)&#123; t.SetPixel(w,h,Color.yellow); &#125; &#125; t.Apply(); Sprite pic = Sprite.Create(t, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f)); sr.sprite = pic;&#125; 这里我们首先创建一个Texture2D，并指定宽高，接下来遍历Texture2D的每一像素点并赋值。 然后使用Texture2D生成一个Sprite并赋值给之前创建的SpriteRenderer。 最后在start中调用此方法，再把脚本挂到游戏摄像机上，运行场景看下效果:http://pd4nt2xc8.bkt.clouddn.com/1.png 场景中出现了我们的sprite，接下来我们按照之前讲的shader中同样的方法来给精灵添加一个渐变的效果，直接给出修改后的完整代码: 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859 public class ScriptTexture : MonoBehaviour &#123; public Color color1 = Color.green; public Color color2 = Color.blue; public int width = 640, height = 960; SpriteRenderer sr; // Use this for initialization void Start() &#123; GameObject obj = new GameObject("spriet"); sr = obj.AddComponent&lt;SpriteRenderer&gt;(); GenerateSprite(); &#125; // Update is called once per frame void GenerateSprite() &#123; Texture2D t = new Texture2D(width, height); for (int w = 0; w &lt; width; w++) &#123; for (int h = 0; h &lt; height; h++) &#123; float wrate = (float)w / (float)width; float hrate = (float)h / (float)height; float bezieratVal = GetBezierat(0, 0.5f, 0.5f, 1, hrate); float dis = Vector2.Distance(new Vector2(0.5f, 0.5f),new Vector2(wrate,hrate)); dis = 1 - GetBezierat(0, 0, 1, 2, dis) * 0.6f; Color c = new Color(); c.r = Mathf.Lerp(color1.r, color2.r, bezieratVal) * dis; c.g = Mathf.Lerp(color1.g, color2.g, bezieratVal) * dis; c.b = Mathf.Lerp(color1.b, color2.b, bezieratVal) * dis; c.a = 255; t.SetPixel(w, h,c); &#125; &#125; t.Apply(); Sprite pic = Sprite.Create(t, new Rect(0, 0, width, height), new Vector2(0.5f, 0.5f)); sr.sprite = pic; &#125; float GetBezierat(float a, float b, float c, float d, float t) &#123; return (Mathf.Pow(1 - t, 3) * a + 3 * t * (Mathf.Pow(1 - t, 2)) * b + 3 * Mathf.Pow(t, 2) * (1 - t) * c + Mathf.Pow(t, 3) * d); &#125;&#125; 看下最终效果:http://pd4nt2xc8.bkt.clouddn.com/1.png]]></content>
+      <categories>
+        <category>Sprite</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
+        <tag>Sprite</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[设计模式之状态模式]]></title>
+    <url>%2F2018%2F08%2F07%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[设计模式与游戏开发之状态模式(State)]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Unity2D之精灵Sprite与屏幕之间的关系]]></title>
     <url>%2F2018%2F08%2F05%2FUnity2D%E7%A0%94%E7%A9%B6%E9%99%A2%E4%B9%8B%E7%B2%BE%E7%81%B5Sprite%E4%B8%8E%E5%B1%8F%E5%B9%95%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%2F</url>
     <content type="text"><![CDATA[(转)Unity2D研究院之精灵Sprite与屏幕之间的关系原文链接:http://www.xuanyusong.com/archives/3254 尊重作者原创 屏幕整体的坐标是左上角是00点。X轴向右递增，Y轴向下递增。所有的image也是这个原理。只是unity的触摸屏坐标不是左上角，而是左下角。 所以这里我把精灵的锚点也设置成了左下角，注意上图中的pixels to units 请设置成100。 触摸屏坐标：就是用Input.mousePosition 获取用户触摸屏幕手指 或者 鼠标的位置。 实际坐标：unity的实际坐标是笛卡尔坐标系，00点是在正中心，X轴向右是正，向左是负。Y轴向上是正，向下是负。 这样问题也就来了，我怎么把触摸屏的坐标换算到实际坐标系上？解决这个问题之前我们要先解决一个更重要的问题–摄像机的参数。 把Projection改成Orthographic 也就是正交摄像机。 然后要说的就是size = 3.2。这个3.2是怎么来的呢？想想我们的分辨率的高是多少？高是640. 640/2/100 ＝ 3.2. 除以2就是屏幕高的一半，除以100就是上面我们设置的 pixels to units ＝100 . 再举个例子如果你开发时的分辨率是1280X720 那么此时你的高就是720了。 720/2/100 = 3.6 那么此时摄像机的size 就应该写成3.6了。。 再唠叨一句，手游的分辨率自适应基本都是这样修改摄像机的size来实现的了。 摄像机的参数搞清楚了，我们在来看看之前提出的问题？我怎么把触摸屏的坐标换算到实际坐标系上？ 把如下代码挂在一个Sprite对象上。 1234567891011121314151617181920212223242526272829303132using UnityEngine;using System.Collections;public class FishCommon : MonoBehaviour &#123; private float camHalfHeight; private float camHalfWidth; void Awake() &#123; this.camHalfHeight = Camera.main.orthographicSize; this.camHalfWidth = Camera.main.aspect * camHalfHeight; &#125; void Update () &#123; //手指 或者 鼠标的坐标传进去 Move(Input.mousePosition); &#125; public void Move(Vector2 postions)&#123; Move(new Vector3(postions.x,postions.y,0)); &#125; public void Move(Vector3 postions)&#123; //在这里进行坐标的换算 transform.position = ScreenToWorld(postions); &#125; private Vector3 ScreenToWorld(Vector3 postion)&#123; return Camera.main.ScreenToWorldPoint(postion); &#125;&#125;]]></content>
@@ -206,14 +241,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Array/ArrayList]]></title>
-    <url>%2F2018%2F08%2F03%2FArray-ArrayList%2F</url>
-    <content type="text"><![CDATA[Array/ArrayList/List之间的区别 1.数组: 优点:在内存中是连续的,速度较快,操作简单; 缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;1234int [] i = new int[2];i[0] = 111;i[1] = 222;//赋值i[1] = 123; //修改 2.集合ArrayList: 优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除; 缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗; 123456ArrayList list = new ArrayList();list.Add(“aa”);list.Add(123);list[1] = 1;//修改值list.Remove(123);//移除list.RemoveAt(0); (装箱与拆箱:) 12345678910111213装箱:就是想值类型转换为引用类型拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)int n = 10;object o = n;//装箱int b = (int)0;//拆箱看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;string str = &quot;123&quot;;int n = Conver.Toint32(str);//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系int n = 10;IComparable i = n;//这里发生了装箱.int32继承自IComparable; 3.泛型List:12345678优点:与集合ArrayList类似,且继承了IList接口,在声明List集合时也要声明集合内部数据的对象类型,避免了装箱和拆箱; List&lt;int&gt; list = new List&lt;int&gt;(); list.Add(123); list[0] = 111;//修改值 list.RemoveAt(0);//移除 如果list.Add(&quot;abc&quot;);//编译器就会报错,避免了类型安全问题与装箱拆箱问题; string和StringBuilder的区别:tring对象时不可变的,包括长度或者其中任何字符都是不可以改变的任何对String的改变,都会引发新的String对象的生成;string str = “aa”;str = str + “bb”;以上代码让人误以为str是能够增加长度的,其实第二句代码是重新创建了一个新的对象,以前的对象被丢弃,被GC垃圾回收器回收 C#中不能使用 new string();创建对象;假如可以以上代码等价于://string str = new string(“aa”);//str = new string(“aa” + “bb”); stringBuilder是可变的,它是专门用于字符串和字符执行动态操作的类:StringBuilder sb = new StringBuilder(“aa”);sb.Append(“bb”);StringBuilder在内部有一个足够常的字符数组用于存放字符串对象当字符串长度没超过字符数组长度时,所以操作都是针对同一个字符数组,当长度超过十,StringBuilder将自动创建一个更长的数组,把原有的数据复制过去;]]></content>
+    <title><![CDATA[Unity Log管理]]></title>
+    <url>%2F2018%2F08%2F03%2FUnityLog%2F</url>
+    <content type="text"><![CDATA[Unity Log 这一段是参考雨凇MOMO的文章:https://www.xuanyusong.com/archives/2782 在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法 12345678910111213141516171819202122232425262728293031323334353637383940using UnityEngine;using System.Collections;public class Debuger &#123; static public bool EnableLog = false; static public void Log(object message) &#123; Log(message,null); &#125; static public void Log(object message, Object context) &#123; if(EnableLog) &#123; Debug.Log(message,context); &#125; &#125; static public void LogError(object message) &#123; LogError(message,null); &#125; static public void LogError(object message, Object context) &#123; if(EnableLog) &#123; Debug.LogError(message,context); &#125; &#125; static public void LogWarning(object message) &#123; LogWarning(message,null); &#125; static public void LogWarning(object message, Object context) &#123; if(EnableLog) &#123; Debug.LogWarning(message,context); &#125; &#125;&#125; 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。 为了解决这个问题，我们可以把Debuger类做成一个dll，在终端里面输入如下代码 。。1mcs -r:/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll -target:library ClassesForDLL.cs 如果你要把多个.cs文件做成一个dll的话，那么在终端里用空格把你的.cs文件分开即可，于是我在终端里面输入，参数 就是我的cs的完整路径。1mcs -r:/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll -target:library /Users/MOMO/test13/Assets/Debuger.cs 执行完毕后，会自动的在你脚本的平级路径下生成一个同名的dll文件。 在把Debuger.cs文件删除，保留Debuger.dll就可以了。如果你的版本正式发布， 你只需找一个合适的地方调用enableLog = true就可以。 开始我想的是在Debuger类里面直接用 #if define这样的标签来做，后来我发现很多问题出现在正式版本里，一旦使用预定义标签编译那么除非重新打包不然是觉对看不到LOG。所以干脆就直接用一个静态变量来标记是否打开Log方便。这样可以让服务端做一个密令一类的东西， 正式版也能让客户端把LOG打开。。 如果你确定你的项目不会出问题，不需要运行时产生log.那么最好使用Conditional， 参数就是条件编译的预定义标签，下面的DEBUG 就是在unity projectsetting 里面 声明 预定义标签， 当然你也可以自己去定义这些标签。这样在调用方法的时候就不会去执行 方法体的内容。。 需要引入头文件 using System.Diagnostics;using System;12345[Conditional ("DEBUG")]static public void Log(object message, Object context)&#123; Debug.Log(message,context);&#125;]]></content>
       <categories>
-        <category>C#</category>
+        <category>Untiy</category>
       </categories>
       <tags>
-        <tag>C#</tag>
+        <tag>Untiy</tag>
       </tags>
   </entry>
   <entry>
@@ -228,14 +263,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Unity Log管理]]></title>
-    <url>%2F2018%2F08%2F03%2FUnityLog%2F</url>
-    <content type="text"><![CDATA[Unity Log 这一段是参考雨凇MOMO的文章:https://www.xuanyusong.com/archives/2782 在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法 12345678910111213141516171819202122232425262728293031323334353637383940using UnityEngine;using System.Collections;public class Debuger &#123; static public bool EnableLog = false; static public void Log(object message) &#123; Log(message,null); &#125; static public void Log(object message, Object context) &#123; if(EnableLog) &#123; Debug.Log(message,context); &#125; &#125; static public void LogError(object message) &#123; LogError(message,null); &#125; static public void LogError(object message, Object context) &#123; if(EnableLog) &#123; Debug.LogError(message,context); &#125; &#125; static public void LogWarning(object message) &#123; LogWarning(message,null); &#125; static public void LogWarning(object message, Object context) &#123; if(EnableLog) &#123; Debug.LogWarning(message,context); &#125; &#125;&#125; 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。 为了解决这个问题，我们可以把Debuger类做成一个dll，在终端里面输入如下代码 。。1mcs -r:/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll -target:library ClassesForDLL.cs 如果你要把多个.cs文件做成一个dll的话，那么在终端里用空格把你的.cs文件分开即可，于是我在终端里面输入，参数 就是我的cs的完整路径。1mcs -r:/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll -target:library /Users/MOMO/test13/Assets/Debuger.cs 执行完毕后，会自动的在你脚本的平级路径下生成一个同名的dll文件。 在把Debuger.cs文件删除，保留Debuger.dll就可以了。如果你的版本正式发布， 你只需找一个合适的地方调用enableLog = true就可以。 开始我想的是在Debuger类里面直接用 #if define这样的标签来做，后来我发现很多问题出现在正式版本里，一旦使用预定义标签编译那么除非重新打包不然是觉对看不到LOG。所以干脆就直接用一个静态变量来标记是否打开Log方便。这样可以让服务端做一个密令一类的东西， 正式版也能让客户端把LOG打开。。 如果你确定你的项目不会出问题，不需要运行时产生log.那么最好使用Conditional， 参数就是条件编译的预定义标签，下面的DEBUG 就是在unity projectsetting 里面 声明 预定义标签， 当然你也可以自己去定义这些标签。这样在调用方法的时候就不会去执行 方法体的内容。。 需要引入头文件 using System.Diagnostics;using System;12345[Conditional ("DEBUG")]static public void Log(object message, Object context)&#123; Debug.Log(message,context);&#125;]]></content>
+    <title><![CDATA[单例基类]]></title>
+    <url>%2F2018%2F08%2F03%2F%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB%2F</url>
+    <content type="text"><![CDATA[单例基类 在unity中有两种单例类型，一种是普通单例，即普通c#类，另一种是继承了MonoBehaviour的单例。 继承自MonoBehaciour的单例基类123456789101112131415161718192021/// MonoBehaviour的单例形式一，需要自行处理_instance的赋值和添加类的保护无参构造函数 public class Singleton &lt;T&gt; : MonoBehaviourwhere T:MonoBehaviour&#123; private static T instance; public static T Instance &#123; get &#123; return instance; &#125; &#125; protected virtual void Awake() &#123; instance = this as T; &#125;&#125; MonoBehaviour的单例形式二123456789101112131415161718192021222324/// MonoBehaviour的单例形式二，无需关心加载对象本身时使用，脚本会自动加载 /// 所有此种形式的单例脚本，将会加载到名为IndependentSingletonMonoObject同一对象上public class IndependentSingletonMono &lt;T&gt; : MonoBehaviour where T : IndependentSingletonMono &lt;T&gt; &#123; protected static T _instance; public static T Instance &#123; get &#123; if (_instance == null) &#123; _instance = FindObjectOfType &lt;T&gt;(); if (_instance == null) &#123; var go = GameObject.Find(GlobalStringRes.IndependentSingletonMonoObject); if(go == null) go = new GameObject(GlobalStringRes.IndependentSingletonMonoObject); _instance = go.AddComponent&lt;T&gt;(); &#125; &#125; return _instance; &#125; &#125; &#125; 12345678910111213141516171819202122232425using System.Collections; using System.Collections.Generic; using UnityEngine; public class MonoSingle &lt;T&gt; : MonoBehaviour where T:MonoSingle&lt;T&gt;; &#123; private static T _instance; public static T Instance &#123; get &#123; if (_instance == null) &#123; _instance = FindObjectOfType&lt;T&gt;(); if (_instance == null) &#123; GameObject managerGo = new GameObject(typeof(T).Name); _instance = managerGo.AddComponent&lt;T&gt;(); &#125; _instance.Init(); &#125; return _instance; &#125; &#125; protected virtual void Init() &#123;&#125;&#125; 用法:1public class TransformOperationControl : Singleton TransformOperationControl&#123;&#125; 1234public class MainControl : SingletonMono MainControl ｛ protected MainControl() ｛ _instance = this; ｝ ｝ 普通单例:12345678910111213141516171819202122232425262728/// 非MonoBehaviour的单例形式，需要自行添加类的公有无参构造函数 public abstract class CSharpSingletion&lt;T&gt; where T : new() &#123; private static T instance; public static T Instance &#123; get &#123; if (instance == null) &#123; instance = new T(); &#125; return instance; &#125; &#125;//调用基类using UnityEngine;using System.Collections;public class AudioSingletion : CSharpSingletion&lt;AudioSingletion&gt; &#123; public int i = 1;&#125;]]></content>
       <categories>
-        <category>Untiy</category>
+        <category>Unity</category>
       </categories>
       <tags>
-        <tag>Untiy</tag>
+        <tag>C#</tag>
+        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
@@ -262,15 +298,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[单例基类]]></title>
-    <url>%2F2018%2F08%2F03%2F%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[单例基类 在unity中有两种单例类型，一种是普通单例，即普通c#类，另一种是继承了MonoBehaviour的单例。 继承自MonoBehaciour的单例基类123456789101112131415161718192021/// MonoBehaviour的单例形式一，需要自行处理_instance的赋值和添加类的保护无参构造函数 public class Singleton &lt;T&gt; : MonoBehaviourwhere T:MonoBehaviour&#123; private static T instance; public static T Instance &#123; get &#123; return instance; &#125; &#125; protected virtual void Awake() &#123; instance = this as T; &#125;&#125; MonoBehaviour的单例形式二123456789101112131415161718192021222324/// MonoBehaviour的单例形式二，无需关心加载对象本身时使用，脚本会自动加载 /// 所有此种形式的单例脚本，将会加载到名为IndependentSingletonMonoObject同一对象上public class IndependentSingletonMono &lt;T&gt; : MonoBehaviour where T : IndependentSingletonMono &lt;T&gt; &#123; protected static T _instance; public static T Instance &#123; get &#123; if (_instance == null) &#123; _instance = FindObjectOfType &lt;T&gt;(); if (_instance == null) &#123; var go = GameObject.Find(GlobalStringRes.IndependentSingletonMonoObject); if(go == null) go = new GameObject(GlobalStringRes.IndependentSingletonMonoObject); _instance = go.AddComponent&lt;T&gt;(); &#125; &#125; return _instance; &#125; &#125; &#125; 12345678910111213141516171819202122232425using System.Collections; using System.Collections.Generic; using UnityEngine; public class MonoSingle &lt;T&gt; : MonoBehaviour where T:MonoSingle&lt;T&gt;; &#123; private static T _instance; public static T Instance &#123; get &#123; if (_instance == null) &#123; _instance = FindObjectOfType&lt;T&gt;(); if (_instance == null) &#123; GameObject managerGo = new GameObject(typeof(T).Name); _instance = managerGo.AddComponent&lt;T&gt;(); &#125; _instance.Init(); &#125; return _instance; &#125; &#125; protected virtual void Init() &#123;&#125;&#125; 用法:1public class TransformOperationControl : Singleton TransformOperationControl&#123;&#125; 1234public class MainControl : SingletonMono MainControl ｛ protected MainControl() ｛ _instance = this; ｝ ｝ 普通单例:12345678910111213141516171819202122232425262728/// 非MonoBehaviour的单例形式，需要自行添加类的公有无参构造函数 public abstract class CSharpSingletion&lt;T&gt; where T : new() &#123; private static T instance; public static T Instance &#123; get &#123; if (instance == null) &#123; instance = new T(); &#125; return instance; &#125; &#125;//调用基类using UnityEngine;using System.Collections;public class AudioSingletion : CSharpSingletion&lt;AudioSingletion&gt; &#123; public int i = 1;&#125;]]></content>
+    <title><![CDATA[Array/ArrayList]]></title>
+    <url>%2F2018%2F08%2F03%2FArray-ArrayList%2F</url>
+    <content type="text"><![CDATA[Array/ArrayList/List之间的区别 1.数组: 优点:在内存中是连续的,速度较快,操作简单; 缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;1234int [] i = new int[2];i[0] = 111;i[1] = 222;//赋值i[1] = 123; //修改 2.集合ArrayList: 优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除; 缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗; 123456ArrayList list = new ArrayList();list.Add(“aa”);list.Add(123);list[1] = 1;//修改值list.Remove(123);//移除list.RemoveAt(0); (装箱与拆箱:) 12345678910111213装箱:就是想值类型转换为引用类型拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)int n = 10;object o = n;//装箱int b = (int)0;//拆箱看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;string str = &quot;123&quot;;int n = Conver.Toint32(str);//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系int n = 10;IComparable i = n;//这里发生了装箱.int32继承自IComparable; 3.泛型List:12345678优点:与集合ArrayList类似,且继承了IList接口,在声明List集合时也要声明集合内部数据的对象类型,避免了装箱和拆箱; List&lt;int&gt; list = new List&lt;int&gt;(); list.Add(123); list[0] = 111;//修改值 list.RemoveAt(0);//移除 如果list.Add(&quot;abc&quot;);//编译器就会报错,避免了类型安全问题与装箱拆箱问题; string和StringBuilder的区别:tring对象时不可变的,包括长度或者其中任何字符都是不可以改变的任何对String的改变,都会引发新的String对象的生成;string str = “aa”;str = str + “bb”;以上代码让人误以为str是能够增加长度的,其实第二句代码是重新创建了一个新的对象,以前的对象被丢弃,被GC垃圾回收器回收 C#中不能使用 new string();创建对象;假如可以以上代码等价于://string str = new string(“aa”);//str = new string(“aa” + “bb”); stringBuilder是可变的,它是专门用于字符串和字符执行动态操作的类:StringBuilder sb = new StringBuilder(“aa”);sb.Append(“bb”);StringBuilder在内部有一个足够常的字符数组用于存放字符串对象当字符串长度没超过字符数组长度时,所以操作都是针对同一个字符数组,当长度超过十,StringBuilder将自动创建一个更长的数组,把原有的数据复制过去;]]></content>
       <categories>
-        <category>Unity</category>
+        <category>C#</category>
       </categories>
       <tags>
         <tag>C#</tag>
-        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
@@ -425,6 +460,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[获取App Store引用下载地址]]></title>
+    <url>%2F2018%2F08%2F03%2F%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%2F</url>
+    <content type="text"><![CDATA[一般苹果的下载地址都是: https://itunes.apple.com/cn/app/id1253355672?mt=8 如果你的应用上传了AppStore那么就会分配一个id,替换上面的链接的 IDxxxxxxxxx?mt=8 中的 xxxxxxx 就是AppId号s]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+      <tags>
+        <tag>IOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[背包系统之显示物品简介]]></title>
     <url>%2F2018%2F08%2F03%2F%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E4%B9%8B%E6%98%BE%E7%A4%BA%E7%89%A9%E5%93%81%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[UGUI显示物品简介信息游戏中背包系统中常见的功能,当鼠标移动到某个物品上时,就会显示物品的信息简介 (同常情况下物品的功能不一样,简介也长短不同,所以如果先创建一个Image,再在Image下面创建一个Text组件的话,这样Image不会跟随格式字体长短,多少进行变大变小,会影响有些信息多,或者信息过长的物品的简介的显示) 1.先创建一个Text组件,然后在Text组件上添加Comtent Size Fitter组件,设置Horizontal Fit和Vertical Fit; 2.然后创建一个背景Image,置于Text组件下,作为Text组件的子物体,设置Image的锚点对其Text锚点; 3.赋值Text一份,(注意赋值的Text上也要Comtent Size Fitter组件),置于Text组件下作为子物体第一个Text组件负责根据字体大小,文字多少去调整Image的大小,第二个Text组件才是负责显示信息 4.设置父物体Text组件的中心点,也就是当鼠标移动上去,会在鼠标的哪个地方显示,这个根据自己的需求调整即可; 5.给父类Text添加一个CanvasGroup组件控制显示隐藏,也可以用其他方法 简介信息面板的显示的隐藏123456789101112131415//鼠标进入public void OnPointerEnter(PointerEventData eventData)&#123; if(transform.childCount&gt;0) &#123; string toolTipText = transform.GetChild(0).GetComponent&lt;ItemUI&gt;().item.GetToolTipText(); InventoryManager.instance.ShowToolTip(toolTipText); &#125;&#125;//鼠标退出public void OnPointerExit(PointerEventData eventData)&#123; if (transform.childCount &gt; 0) InventoryManager.instance.HidToolTip();&#125; 1234567891011121314151617181920212223242526272829303132333435363738private Text toolTopText; private Text contentText; private CanvasGroup canvasGroup; private float targetAlpha = 1; public float soomthing = 10; private void Awake() &#123; toolTopText = GetComponent&lt;Text&gt;(); contentText = transform.Find("ContentText").GetComponent&lt;Text&gt;(); canvasGroup = GetComponent&lt;CanvasGroup&gt;(); &#125; private void Update() &#123; if(canvasGroup.alpha != targetAlpha) &#123; canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, soomthing * Time.deltaTime); if(Mathf.Abs(canvasGroup.alpha-targetAlpha)&lt;0.05f) &#123; canvasGroup.alpha = targetAlpha; &#125; &#125; &#125; public void Show(string text) &#123; toolTopText.text = text; contentText.text = text; targetAlpha = 1; &#125; public void Hid() &#123; targetAlpha = 0; &#125; 简介面板跟随鼠标移动123456789101112131415161718//给toolTip设置位置信息public void SetLocalPosition(Vector3 pos)&#123; transform.localPosition = pos;&#125;private void Update()&#123; //如果提示面板是在显示状态,就让它跟随鼠标 if(toolTipIsShow) &#123; Vector2 position; //设置输入的点在画布上的位置 RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,Input.mousePosition,null,out position); toolTip.SetLocalPosition(position);//把转化的位置传递给toolTip &#125;&#125; 富文本显示物品简介面板:在父类中写一个获取物品提示信息的虚函数,在由各个类型物品的子类去重写这个函数1234567891011121314151617181920212223242526272829303132333435/// &lt;summary&gt;/// 得到提示面板应该显示什么内容/// &lt;/summary&gt;/// &lt;returns&gt;The tool tip text.&lt;/returns&gt;public virtual string GetToolTipText()&#123; string color = ""; switch (quality) &#123; case Quality.Artifact: color = "red"; break; case Quality.Common: color = "white"; break; case Quality.Epic: color = "magenta"; break; case Quality.Legendary: color = "oriange"; break; case Quality.Rare: color = "navy"; break; case Quality.Uncommon: color = "lime"; break; &#125; //字符串格式输出(带富文本类型) string text = string.Format("&lt;color=&#123;4&#125;&gt;&#123;0&#125;&lt;/color&gt;\n&lt;size=17&gt;购买价格:&#123;1&#125; 出售价格:&#123;2&#125;&lt;/size&gt;\n&lt;color=yellow&gt;&#123;3&#125;&lt;/color&gt;", Name, BuyPrice, SellPrice, Desctiption, color); return text;&#125;]]></content>
@@ -434,17 +480,6 @@
       </categories>
       <tags>
         <tag>Unity</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[获取App Store引用下载地址]]></title>
-    <url>%2F2018%2F08%2F03%2F%E8%8E%B7%E5%8F%96AppStore%E5%BC%95%E7%94%A8%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%2F</url>
-    <content type="text"><![CDATA[一般苹果的下载地址都是: https://itunes.apple.com/cn/app/id1253355672?mt=8 如果你的应用上传了AppStore那么就会分配一个id,替换上面的链接的 IDxxxxxxxxx?mt=8 中的 xxxxxxx 就是AppId号s]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-      <tags>
-        <tag>IOS</tag>
       </tags>
   </entry>
   <entry>
