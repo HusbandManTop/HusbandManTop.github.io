@@ -338,7 +338,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/UnityAPI解析/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity解析Text文本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -357,7 +357,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/04/UnityAPI解析/" itemprop="url">UnityAPI解析</a></h1>
+                <a class="post-title-link" href="/2018/08/03/Unity解析Text文本/" itemprop="url">Unity解析Text文本</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:16:45+08:00">
-                2018-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:27+08:00">
+                2018-08-03
               </time>
             
 
@@ -411,8 +411,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/04/UnityAPI解析/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/UnityAPI解析/" class="cy_cmt_count" data-xid="2018/08/04/UnityAPI解析/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/Unity解析Text文本/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity解析Text文本/" class="cy_cmt_count" data-xid="2018/08/03/Unity解析Text文本/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -434,7 +434,402 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  936
+                  190
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Unity解析Text文本"><a href="#Unity解析Text文本" class="headerlink" title="Unity解析Text文本"></a>Unity解析Text文本</h3><hr>
+<h4 id="Unity中解析Text文本有四种方式"><a href="#Unity中解析Text文本有四种方式" class="headerlink" title="Unity中解析Text文本有四种方式:"></a>Unity中解析Text文本有四种方式:</h4><h5 id="1-TextAsset解析"><a href="#1-TextAsset解析" class="headerlink" title="1.TextAsset解析"></a>1.TextAsset解析</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TestAsset loadText;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LoadText</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">string</span> str = loadText.text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-协程加WWW类"><a href="#2-协程加WWW类" class="headerlink" title="2.协程加WWW类"></a>2.协程加WWW类</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> IEnumerator <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    WWW www = <span class="keyword">new</span> WWW(<span class="string">"file://"</span>+Application.dataPath + <span class="string">"/text.text"</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> www;</span><br><span class="line">    s = www.text;</span><br><span class="line">    print(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-Resources-Load-“text”-as-TextAsset"><a href="#3-Resources-Load-“text”-as-TextAsset" class="headerlink" title="3.Resources.Load(“text”) as TextAsset;"></a>3.Resources.Load<textasset>(“text”) as TextAsset;</textasset></h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TextAsset resouse = GameObject.Instantiate (Resources.Load&lt;TextAsset&gt;(<span class="string">"1111"</span>)) <span class="keyword">as</span> TextAsset;</span><br></pre></td></tr></table></figure>
+<h5 id="4-StreamReader"><a href="#4-StreamReader" class="headerlink" title="4.StreamReader"></a>4.StreamReader</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">RendFile</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//StreamReader读取的文件位置是在Application.dataPath+"/../"</span></span><br><span class="line">    StreamReader sr = <span class="keyword">new</span> StreamReader(<span class="string">"1111.text"</span>);</span><br><span class="line">    <span class="keyword">string</span> str = sr.ReadToEnd();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Unity解析Text文本/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity文件操作路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Unity文件操作路径/" itemprop="url">Unity文件操作路径</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity文件操作路径/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity文件操作路径/" class="cy_cmt_count" data-xid="2018/08/03/Unity文件操作路径/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,545
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="转-Unity文件操作路径"><a href="#转-Unity文件操作路径" class="headerlink" title="(转)Unity文件操作路径"></a>(转)Unity文件操作路径</h4><hr>
+<p>原博客地址:<a href="https://blog.csdn.net/linxinfa/article/details/51679528" target="_blank" rel="noopener">https://blog.csdn.net/linxinfa/article/details/51679528</a></p>
+<h5 id="1-1-IOS"><a href="#1-1-IOS" class="headerlink" title="1.1 IOS:"></a>1.1 IOS:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data</span><br><span class="line">Application.streamingAssetsPath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data/Raw</span><br><span class="line">Application.persistentDataPath :      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Documents</span><br><span class="line">Application.temporaryCachePath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Library/Caches</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-Android"><a href="#1-2-Android" class="headerlink" title="1.2 Android:"></a>1.2 Android:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /data/app/xxx.xxx.xxx.apk</span><br><span class="line">Application.streamingAssetsPath :      jar:file:///data/app/xxx.xxx.xxx.apk/!/assets</span><br><span class="line">Application.persistentDataPath :         /data/data/xxx.xxx.xxx/files</span><br><span class="line">Application.temporaryCachePath :      /data/data/xxx.xxx.xxx/cache</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-Windows"><a href="#1-3-Windows" class="headerlink" title="1.3 Windows:"></a>1.3 Windows:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         C:/Users/xxxx/AppData/LocalLow/CompanyName/ProductName</span><br><span class="line">Application.temporaryCachePath :      C:/Users/xxxx/AppData/Local/Temp/CompanyName/ProductName</span><br></pre></td></tr></table></figure>
+<h5 id="1-4-Mac"><a href="#1-4-Mac" class="headerlink" title="1.4 Mac:"></a>1.4 Mac:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         /Users/xxxx/Library/Caches/CompanyName/Product Name</span><br><span class="line">Application.temporaryCachePath :     /var/folders/57/6b4_9w8113x2fsmzx_yhrhvh0000gn/T/CompanyName/Product Name</span><br></pre></td></tr></table></figure>
+<h5 id="1-5-Windows-Web-Player"><a href="#1-5-Windows-Web-Player" class="headerlink" title="1.5 Windows Web Player:"></a>1.5 Windows Web Player:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :             file:///D:/MyGame/WebPlayer (即导包后保存的文件夹，html文件所在文件夹)</span><br><span class="line">Application.streamingAssetsPath :</span><br><span class="line">Application.persistentDataPath :</span><br><span class="line">Application.temporaryCachePath :</span><br></pre></td></tr></table></figure>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Unity文件操作路径/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/CSharpDictionary字典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/CSharpDictionary字典/" itemprop="url">CSharpDictionary字典</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:20:29+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/CSharpDictionary字典/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/CSharpDictionary字典/" class="cy_cmt_count" data-xid="2018/08/03/CSharpDictionary字典/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  802
                 </span>
               
 
@@ -472,41 +867,24 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h3 id="UnityAPI文档"><a href="#UnityAPI文档" class="headerlink" title="UnityAPI文档"></a>UnityAPI文档</h3><p><a href="http://www.ceeger.com/Manual/" target="_blank" rel="noopener">Unity圣典</a><br><a href="https://docs.unity3d.com/ScriptReference/" target="_blank" rel="noopener">Unity官方手册</a><br><a href="http://docs.manew.com/" target="_blank" rel="noopener">蛮牛手册</a></p>
-<p><strong>API(Application Programming Interface),即应用程序编程接口,是一些预定义的函数,目的是提供应用程序与开发人员基于某软件或者硬件得以访问一组例程的能力,而无需访问源码,或去理解内部工作机制细节</strong></p>
-<h4 id="Unity-脚本事件函数执行顺序和生命周期"><a href="#Unity-脚本事件函数执行顺序和生命周期" class="headerlink" title="Unity 脚本事件函数执行顺序和生命周期:"></a>Unity 脚本事件函数执行顺序和生命周期:</h4><p><a href="https://imgchr.com/i/PB0AyR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PB0AyR.png" alt="PB0AyR.png"></a></p>
-<hr>
-<h4 id="第一章-Application类"><a href="#第一章-Application类" class="headerlink" title="第一章: Application类"></a>第一章: Application类</h4><p>Application类不含实例属性和实例方法,在脚本中通过直接调用Application类的静态属性和方法来控制程序的运行时的数据;<br>Application静态属性:</p>
+          <h4 id="C-Dictionary-字典"><a href="#C-Dictionary-字典" class="headerlink" title="C# Dictionary 字典"></a>C# Dictionary 字典</h4><hr>
 <ul>
-<li>1.dataPath属性: 数据文件路径 {public static string dataPath{get;}}</li>
-<li>2.Application.dataPath: 返回程序的数据文件所在文件夹的路径(只读).返回路径为相对路径,不同游戏平台的数据文件保存路径不同;</li>
-<li>3.Application.PersistentDataPath: 返回一个持久化数据存储目录的路径(只读),可以在此路径下存储一些持久化的数据文件.同一平台,不同程序中调用此属性,返回值相同.</li>
-<li>4.Application.streamingAssetsPath: 此属性用于返回流数据的缓存目录,返回路径为相对路径,适合设置一些外部文件的路径.</li>
-<li>5.Application.temporaryCachePath: 此属性用于返回一个临时数据目录(只读),对于同一平台,不同程序调用此属性,返回值相同.<br>loadedLevel属性 : 关卡索引</li>
-<li>1.public static int loadedLevel{ get; }</li>
-<li>2.Application.loadedLevel 返回当前场景的索引值</li>
-<li>3.Application.loadedLevelName 返回当前场景的名字</li>
-<li>4.Application.isLoadingLevel 是否有场景被加载</li>
-<li>5.Application.LevelCount 游戏中可被加载的场景数量</li>
-<li>6.Application.platform 当前游戏的运行平台,返回值为枚举类型</li>
-<li>7.Application.isPlaying 当前游戏是否正在运行</li>
-<li>8.Application.isEditor 游戏是否处于Unity编辑模式<br>Application类静态方法:</li>
-<li>1.CaptureScreenshot方法 : 截屏</li>
-<li>2.public static void CaptureScreenshot(string filename);</li>
-<li>3.public static void CaptureScreenshot(string filename, int superSize);<br>  参数filename 截屏文件名称 superSize放大系数,默认为0,即不放大<br>  此方法截取当前游戏画面并保存为PNG格式,文件默认保存在根目录下,若有重名文件则替换.</li>
-<li>4.LoadLevelAdditiveAsync方法 : 异步加载关卡</li>
-<li>5.public static AsynvOperation LoadLevelAdditiveAsync(int index);//参数关卡索引值</li>
-<li>6.public static AsynvOperation</li>
-<li>LoadLevelAdditiveAsync(string levelName);//参数关卡名称<br>  此方法用于按照关卡名字在后台异步加载关卡到当前场景中,此方法只是将新关卡加载到当前场景,当前场景的原有内容不会被销毁.</li>
-<li>7.AsynvOperation colve = public static AsynvOperation &gt;&gt;LoadLevelAdditiveAsync(int index);</li>
-<li>8.colve.isDone 是否加载完成</li>
-<li>9.colve.progress 加载进度</li>
-<li>10.RegisterLogCallback方法 :注册委托<br>  public static void RegisterLogCallback(Application.LogCallback handler);参数是委托的名字<br>  此方法用于注册一个委托来调用日志信息</li>
+<li><p>说明</p>
+<ul>
+<li>必须包含名空间System.Collection.Generic</li>
+<li>Dictionary里面的每一个元素都是一个键值对(由二个元素组成：键和值)</li>
+<li>键必须是唯一的,而值不需要唯一的</li>
+<li>键和值都可以是任何类型(比如：string, int, 自定义类型，等等)</li>
+<li>通过一个键读取一个值的时间是接近O(1)</li>
+<li>键值对之间的偏序可以不定义</li>
 </ul>
-<hr>
+</li>
+<li>定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Dictionary&lt;T, T&gt; openWith = new Dictionary&lt;T, T&gt;();</span><br><span class="line"></span><br><span class="line">1.常用属性</span><br><span class="line"></span><br><span class="line">    名称           说明</span><br><span class="line">    Comparer       获取用于确定字典中的键是否相等的 IEqualityComparer&lt;T&gt;。</span><br><span class="line">    Count          获取包含在 Dictionary&lt;TKey, TValue&gt; 中的键/值对的数目。</span><br><span class="line">    Item           获取或设置与指定的键相关联的值。</span><br><span class="line">    Keys           获取包含 Dictionary&lt;TKey, TValue&gt; 中的键的集合。</span><br><span class="line">    Values         获取包含 Dictionary&lt;TKey, TValue&gt; 中的值的集合。</span><br><span class="line"></span><br><span class="line">2.常用方法</span><br><span class="line">    名称                说明</span><br><span class="line">    Add                 将指定的键和值添加到字典中。</span><br><span class="line">    Clear               从 Dictionary&lt;TKey, TValue&gt; 中移除所有的键和值。</span><br><span class="line">    ContainsKey         确定 Dictionary&lt;TKey, TValue&gt; 是否包含指定的键。</span><br><span class="line">    ContainsValue       确定 Dictionary&lt;TKey, TValue&gt; 是否包含特定值。</span><br><span class="line">    Equals(Object)      确定指定的 Object 是否等于当前的 Object。 （继承自 Object。）</span><br><span class="line">    Finalize            允许对象在“垃圾回收”回收之前尝试释放资源并执行其他清理操作。 （继承自 Object。）</span><br><span class="line">    GetEnumerator       返回循环访问 Dictionary&lt;TKey, TValue&gt; 的枚举器。</span><br><span class="line">    GetHashCode         用作特定类型的哈希函数。 （继承自 Object。）</span><br><span class="line">    GetObjectData       实现 System.Runtime.Serialization.ISerializable 接口，并返回序列化 Dictionary&lt;TKey, TValue&gt; 实例所需的数据。</span><br><span class="line">    GetType             获取当前实例的 Type。 （继承自 Object。）</span><br><span class="line">    MemberwiseClone     创建当前 Object 的浅表副本。 （继承自 Object。）</span><br><span class="line">    OnDeserialization    实现 System.Runtime.Serialization.ISerializable 接口，并在完成反序列化之后引发反序列化事件。</span><br><span class="line">    Remove              从 Dictionary&lt;TKey, TValue&gt; 中移除所指定的键的值。</span><br><span class="line">    ToString            返回表示当前对象的字符串。 （继承自 Object。）</span><br><span class="line">    TryGetValue         获取与指定的键相关联的值。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/04/UnityAPI解析/#more" rel="contents">
+            <a class="btn" href="/2018/08/03/CSharpDictionary字典/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -561,7 +939,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/CsharpToString/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -580,7 +958,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/Unity性能优化篇一/" itemprop="url">Unity性能优化篇一</a></h1>
+                <a class="post-title-link" href="/2018/08/03/CsharpToString/" itemprop="url">CsharpToString</a></h1>
         
 
         <div class="post-meta">
@@ -592,7 +970,7 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:48+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:19:55+08:00">
                 2018-08-03
               </time>
             
@@ -615,8 +993,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
                   </a>
                 </span>
 
@@ -634,8 +1012,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/Unity性能优化篇一/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity性能优化篇一/" class="cy_cmt_count" data-xid="2018/08/03/Unity性能优化篇一/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/CsharpToString/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/CsharpToString/" class="cy_cmt_count" data-xid="2018/08/03/CsharpToString/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -657,246 +1035,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,630
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  31
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Unity性能优化篇-一"><a href="#Unity性能优化篇-一" class="headerlink" title="Unity性能优化篇(一)"></a>Unity性能优化篇(一)</h3><hr>
-<h4 id="Unity游戏安装包大-运行卡的原因"><a href="#Unity游戏安装包大-运行卡的原因" class="headerlink" title="Unity游戏安装包大/运行卡的原因"></a>Unity游戏安装包大/运行卡的原因</h4><h5 id="Mono虚拟机"><a href="#Mono虚拟机" class="headerlink" title="Mono虚拟机"></a>Mono虚拟机</h5><ul>
-<li>因为使用Unity在开发游戏的时候,因为Unity是利用Mono虚拟机来实现跨平台.<h5 id="Drawcall"><a href="#Drawcall" class="headerlink" title="Drawcall"></a>Drawcall</h5></li>
-<li>什么是Drawcall: <a href="https://www.zhihu.com/question/36357893" target="_blank" rel="noopener">https://www.zhihu.com/question/36357893</a><ul>
-<li>其实Drawcall很简单,就是cpu对图形绘制接口的调用,CPU通过调用图形库(directx/opengl)接口,命令GPU进行渲染操作(每一次CPU去调用图形库接口命令GPU渲染即为一次Drawcall)</li>
-<li>很多时候我们会误认为是Drawcall造成的性能问题是GPU谢欢渲染状态导致,其实这里的元凶是CPU</li>
-<li>CPU和GPU是如何进行并行工作和交互的<ul>
-<li>试想，渲染流程没用采用流水线的工作方式：CPU发送一个渲染命令之后，GPU立即执行渲染命令绘制图形，等到渲染任务结束之后，CPU才可以继续发送下一个渲染命令，这样显然影响工作效率。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>采用渲染流水线后，CPU与GPU并行工作，独立而不相互依赖。这是通过命令缓冲区来实现的：命令缓冲区维护一个命令队列，CPU向其中发送命令，GPU从中取出命令并执行。命令有很多种，DrawCall是一种，其他命令还有改变渲染状态、设置渲染数据流等。</p>
-<p>这种方式就类似于游戏开发的网络通信：维持一个消息队列，网络线程接收解析消息并将之添加到消息队列，游戏主线程更新时从中取出消息并做派发处理。</p>
-<ul>
-<li>DrawCall是如何影响性能的？<ul>
-<li>每一次绘制CPU都要调用DrawCall，而在调动DrawCall前，CPU还要进行很多准备工作：检测渲染状态、提交渲染所需要的数据、提交渲染所需要的状态。<br>而GPU本身具有很强大的计算能力，可以很快就处理完渲染任务。</li>
-</ul>
-</li>
-</ul>
-<p>当DrawCall过多，CPU就会很多额外开销用于准备工作，CPU本身负载，而这时GPU可能闲置了。</p>
-<p>做个试验：拷贝1000个总大小1M的文件和单个大小为1M的文件，明显拷贝1000个文件要慢很多，DrawCall调用和这个很类似</p>
-<ul>
-<li>DrawCall优化：减少DrawCall<br><a href="https://zhuanlan.zhihu.com/p/26386905" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26386905</a></li>
-</ul>
-<h5 id="Unity-Profiler"><a href="#Unity-Profiler" class="headerlink" title="Unity Profiler"></a>Unity Profiler</h5><h6 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h6><p>Profiler官方概述:Unity Profiler窗口可帮助您优化游戏。它会为您报告在游戏的各个区域花了多少时间。例如，它可以报告渲染，动画或游戏逻辑所花时间的百分比。<br>您可以分析GPU，CPU，内存，渲染和音频的性能。<br>要查看性能分析数据，请在编辑器中使用性能分析在游戏中进行游戏，并记录性能数据。Profiler窗口随后在时间轴中显示数据，以便您可以看到比其他帧更快的帧（或更多时间）。通过点击时间线中的任何位置，Profiler窗口的底部将显示所选帧的详细信息。<br>请注意，性能分析必须测试您的代码（即：添加一些说明以方便检查）。虽然这对游戏的性能影响很小，但开销足够小，不会影响游戏帧率<br><a href="https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html" target="_blank" rel="noopener">https://docs.unity3d.com/2017.4/Documentation/Manual/Profiler.html</a></p>
-<h6 id="Unity-Statistics统计面板"><a href="#Unity-Statistics统计面板" class="headerlink" title="Unity Statistics统计面板"></a>Unity Statistics统计面板</h6><p>Statistics窗口，全称叫做 Rendering Statistics Window，即渲染统计窗口（或渲染数据统计窗口）,窗口中罗列出关于声音、图像、网络状况等多种统计信息</p>
-<ul>
-<li>FPS(Time per frame andFPS):frames per seconds表示引擎处理和渲染一个游戏帧所花费的时间,该数字主要受到场景中渲染物体数量和 GPU性能的影响，FPS数值越高，游戏场景的动画显示会更加平滑和流畅。一般来说，超过30FPS的画面人眼不会感觉到卡，由于视觉残留的特性，光在视网膜上停止总用后人眼还会保持1/24秒左右的时间，因此游戏画面每秒帧数至少要保证在30以上。另外，Unity中的FPS数值仅包括此游戏Scene里更新和渲染的帧，编辑器中绘制的Scene和其它监视窗口的进程不包括在内。</li>
-<li>CPU:获取到当前占用CPU进行计算的时间绝对值，或时间点，如果Unity主进程处于挂断或休眠状态时，CPU time将会保持不变。</li>
-<li>Render thread:GPU渲染线程处理图像所花费的时间，具体数值由GPU性能来决定，</li>
-<li>Batches(批处理):即Batched Draw Calls,是Unity内置的Draw Call Batching技术。</li>
-</ul>
-<p>解释下什么叫做“Draw call”，CPU每次通知GPU发出一个glDrawElements（OpenGl中的图元渲染函数)或者 DrawIndexedPrimitive（DirectX中的顶点绘制方法）的过程称为一次Draw call,一般来说，引擎每对一个物体进行一次DrawCall，就会产生一个Batch,这个Batch里包含着该物体所有的网格和顶点数据，当渲染另一个相同的物体时，引擎会直接调用Batch里的信息，将相关顶点数据直接送到GPU,从而让渲染过程更加高效，即Batching技术是将所有材质相近的物体进行合并渲染。</p>
-<p>对于含有多个不同Shader和Material的物体，渲染的过程比较耗时，因为会产生多个Batches。每次对物体的材质或者贴图进行修改，都会影响Batches里数据集的构成。因此，如果场景中有大量材质不同的物体，会很明显的影响到GPU的渲染效率</p>
-<ul>
-<li>Verts：摄像机视野(field of view)内渲染的顶点总数。</li>
-<li>Tris: 摄像机视野(field of view)内渲染的的三角面总数量。</li>
-<li>Screen:获当前Game屏幕的分辨率大小，后边的2.1MB表示总的内存使用数值。</li>
-<li>Shadow casters：表示场景中有多少个可以投射阴影的物体，一般这些物体都作为场景中的光源。</li>
-<li>visible skinned meshed：渲染皮肤网格的数量。</li>
-<li>Animations:正在播放动画的数量。</li>
-<li>SetPass calls:<ul>
-<li>场景上有1个gameobject，希望能显示很酷炫的效果，它的Material上带有许多特定的Shader。为了实现相应的效果，Shader里或许会包含很多的Pass,每当GPU即将去运行一个Pass之前，就会产生一个“SetPass call”，因此在描述渲染性能开销上，“SetPass calls”更加有说服力<br><a href="https://blog.csdn.net/wdmzjzlym/article/details/51335915" target="_blank" rel="noopener">https://blog.csdn.net/wdmzjzlym/article/details/51335915</a></li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Unity性能优化篇一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Unity插件Cinemachine/" itemprop="url">Unity插件之Cinemachine</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:02:01+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Unity插件Cinemachine/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity插件Cinemachine/" class="cy_cmt_count" data-xid="2018/08/03/Unity插件Cinemachine/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,761
+                  1,574
                 </span>
               
 
@@ -934,45 +1073,28 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h4 id="Unity相机插件之Cinemachine"><a href="#Unity相机插件之Cinemachine" class="headerlink" title="Unity相机插件之Cinemachine"></a>Unity相机插件之Cinemachine</h4><hr>
-<ul>
-<li>游戏设计中的镜头语言:<ul>
-<li>跟踪</li>
-<li>瞄准</li>
-<li>物理相关: 碰撞,视线遮挡</li>
-<li>镜头特效</li>
-<li>镜头切换</li>
-</ul>
+          <h4 id="C-ToString-方法"><a href="#C-ToString-方法" class="headerlink" title="C#ToString()方法"></a>C#ToString()方法</h4><hr>
+<h5 id="一、取中文日期显示"><a href="#一、取中文日期显示" class="headerlink" title="一、取中文日期显示"></a>一、取中文日期显示</h5><ul>
+<li><p>1、年月日时分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTime.ToString(&quot;f&quot;); //不显示秒</span><br></pre></td></tr></table></figure>
 </li>
-<li>Cinemachine程序化相机系统:<ul>
-<li>构建虚拟世界的相机系统,模拟真实相机的行为;</li>
-<li>通过程序化方式,提高开发效率;</li>
-</ul>
+<li><p>2、年月</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTime.ToString(&quot;y&quot;);</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<hr>
-<h4 id="Unity官方的教学"><a href="#Unity官方的教学" class="headerlink" title="Unity官方的教学"></a>Unity官方的教学</h4><ul>
-<li><p>Cinemachine提供了很多预先设置好的行为。例如：常见的第三人称绕着角色旋转的行为，或者沿着导轨滑动的行为。通过提前预置行为，可以帮助我们非常方便的来实现游戏中的功能。也就是通过程序化的方式，提升我们的开发效率。</p>
+<li><p>3、月日</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTime.ToString(&quot;m&quot;);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Cinemachine核心组件包括Brain和Virtual Camera（虚拟相机），Brain负责相机的切换。虚拟相机复杂拍摄。</p>
+<li><p>4、格式为：2003-9-23</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTime.ToString(&quot;d&quot;);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>通常我们的场景中不是单一的虚拟摄像机，而是由很多台虚拟相机来完成拍摄任务，如下图所示。因此大家在制作游戏的时候更像是一个电影导演，可以通过各种相机实现各种炫酷的镜头，完成各种不同角度到拍摄。<br><a href="https://imgchr.com/i/PBtcTg" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtcTg.png" alt="PBtcTg.png"></a></p>
+<li><p>5、格式为：14:24</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTime.ToString(&quot;t&quot;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="虚拟相机详解"><a href="#虚拟相机详解" class="headerlink" title="虚拟相机详解:"></a>虚拟相机详解:</h5><p>虚拟相机主要由六个模块组成，分别是：</p>
-<ul>
-<li>Lens：包括调整FOV等参数；</li>
-<li>Body：负责处理相机和跟踪目标之间的相对位置的这样一个关系；</li>
-<li>Aim：负责处理焦点和跟踪目标在镜头中的相对位置；</li>
-<li>Noise：模拟手持相机的晃动；</li>
-<li>后处理模块：让每个镜头有不同的后处理效果；</li>
-<li>Extnesions可扩展模块：包括碰撞处理等功能。</li>
-</ul>
-<hr>
-<p><a href="https://imgchr.com/i/PBt2kQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBt2kQ.png" alt="PBt2kQ.png"></a><br>Body模块，在代码层面称为Transposer，它的主要功能是处理场景中相机和它的目标之间的位置关系。我们可以把它用数学变量表示就是Offset，Offset是一个向量，不仅有大小还有方向。那么Offset的计算方式不同，可以带来不同的跟踪效果。<br><a href="https://imgchr.com/i/PBtRYj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBtRYj.png" alt="PBtRYj.png"></a></p>
+<h5 id="二、字符型转换-转为字符串"><a href="#二、字符型转换-转为字符串" class="headerlink" title="二、字符型转换 转为字符串"></a>二、字符型转换 转为字符串</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 12345.ToString(&quot;n&quot;);     //结果：12,345.00</span><br><span class="line">- 12345.ToString(&quot;C&quot;);     //结果：￥12,345.00</span><br><span class="line">- 12345.ToString(&quot;e&quot;);     //结果：1.234500e+004</span><br><span class="line">- 12345.ToString(&quot;f4&quot;);    //结果：12345.0000</span><br><span class="line">- 12345.ToString(&quot;x&quot;);     //结果：3039 (16进制)</span><br><span class="line">- 12345.ToString(&quot;p&quot;);     //结果：1,234,500.00%</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Unity插件Cinemachine/#more" rel="contents">
+            <a class="btn" href="/2018/08/03/CsharpToString/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1027,7 +1149,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/获取AppStore引用下载地址/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/FSM状态机之UnityWIKI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1046,7 +1168,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/获取AppStore引用下载地址/" itemprop="url">获取App Store引用下载地址</a></h1>
+                <a class="post-title-link" href="/2018/08/03/FSM状态机之UnityWIKI/" itemprop="url">FSM状态机之UnityWIKI</a></h1>
         
 
         <div class="post-meta">
@@ -1058,605 +1180,7 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:01:08+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IOS/" itemprop="url" rel="index">
-                    <span itemprop="name">IOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/获取AppStore引用下载地址/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/获取AppStore引用下载地址/" class="cy_cmt_count" data-xid="2018/08/03/获取AppStore引用下载地址/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  55
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <font size="5">一般苹果的下载地址都是: <a href="https://itunes.apple.com/cn/app/id1253355672?mt=8" target="_blank" rel="noopener">https://itunes.apple.com/cn/app/id1253355672?mt=8</a></font>
-
-<p><strong>如果你的应用上传了AppStore那么就会分配一个id,替换上面的链接的 IDxxxxxxxxx?mt=8<br> 中的 xxxxxxx 就是AppId号</strong>s</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/背包系统之显示物品简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/背包系统之显示物品简介/" itemprop="url">背包系统之显示物品简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:01:08+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/UGUI/" itemprop="url" rel="index">
-                    <span itemprop="name">UGUI</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/背包系统之显示物品简介/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/背包系统之显示物品简介/" class="cy_cmt_count" data-xid="2018/08/03/背包系统之显示物品简介/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  824
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="UGUI显示物品简介信息"><a href="#UGUI显示物品简介信息" class="headerlink" title="UGUI显示物品简介信息"></a>UGUI显示物品简介信息</h4><p>游戏中背包系统中常见的功能,当鼠标移动到某个物品上时,就会显示物品的信息简介</p>
-<p><font size="4" color="#E15869">(同常情况下物品的功能不一样,简介也长短不同,所以如果先创建一个Image,再在Image下面创建一个Text组件的话,这样Image不会跟随格式字体长短,多少进行变大变小,会影响有些信息多,或者信息过长的物品的简介的显示)</font></p>
-<ul>
-<li>1.先创建一个Text组件,然后在Text组件上添加Comtent Size Fitter组件,设置Horizontal Fit和Vertical Fit;</li>
-<li>2.然后创建一个背景Image,置于Text组件下,作为Text组件的子物体,设置Image的锚点对其Text锚点;</li>
-<li>3.赋值Text一份,(注意赋值的Text上也要Comtent Size Fitter组件),置于Text组件下作为子物体<br>第一个Text组件负责根据字体大小,文字多少去调整Image的大小,第二个Text组件才是负责显示信息</li>
-<li>4.设置父物体Text组件的中心点,也就是当鼠标移动上去,会在鼠标的哪个地方显示,这个根据自己的需求调整即可;</li>
-<li>5.给父类Text添加一个CanvasGroup组件控制显示隐藏,也可以用其他方法</li>
-</ul>
-<hr>
-<h4 id="简介信息面板的显示的隐藏"><a href="#简介信息面板的显示的隐藏" class="headerlink" title="简介信息面板的显示的隐藏"></a>简介信息面板的显示的隐藏</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//鼠标进入</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerEnter</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(transform.childCount&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">string</span> toolTipText = transform.GetChild(<span class="number">0</span>).GetComponent&lt;ItemUI&gt;().item.GetToolTipText();</span><br><span class="line">        InventoryManager.instance.ShowToolTip(toolTipText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//鼠标退出</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerExit</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (transform.childCount &gt; <span class="number">0</span>)</span><br><span class="line">        InventoryManager.instance.HidToolTip();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Text toolTopText;</span><br><span class="line">   <span class="keyword">private</span> Text contentText;</span><br><span class="line">   <span class="keyword">private</span> CanvasGroup canvasGroup;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">float</span> targetAlpha = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">float</span> soomthing = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       toolTopText = GetComponent&lt;Text&gt;();</span><br><span class="line">       contentText = transform.Find(<span class="string">"ContentText"</span>).GetComponent&lt;Text&gt;();</span><br><span class="line">       canvasGroup = GetComponent&lt;CanvasGroup&gt;();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(canvasGroup.alpha != targetAlpha)</span><br><span class="line">       &#123;</span><br><span class="line">           canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, soomthing * Time.deltaTime);</span><br><span class="line">           <span class="keyword">if</span>(Mathf.Abs(canvasGroup.alpha-targetAlpha)&lt;<span class="number">0.05</span>f)</span><br><span class="line">           &#123;</span><br><span class="line">               canvasGroup.alpha = targetAlpha;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Show</span>(<span class="params"><span class="keyword">string</span> text</span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       toolTopText.text = text;</span><br><span class="line">       contentText.text = text;</span><br><span class="line">       targetAlpha = <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Hid</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       targetAlpha = <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/背包系统之显示物品简介/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/FSM有限状态机/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/FSM有限状态机/" itemprop="url">FSM有限状态机</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:58:01+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FSM有限状态机/" itemprop="url" rel="index">
-                    <span itemprop="name">FSM有限状态机</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/FSM有限状态机/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/FSM有限状态机/" class="cy_cmt_count" data-xid="2018/08/03/FSM有限状态机/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  816
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="FSM有限状态机"><a href="#FSM有限状态机" class="headerlink" title="FSM有限状态机"></a>FSM有限状态机</h4><hr>
-<h5 id="有限状态机基类"><a href="#有限状态机基类" class="headerlink" title="有限状态机基类"></a>有限状态机基类</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 状态机基类</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">FSMState</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> StateID stateId;</span><br><span class="line">    <span class="keyword">public</span> StateID ID&#123; <span class="keyword">get</span> &#123; <span class="keyword">return</span> stateId; &#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> FSMSystem fsm;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> Dictionary&lt;Transtion, StateID&gt; map = <span class="keyword">new</span> Dictionary&lt;Transtion, StateID&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FSMState</span>(<span class="params">FSMSystem fsm</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.fsm = fsm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 添加状态</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="trans"&gt;</span>状态转换<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="id"&gt;</span>状态id<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AddTransition</span>(<span class="params">Transtion trans,StateID id</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(trans == Transtion.NullTransition)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">"不允许NullTransition"</span>); <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(id == StateID.NullStateID)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">"不允许NullId"</span>);<span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(map.ContainsKey(trans))</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">"Transition:"</span>+trans+<span class="string">"已经存在"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        map.Add(trans,id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 删除转换条件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="trans"&gt;</span>Trans.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DeletedTransition</span>(<span class="params">Transtion trans</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(trans == Transtion.NullTransition)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">"不允许NullTransition"</span>); <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!map.ContainsKey(trans))</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogError(<span class="string">"Transition:"</span>+trans+<span class="string">"不存在在当前Map中"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        map.Remove(trans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 根据状态查看触发了那个状态</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>返回触发的状态<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="trans"&gt;</span>Trans.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StateID <span class="title">GetOutPutState</span>(<span class="params">Transtion trans</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.ContainsKey(trans))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> map[trans];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> StateID.NullStateID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 进入状态之前要做的事情</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">DoBeforeEntering</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 离开状态的时候需要做的事情</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">DoAfterLeving</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 子类必须重写的行为</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Act</span>(<span class="params">GameObject npc</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 判断转换条件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Reason</span>(<span class="params">GameObject npc</span>)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 状态转换条件</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Transtion</span><br><span class="line">&#123;</span><br><span class="line">    NullTransition,<span class="comment">//空的转换条件</span></span><br><span class="line">    SeePlayer,</span><br><span class="line">    LostPlayer</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 状态ID</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> StateID</span><br><span class="line">&#123;</span><br><span class="line">    NullStateID,</span><br><span class="line">    Patrol,</span><br><span class="line">    Chase</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/FSM有限状态机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/Unity优化之GC——合理优化Unity的GC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Unity优化之GC——合理优化Unity的GC/" itemprop="url">Unity优化之GC——合理优化Unity的GC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:08:34+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:03:09+08:00">
                 2018-08-03
               </time>
             
@@ -1698,8 +1222,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/Unity优化之GC——合理优化Unity的GC/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/03/Unity优化之GC——合理优化Unity的GC/" class="cy_cmt_count" data-xid="2018/08/03/Unity优化之GC——合理优化Unity的GC/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/FSM状态机之UnityWIKI/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/FSM状态机之UnityWIKI/" class="cy_cmt_count" data-xid="2018/08/03/FSM状态机之UnityWIKI/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1721,7 +1245,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6,847
+                  2,050
                 </span>
               
 
@@ -1737,7 +1261,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  25
+                  12
                 </span>
               
             </div>
@@ -1759,19 +1283,15 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h4 id="Unity优化之GC——合理优化Unity的GC"><a href="#Unity优化之GC——合理优化Unity的GC" class="headerlink" title="Unity优化之GC——合理优化Unity的GC"></a>Unity优化之GC——合理优化Unity的GC</h4><p>转载:<a href="http://www.cnblogs.com/zblade/" target="_blank" rel="noopener">http://www.cnblogs.com/zblade/</a></p>
-<hr>
-<h5 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h5><p>　　在游戏运行的时候，数据主要存储在内存中，当游戏的数据在不需要的时候，存储当前数据的内存就可以被回收以再次使用。内存垃圾是指当前废弃数据所占用的内存，垃圾回收（GC）是指将废弃的内存重新回收再次使用的过程。</p>
-<p>　　Unity中将垃圾回收当作内存管理的一部分，如果游戏中废弃数据占用内存较大，则游戏的性能会受到极大影响，此时垃圾回收会成为游戏性能的一大障碍点。</p>
-<p>　　本文我们主要学习垃圾回收的机制，垃圾回收如何被触发以及如何提GC收效率来提高游戏的性能。</p>
-<h5 id="Unity内存管理机制简介"><a href="#Unity内存管理机制简介" class="headerlink" title="Unity内存管理机制简介"></a>Unity内存管理机制简介</h5><p>　　要想了解垃圾回收如何工作以及何时被触发，我们首先需要了解unity的内存管理机制。Unity主要采用自动内存管理的机制，开发时在代码中不需要详细地告诉unity如何进行内存管理，unity内部自身会进行内存管理。这和使用C++开发需要随时管理内存相比，有一定的优势，当然带来的劣势就是需要随时关注内存的增长，不要让游戏在手机上跑“飞”了。</p>
-<ul>
-<li>unity的自动内存管理可以理解为以下几个部分：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1）unity内部有两个内存管理池：堆内存和堆栈内存。堆栈内存(stack)主要用来存储较小的和短暂的数据，堆内存(heap)主要用来存储较大的和存储时间较长的数据。  </span><br><span class="line"></span><br><span class="line">2）unity中的变量只会在堆栈或者堆内存上进行内存分配，变量要么存储在堆栈内存上，要么处于堆内存上。  </span><br><span class="line"></span><br><span class="line">3）只要变量处于激活状态，则其占用的内存会被标记为使用状态，则该部分的内存处于被分配的状态。  </span><br><span class="line"></span><br><span class="line">4）一旦变量不再激活，则其所占用的内存不再需要，该部分内存可以被回收到内存池中被再次使用，这样的操作就是内存回收。处于堆栈上的内存回收及其快速，处于堆上的内存并不是及时回收的，此时其对应的内存依然会被标记为使用状态。  </span><br><span class="line"></span><br><span class="line">5) 垃圾回收主要是指堆上的内存分配和回收，unity中会定时对堆内存进行GC操作。</span><br></pre></td></tr></table></figure>
-</li>
+          <h3 id="FSM有限状态机"><a href="#FSM有限状态机" class="headerlink" title="FSM有限状态机"></a>FSM有限状态机</h3><hr>
+<h5 id="组件过渡枚举：此枚举包含可由系统触发的过渡的标签。当FSMSystem类使用它时，不要更改第一个标签NullTransition。"><a href="#组件过渡枚举：此枚举包含可由系统触发的过渡的标签。当FSMSystem类使用它时，不要更改第一个标签NullTransition。" class="headerlink" title="组件过渡枚举：此枚举包含可由系统触发的过渡的标签。当FSMSystem类使用它时，不要更改第一个标签NullTransition。"></a>组件过渡枚举：此枚举包含可由系统触发的过渡的标签。当FSMSystem类使用它时，不要更改第一个标签NullTransition。</h5><ul>
+<li>StateID枚举：这是游戏可能拥有的状态的ID。你可以使用对真实国家的类的引用，但使用枚举使系统不太容易让代码访问它不应该访问的对象。所有州的ID都应放在这里。FSMSystem类使用它时不要更改第一个标签NullStateID。</li>
+<li>FSMState类：这个类有一个带有对的字典（Transition-StateID），指示当转换T被触发并且当前状态是S1时，FSM应该到达哪个新的状态S2。它有方法来添加和删除对（Transition-StateID），一种方法来检查转移传递给它的状态。在给出的例子中使用了两个方法来检查应该触发哪个转换（Reason（））以及哪个操作（Act（））具有FSMState的GameObject应该执行的操作。您不必使用此架构，但必须在您的游戏中使用某种过渡动作代码。</li>
+<li>FSMSystem：这是您的游戏中的每个NPC或GameObject必须具备的有限状态机类才能使用该框架。它将NPC的状态存储在List中，具有添加和删除状态的方法以及基于传递给它的转换（PerformTransition（））更改当前状态的方法。您可以在代码中的任何位置调用此方法，如在碰撞测试中，或在Update（）或FixedUpdate（）中。</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Unity优化之GC——合理优化Unity的GC/#more" rel="contents">
+            <a class="btn" href="/2018/08/03/FSM状态机之UnityWIKI/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1826,7 +1346,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Lua学习之一/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/ShardSDK集成/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1845,7 +1365,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/04/Lua学习之一/" itemprop="url">Lua学习之一</a></h1>
+                <a class="post-title-link" href="/2018/08/03/ShardSDK集成/" itemprop="url">ShardSDK集成</a></h1>
         
 
         <div class="post-meta">
@@ -1857,8 +1377,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T00:59:42+08:00">
-                2018-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T19:01:33+08:00">
+                2018-08-03
               </time>
             
 
@@ -1867,6 +1387,28 @@ alt="Fork me on GitHub"></a>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1877,8 +1419,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/04/Lua学习之一/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/Lua学习之一/" class="cy_cmt_count" data-xid="2018/08/04/Lua学习之一/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/ShardSDK集成/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/ShardSDK集成/" class="cy_cmt_count" data-xid="2018/08/03/ShardSDK集成/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1900,7 +1442,214 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,727
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="ShareSDK集成"><a href="#ShareSDK集成" class="headerlink" title="ShareSDK集成"></a>ShareSDK集成</h4><p><a href="http://www.mob.com/" target="_blank" rel="noopener">http://www.mob.com/</a></p>
+<hr>
+<ul>
+<li>hareSDK是一种社会化分享组件，为iOS、Android、WP8 的APP提供社会化功能，集成了一些常用的类库和接口，缩短开发者的开发时间，还有社会化统计分析管理后台</li>
+<li>支持包括QQ、微信、新浪微博、腾讯微博、开心网、人人网、豆瓣、网易微博、搜狐微博、facebook、twitter、google+等国内外40多家的主流社交平台，帮助开发者轻松实现社会化分享、登录、关注、获得用户资料、获取好友列表等主流的社会化功能，强大的统计分析管理后台，可以实时了解用户、信息流、回流率、传播效率等数据，有效地指导移动APP的日常运营与推广，同时为APP引入更多的社会化流量。</li>
+</ul>
+<h6 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h6><p><a href="http://wiki.mob.com/android-sharesdk%E5%AE%8C%E6%95%B4%E7%9A%84%E9%9B%86%E6%88%90%E6%96%87%E6%A1%A3/" target="_blank" rel="noopener">http://wiki.mob.com/android-sharesdk%E5%AE%8C%E6%95%B4%E7%9A%84%E9%9B%86%E6%88%90%E6%96%87%E6%A1%A3/</a></p>
+<hr>
+<h5 id="新浪微博接入"><a href="#新浪微博接入" class="headerlink" title="新浪微博接入"></a>新浪微博接入</h5><ul>
+<li>1.进入Mob开发者后台,添加应用,添加ShaerSDK</li>
+<li>2.进入新浪开发者平台,找到移动应用MOBILE,接入移动应用(新浪也有自己的SDK接入),<br><a href="http://open.weibo.com/wiki/%E7%A7%BB%E5%8A%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5" target="_blank" rel="noopener">http://open.weibo.com/wiki/%E7%A7%BB%E5%8A%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E5%85%A5</a> 新浪微博移动端接入指南<br><a href="https://imgchr.com/i/PBJC7Q" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBJC7Q.png" alt="PBJC7Q.png"></a><br><a href="https://imgchr.com/i/PBJikj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBJikj.png" alt="PBJikj.png"></a><br><a href="https://imgchr.com/i/PBJuBF" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/03/PBJuBF.png" alt="PBJuBF.png"></a></li>
+<li>Android_Java_Demo: 安卓开发Demo包</li>
+<li>demokey.keystore: Share官方提供的一个测试证书文件密码12345,也可以自己生成;</li>
+<li>ShareSDKForUnity3D: Unity-Android开发包</li>
+<li>ShareSDKForUnity3DWithEditor: Unity-IOS开发包,在ios打包文件的时候Share会自动删除没有用到的项</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/ShardSDK集成/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/渲染与光照/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/渲染与光照/" itemprop="url">渲染与光照</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:51:01+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/渲染与光照/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/渲染与光照/" class="cy_cmt_count" data-xid="2018/08/03/渲染与光照/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  170
                 </span>
               
 
@@ -1939,7 +1688,28 @@ alt="Fork me on GitHub"></a>
       
         
           
-            
+            <h4 id="渲染与光照"><a href="#渲染与光照" class="headerlink" title="渲染与光照"></a>渲染与光照</h4><hr>
+<ul>
+<li><p>环境光对材质的影响<br>Environment Reflections: Resoulution的位数大小影响材质反射环境的清晰度,位数越高,反射环境越清晰,但是消耗性能越大</p>
+</li>
+<li><p>如果在烘焙灯光时出现的灯光UV不匹配错误时:选中模型/勾上Generate LightMap</p>
+</li>
+<li><p>建议在PlayerSetting中Other Setting/Color Space中选择线性光照,线性光照光感会更好,如果在运行平台不支持的时候选择Gamma</p>
+</li>
+</ul>
+<h5 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h5><ul>
+<li><p>如果场景中物体没有产生阴影的时候:</p>
+<ul>
+<li><p>Project Setting/QualitySetting/Shadows;是不是选择了Display Shadow</p>
+</li>
+<li><p>查看模型MeshRender/Cast shadow是否选择on</p>
+</li>
+<li><p>shader是否是透明材质</p>
+</li>
+</ul>
+</li>
+</ul>
+
           
         
       
@@ -1991,7 +1761,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/UnityAPI-Mathf数学函数/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/03/扩展方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -2010,7 +1780,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/04/UnityAPI-Mathf数学函数/" itemprop="url">UnityAPI_Mathf数学函数</a></h1>
+                <a class="post-title-link" href="/2018/08/03/扩展方法/" itemprop="url">扩展方法</a></h1>
         
 
         <div class="post-meta">
@@ -2022,8 +1792,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T00:58:57+08:00">
-                2018-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T18:47:50+08:00">
+                2018-08-03
               </time>
             
 
@@ -2032,6 +1802,28 @@ alt="Fork me on GitHub"></a>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -2042,8 +1834,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/04/UnityAPI-Mathf数学函数/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/UnityAPI-Mathf数学函数/" class="cy_cmt_count" data-xid="2018/08/04/UnityAPI-Mathf数学函数/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/扩展方法/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/03/扩展方法/" class="cy_cmt_count" data-xid="2018/08/03/扩展方法/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -2065,7 +1857,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  657
                 </span>
               
 
@@ -2081,7 +1873,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -2103,9 +1895,436 @@ alt="Fork me on GitHub"></a>
 
       
         
+          <h4 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h4><hr>
+<ul>
+<li><p>我们在做项目的时候有些时候会遇到这种情况，使用别人封装的方法，但是又觉得方法没有自己所需求的，或者不是自己想要得，还有一种情况就是当你去接收别人的项目的时候，需要做修改而不能变动以前代码的时候，可能就需要用到扩展方法，这样既不会改变别人写的代码，又可以加上自己的修改，并为同一实例调用，是一种好用的方;</p>
+</li>
+<li><p>不过需要注意几点:</p>
+<ul>
+<li><p>类必须是static的,静态类,但是不能继承MonoBehaviour类,静态类不能拓展MonoBehaviour类。</p>
+</li>
+<li><p>静态类中的方法同样需要是static的;</p>
+</li>
+<li><p>拓展方法只能在实例中被调用，而不能在类本身内部使用。</p>
+</li>
+<li><p>传入的参数需要this修饰符,如: public static void SetPosition(this Transfrom trans);</p>
+</li>
+<li><p>如果写的扩展方法在一个命名空间中,在别的类中使用,需要引用命名空间</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>拓展方法的定义代码:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Extends</span> &#123;　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">//注意命名空间</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">extendTransform</span> &#123;　　　　　　　　　　　　　　　　　　　　　　　　　<span class="comment">//静态类</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetPositionX</span>(<span class="params"><span class="keyword">this</span> Transform trans, <span class="keyword">float</span> x</span>) </span>&#123;　　　　　　　<span class="comment">//静态方法，注意this的位置</span></span><br><span class="line">            trans.position = <span class="keyword">new</span> Vector3(x, trans.position.y, trans.position.z);</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">HaveZero</span>(<span class="params"><span class="keyword">this</span> Transform trans</span>) </span>&#123;　　　　　　　　　　　　　　　<span class="comment">//可以有返回值</span></span><br><span class="line">            <span class="keyword">return</span> (trans.position==<span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>));<span class="number">10</span>         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/扩展方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/Unity计算屏幕宽高比/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/Unity计算屏幕宽高比/" itemprop="url">Unity计算屏幕宽高比</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/12/Unity计算屏幕宽高比/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/Unity计算屏幕宽高比/" class="cy_cmt_count" data-xid="2018/08/12/Unity计算屏幕宽高比/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
           
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  947
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Unity计算屏幕宽高比"><a href="#Unity计算屏幕宽高比" class="headerlink" title="Unity计算屏幕宽高比"></a>Unity计算屏幕宽高比</h3><p>2d camera, unit坐标，单位换算</p>
+<p>2d游戏可以使用平行投影的camera，这种camera需要设置size (orthographicSize)，size的含义为屏幕高度的一半，不过单位不是像素而是unit坐标，即通过pixels to units换算的坐标。例如：屏幕高度为640，pixels to units为100的情况下，orthographic size为640/2/100 = 3.2</p>
+<p>unit坐标我理解就是一个统一化的坐标，不用担心他的实际含义，只是提供一个统一的坐标给游戏各个组成部分使用。相应的sprite的尺寸也可通过pixels to units换算成unit 坐标，并且每个sprite都可以单独设置，这等于给资源多加了一个调整的参数</p>
+<p>设置camrea的size实际上控制了显示区域的大小，size越大，能看到的世界越大，当然世界里面的sprite会相应缩小，因为实际的屏幕就那么大。当然由于移动设备的屏幕尺寸多样，如何设置这个size就是多分辨率适配的策略了，比如设定size为某个值不变，这相当于fix height模式，由于不同屏幕宽高比不同，这会导致显示的宽度不一样，这就需要根据宽度调整显示的内容了（不过适配问题基本都是UI问题，而Unity的GUI自带了自适应的策略所以基本不是问题了，当然仍然要考虑非GUI部分的适应，比如不能让原计划一屏内显示的游戏关卡出屏被切）。再如设定一个固定的设计分辨率的宽度，然后通过宽高比来计算出camera size，这就属于fix width模式，这比较适合竖屏游戏。</p>
+<hr>
+<p>用于计算camera的unit单位尺寸的代码：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">new</span> Camera camera;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> orthographicSize;</span><br><span class="line"><span class="keyword">private</span> aspectRatio ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SetResolution</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//基于iPhone4比例的单位高度</span></span><br><span class="line">    <span class="keyword">float</span> devHeight = <span class="number">9.6</span>f;</span><br><span class="line">   <span class="comment">//基于iPhone4比例的单位宽度</span></span><br><span class="line">   <span class="keyword">float</span> devWidth = <span class="number">6.4</span>f;</span><br><span class="line"></span><br><span class="line">  camera = Camera.main;</span><br><span class="line">  <span class="comment">//摄像机的尺寸</span></span><br><span class="line">  orthographic = camera.orthographicSize;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  把Projection改成Orthographic 也就是正交摄像机。 然后要说的就是size = 3.2。这个3.2是怎么来的呢？想想我们的分辨率的高是多少？</span></span><br><span class="line"><span class="comment">  高是640.  640/2/100 ＝ 3.2. 除以2就是屏幕高的一半，除//以100就是上面我们设置的 pixels to units ＝100 .</span></span><br><span class="line"><span class="comment">  再举个例子如果你开发时的分辨率是1280X720 那么此时你的高就是720了。 720/2/100 = 3.6 那么此时摄像机的size 就应该写成3.6了。。</span></span><br><span class="line"><span class="comment">  再唠叨一句，手游的分辨率自适应基本都是这样修改摄像机的size来实现的了</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">//宽高比</span></span><br><span class="line">  aspectRatio = Screen.width * <span class="number">1.0</span>f / Screen.height;</span><br><span class="line"> <span class="comment">//摄像机的单位宽度</span></span><br><span class="line">  <span class="keyword">float</span> cameraHeight = orthographicSize * <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">float</span> cameraWidth = cameraHeight * aspectRatio;</span><br><span class="line">  Debug.Log (<span class="string">"camera size in unit="</span> + cameraWidth + <span class="string">":"</span> + cameraHeight);<span class="comment">//宽高比</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//如果设备的宽度大于摄像机的宽度的时候  调整摄像机的orthographicSize</span></span><br><span class="line">    <span class="keyword">if</span> (cameraWidth &lt; devWidth)</span><br><span class="line">    &#123;</span><br><span class="line">        orthographicSize = devWidth / (<span class="number">2</span> * aspectRatio);</span><br><span class="line">        Debug.Log(<span class="string">"new orthographicSize = "</span> + orthographicSize);</span><br><span class="line">        <span class="keyword">this</span>.GetComponent&lt;Camera&gt;().orthographicSize = orthographicSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/12/Unity计算屏幕宽高比/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/GL屏幕画线保存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/GL屏幕画线保存/" itemprop="url">Unity3D 运用GL屏幕画图(阴阳师画符)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/12/GL屏幕画线保存/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/GL屏幕画线保存/" class="cy_cmt_count" data-xid="2018/08/12/GL屏幕画线保存/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  527
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="转-Unity3D-运用GL屏幕画图-阴阳师画符"><a href="#转-Unity3D-运用GL屏幕画图-阴阳师画符" class="headerlink" title="(转)Unity3D 运用GL屏幕画图(阴阳师画符)"></a>(转)Unity3D 运用GL屏幕画图(阴阳师画符)</h3><p>原文链接: <a href="https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创</a></p>
+<hr>
+<p>阴阳师火了之后，市面上很多游戏又多了一个模块——画符抽卡，可以通过使用Unity自带GL类来实现这个功能，上面一篇博客Unity研究 GL中有关于GL类的初步解析。今天直接来分析需求 看看阴阳师画符抽卡是怎么实现的：</p>
+<font size="5">1，绘图——鼠标按下进行拖拽，在屏幕中留下鼠标轨迹。</font><br><font size="5">2，存图——松开鼠标，绘制的图片按比例映射到Texture上。</font>
+
+<p>Unity的GL是通过两点之间连线来构成图像的。</p>
+<ul>
+<li><p>1，通过一个集合List<vector3> allPoints存储鼠标在屏幕上经过的轨迹（视图坐标系）</vector3></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Vector3 tmpView = Camera.main.ScreenToViewportPoint(Input.mousePosition);</span><br><span class="line">            allPoints.Add(tmpView);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2，遍历集合，将集合中具有前后关系的点连接起来（点动成线）</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 使用GL画线的回调</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnRenderObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建材质球</span></span><br><span class="line">        CreateLineMaterial();</span><br><span class="line">        <span class="comment">//激活第一个着色器通过（在本例中，我们知道它是唯一的通过）</span></span><br><span class="line">        lineMaterial.SetPass(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//设置正交投影</span></span><br><span class="line">        GL.LoadOrtho();</span><br><span class="line">        <span class="comment">// 开始画线  在Begin——End之间写画线方式</span></span><br><span class="line">        GL.Begin(GL.LINES);</span><br><span class="line">        GL.Color(Color.red);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; allPoints.Count; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Vector3 tmpFront = allPoints[i - <span class="number">1</span>];</span><br><span class="line">            Vector3 tmpBack = allPoints[i];</span><br><span class="line">            GL.Vertex(tmpFront);</span><br><span class="line">            GL.Vertex(tmpBack);</span><br><span class="line">        &#125;</span><br><span class="line">        GL.End();</span><br><span class="line">        <span class="comment">//渲染出栈</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/12/GL屏幕画线保存/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2147,7 +2366,7 @@ alt="Fork me on GitHub"></a>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2197,7 +2416,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2356,7 +2575,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">47.8k</span>
+    <span title="Site words total count">61.3k</span>
   
 </div>
 -->
@@ -2377,7 +2596,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.8k字</span>
+  <span class="post-count">博客全站共61.3k字</span>
 </div>
         
 
