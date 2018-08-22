@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.Husbandman.top/"/>
-  <updated>2018-08-12T03:12:28.636Z</updated>
+  <updated>2018-08-13T06:10:48.000Z</updated>
   <id>http://www.Husbandman.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Unity3D研究 GL详解</title>
-    <link href="http://www.Husbandman.top/2018/08/12/GL/"/>
-    <id>http://www.Husbandman.top/2018/08/12/GL/</id>
-    <published>2018-08-12T03:20:13.183Z</published>
-    <updated>2018-08-12T03:12:28.636Z</updated>
+    <title>旋转理解左手坐标系</title>
+    <link href="http://www.Husbandman.top/2018/08/22/%E9%80%9A%E8%BF%87%E6%97%8B%E8%BD%AC%E7%90%86%E8%A7%A3%E5%B7%A6%E6%89%8B%E5%9D%90%E6%A0%87%E7%B3%BB/"/>
+    <id>http://www.Husbandman.top/2018/08/22/通过旋转理解左手坐标系/</id>
+    <published>2018-08-22T12:12:59.837Z</published>
+    <updated>2018-08-13T06:10:48.000Z</updated>
     
     <summary type="html">
     
@@ -29,16 +29,209 @@
       
         
         
-          &lt;h3 id=&quot;转-Unity3D研究-GL详解&quot;&gt;&lt;a href=&quot;#转-Unity3D研究-GL详解&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D研究 GL详解&quot;&gt;&lt;/a&gt;(转)Unity3D研究 GL详解&lt;/h3&gt;&lt;p&gt;原文链接:&lt;a
+          &lt;h3 id=&quot;旋转理解左手坐标系&quot;&gt;&lt;a href=&quot;#旋转理解左手坐标系&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="C#" scheme="http://www.Husbandman.top/categories/C/"/>
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity基础</title>
+    <link href="http://www.Husbandman.top/2018/08/22/Unity%E5%9F%BA%E7%A1%80/"/>
+    <id>http://www.Husbandman.top/2018/08/22/Unity基础/</id>
+    <published>2018-08-22T12:12:59.827Z</published>
+    <updated>2018-08-14T06:40:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;平行光&quot;&gt;&lt;a href=&quot;#平行光&quot; class=&quot;headerlink&quot; title=&quot;平行光&quot;&gt;&lt;/a&gt;平行光&lt;/h3&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;参数: Type: 灯光类型  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Intensity: 光线明亮程度  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cookie: 使用贴图纹理的(Alpha)通道作为一个遮罩,使光线在不同的地方有不同的亮度  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shadow Type: 设置灯光投射阴影类型  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;font color=&quot;F111&quot;&gt;Culling Mask&lt;/font&gt;: 设置层中的游戏对象是否受到该灯光的影响&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;平行光详细参数&quot;&gt;&lt;a href=&quot;#平行光详细参数&quot; class=&quot;headerlink&quot; title=&quot;平行光详细参数:&quot;&gt;&lt;/a&gt;平行光详细参数:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;阴影剔除优化算法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;吐过吧Shadow Type的属性设置成软阴影(softShadow),使得灯光产生软阴影效果,你会注意到近处的阴影显示没有问题,但是远处的阴影却未显示出来&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;阴影剔除的距离可以通过菜单栏:Edit-&amp;gt;Project Settings-&amp;gt;Quality质量面板来设置&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;平行光项目的质量设置面板&quot;&gt;&lt;a href=&quot;#平行光项目的质量设置面板&quot; class=&quot;headerlink&quot; title=&quot;平行光项目的质量设置面板&quot;&gt;&lt;/a&gt;平行光项目的质量设置面板&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;font color=&quot;F111&quot;&gt;Texture Quality&lt;/font&gt;: 质量贴图(质量越低,贴图显示越模糊,渲染速度越快)  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;font color=&quot;F111&quot;&gt;Anti Aliasing&lt;/font&gt;: 抗锯齿类型  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shadows: 阴影类型  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shadow Resolution: 阴影分辨率  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;font color=&quot;F111&quot;&gt;Shadow Distance&lt;/font&gt;: 阴影距离(摄像机的最大阴影可见距离,超出这个距离的阴影不会被渲染)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+    
+    </summary>
     
     
-      <category term="C#" scheme="http://www.Husbandman.top/tags/C/"/>
+      <category term="Unity基础" scheme="http://www.Husbandman.top/tags/Unity%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenGL基础</title>
+    <link href="http://www.Husbandman.top/2018/08/22/OpenGL%E5%9F%BA%E7%A1%80/"/>
+    <id>http://www.Husbandman.top/2018/08/22/OpenGL基础/</id>
+    <published>2018-08-22T12:12:59.827Z</published>
+    <updated>2018-08-16T07:14:16.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;OpenGL基础&quot;&gt;&lt;a href=&quot;#OpenGL基础&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="OpenGL" scheme="http://www.Husbandman.top/tags/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity基础(二)</title>
+    <link href="http://www.Husbandman.top/2018/08/22/Unity%E5%9F%BA%E7%A1%80(%E4%BA%8C)/"/>
+    <id>http://www.Husbandman.top/2018/08/22/Unity基础(二)/</id>
+    <published>2018-08-22T12:12:59.827Z</published>
+    <updated>2018-08-16T06:49:16.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Unity基础-二&quot;&gt;&lt;a href=&quot;#Unity基础-二&quot; class=&quot;headerlink&quot; title=&quot;Unity基础(二)&quot;&gt;&lt;/a&gt;Unity基础(二)&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;游戏引擎介绍&quot;&gt;&lt;a href=&quot;#游戏引擎介绍&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FairyGUI</title>
+    <link href="http://www.Husbandman.top/2018/08/22/FairyGUI/"/>
+    <id>http://www.Husbandman.top/2018/08/22/FairyGUI/</id>
+    <published>2018-08-22T12:12:59.817Z</published>
+    <updated>2018-08-16T09:33:58.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;FairyGUI&quot;&gt;&lt;a href=&quot;#FairyGUI&quot; class=&quot;headerlink&quot; title=&quot;FairyGUI&quot;&gt;&lt;/a&gt;FairyGUI&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://fairygui.com/&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="FairyGUI" scheme="http://www.Husbandman.top/tags/FairyGUI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3d数学-向量</title>
+    <link href="http://www.Husbandman.top/2018/08/22/3D%E6%95%B0%E5%AD%A6_%E5%90%91%E9%87%8F/"/>
+    <id>http://www.Husbandman.top/2018/08/22/3D数学_向量/</id>
+    <published>2018-08-22T12:12:59.807Z</published>
+    <updated>2018-08-22T06:48:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;3d数学-向量&quot;&gt;&lt;a href=&quot;#3d数学-向量&quot; class=&quot;headerlink&quot; title=&quot;3d数学-向量&quot;&gt;&lt;/a&gt;3d数学-向量&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;向量的数学定义&quot;&gt;&lt;a href=&quot;#向量的数学定义&quot; class=&quot;headerlink&quot; title=&quot;向量的数学定义&quot;&gt;&lt;/a&gt;向量的数学定义&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;向量就是一个数字列表,很多个数字组成的列表,也叫做数组&lt;/li&gt;
+&lt;li&gt;如果只有一个数叫做一维行/列向量,一维也叫做标量&lt;/li&gt;
+&lt;li&gt;向量的维数: 2维,3维,4维,&lt;strong&gt;标量是1维向量&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;行向量,列向量&lt;/p&gt;
+&lt;p&gt;[1,2,3] 行向量  &lt;/p&gt;
+&lt;p&gt;|1| 列向量&lt;br&gt;|2|&lt;br&gt;|3|  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;向量的几何定义&quot;&gt;&lt;a href=&quot;#向量的几何定义&quot; class=&quot;headerlink&quot; title=&quot;向量的几何定义&quot;&gt;&lt;/a&gt;向量的几何定义&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;向量没有位置(向量的起点可以在任何位置),只有大小和方向&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们用一个向量在几何学上来表示位移而不是表示位置,即有方向又有大小的量就叫做向量  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://imgchr.com/i/PhaNHU&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhaNHU.png&quot; alt=&quot;PhaNHU.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;向量的表达,向量在每个维度上的有向位移&lt;br&gt;&lt;a href=&quot;https://imgchr.com/i/PhadN4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhadN4.png&quot; alt=&quot;PhadN4.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;向量和点的关系&quot;&gt;&lt;a href=&quot;#向量和点的关系&quot; class=&quot;headerlink&quot; title=&quot;向量和点的关系&quot;&gt;&lt;/a&gt;向量和点的关系&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;点有位置,但是没有实际的大小和厚度(厚度应该是指的是方向吧),向量有大小和方向,但是没有位置(位置可以在任何位置),所以使用”点”和”向量”的目的完全不同;”点”描述的是位置,”向量”描述的是位移,也包括相对位置;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;向量和点在数学上是完全一致的,概念是等价的&lt;br&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/22/Po0hxe.png&quot; alt=&quot;Po0hxe.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="3d数学" scheme="http://www.Husbandman.top/tags/3d%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3d数学-矩阵</title>
+    <link href="http://www.Husbandman.top/2018/08/22/3d%E6%95%B0%E5%AD%A6_%E7%9F%A9%E9%98%B5/"/>
+    <id>http://www.Husbandman.top/2018/08/22/3d数学_矩阵/</id>
+    <published>2018-08-22T12:12:59.807Z</published>
+    <updated>2018-08-22T09:32:04.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;3d数学-矩阵&quot;&gt;&lt;a href=&quot;#3d数学-矩阵&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="3d数学" scheme="http://www.Husbandman.top/tags/3d%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -57,6 +250,32 @@
         
           &lt;h3 id=&quot;Unity鼠标&quot;&gt;&lt;a href=&quot;#Unity鼠标&quot; class=&quot;headerlink&quot; title=&quot;Unity鼠标&quot;&gt;&lt;/a&gt;Unity鼠标&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;隐藏鼠标&lt;br&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity将bit转换为Class</title>
+    <link href="http://www.Husbandman.top/2018/08/12/Unity%E5%B0%86bit%E8%BD%AC%E6%8D%A2%E4%B8%BAClass/"/>
+    <id>http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/</id>
+    <published>2018-08-12T03:20:13.183Z</published>
+    <updated>2018-08-12T03:18:06.990Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-Unity将bit转换为Class&quot;&gt;&lt;a href=&quot;#转-Unity将bit转换为Class&quot; class=&quot;headerlink&quot;
         
       
     
@@ -129,39 +348,6 @@
   </entry>
   
   <entry>
-    <title>GL图像库</title>
-    <link href="http://www.Husbandman.top/2018/08/12/GL%E5%BA%93/"/>
-    <id>http://www.Husbandman.top/2018/08/12/GL库/</id>
-    <published>2018-08-12T03:20:13.183Z</published>
-    <updated>2018-08-12T03:13:21.297Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;转-GL图像库&quot;&gt;&lt;a href=&quot;#转-GL图像库&quot; class=&quot;headerlink&quot; title=&quot;(转)GL图像库&quot;&gt;&lt;/a&gt;(转)GL图像库&lt;/h3&gt;&lt;p&gt;原文链接: &lt;a href=&quot;http://pepe.cnblogs.com/尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://pepe.cnblogs.com/尊重作者原创&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1、绘制2D图像的时需要使用GL.LoadOrtho()方法来将图形映射到平面中。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2、所有绘制相关的内容都要写在OnPostRender()方法中。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3、有关GL图像库的脚本需要绑定到Hierarchy视图中Camera上，否则无法显示绘制的图像。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;4、在GL图像库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这个浮点数来计算&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h4 id=&quot;一-绘制线&quot;&gt;&lt;a href=&quot;#一-绘制线&quot; class=&quot;headerlink&quot; title=&quot;一.绘制线&quot;&gt;&lt;/a&gt;一.绘制线&lt;/h4&gt;&lt;p&gt;别忘了添加物理材质public Material material;&lt;br&gt;&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; UnityEngine;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; System.Collections;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; GL 图像库&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 1、GL图像库是底层的图像库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 具有一定的特殊性，它们不属于3D网格图形，只会以面的形式渲染&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 2、绘制2D图像时，需要使用GL.LoadOrtho()方法来将图形映射在平面中，绘制的是3D图形，就无须使用此方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 3、使用GL图像库时，需要将所有绘制相关的内容写在OnPostRender()方法中&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class _7_5 : MonoBehaviour&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 绘制线段的材质&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Material material;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnPostRender&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!material)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Debug.Log(&lt;span class=&quot;string&quot;&gt;&quot;请给材质资源赋值&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        material.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置该材质通道，0为默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.LoadOrtho();&lt;span class=&quot;comment&quot;&gt;//设置绘制2D图像&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Begin(GL.LINES);&lt;span class=&quot;comment&quot;&gt;//表示开始绘制，绘制类型为线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.End();&lt;span class=&quot;comment&quot;&gt;//结束绘制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DrawLine&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x1, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y1, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x2, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//绘制线段，需要将屏幕中某个点的像素坐标除以屏幕宽或高&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Vertex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x1 / Screen.width, y1 / Screen.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;// [&#39;vɜ:teks] n. 最高点；顶点；&amp;lt;数&amp;gt;（三角形、圆锥体等与底相对的）顶；&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Vertex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x2 / Screen.width, y2 / Screen.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use this for initialization&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Start&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Update is called once per frame&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Update&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Unity自带GL讲解</title>
     <link href="http://www.Husbandman.top/2018/08/12/Unity%E8%87%AA%E5%B8%A6GL%E8%AE%B2%E8%A7%A3/"/>
     <id>http://www.Husbandman.top/2018/08/12/Unity自带GL讲解/</id>
@@ -198,21 +384,28 @@
   </entry>
   
   <entry>
-    <title>Unity将bit转换为Class</title>
-    <link href="http://www.Husbandman.top/2018/08/12/Unity%E5%B0%86bit%E8%BD%AC%E6%8D%A2%E4%B8%BAClass/"/>
-    <id>http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/</id>
+    <title>GL图像库</title>
+    <link href="http://www.Husbandman.top/2018/08/12/GL%E5%BA%93/"/>
+    <id>http://www.Husbandman.top/2018/08/12/GL库/</id>
     <published>2018-08-12T03:20:13.183Z</published>
-    <updated>2018-08-12T03:18:06.990Z</updated>
+    <updated>2018-08-12T03:13:21.297Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity将bit转换为Class&quot;&gt;&lt;a href=&quot;#转-Unity将bit转换为Class&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;转-GL图像库&quot;&gt;&lt;a href=&quot;#转-GL图像库&quot; class=&quot;headerlink&quot; title=&quot;(转)GL图像库&quot;&gt;&lt;/a&gt;(转)GL图像库&lt;/h3&gt;&lt;p&gt;原文链接: &lt;a href=&quot;http://pepe.cnblogs.com/尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://pepe.cnblogs.com/尊重作者原创&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1、绘制2D图像的时需要使用GL.LoadOrtho()方法来将图形映射到平面中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2、所有绘制相关的内容都要写在OnPostRender()方法中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3、有关GL图像库的脚本需要绑定到Hierarchy视图中Camera上，否则无法显示绘制的图像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4、在GL图像库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这个浮点数来计算&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;一-绘制线&quot;&gt;&lt;a href=&quot;#一-绘制线&quot; class=&quot;headerlink&quot; title=&quot;一.绘制线&quot;&gt;&lt;/a&gt;一.绘制线&lt;/h4&gt;&lt;p&gt;别忘了添加物理材质public Material material;&lt;br&gt;&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; UnityEngine;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; System.Collections;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; GL 图像库&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 1、GL图像库是底层的图像库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 具有一定的特殊性，它们不属于3D网格图形，只会以面的形式渲染&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 2、绘制2D图像时，需要使用GL.LoadOrtho()方法来将图形映射在平面中，绘制的是3D图形，就无须使用此方法&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 3、使用GL图像库时，需要将所有绘制相关的内容写在OnPostRender()方法中&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class _7_5 : MonoBehaviour&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 绘制线段的材质&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Material material;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnPostRender&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!material)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Debug.Log(&lt;span class=&quot;string&quot;&gt;&quot;请给材质资源赋值&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        material.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//设置该材质通道，0为默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.LoadOrtho();&lt;span class=&quot;comment&quot;&gt;//设置绘制2D图像&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Begin(GL.LINES);&lt;span class=&quot;comment&quot;&gt;//表示开始绘制，绘制类型为线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//绘制线段2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.End();&lt;span class=&quot;comment&quot;&gt;//结束绘制&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DrawLine&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x1, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y1, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x2, &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//绘制线段，需要将屏幕中某个点的像素坐标除以屏幕宽或高&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Vertex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x1 / Screen.width, y1 / Screen.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;// [&#39;vɜ:teks] n. 最高点；顶点；&amp;lt;数&amp;gt;（三角形、圆锥体等与底相对的）顶；&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Vertex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x2 / Screen.width, y2 / Screen.height, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Use this for initialization&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Start&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// Update is called once per frame&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Update&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
     
     </summary>
     
@@ -239,6 +432,58 @@
 &lt;p&gt;在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。&lt;br&gt;值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素&lt;br&gt;来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这&lt;br&gt;个浮点数来计算。  &lt;/p&gt;
 &lt;p&gt;比如当前游戏屏幕的像素宽高是500&lt;em&gt;500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应&lt;br&gt;当是：500（屏幕宽） &lt;/em&gt; 0.5（x坐标） = 250&lt;br&gt;500（屏幕高）* 0.5（x坐标） = 250&lt;/p&gt;
 &lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Script&lt;/span&gt;:&lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段材质&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Material material;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//此绘制方法由系统调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnPostRender&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!material)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Debug.LogError(“请给材质资源赋值”);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Return;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置该材质通道，0为默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Material.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.LoadOrtho();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//表示开始绘制，绘制类型为线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Begin(GL.LINES);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.End();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DrawLine&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x1,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y1;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x2,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x1/Screen.width,y1/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x2/Screen.width,y2/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity3D研究 GL详解</title>
+    <link href="http://www.Husbandman.top/2018/08/12/GL/"/>
+    <id>http://www.Husbandman.top/2018/08/12/GL/</id>
+    <published>2018-08-12T03:20:13.183Z</published>
+    <updated>2018-08-12T03:12:28.636Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-Unity3D研究-GL详解&quot;&gt;&lt;a href=&quot;#转-Unity3D研究-GL详解&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D研究 GL详解&quot;&gt;&lt;/a&gt;(转)Unity3D研究 GL详解&lt;/h3&gt;&lt;p&gt;原文链接:&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="C#" scheme="http://www.Husbandman.top/categories/C/"/>
+    
+    
+      <category term="C#" scheme="http://www.Husbandman.top/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity播放GIF</title>
+    <link href="http://www.Husbandman.top/2018/08/12/Unity%E6%92%AD%E6%94%BEGIF/"/>
+    <id>http://www.Husbandman.top/2018/08/12/Unity播放GIF/</id>
+    <published>2018-08-12T03:20:13.173Z</published>
+    <updated>2018-08-12T03:16:13.273Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-Unity——在游戏中播放Gif动图&quot;&gt;&lt;a href=&quot;#转-Unity——在游戏中播放Gif动图&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -310,32 +555,6 @@
   </entry>
   
   <entry>
-    <title>Unity播放GIF</title>
-    <link href="http://www.Husbandman.top/2018/08/12/Unity%E6%92%AD%E6%94%BEGIF/"/>
-    <id>http://www.Husbandman.top/2018/08/12/Unity播放GIF/</id>
-    <published>2018-08-12T03:20:13.173Z</published>
-    <updated>2018-08-12T03:16:13.273Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity——在游戏中播放Gif动图&quot;&gt;&lt;a href=&quot;#转-Unity——在游戏中播放Gif动图&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
     <title>获取AnimatorClip动画的时间长度</title>
     <link href="http://www.Husbandman.top/2018/08/08/%E8%8E%B7%E5%8F%96AnimatorClip%E5%8A%A8%E7%94%BB%E7%9A%84%E6%97%B6%E9%97%B4%E9%95%BF%E5%BA%A6/"/>
     <id>http://www.Husbandman.top/2018/08/08/获取AnimatorClip动画的时间长度/</id>
@@ -389,247 +608,6 @@
       <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
     
       <category term="Sprite" scheme="http://www.Husbandman.top/tags/Sprite/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式之状态模式</title>
-    <link href="http://www.Husbandman.top/2018/08/07/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://www.Husbandman.top/2018/08/07/设计模式之状态模式/</id>
-    <published>2018-08-07T14:14:40.000Z</published>
-    <updated>2018-08-07T14:16:17.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;设计模式与游戏开发之状态模式-State&quot;&gt;&lt;a href=&quot;#设计模式与游戏开发之状态模式-State&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="设计模式" scheme="http://www.Husbandman.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="http://www.Husbandman.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity2D之精灵Sprite与屏幕之间的关系</title>
-    <link href="http://www.Husbandman.top/2018/08/05/Unity2D%E7%A0%94%E7%A9%B6%E9%99%A2%E4%B9%8B%E7%B2%BE%E7%81%B5Sprite%E4%B8%8E%E5%B1%8F%E5%B9%95%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
-    <id>http://www.Husbandman.top/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/</id>
-    <published>2018-08-05T07:22:14.000Z</published>
-    <updated>2018-08-07T11:18:36.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity2D研究院之精灵Sprite与屏幕之间的关系&quot;&gt;&lt;a href=&quot;#转-Unity2D研究院之精灵Sprite与屏幕之间的关系&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Sprite" scheme="http://www.Husbandman.top/categories/Sprite/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-      <category term="Sprite" scheme="http://www.Husbandman.top/tags/Sprite/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity移动</title>
-    <link href="http://www.Husbandman.top/2018/08/04/Unity%E7%A7%BB%E5%8A%A8/"/>
-    <id>http://www.Husbandman.top/2018/08/04/Unity移动/</id>
-    <published>2018-08-03T17:37:06.000Z</published>
-    <updated>2018-08-04T05:03:48.333Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Unity-移动&quot;&gt;&lt;a href=&quot;#Unity-移动&quot; class=&quot;headerlink&quot; title=&quot;Unity 移动&quot;&gt;&lt;/a&gt;Unity 移动&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;在Unity3d中,有很多方式可以改变物体的坐标,实现移动的目的,其本质是每一帧修改物体的Position;&lt;/p&gt;
-&lt;h4 id=&quot;1-通过Transfrom组件移动物体&quot;&gt;&lt;a href=&quot;#1-通过Transfrom组件移动物体&quot; class=&quot;headerlink&quot; title=&quot;1.通过Transfrom组件移动物体&quot;&gt;&lt;/a&gt;1.通过Transfrom组件移动物体&lt;/h4&gt;&lt;p&gt;  Transfrom组件用于描述物体在空间中的状态,它包括 位置(Position),旋转(Rotation)和缩放(Scale).&lt;/p&gt;
-&lt;h5 id=&quot;Transfrom-Translate&quot;&gt;&lt;a href=&quot;#Transfrom-Translate&quot; class=&quot;headerlink&quot; title=&quot;Transfrom.Translate&quot;&gt;&lt;/a&gt;Transfrom.Translate&lt;/h5&gt;&lt;p&gt;该方法可以移动物体从当前位置,移动到指定位置,并且可以选择参照的坐标系. 当需要进行坐标系转换时,可以考虑使用&lt;br&gt;&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Translate&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;Vector &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; translation,Space relativeTo = Space.Self&lt;/span&gt;)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;描述:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;移动变换的方向和距离translation。如果relativeTo被忽略或设置为Space.Self，则运动将相对于变换的局部坐标轴应用。（在场景视图中选择对象时显示的x，y和z轴。）如果relativeTo是Space.World，则相对于世界坐标系应用该运动.&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; UnityEngine;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; System.Collections;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleClass&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Update&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        transform.Translate(Vector3.forward * Time.deltaTime);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        transform.Translate(Vector3.up * Time.deltaTime, Space.World);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; Translate（&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x，&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y，&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; z， Space relativeTo = Space.Self;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;描述:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;x沿着x轴，y沿着y轴和z沿着z轴移动变换。如果relativeTo被忽略或设置为Space.Self，则运动将相对于变换的局部坐标轴应用。（在场景视图中选择对象时显示的x，y和z轴。）如果relativeTo是Space.World，则相对于世界坐标系应用该运动。&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; UnityEngine;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; System.Collections;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleClass&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Update&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        transform.Translate(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, Time.deltaTime);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        transform.Translate(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, Time.deltaTime, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, Space.World);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; Translate（Vector3 translation， Transform relativeTo）;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;描述:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;移动变换的方向和距离translation。该运动是相对于relativeTo本地坐标系应用的。如果relativeTo为null，则运动相对于世界坐标系应用。&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; UnityEngine;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;using&lt;/span&gt; System.Collections;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleClass&lt;/span&gt; : &lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Update&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        transform.Translate(Vector3.right * Time.deltaTime, Camera.main.transform);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GoogleAdMob广告接入</title>
-    <link href="http://www.Husbandman.top/2018/08/04/GoogleAdMob%E5%B9%BF%E5%91%8A%E6%8E%A5%E5%85%A5/"/>
-    <id>http://www.Husbandman.top/2018/08/04/GoogleAdMob广告接入/</id>
-    <published>2018-08-03T17:36:49.000Z</published>
-    <updated>2018-08-04T05:02:55.734Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Google-AdMob接入&quot;&gt;&lt;a href=&quot;#Google-AdMob接入&quot; class=&quot;headerlink&quot; title=&quot;Google AdMob接入&quot;&gt;&lt;/a&gt;Google AdMob接入&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;添加Google-AdMob步骤&quot;&gt;&lt;a href=&quot;#添加Google-AdMob步骤&quot; class=&quot;headerlink&quot; title=&quot;添加Google AdMob步骤&quot;&gt;&lt;/a&gt;添加Google AdMob步骤&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.google.com/admob/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;注册长号(要越枪)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;登录&lt;/li&gt;
-&lt;li&gt;进入Monetize&lt;/li&gt;
-&lt;li&gt;创建App&lt;/li&gt;
-&lt;li&gt;创建Ad unit(注意Ad unit ID)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/googleads/googleads-mobile-unity/releases/tag/v3.12.0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载Unity插件导入&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;在代码中调试广告&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AssetBundle基础篇</title>
-    <link href="http://www.Husbandman.top/2018/08/04/AssetBundle%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
-    <id>http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/</id>
-    <published>2018-08-03T17:36:28.000Z</published>
-    <updated>2018-08-04T05:02:27.304Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;AssetsBundle基础篇-一&quot;&gt;&lt;a href=&quot;#AssetsBundle基础篇-一&quot; class=&quot;headerlink&quot; title=&quot;AssetsBundle基础篇(一)&quot;&gt;&lt;/a&gt;AssetsBundle基础篇(一)&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;Unity-之-AssetsBundle&quot;&gt;&lt;a href=&quot;#Unity-之-AssetsBundle&quot; class=&quot;headerlink&quot; title=&quot;Unity 之 AssetsBundle&quot;&gt;&lt;/a&gt;Unity 之 AssetsBundle&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://docs.unity3d.com/2017.4/Documentation/Manual/AssetBundlesIntro.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h4 id=&quot;AssetsBundle的定义和作用&quot;&gt;&lt;a href=&quot;#AssetsBundle的定义和作用&quot; class=&quot;headerlink&quot; title=&quot;AssetsBundle的定义和作用&quot;&gt;&lt;/a&gt;AssetsBundle的定义和作用&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;AssetsBundle是一个压缩包,包含模型/贴图/预制体/声音/甚至整个场景,可以在游戏运行的时候被加载;&lt;/li&gt;
-&lt;li&gt;AssetsBundle自身保存着相互依赖的关系;&lt;/li&gt;
-&lt;li&gt;压缩包可以使用LZMA和LZ4压缩算法,减少包大小,更快的进行网络传输;&lt;ul&gt;
-&lt;li&gt;LZMA:&lt;/li&gt;
-&lt;li&gt;LZ4:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;把一些可以下载的内容放在AssetsBundle里面,可以减少安装包的大小;&lt;br&gt;什么是AssetsBundle&lt;/li&gt;
-&lt;li&gt;它是一个存在于硬盘上的文件,可以称为压缩包,这个压缩包可以认为是一个文件夹,里面包含了很多个文件,这些文件可以分为两类:&lt;ul&gt;
-&lt;li&gt;serialized file(序列化文件)&lt;ul&gt;
-&lt;li&gt;serialized file:资源被打碎放在一个对象中,最后统一被写进一个单独的文件(只有一个)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;resource file(源文件)&lt;ul&gt;
-&lt;li&gt;resource file:某些二进制资源(图片,声音)被单独保存,方便快速加载&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;它是一个AssetsBundle对象,我们可以通过代码从一个特定的压缩包加载出来的对象,这个对象包含了所有我们当初添加到这个压缩包里面的内容,我们可以通过这个对象加载出来使用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h4 id=&quot;AssetsBundle使用流程&quot;&gt;&lt;a href=&quot;#AssetsBundle使用流程&quot; class=&quot;headerlink&quot; title=&quot;AssetsBundle使用流程&quot;&gt;&lt;/a&gt;AssetsBundle使用流程&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;指定资源的AssetsBundle属性&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;指定要打包的物品的AssetsBundle名字和后缀(&lt;font color=&quot;1F89&quot;&gt;在指定AB包名字的时候可以直接自定义目录AssetScene/AssetsBundle&lt;/font&gt;)当AssetsBundle包多的时候可以进行目录结构的划分&lt;br&gt;&lt;a href=&quot;https://imgchr.com/i/PBBUD1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/04/PBBUD1.png&quot; alt=&quot;PBBUD1.png&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;构建AB包(打包AssetsBundle包)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;构建AB包的脚本一般都是在Editor模式下运行;&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; [&lt;span class=&quot;meta&quot;&gt;MenuItem(&lt;span class=&quot;meta-string&quot;&gt;&quot;MyTools/BuildBundles&quot;&lt;/span&gt;)&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BuildBundles&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt; buildPath = Application.dataPath + &lt;span class=&quot;string&quot;&gt;&quot;/AssetsBundles&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(Directory.Exists(buildPath) == &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Directory.CreateDirectory(buildPath);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//构建AB包&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    BuildPipeline.BuildAssetBundles(buildPath, BuildAssetBundleOptions.None, BuildTarget.Android);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    AssetDatabase.Refresh();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="热更新" scheme="http://www.Husbandman.top/categories/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/"/>
-    
-    
-      <category term="热更新" scheme="http://www.Husbandman.top/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bmob支付</title>
-    <link href="http://www.Husbandman.top/2018/08/04/Bmob%E6%94%AF%E4%BB%98/"/>
-    <id>http://www.Husbandman.top/2018/08/04/Bmob支付/</id>
-    <published>2018-08-03T17:34:57.000Z</published>
-    <updated>2018-08-04T05:02:36.831Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Bmob支付&quot;&gt;&lt;a href=&quot;#Bmob支付&quot; class=&quot;headerlink&quot; title=&quot;Bmob支付&quot;&gt;&lt;/a&gt;Bmob支付&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;移动应用后端云服务(&lt;a href=&quot;http://bmob.cn&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BlendTree</title>
-    <link href="http://www.Husbandman.top/2018/08/04/BlendTree/"/>
-    <id>http://www.Husbandman.top/2018/08/04/BlendTree/</id>
-    <published>2018-08-03T17:22:33.000Z</published>
-    <updated>2018-08-04T05:02:33.257Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;动画状态机-混合树&quot;&gt;&lt;a href=&quot;#动画状态机-混合树&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="MecanimAnimator" scheme="http://www.Husbandman.top/categories/MecanimAnimator/"/>
-    
-      <category term="Unity" scheme="http://www.Husbandman.top/categories/MecanimAnimator/Unity/"/>
-    
-    
-      <category term="MecanimAnimator" scheme="http://www.Husbandman.top/tags/MecanimAnimator/"/>
     
   </entry>
   
