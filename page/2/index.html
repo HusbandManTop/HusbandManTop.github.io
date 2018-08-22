@@ -1147,7 +1147,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/GL库/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/Unity自带GL讲解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1166,7 +1166,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/12/GL库/" itemprop="url">GL图像库</a></h1>
+                <a class="post-title-link" href="/2018/08/12/Unity自带GL讲解/" itemprop="url">Unity自带GL讲解</a></h1>
         
 
         <div class="post-meta">
@@ -1220,8 +1220,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/12/GL库/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/12/GL库/" class="cy_cmt_count" data-xid="2018/08/12/GL库/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/12/Unity自带GL讲解/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/Unity自带GL讲解/" class="cy_cmt_count" data-xid="2018/08/12/Unity自带GL讲解/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1243,7 +1243,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,616
+                  1,147
                 </span>
               
 
@@ -1259,7 +1259,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13
+                  6
                 </span>
               
             </div>
@@ -1281,27 +1281,420 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h3 id="转-GL图像库"><a href="#转-GL图像库" class="headerlink" title="(转)GL图像库"></a>(转)GL图像库</h3><p>原文链接: <a href="http://pepe.cnblogs.com/尊重作者原创" target="_blank" rel="noopener">http://pepe.cnblogs.com/尊重作者原创</a></p>
+          <h3 id="转-Unity自带GL讲解"><a href="#转-Unity自带GL讲解" class="headerlink" title="(转)Unity自带GL讲解"></a>(转)Unity自带GL讲解</h3><p>原文链接:<a href="http://blog.sina.com.cn/s/blog_471132920101gxzf.html尊重作者原创" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_471132920101gxzf.html尊重作者原创</a></p>
 <hr>
+<p>GL即Graphics Library。Low-Level Graphics Library。计算matrices，发出类似OpenGL的immediate模式的渲染指令，和其它低级图像任务。Graphic.DrawMesh()比GL更高效。</p>
+<p>GL立即绘制函数，只用当前material的设置，除非你显示指定mat。否则mat可以是任何材质。并且GL可能会改变材质。</p>
+<p>GL立即执行的，如果你在Update()里调用，它们将在相机渲染前执行，相机渲染将会清空屏幕，GL效果将无法看到。</p>
+<p>通常GL用法是，在camera上贴脚本，并在OnPostRender()里执行。</p>
+<p><strong>注意：</strong></p>
 <ul>
-<li><p>1、绘制2D图像的时需要使用GL.LoadOrtho()方法来将图形映射到平面中。</p>
+<li><p>1、<strong>GL的线等基本图元并没有UV，所以没有贴图纹理映射的，shader里仅仅做的是单色计算或者对之前的影像加以处理。</strong></p>
 </li>
-<li><p>2、所有绘制相关的内容都要写在OnPostRender()方法中。</p>
+<li><p>2、<strong>GL所使用的shader里必须有cull off指令，否则显示会变成如下。（如何？？？）</strong></p>
 </li>
-<li><p>3、有关GL图像库的脚本需要绑定到Hierarchy视图中Camera上，否则无法显示绘制的图像。</p>
-</li>
-<li><p>4、在GL图像库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这个浮点数来计算</p>
+<li><p>3、<strong>如果是线，颜色是GL.Color( new Color(1,1,1,0.5f)设置颜色。如果是GL.TRIANGLES或者GL.QUADS，则颜色是shader里的颜色。</strong></p>
 </li>
 </ul>
 <hr>
-<h4 id="一-绘制线"><a href="#一-绘制线" class="headerlink" title="一.绘制线"></a>一.绘制线</h4><p>别忘了添加物理材质public Material material;<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> GL 图像库</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 1、GL图像库是底层的图像库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 具有一定的特殊性，它们不属于3D网格图形，只会以面的形式渲染</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 2、绘制2D图像时，需要使用GL.LoadOrtho()方法来将图形映射在平面中，绘制的是3D图形，就无须使用此方法</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 3、使用GL图像库时，需要将所有绘制相关的内容写在OnPostRender()方法中</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">public class _7_5 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 绘制线段的材质</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> Material material;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!material)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"请给材质资源赋值"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        material.SetPass(<span class="number">0</span>);<span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">        GL.LoadOrtho();<span class="comment">//设置绘制2D图像</span></span><br><span class="line">        GL.Begin(GL.LINES);<span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">100</span>);<span class="comment">//绘制线段0</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">150</span>);<span class="comment">//绘制线段1</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>);<span class="comment">//绘制线段2</span></span><br><span class="line">        GL.End();<span class="comment">//结束绘制</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1, <span class="keyword">float</span> y1, <span class="keyword">float</span> x2, <span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标除以屏幕宽或高</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x1 / Screen.width, y1 / Screen.height, <span class="number">0</span>));<span class="comment">// ['vɜ:teks] n. 最高点；顶点；&lt;数&gt;（三角形、圆锥体等与底相对的）顶；</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x2 / Screen.width, y2 / Screen.height, <span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法说明：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、GL.PushMatrix()：保存Matrices至matrix stack上</span><br><span class="line"></span><br><span class="line">GL.PopMatrix()/从matrix stack上读取matrices。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、GL.LoadPixeMatrix()：改变MVP矩阵，使得transform里的xy直接对应像素，（<span class="number">0</span>，<span class="number">0</span>）表示屏幕ViewPort的左下角，z的范围是（<span class="number">-1</span>，<span class="number">1</span>），该函数改变camera的参数，所以需要GL.PushMatrix()保存和GL.PopMatrix()读取。</span><br><span class="line"></span><br><span class="line">GL.Vertex3()的取值范围从左下角的(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)到右上角的(Screen.width，Screen.height, <span class="number">0</span>)。</span><br><span class="line">使用GL.LoadPixeMatrix时，Vertex3的xy值不需要除上Screen.width和Screen.height</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、GL.LoadOrtho()：设置ortho perspective，即水平视角。GL.Vertex3()取值范围从左下角的(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)到右上角的(<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>）即需要除上Screen.width和Screen.height。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、OnPostRender()：只有物体上有激活的相机时，才会调用该函数。当摄像机完成渲染场景后，绘制了所有物体再调用该方法。OnPostRender可以使用coroutine，加<span class="keyword">yield</span>使用</span><br><span class="line"></span><br><span class="line">WaitForEndOfFrame()：等待至所有绘制之后，在展示frame到屏幕之前，可以做截图。可以在任务物体上使用该函数。</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/12/GL库/#more" rel="contents">
+            <a class="btn" href="/2018/08/12/Unity自带GL讲解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/关于unity3D的GL图像库的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/关于unity3D的GL图像库的使用/" itemprop="url">关于unity3D的GL图像库的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/12/关于unity3D的GL图像库的使用/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/关于unity3D的GL图像库的使用/" class="cy_cmt_count" data-xid="2018/08/12/关于unity3D的GL图像库的使用/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,879
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="转-关于unity3D的GL图像库的使用"><a href="#转-关于unity3D的GL图像库的使用" class="headerlink" title="(转)关于unity3D的GL图像库的使用"></a>(转)关于unity3D的GL图像库的使用</h3><p>原文链接: <a href="https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创" target="_blank" rel="noopener">https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创</a></p>
+<hr>
+<h4 id="GL图象库"><a href="#GL图象库" class="headerlink" title="GL图象库"></a>GL图象库</h4><p>GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，<br>只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，不会因为摄象机的移动而<br>改变。2D图形的呈现方式和前面章节介绍的GUI有点类似，值得注意的是，绘制2D图像时，需要使用GL.LoadOrtho()方法将图形映射在<br>平面中；如果绘制的是3D图形，就无须使用此方法。  </p>
+<p>使用GL图象库时，需要将所有绘制相关的内容写在OnPostRender()方法中。此方法由系统自身调用，无法手动调用。此外，有关GL图象<br>库的脚本需要绑定在Hierarchy视图中的摄象机对象当中，否则将无法显示绘制的图形<br>绘制线   </p>
+<p>在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。<br>值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素<br>来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这<br>个浮点数来计算。  </p>
+<p>比如当前游戏屏幕的像素宽高是500<em>500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应<br>当是：500（屏幕宽） </em> 0.5（x坐标） = 250<br>500（屏幕高）* 0.5（x坐标） = 250</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//绘制线段材质</span></span><br><span class="line"><span class="keyword">public</span> Material material;</span><br><span class="line"><span class="comment">//此绘制方法由系统调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!material)</span><br><span class="line">&#123;</span><br><span class="line">Debug.LogError(“请给材质资源赋值”);</span><br><span class="line">Return;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">Material.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">GL.Begin(GL.LINES);</span><br><span class="line"><span class="comment">//绘制线段</span></span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">0</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">GL.End();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1;<span class="keyword">float</span> x2,<span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高</span></span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>));</span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/12/关于unity3D的GL图像库的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/Unity将bit转换为Class/" itemprop="url">Unity将bit转换为Class</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/12/Unity将bit转换为Class/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/" class="cy_cmt_count" data-xid="2018/08/12/Unity将bit转换为Class/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  563
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="转-Unity将bit转换为Class"><a href="#转-Unity将bit转换为Class" class="headerlink" title="(转)Unity将bit转换为Class"></a>(转)Unity将bit转换为Class</h3><p>原文链接: <a href="https://blog.csdn.net/Htlas/article/details/79714611尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/Htlas/article/details/79714611尊重作者原创</a></p>
+<hr>
+<p><a href="https://imgchr.com/i/P6ixVP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/10/P6ixVP.png" alt="P6ixVP.png"></a></p>
+<p><a href="https://imgchr.com/i/P6izUf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/10/P6izUf.png" alt="P6izUf.png"></a></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Girl</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//基本固定属性</span></span><br><span class="line">    <span class="keyword">byte</span> age;   <span class="comment">//1byte</span></span><br><span class="line">    <span class="keyword">byte</span> sex;   <span class="comment">//1byte</span></span><br><span class="line">    <span class="keyword">float</span> height;<span class="comment">//4byte</span></span><br><span class="line">    <span class="keyword">int</span> weight; <span class="comment">//4byte</span></span><br><span class="line">    <span class="keyword">short</span> threeD;<span class="comment">//2btye ——》基本长度共12Byte</span></span><br><span class="line">    <span class="comment">//长度不定属性</span></span><br><span class="line">    <span class="keyword">string</span> name;    <span class="comment">//Byte长度不定</span></span><br><span class="line">    <span class="comment">//第二个不定属性</span></span><br><span class="line">    <span class="keyword">string</span> address;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 将Gril这个类 变成一个Byte字节流</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">byte</span>[] <span class="title">GetNetBytes</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//基本属性字节流</span></span><br><span class="line">        <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">12</span>];</span><br><span class="line">        <span class="comment">//自定义协议</span></span><br><span class="line">        result[<span class="number">0</span>] = <span class="keyword">this</span>.age;</span><br><span class="line">        result[<span class="number">1</span>] = <span class="keyword">this</span>.sex;</span><br><span class="line">        <span class="comment">//如何将float转换为Byte数组</span></span><br><span class="line">        <span class="keyword">byte</span>[] heightBytes = BitConverter.GetBytes(<span class="keyword">this</span>.height);</span><br><span class="line">        Buffer.BlockCopy(heightBytes, <span class="number">0</span>, result, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] weightBytes = BitConverter.GetBytes(<span class="keyword">this</span>.weight);</span><br><span class="line">        Buffer.BlockCopy(weightBytes, <span class="number">0</span>, result, <span class="number">6</span>, <span class="number">4</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] threeDBytes = BitConverter.GetBytes(<span class="keyword">this</span>.threeD);</span><br><span class="line">        Buffer.BlockCopy(threeDBytes, <span class="number">0</span>, result, <span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 变长的string类型加入字节流</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">byte</span>[] <span class="title">GetNetBytesNameAddr</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//不定长string</span></span><br><span class="line">        <span class="keyword">byte</span>[] nameBytes = System.Text.Encoding.Default.GetBytes(<span class="keyword">this</span>.name);</span><br><span class="line">        <span class="keyword">byte</span>[] addrBytes = System.Text.Encoding.Default.GetBytes(<span class="keyword">this</span>.address);</span><br><span class="line">        <span class="comment">//字节流容量 = 定长+2+不定长长度</span></span><br><span class="line">        <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">14</span>+nameBytes.Length+addrBytes.Length];</span><br><span class="line">        <span class="comment">//获取之前12长度的字节流</span></span><br><span class="line">        <span class="keyword">byte</span>[] tmpResult = GetNetBytes();</span><br><span class="line">        <span class="comment">//将之前12长度字节流存入当前字节流</span></span><br><span class="line">        Buffer.BlockCopy(tmpResult, <span class="number">0</span>, result, <span class="number">0</span>, <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span> nameLength = (<span class="keyword">byte</span>)nameBytes.Length;</span><br><span class="line">        result[<span class="number">12</span>] = nameLength;</span><br><span class="line">        Buffer.BlockCopy(nameBytes, <span class="number">0</span>, result, <span class="number">13</span>, nameBytes.Length);</span><br><span class="line">        <span class="keyword">int</span> tmpLength = <span class="number">13</span> + nameBytes.Length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span> addrLength = (<span class="keyword">byte</span>)addrBytes.Length;</span><br><span class="line">        result[tmpLength] = addrLength;</span><br><span class="line">        Buffer.BlockCopy(addrBytes, <span class="number">0</span>, result, tmpLength + <span class="number">1</span>, addrBytes.Length);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 将一个字节流转换成一个Class</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetFromNet</span>(<span class="params"><span class="keyword">byte</span>[] result</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = result[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.sex = result[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">this</span>.height = BitConverter.ToSingle(result, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">this</span>.weight = BitConverter.ToInt32(result, <span class="number">6</span>);</span><br><span class="line">        <span class="keyword">this</span>.threeD = BitConverter.ToInt16(result, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">12</span>, result.Length - <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 带有string的反解析</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetFromNtAddress</span>(<span class="params"><span class="keyword">byte</span>[]result</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = result[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.sex = result[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">this</span>.height = BitConverter.ToSingle(result, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">this</span>.weight = BitConverter.ToInt32(result, <span class="number">6</span>);</span><br><span class="line">        <span class="keyword">this</span>.threeD = BitConverter.ToInt16(result, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">12</span>, result.Length - <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//name长度</span></span><br><span class="line">        <span class="keyword">byte</span> nameLength = result[<span class="number">12</span>];</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">13</span>, result.Length);</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">byte</span> addrLength = result[<span class="number">13</span> + nameLength];</span><br><span class="line">        <span class="keyword">this</span>.address = Encoding.Default.GetString(result, <span class="number">13</span> + <span class="number">1</span> + nameLength, addrLength);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1745,7 +2138,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/GL库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1764,7 +2157,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/12/Unity将bit转换为Class/" itemprop="url">Unity将bit转换为Class</a></h1>
+                <a class="post-title-link" href="/2018/08/12/GL库/" itemprop="url">GL图像库</a></h1>
         
 
         <div class="post-meta">
@@ -1818,8 +2211,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/12/Unity将bit转换为Class/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/12/Unity将bit转换为Class/" class="cy_cmt_count" data-xid="2018/08/12/Unity将bit转换为Class/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/12/GL库/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://www.Husbandman.top/2018/08/12/GL库/" class="cy_cmt_count" data-xid="2018/08/12/GL库/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1841,7 +2234,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  563
+                  2,616
                 </span>
               
 
@@ -1857,7 +2250,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  13
                 </span>
               
             </div>
@@ -1879,416 +2272,23 @@ alt="Fork me on GitHub"></a>
 
       
         
-          
-            <h3 id="转-Unity将bit转换为Class"><a href="#转-Unity将bit转换为Class" class="headerlink" title="(转)Unity将bit转换为Class"></a>(转)Unity将bit转换为Class</h3><p>原文链接: <a href="https://blog.csdn.net/Htlas/article/details/79714611尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/Htlas/article/details/79714611尊重作者原创</a></p>
+          <h3 id="转-GL图像库"><a href="#转-GL图像库" class="headerlink" title="(转)GL图像库"></a>(转)GL图像库</h3><p>原文链接: <a href="http://pepe.cnblogs.com/尊重作者原创" target="_blank" rel="noopener">http://pepe.cnblogs.com/尊重作者原创</a></p>
 <hr>
-<p><a href="https://imgchr.com/i/P6ixVP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/10/P6ixVP.png" alt="P6ixVP.png"></a></p>
-<p><a href="https://imgchr.com/i/P6izUf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/10/P6izUf.png" alt="P6izUf.png"></a></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Girl</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//基本固定属性</span></span><br><span class="line">    <span class="keyword">byte</span> age;   <span class="comment">//1byte</span></span><br><span class="line">    <span class="keyword">byte</span> sex;   <span class="comment">//1byte</span></span><br><span class="line">    <span class="keyword">float</span> height;<span class="comment">//4byte</span></span><br><span class="line">    <span class="keyword">int</span> weight; <span class="comment">//4byte</span></span><br><span class="line">    <span class="keyword">short</span> threeD;<span class="comment">//2btye ——》基本长度共12Byte</span></span><br><span class="line">    <span class="comment">//长度不定属性</span></span><br><span class="line">    <span class="keyword">string</span> name;    <span class="comment">//Byte长度不定</span></span><br><span class="line">    <span class="comment">//第二个不定属性</span></span><br><span class="line">    <span class="keyword">string</span> address;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 将Gril这个类 变成一个Byte字节流</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">byte</span>[] <span class="title">GetNetBytes</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//基本属性字节流</span></span><br><span class="line">        <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">12</span>];</span><br><span class="line">        <span class="comment">//自定义协议</span></span><br><span class="line">        result[<span class="number">0</span>] = <span class="keyword">this</span>.age;</span><br><span class="line">        result[<span class="number">1</span>] = <span class="keyword">this</span>.sex;</span><br><span class="line">        <span class="comment">//如何将float转换为Byte数组</span></span><br><span class="line">        <span class="keyword">byte</span>[] heightBytes = BitConverter.GetBytes(<span class="keyword">this</span>.height);</span><br><span class="line">        Buffer.BlockCopy(heightBytes, <span class="number">0</span>, result, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] weightBytes = BitConverter.GetBytes(<span class="keyword">this</span>.weight);</span><br><span class="line">        Buffer.BlockCopy(weightBytes, <span class="number">0</span>, result, <span class="number">6</span>, <span class="number">4</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] threeDBytes = BitConverter.GetBytes(<span class="keyword">this</span>.threeD);</span><br><span class="line">        Buffer.BlockCopy(threeDBytes, <span class="number">0</span>, result, <span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 变长的string类型加入字节流</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">byte</span>[] <span class="title">GetNetBytesNameAddr</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//不定长string</span></span><br><span class="line">        <span class="keyword">byte</span>[] nameBytes = System.Text.Encoding.Default.GetBytes(<span class="keyword">this</span>.name);</span><br><span class="line">        <span class="keyword">byte</span>[] addrBytes = System.Text.Encoding.Default.GetBytes(<span class="keyword">this</span>.address);</span><br><span class="line">        <span class="comment">//字节流容量 = 定长+2+不定长长度</span></span><br><span class="line">        <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">14</span>+nameBytes.Length+addrBytes.Length];</span><br><span class="line">        <span class="comment">//获取之前12长度的字节流</span></span><br><span class="line">        <span class="keyword">byte</span>[] tmpResult = GetNetBytes();</span><br><span class="line">        <span class="comment">//将之前12长度字节流存入当前字节流</span></span><br><span class="line">        Buffer.BlockCopy(tmpResult, <span class="number">0</span>, result, <span class="number">0</span>, <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span> nameLength = (<span class="keyword">byte</span>)nameBytes.Length;</span><br><span class="line">        result[<span class="number">12</span>] = nameLength;</span><br><span class="line">        Buffer.BlockCopy(nameBytes, <span class="number">0</span>, result, <span class="number">13</span>, nameBytes.Length);</span><br><span class="line">        <span class="keyword">int</span> tmpLength = <span class="number">13</span> + nameBytes.Length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">byte</span> addrLength = (<span class="keyword">byte</span>)addrBytes.Length;</span><br><span class="line">        result[tmpLength] = addrLength;</span><br><span class="line">        Buffer.BlockCopy(addrBytes, <span class="number">0</span>, result, tmpLength + <span class="number">1</span>, addrBytes.Length);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 将一个字节流转换成一个Class</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetFromNet</span>(<span class="params"><span class="keyword">byte</span>[] result</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = result[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.sex = result[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">this</span>.height = BitConverter.ToSingle(result, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">this</span>.weight = BitConverter.ToInt32(result, <span class="number">6</span>);</span><br><span class="line">        <span class="keyword">this</span>.threeD = BitConverter.ToInt16(result, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">12</span>, result.Length - <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 带有string的反解析</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetFromNtAddress</span>(<span class="params"><span class="keyword">byte</span>[]result</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = result[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">this</span>.sex = result[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">this</span>.height = BitConverter.ToSingle(result, <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">this</span>.weight = BitConverter.ToInt32(result, <span class="number">6</span>);</span><br><span class="line">        <span class="keyword">this</span>.threeD = BitConverter.ToInt16(result, <span class="number">10</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">12</span>, result.Length - <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//name长度</span></span><br><span class="line">        <span class="keyword">byte</span> nameLength = result[<span class="number">12</span>];</span><br><span class="line">        <span class="keyword">this</span>.name = Encoding.Default.GetString(result, <span class="number">13</span>, result.Length);</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="keyword">byte</span> addrLength = result[<span class="number">13</span> + nameLength];</span><br><span class="line">        <span class="keyword">this</span>.address = Encoding.Default.GetString(result, <span class="number">13</span> + <span class="number">1</span> + nameLength, addrLength);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/关于unity3D的GL图像库的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/12/关于unity3D的GL图像库的使用/" itemprop="url">关于unity3D的GL图像库的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
-                2018-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/12/关于unity3D的GL图像库的使用/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/12/关于unity3D的GL图像库的使用/" class="cy_cmt_count" data-xid="2018/08/12/关于unity3D的GL图像库的使用/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  4,879
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  21
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="转-关于unity3D的GL图像库的使用"><a href="#转-关于unity3D的GL图像库的使用" class="headerlink" title="(转)关于unity3D的GL图像库的使用"></a>(转)关于unity3D的GL图像库的使用</h3><p>原文链接: <a href="https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创" target="_blank" rel="noopener">https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创</a></p>
-<hr>
-<h4 id="GL图象库"><a href="#GL图象库" class="headerlink" title="GL图象库"></a>GL图象库</h4><p>GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，<br>只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，不会因为摄象机的移动而<br>改变。2D图形的呈现方式和前面章节介绍的GUI有点类似，值得注意的是，绘制2D图像时，需要使用GL.LoadOrtho()方法将图形映射在<br>平面中；如果绘制的是3D图形，就无须使用此方法。  </p>
-<p>使用GL图象库时，需要将所有绘制相关的内容写在OnPostRender()方法中。此方法由系统自身调用，无法手动调用。此外，有关GL图象<br>库的脚本需要绑定在Hierarchy视图中的摄象机对象当中，否则将无法显示绘制的图形<br>绘制线   </p>
-<p>在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。<br>值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素<br>来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这<br>个浮点数来计算。  </p>
-<p>比如当前游戏屏幕的像素宽高是500<em>500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应<br>当是：500（屏幕宽） </em> 0.5（x坐标） = 250<br>500（屏幕高）* 0.5（x坐标） = 250</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//绘制线段材质</span></span><br><span class="line"><span class="keyword">public</span> Material material;</span><br><span class="line"><span class="comment">//此绘制方法由系统调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!material)</span><br><span class="line">&#123;</span><br><span class="line">Debug.LogError(“请给材质资源赋值”);</span><br><span class="line">Return;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">Material.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">GL.Begin(GL.LINES);</span><br><span class="line"><span class="comment">//绘制线段</span></span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">0</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">GL.End();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1;<span class="keyword">float</span> x2,<span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高</span></span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>));</span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/12/关于unity3D的GL图像库的使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/12/Unity自带GL讲解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/12/Unity自带GL讲解/" itemprop="url">Unity自带GL讲解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:20:13+08:00">
-                2018-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/12/Unity自带GL讲解/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/12/Unity自带GL讲解/" class="cy_cmt_count" data-xid="2018/08/12/Unity自带GL讲解/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,147
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="转-Unity自带GL讲解"><a href="#转-Unity自带GL讲解" class="headerlink" title="(转)Unity自带GL讲解"></a>(转)Unity自带GL讲解</h3><p>原文链接:<a href="http://blog.sina.com.cn/s/blog_471132920101gxzf.html尊重作者原创" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_471132920101gxzf.html尊重作者原创</a></p>
-<hr>
-<p>GL即Graphics Library。Low-Level Graphics Library。计算matrices，发出类似OpenGL的immediate模式的渲染指令，和其它低级图像任务。Graphic.DrawMesh()比GL更高效。</p>
-<p>GL立即绘制函数，只用当前material的设置，除非你显示指定mat。否则mat可以是任何材质。并且GL可能会改变材质。</p>
-<p>GL立即执行的，如果你在Update()里调用，它们将在相机渲染前执行，相机渲染将会清空屏幕，GL效果将无法看到。</p>
-<p>通常GL用法是，在camera上贴脚本，并在OnPostRender()里执行。</p>
-<p><strong>注意：</strong></p>
 <ul>
-<li><p>1、<strong>GL的线等基本图元并没有UV，所以没有贴图纹理映射的，shader里仅仅做的是单色计算或者对之前的影像加以处理。</strong></p>
+<li><p>1、绘制2D图像的时需要使用GL.LoadOrtho()方法来将图形映射到平面中。</p>
 </li>
-<li><p>2、<strong>GL所使用的shader里必须有cull off指令，否则显示会变成如下。（如何？？？）</strong></p>
+<li><p>2、所有绘制相关的内容都要写在OnPostRender()方法中。</p>
 </li>
-<li><p>3、<strong>如果是线，颜色是GL.Color( new Color(1,1,1,0.5f)设置颜色。如果是GL.TRIANGLES或者GL.QUADS，则颜色是shader里的颜色。</strong></p>
+<li><p>3、有关GL图像库的脚本需要绑定到Hierarchy视图中Camera上，否则无法显示绘制的图像。</p>
+</li>
+<li><p>4、在GL图像库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这个浮点数来计算</p>
 </li>
 </ul>
 <hr>
-<p>方法说明：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、GL.PushMatrix()：保存Matrices至matrix stack上</span><br><span class="line"></span><br><span class="line">GL.PopMatrix()/从matrix stack上读取matrices。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、GL.LoadPixeMatrix()：改变MVP矩阵，使得transform里的xy直接对应像素，（<span class="number">0</span>，<span class="number">0</span>）表示屏幕ViewPort的左下角，z的范围是（<span class="number">-1</span>，<span class="number">1</span>），该函数改变camera的参数，所以需要GL.PushMatrix()保存和GL.PopMatrix()读取。</span><br><span class="line"></span><br><span class="line">GL.Vertex3()的取值范围从左下角的(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)到右上角的(Screen.width，Screen.height, <span class="number">0</span>)。</span><br><span class="line">使用GL.LoadPixeMatrix时，Vertex3的xy值不需要除上Screen.width和Screen.height</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、GL.LoadOrtho()：设置ortho perspective，即水平视角。GL.Vertex3()取值范围从左下角的(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)到右上角的(<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>）即需要除上Screen.width和Screen.height。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、OnPostRender()：只有物体上有激活的相机时，才会调用该函数。当摄像机完成渲染场景后，绘制了所有物体再调用该方法。OnPostRender可以使用coroutine，加<span class="keyword">yield</span>使用</span><br><span class="line"></span><br><span class="line">WaitForEndOfFrame()：等待至所有绘制之后，在展示frame到屏幕之前，可以做截图。可以在任务物体上使用该函数。</span><br></pre></td></tr></table></figure></p>
+<h4 id="一-绘制线"><a href="#一-绘制线" class="headerlink" title="一.绘制线"></a>一.绘制线</h4><p>别忘了添加物理材质public Material material;<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> GL 图像库</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 1、GL图像库是底层的图像库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 具有一定的特殊性，它们不属于3D网格图形，只会以面的形式渲染</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 2、绘制2D图像时，需要使用GL.LoadOrtho()方法来将图形映射在平面中，绘制的是3D图形，就无须使用此方法</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 3、使用GL图像库时，需要将所有绘制相关的内容写在OnPostRender()方法中</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">public class _7_5 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 绘制线段的材质</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> Material material;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!material)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"请给材质资源赋值"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        material.SetPass(<span class="number">0</span>);<span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">        GL.LoadOrtho();<span class="comment">//设置绘制2D图像</span></span><br><span class="line">        GL.Begin(GL.LINES);<span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">100</span>);<span class="comment">//绘制线段0</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">150</span>);<span class="comment">//绘制线段1</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>);<span class="comment">//绘制线段2</span></span><br><span class="line">        GL.End();<span class="comment">//结束绘制</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1, <span class="keyword">float</span> y1, <span class="keyword">float</span> x2, <span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标除以屏幕宽或高</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x1 / Screen.width, y1 / Screen.height, <span class="number">0</span>));<span class="comment">// ['vɜ:teks] n. 最高点；顶点；&lt;数&gt;（三角形、圆锥体等与底相对的）顶；</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x2 / Screen.width, y2 / Screen.height, <span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/12/Unity自带GL讲解/#more" rel="contents">
+            <a class="btn" href="/2018/08/12/GL库/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2395,7 +2395,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2406,7 +2406,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
