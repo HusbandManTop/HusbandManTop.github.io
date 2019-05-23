@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="平行光  参数: Type: 灯光类型    Intensity: 光线明亮程度    Cookie: 使用贴图纹理的(Alpha)通道作为一个遮罩,使光线在不同的地方有不同的亮度    Shadow Type: 设置灯光投射阴影类型    Culling Mask: 设置层中的游戏对象是否受到该灯光的影响   平行光详细参数: 阴影剔除优化算法:  吐过吧Shadow Type的属性设置成软阴影">
+<meta name="keywords" content="Unity基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity基础">
+<meta property="og:url" content="http://www.Husbandman.top/2019/05/24/Unity基础/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="平行光  参数: Type: 灯光类型    Intensity: 光线明亮程度    Cookie: 使用贴图纹理的(Alpha)通道作为一个遮罩,使光线在不同的地方有不同的亮度    Shadow Type: 设置灯光投射阴影类型    Culling Mask: 设置层中的游戏对象是否受到该灯光的影响   平行光详细参数: 阴影剔除优化算法:  吐过吧Shadow Type的属性设置成软阴影">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/13/Pg8vCD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/13/PgGSvd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/14/PgI240.png">
+<meta property="og:updated_time" content="2018-08-14T06:40:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity基础">
+<meta name="twitter:description" content="平行光  参数: Type: 灯光类型    Intensity: 光线明亮程度    Cookie: 使用贴图纹理的(Alpha)通道作为一个遮罩,使光线在不同的地方有不同的亮度    Shadow Type: 设置灯光投射阴影类型    Culling Mask: 设置层中的游戏对象是否受到该灯光的影响   平行光详细参数: 阴影剔除优化算法:  吐过吧Shadow Type的属性设置成软阴影">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/13/Pg8vCD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2019/05/24/Unity基础/"/>
+
+
+
+
+
+  <title>Unity基础 | HusbandMan</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9648022e5b5c1d7e68ba42a82827c30";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/Books" rel="section">
+            
+            书籍
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/Unity基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unity基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:37+08:00">
+                2019-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/05/24/Unity基础/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/05/24/Unity基础/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,812
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="平行光"><a href="#平行光" class="headerlink" title="平行光"></a>平行光</h3><hr>
+<ul>
+<li><p>参数: Type: 灯光类型  </p>
+</li>
+<li><p>Intensity: 光线明亮程度  </p>
+</li>
+<li><p>Cookie: 使用贴图纹理的(Alpha)通道作为一个遮罩,使光线在不同的地方有不同的亮度  </p>
+</li>
+<li><p>Shadow Type: 设置灯光投射阴影类型  </p>
+</li>
+<li><p><font color="F111">Culling Mask</font>: 设置层中的游戏对象是否受到该灯光的影响</p>
+</li>
+</ul>
+<h4 id="平行光详细参数"><a href="#平行光详细参数" class="headerlink" title="平行光详细参数:"></a>平行光详细参数:</h4><ul>
+<li><p>阴影剔除优化算法:</p>
+<ul>
+<li><p>吐过吧Shadow Type的属性设置成软阴影(softShadow),使得灯光产生软阴影效果,你会注意到近处的阴影显示没有问题,但是远处的阴影却未显示出来</p>
+</li>
+<li><p>阴影剔除的距离可以通过菜单栏:Edit-&gt;Project Settings-&gt;Quality质量面板来设置</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="平行光项目的质量设置面板"><a href="#平行光项目的质量设置面板" class="headerlink" title="平行光项目的质量设置面板"></a>平行光项目的质量设置面板</h4><ul>
+<li><p><font color="F111">Texture Quality</font>: 质量贴图(质量越低,贴图显示越模糊,渲染速度越快)  </p>
+</li>
+<li><p><font color="F111">Anti Aliasing</font>: 抗锯齿类型  </p>
+</li>
+<li><p>Shadows: 阴影类型  </p>
+</li>
+<li><p>Shadow Resolution: 阴影分辨率  </p>
+</li>
+<li><p><font color="F111">Shadow Distance</font>: 阴影距离(摄像机的最大阴影可见距离,超出这个距离的阴影不会被渲染)</p>
+</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h3 id="点光源"><a href="#点光源" class="headerlink" title="点光源"></a>点光源</h3><hr>
+<h4 id="点光源的三种渲染模式"><a href="#点光源的三种渲染模式" class="headerlink" title="点光源的三种渲染模式"></a>点光源的三种渲染模式</h4><ul>
+<li><p><font color="F111">VertexLit 模式</font>(顶点光照模式): 采用顶点着色渲染,只对模型顶点进行光照计算,其渲染速度在三种中为最快,可是效果最差;  </p>
+</li>
+<li><p><font color="F111">Forward Rendering 模式</font>(前向渲染): <strong>默认渲染模式,渲染速度适中,但是在整个场景中只能一盏(平行光)生成阴影</strong></p>
+</li>
+<li><font color="F111">Deferred Lighting 模式</font>(延迟光照模式): <strong>渲染速度最慢,但是可以生成多灯光阴影</strong></li>
+</ul>
+<hr>
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><hr>
+<h4 id="音频的监听与音频源组件"><a href="#音频的监听与音频源组件" class="headerlink" title="音频的监听与音频源组件"></a>音频的监听与音频源组件</h4><p>Unity3d中目前支持的音频剪辑(Audio Clip)中有四种音乐格式</p>
+<ul>
+<li><p>MP3:  适合较长的音频,作为背景音乐;  </p>
+</li>
+<li><p>Ogg:  适合较长的音频,作为背景音乐;  </p>
+</li>
+<li><p>Wav:  适合较短的音频,作为环境音效(无压缩格式);  </p>
+</li>
+<li><p>Aiff: 适合较短的音频,作为环境音效</p>
+</li>
+</ul>
+<p>制作反应速度快的音效,适合使用不压缩音频</p>
+<hr>
+<h4 id="音频剪辑属性"><a href="#音频剪辑属性" class="headerlink" title="音频剪辑属性:"></a>音频剪辑属性:</h4><ul>
+<li>Force to Mono: 强制单声道</li>
+<li>Load in Background: 在后台加载</li>
+<li>Load Type(音频加载方式):<ul>
+<li>1.Decompress on Load: 解压在加载</li>
+<li><ol start="2">
+<li>Compressed in Memory: 压缩在内存中</li>
+</ol>
+</li>
+<li>3.Streaming:  直接从磁盘读取,适用于较大且对速度不敏感的音频播放</li>
+</ul>
+</li>
+<li>preload audio data: 预加载音频数据</li>
+<li>compression format: 压缩格式</li>
+<li>sample rate setting: 采样率设置</li>
+</ul>
+<hr>
+<h4 id="音频监听与音频源组件详细参数"><a href="#音频监听与音频源组件详细参数" class="headerlink" title="音频监听与音频源组件详细参数:"></a>音频监听与音频源组件详细参数:</h4><ul>
+<li><strong>音频监听组件与音频播放组件可以放在同一个游戏对象上,也可以放置在不同游戏对象上</strong></li>
+<li>音频监听组件默认添加在了摄像机上,<strong>注意没有被激活的摄像机需要把Audio Listener关掉</strong></li>
+<li>同一个场景中Audio Listener只能有一个起作用</li>
+</ul>
+<hr>
+<h4 id="音频监听与音频源组件-Audio-Source组件"><a href="#音频监听与音频源组件-Audio-Source组件" class="headerlink" title="音频监听与音频源组件-Audio Source组件"></a>音频监听与音频源组件-Audio Source组件</h4><ul>
+<li>Audio Clip:音频剪辑</li>
+<li>Mute: 静音</li>
+<li>Play On Awake: 自动播放</li>
+<li>Priority: 确定场景中所以音频源之间的优先级.(0:最重要 256:最不重要),当资源不足时有限级最低的会被剔除</li>
+<li>Min Distance: 在最小距离之内,声音会被保持最大</li>
+<li>Max Distance: 声音的最大距离</li>
+</ul>
+<hr>
+<h4 id="音频混响器组件"><a href="#音频混响器组件" class="headerlink" title="音频混响器组件"></a>音频混响器组件</h4><ul>
+<li>添加混响器(Audio Reverb Zones)组件,可以在场景中的某个位置上添加混响失真效果;  <ul>
+<li>例如隧道中赛车的声音与露天的不同,声音在露天与小房间内的不同,同样的声音在山谷,山洞,客厅中都不同</li>
+</ul>
+</li>
+<li>组件属性;<ul>
+<li>Min Distance: 最小距离</li>
+<li>Max Distance: 最大距离</li>
+<li>Reverb Preset: 混响预制</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="音频滤波器"><a href="#音频滤波器" class="headerlink" title="音频滤波器"></a>音频滤波器</h4><p>通过音频滤波器组件我们可以进行滤波处理,例如添加回声,低通滤波处理等;</p>
+<h5 id="低通滤波器-Audio-Low-Pass-Filter"><a href="#低通滤波器-Audio-Low-Pass-Filter" class="headerlink" title="低通滤波器 Audio Low Pass Filter"></a>低通滤波器 Audio Low Pass Filter</h5><ul>
+<li>用于抑制高频信号,通过低频<ul>
+<li>例如: 雷声近处尖锐,远处低沉,隔门听声的效果<h5 id="高通滤波器-Audio-High-Pass-Filter"><a href="#高通滤波器-Audio-High-Pass-Filter" class="headerlink" title="高通滤波器 Audio High Pass Filter"></a>高通滤波器 Audio High Pass Filter</h5></li>
+</ul>
+</li>
+<li>用于抑制低频,通过高频<ul>
+<li>例如制作非常刺耳的声音<h5 id="回声滤波器-Audio-Echo-Filter"><a href="#回声滤波器-Audio-Echo-Filter" class="headerlink" title="回声滤波器 Audio Echo Filter"></a>回声滤波器 Audio Echo Filter</h5></li>
+</ul>
+</li>
+<li>给音频添加延迟效果(回声效果)<h5 id="失真滤波器-Audio-Distortion-Filter"><a href="#失真滤波器-Audio-Distortion-Filter" class="headerlink" title="失真滤波器 Audio Distortion Filter"></a>失真滤波器 Audio Distortion Filter</h5></li>
+<li>对音频的失真处理,例如模拟低质量的收音机<h5 id="混响滤波器-Audio-Reverb-Filter"><a href="#混响滤波器-Audio-Reverb-Filter" class="headerlink" title="混响滤波器 (Audio Reverb Filter)"></a>混响滤波器 (Audio Reverb Filter)</h5></li>
+<li>对音频进行<strong>失真处理</strong>来产生混响效果<h5 id="合声滤波器-Audio-Chorus-Filter"><a href="#合声滤波器-Audio-Chorus-Filter" class="headerlink" title="合声滤波器(Audio Chorus Filter)"></a>合声滤波器(Audio Chorus Filter)</h5></li>
+<li>合成由多个音频相同但略有不同的声音<ul>
+<li>例如生活中的大合唱效果</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="音频管理器"><a href="#音频管理器" class="headerlink" title="音频管理器"></a>音频管理器</h4><p>Edit-&gt;Priject Setting-&gt;Audio来打开音频管理器</p>
+<hr>
+<h3 id="GUI概述"><a href="#GUI概述" class="headerlink" title="GUI概述"></a>GUI概述</h3><p>无法摄像机拍到的图像是怎么变的,GUI永远显示在屏幕上,不受变形,碰撞,光照的影响</p>
+<h4 id="GUI基本控件"><a href="#GUI基本控件" class="headerlink" title="GUI基本控件"></a>GUI基本控件</h4><ul>
+<li>方法OnGUI():GUI本分是<em>**每帧擦除重绘的</em>,只应该在OnGUI中绘制GUI;</li>
+<li>典型基本控件:<ul>
+<li>标签:  <pre><code>GUI.Label(Rect,GUIContent);
+</code></pre></li>
+<li>文本输入框:<pre><code>GUI.TextField();
+</code></pre></li>
+</ul>
+</li>
+<li>多行文本框:<pre><code>GUI.TextArea();
+</code></pre></li>
+<li>密码框:<pre><code>GUI.PasswordField();
+</code></pre></li>
+<li>按钮<pre><code>GUI.Button();//Button只有鼠标抬起才会返回true;
+RepeatButton会在按下期间一直返回true;
+</code></pre></li>
+<li>Tab页<pre><code>GUI.Toolbar();//返回值为点击的按钮序号
+</code></pre></li>
+<li>复选框:<pre><code>GUI.Toggle();
+</code></pre></li>
+</ul>
+<h4 id="GUILayout布局与OnGUI"><a href="#GUILayout布局与OnGUI" class="headerlink" title="GUILayout布局与OnGUI"></a>GUILayout布局与OnGUI</h4><ul>
+<li><p>GUILayout布局默认会伸展控件的尺寸,Button等控件支持params GUILayoutOption[]options可变参数数组,可以通过GUILayout.Width()返回一个设置控件宽度的GUILayoutOption对象,Height(),MinWidth(),MinHeight()等同理,</p>
+<ul>
+<li>例如:GUILayout.Button(“test”,GUILayout.Width(500),GUILayout.Height(500));</li>
+</ul>
+</li>
+<li><p>GUILayout采用线性布局,类似于StackPanel,默认是<strong>纵向布局</strong>通过GUILayout.BeiginHorizontal();开启和GUILa.EndHorizontal();结束一个横向排列区域,同意BeginVertical(),EndVercital()</p>
+</li>
+</ul>
+<p>-如果嫌控件太挤,可以使用GUILayout.Space();增减指定像素的间隙</p>
+<ul>
+<li>区域Area: 相当于控件盒子,Area中的控件跟着Area移动,BeginArea()开始一个区域,参数制定区域的大小和坐标,EndArea()结束区域;区域是没有边框和标题的,页不可以拖放;<strong>注意: BeginArea()的参数中可以使用Screen类来进行相对定位</strong></li>
+</ul>
+<h4 id="GUI常用控件与贴图"><a href="#GUI常用控件与贴图" class="headerlink" title="GUI常用控件与贴图"></a>GUI常用控件与贴图</h4><ul>
+<li>滑动条: 纵向<pre><code>GUILayout.VerticalSlider(value,min,max);
+返回值为当前值,HorizontalSlider()横向
+</code></pre></li>
+<li><p>窗口Window:</p>
+<pre><code>GUILayout.Windos(0,new Rec(),AddWindow1,&quot;string&quot;);
+第一个参数为窗口的编号
+第二个参数为窗口的大小
+第三个参数为Void WindosFunction(int Windowid)委托,用来绘制窗口内容
+第四个参数为窗口标题,返回当前所在区域
+</code></pre></li>
+<li><p>给GUI贴图:</p>
+<pre><code>public Texture2D texture;
+GUI.DrawTexture(new Rect(),texture);
+</code></pre></li>
+</ul>
+<h4 id="GUI-Skin-皮肤"><a href="#GUI-Skin-皮肤" class="headerlink" title="GUI Skin 皮肤"></a>GUI Skin 皮肤</h4><p> <a href="https://imgchr.com/i/Pg8vCD" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/13/Pg8vCD.png" alt="Pg8vCD.png"></a></p>
+<h4 id="控件字体"><a href="#控件字体" class="headerlink" title="控件字体"></a>控件字体</h4><p><a href="https://imgchr.com/i/PgGSvd" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/13/PgGSvd.png" alt="PgGSvd.png"></a></p>
+<hr>
+<h3 id="静态模型的导出"><a href="#静态模型的导出" class="headerlink" title="静态模型的导出"></a>静态模型的导出</h3><ul>
+<li><p>三维模型建议采用<strong>FBX</strong>格式导出,该格式可以更方便的对需要导出的信息进行筛选和设置,而且能够包含<strong>模型数据</strong>,<strong>贴图数据</strong>,<strong>动画数据</strong>,等3D游戏中经常使用到的数据;  </p>
+</li>
+<li><p>在Unity3d中,一个系统单位表示为1m,为了能够与最终的游戏场景匹配,需要在三维软件中设置它的系统单位  </p>
+</li>
+<li><p>Unity3d会把<strong>其他软件导入进来的模型会进行缩小100倍</strong>,把FBX模型文件导入Unity3d中需要在Inspertor中对”Scal Factor”进行设置</p>
+</li>
+<li><p>FBX Import面板中Model标签栏中的属性说明:</p>
+<ul>
+<li><p>1.Scal Factor:缩放因子. Unity3d默认空间单位中的1m等于导入的文件中的一个单位,如果第三方软件中使用不同大小的单位建模,在这里可以进行校正;  </p>
+</li>
+<li><p>2.Read/Write Enabled: 使模型可以被实时读写,这样可以在场景中修改模型数据,但它是在内存中复制一份副本作为代价的,所以会多一倍的内存空间<font color="F111">建议在游戏产品发布前去掉默认的选项</font>  </p>
+</li>
+<li><p>3.Generate Colloder: 如果勾选,模型在导入时自动加上Mesh Collider组件<font color="F111">建议不要对复杂的移动的物体使用这个选项,很耗费性能</font>  </p>
+</li>
+<li><p>如果但觉导入的对象尺寸有问题,可以创建一个基本的Cube,该立方体的尺寸是(1,1,1);</p>
+</li>
+</ul>
+<p><a href="https://imgchr.com/i/PgI240" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/14/PgI240.png" alt="PgI240.png"></a></p>
+</li>
+</ul>
+<hr>
+<h3 id="物理学模拟"><a href="#物理学模拟" class="headerlink" title="物理学模拟"></a>物理学模拟</h3><ul>
+<li>物理学模拟就是在虚拟的世界中运用物理算法对游戏的运动进行模拟,使得物理运动行为更加符合真实世界的物理定律,从而让游戏更加富有真是感</li>
+<li>Unity3d内置NVIDIA公司的PhysX物理引擎,它采用硬件加速的方式对物理现象进行模拟运算,所以其速度比采用软件运算快的多</li>
+</ul>
+<h4 id="Rigibody属性"><a href="#Rigibody属性" class="headerlink" title="Rigibody属性"></a>Rigibody属性</h4><ul>
+<li>Mass: 物体的质量</li>
+<li>Drag: 空气阻力</li>
+<li>Use Gravity: 使用重力</li>
+<li><p>Is Kinematic: 若激活,则物体不受物理引擎的驱动,只能通过变换Transfrom操作,保留自身的物理属性,即<strong>忽略力对该刚体的作用</strong></p>
+</li>
+<li><p>碰撞的基本规则:</p>
+<ul>
+<li>如果需要两个对象发生碰撞的必要条件:<strong>必须一个为刚体,另一个为碰撞体</strong></li>
+<li>如果需要两个游戏不但有碰撞现象,且存在力的相互作用<strong>必须两个对象都为刚体</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="物理材质的分类与用于"><a href="#物理材质的分类与用于" class="headerlink" title="物理材质的分类与用于"></a>物理材质的分类与用于</h4><ul>
+<li><p>物理材质是控制游戏对象的<strong>摩擦力</strong>,<strong>反弹系数</strong>等属性的一种资源  </p>
+</li>
+<li><p>物理材质是资源而不是组件,且它是赋值给游戏对象上的碰撞盒属性中的Physics Material属性上的资源</p>
+</li>
+<li><p>物理材质中主要分为<strong>“反弹系数”</strong>,和<strong>“摩擦系数”</strong></p>
+</li>
+</ul>
+<h4 id="物理材质属性"><a href="#物理材质属性" class="headerlink" title="物理材质属性"></a>物理材质属性</h4><ul>
+<li>创建物理材质: 在Project-&gt;右键Create-&gt;Phystcs Materials</li>
+<li>物理材质属性<ul>
+<li>Dynamic Friction: 滑动摩擦力,值为0效果像冰,1则物体运行很快停止</li>
+<li>Static Friction: 静摩擦力,值为0值为0时效果像冰</li>
+<li>Bounciness: 表面的反弹力,值为0时不发生反弹,值为1时反弹,不损耗任何能量</li>
+</ul>
+</li>
+</ul>
+<p><strong>注: 如果一个游戏对象添加了刚体组件,建议采用为它添加作用力或者修改刚体速度的方式来操作,这样可以避免脚本控制的位置与物理引擎所计算的位置相冲突</strong></p>
+<h4 id="脚本控制物体移动"><a href="#脚本控制物体移动" class="headerlink" title="脚本控制物体移动"></a>脚本控制物体移动</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transfrom.Translate();<span class="comment">//使用位移的方式,不具备惯性</span></span><br><span class="line">rigibody.velocity;<span class="comment">//使用速度控制刚体,惯性居中</span></span><br><span class="line">rigibody.constantForce.force;<span class="comment">//使用力控制刚体,具有很强的惯性</span></span><br><span class="line"><span class="comment">//此方式需要在被控制的对象上添加"constant Force"组件</span></span><br></pre></td></tr></table></figure>
+<h4 id="碰撞盒和触发器"><a href="#碰撞盒和触发器" class="headerlink" title="碰撞盒和触发器"></a>碰撞盒和触发器</h4><h5 id="碰撞盒的分类与使用"><a href="#碰撞盒的分类与使用" class="headerlink" title="碰撞盒的分类与使用"></a>碰撞盒的分类与使用</h5><ul>
+<li>基本碰撞盒与网格碰撞盒</li>
+<li>模型比较复杂时建议不要使用网格碰撞盒,MeshCollider非常消耗计算资源</li>
+<li><p>基本的碰撞盒有: BoxCollider ,SphereCollider….<br>-碰撞盒的最基本作用还是阻挡作用  </p>
+</li>
+<li><p>碰撞事件函数</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OnCollisionStay(Collision collision);<span class="comment">//在碰撞体上停留(每帧调用)</span></span><br><span class="line">OnCollisionEnter(Collision collision);<span class="comment">//进入碰撞体调用一次</span></span><br><span class="line">OnCollisionExit(Collision collision);<span class="comment">//离开碰撞体调用一次</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="触发器的作用"><a href="#触发器的作用" class="headerlink" title="触发器的作用"></a>触发器的作用</h4><ul>
+<li><p>如果我们需要在游戏中侦测特定游戏对象的存在与出现与否,则一般使用触发器,<strong>触发器就是取消了碰撞盒的阻挡作用,保留基于碰撞事件函数的功能</strong>  </p>
+</li>
+<li><p>触发事件函数</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OnTriggerEnter(Colloder collision);<span class="comment">//进入触发器</span></span><br><span class="line">OnTriggerStay(Collision collision);<span class="comment">//在触发器上停留(每帧调用)</span></span><br><span class="line">OnTriggerExit(Collision collision);<span class="comment">//离开触发器调用一次</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/05/24/Unity基础/">Unity基础</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2019年05月24日 - 00:05</p>
+  <p><span>最后更新:</span>2018年08月14日 - 14:08</p>
+  <p><span>原始链接:</span><a href="/2019/05/24/Unity基础/" title="Unity基础">http://www.Husbandman.top/2019/05/24/Unity基础/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2019/05/24/Unity基础/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="HusbandMan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="HusbandMan 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity基础/" rel="tag"><i class="fa fa-tag"></i> Unity基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/Unity基础(二)/" rel="next" title="Unity基础(二)">
+                <i class="fa fa-chevron-left"></i> Unity基础(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/24/Unity将bit转换为Class/" rel="prev" title="Unity将bit转换为Class">
+                Unity将bit转换为Class <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#平行光"><span class="nav-number">1.</span> <span class="nav-text">平行光</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平行光详细参数"><span class="nav-number">1.1.</span> <span class="nav-text">平行光详细参数:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平行光项目的质量设置面板"><span class="nav-number">1.2.</span> <span class="nav-text">平行光项目的质量设置面板</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点光源"><span class="nav-number">2.</span> <span class="nav-text">点光源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点光源的三种渲染模式"><span class="nav-number">2.1.</span> <span class="nav-text">点光源的三种渲染模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#音频"><span class="nav-number">3.</span> <span class="nav-text">音频</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#音频的监听与音频源组件"><span class="nav-number">3.1.</span> <span class="nav-text">音频的监听与音频源组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频剪辑属性"><span class="nav-number">3.2.</span> <span class="nav-text">音频剪辑属性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频监听与音频源组件详细参数"><span class="nav-number">3.3.</span> <span class="nav-text">音频监听与音频源组件详细参数:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频监听与音频源组件-Audio-Source组件"><span class="nav-number">3.4.</span> <span class="nav-text">音频监听与音频源组件-Audio Source组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频混响器组件"><span class="nav-number">3.5.</span> <span class="nav-text">音频混响器组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频滤波器"><span class="nav-number">3.6.</span> <span class="nav-text">音频滤波器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#低通滤波器-Audio-Low-Pass-Filter"><span class="nav-number">3.6.1.</span> <span class="nav-text">低通滤波器 Audio Low Pass Filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高通滤波器-Audio-High-Pass-Filter"><span class="nav-number">3.6.2.</span> <span class="nav-text">高通滤波器 Audio High Pass Filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#回声滤波器-Audio-Echo-Filter"><span class="nav-number">3.6.3.</span> <span class="nav-text">回声滤波器 Audio Echo Filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#失真滤波器-Audio-Distortion-Filter"><span class="nav-number">3.6.4.</span> <span class="nav-text">失真滤波器 Audio Distortion Filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混响滤波器-Audio-Reverb-Filter"><span class="nav-number">3.6.5.</span> <span class="nav-text">混响滤波器 (Audio Reverb Filter)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合声滤波器-Audio-Chorus-Filter"><span class="nav-number">3.6.6.</span> <span class="nav-text">合声滤波器(Audio Chorus Filter)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#音频管理器"><span class="nav-number">3.7.</span> <span class="nav-text">音频管理器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI概述"><span class="nav-number">4.</span> <span class="nav-text">GUI概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI基本控件"><span class="nav-number">4.1.</span> <span class="nav-text">GUI基本控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GUILayout布局与OnGUI"><span class="nav-number">4.2.</span> <span class="nav-text">GUILayout布局与OnGUI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI常用控件与贴图"><span class="nav-number">4.3.</span> <span class="nav-text">GUI常用控件与贴图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI-Skin-皮肤"><span class="nav-number">4.4.</span> <span class="nav-text">GUI Skin 皮肤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控件字体"><span class="nav-number">4.5.</span> <span class="nav-text">控件字体</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态模型的导出"><span class="nav-number">5.</span> <span class="nav-text">静态模型的导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理学模拟"><span class="nav-number">6.</span> <span class="nav-text">物理学模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rigibody属性"><span class="nav-number">6.1.</span> <span class="nav-text">Rigibody属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理材质的分类与用于"><span class="nav-number">6.2.</span> <span class="nav-text">物理材质的分类与用于</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理材质属性"><span class="nav-number">6.3.</span> <span class="nav-text">物理材质属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本控制物体移动"><span class="nav-number">6.4.</span> <span class="nav-text">脚本控制物体移动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#碰撞盒和触发器"><span class="nav-number">6.5.</span> <span class="nav-text">碰撞盒和触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#碰撞盒的分类与使用"><span class="nav-number">6.5.1.</span> <span class="nav-text">碰撞盒的分类与使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发器的作用"><span class="nav-number">6.6.</span> <span class="nav-text">触发器的作用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.2k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共69.2k字</span>
+</div>
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65959959";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

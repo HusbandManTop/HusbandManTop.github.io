@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="3d数学," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="3d数学-向量 向量的数学定义 向量就是一个数字列表,很多个数字组成的列表,也叫做数组 如果只有一个数叫做一维行/列向量,一维也叫做标量 向量的维数: 2维,3维,4维,标量是1维向量 行向量,列向量 [1,2,3] 行向量   |1| 列向量|2||3|     向量的几何定义 一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向  向量没有位置(向量的起点可以在任何位">
+<meta name="keywords" content="3d数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3d数学-向量">
+<meta property="og:url" content="http://www.Husbandman.top/2019/05/24/3D数学_向量/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="3d数学-向量 向量的数学定义 向量就是一个数字列表,很多个数字组成的列表,也叫做数组 如果只有一个数叫做一维行/列向量,一维也叫做标量 向量的维数: 2维,3维,4维,标量是1维向量 行向量,列向量 [1,2,3] 行向量   |1| 列向量|2||3|     向量的几何定义 一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向  向量没有位置(向量的起点可以在任何位">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/20/PhaNHU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/20/PhadN4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/Po0hxe.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/20/Phd2Mq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/20/Phdoi4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PouLdA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoVyWD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoVfeI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoVjwq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoVzkV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoZCpF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoZek6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoZmtK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoZ3nA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PowB7t.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PofaPH.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PohtO0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PohT1A.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/Po5wRJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/22/PoIAW4.png">
+<meta property="og:updated_time" content="2018-08-22T06:48:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3d数学-向量">
+<meta name="twitter:description" content="3d数学-向量 向量的数学定义 向量就是一个数字列表,很多个数字组成的列表,也叫做数组 如果只有一个数叫做一维行/列向量,一维也叫做标量 向量的维数: 2维,3维,4维,标量是1维向量 行向量,列向量 [1,2,3] 行向量   |1| 列向量|2||3|     向量的几何定义 一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向  向量没有位置(向量的起点可以在任何位">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/20/PhaNHU.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2019/05/24/3D数学_向量/"/>
+
+
+
+
+
+  <title>3d数学-向量 | HusbandMan</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9648022e5b5c1d7e68ba42a82827c30";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/Books" rel="section">
+            
+            书籍
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/3D数学_向量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3d数学-向量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:37+08:00">
+                2019-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/05/24/3D数学_向量/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/05/24/3D数学_向量/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,134
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="3d数学-向量"><a href="#3d数学-向量" class="headerlink" title="3d数学-向量"></a>3d数学-向量</h3><hr>
+<h4 id="向量的数学定义"><a href="#向量的数学定义" class="headerlink" title="向量的数学定义"></a>向量的数学定义</h4><ul>
+<li>向量就是一个数字列表,很多个数字组成的列表,也叫做数组</li>
+<li>如果只有一个数叫做一维行/列向量,一维也叫做标量</li>
+<li>向量的维数: 2维,3维,4维,<strong>标量是1维向量</strong></li>
+<li><p>行向量,列向量</p>
+<p>[1,2,3] 行向量  </p>
+<p>|1| 列向量<br>|2|<br>|3|  </p>
+</li>
+</ul>
+<h4 id="向量的几何定义"><a href="#向量的几何定义" class="headerlink" title="向量的几何定义"></a>向量的几何定义</h4><ul>
+<li><p><strong>一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向</strong></p>
+</li>
+<li><p><strong>向量没有位置(向量的起点可以在任何位置),只有大小和方向</strong></p>
+</li>
+<li><p>我们用一个向量在几何学上来表示位移而不是表示位置,即有方向又有大小的量就叫做向量  </p>
+<p><a href="https://imgchr.com/i/PhaNHU" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/20/PhaNHU.png" alt="PhaNHU.png"></a></p>
+</li>
+<li><p>向量的表达,向量在每个维度上的有向位移<br><a href="https://imgchr.com/i/PhadN4" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/20/PhadN4.png" alt="PhadN4.png"></a></p>
+</li>
+</ul>
+<h4 id="向量和点的关系"><a href="#向量和点的关系" class="headerlink" title="向量和点的关系"></a>向量和点的关系</h4><ul>
+<li><p>点有位置,但是没有实际的大小和厚度(厚度应该是指的是方向吧),向量有大小和方向,但是没有位置(位置可以在任何位置),所以使用”点”和”向量”的目的完全不同;”点”描述的是位置,”向量”描述的是位移,也包括相对位置;</p>
+</li>
+<li><p>向量和点在数学上是完全一致的,概念是等价的<br><img src="https://s1.ax1x.com/2018/08/22/Po0hxe.png" alt="Po0hxe.png"></p>
+</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h4 id="向量的运算"><a href="#向量的运算" class="headerlink" title="向量的运算"></a>向量的运算</h4><h5 id="零向量"><a href="#零向量" class="headerlink" title="零向量"></a>零向量</h5><ul>
+<li><p>任何集合,都存在加性单元x,对集合中任意元素y,满足y+x=y;</p>
+</li>
+<li><p>n维向量集合的加性单元就是n维”零向量”,它的每一维都是零;</p>
+</li>
+<li><p>零向量非常特殊,因为它是唯一一个大小为零的向量,对于其他任意数m,存在无数多个大小(模)为m的向量,他们构成了一个圆</p>
+</li>
+<li><p>向量里面的每一个数都是0,<strong>零向量是唯一一个没有方向的向量</strong><br>[0,0,0]</p>
+<p>|0|<br>|0|<br>|0|  </p>
+</li>
+</ul>
+<h6 id="负向量"><a href="#负向量" class="headerlink" title="负向量"></a>负向量</h6><ul>
+<li><p>对于任何集合,元素x的加性逆元为-x,其与x相加等于加性单位元,简单来说就是x+(-x)=0;</p>
+</li>
+<li><p>把一个向量取负,就是这个方向的负向量,一个向量加上它的负向量结果就是零向量</p>
+<pre><code> V+-V = -V+V = 0
+-[x,y] = [-x,-y]
+</code></pre></li>
+<li><p>一个向量和它的负向量是长度相等,方向相反</p>
+<p><a href="https://imgchr.com/i/Phd2Mq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/20/Phd2Mq.png" alt="Phd2Mq.png"></a></p>
+</li>
+</ul>
+<h5 id="向量的大小-长度-模"><a href="#向量的大小-长度-模" class="headerlink" title="向量的大小,长度,模"></a>向量的大小,长度,模</h5><ul>
+<li><p><strong>向量的长度计算公式</strong>(也叫向量的大小,或者向量的模)<br><a href="https://imgchr.com/i/Phdoi4" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/20/Phdoi4.png" alt="Phdoi4.png"></a></p>
+</li>
+<li><p><em>向量的大小就是向量各分量平方和的平方根,向量的大小是一个非负标量</em><br><a href="https://imgchr.com/i/PouLdA" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PouLdA.png" alt="PouLdA.png"></a></p>
+</li>
+</ul>
+<h5 id="标量与向量的乘法"><a href="#标量与向量的乘法" class="headerlink" title="标量与向量的乘法"></a>标量与向量的乘法</h5><ul>
+<li><p><strong>虽然标量不能与向量相加,但是他们可以相乘,结果将得到一个向量,与原向量平行,但长度不同或方向相反</strong></p>
+</li>
+<li><p>标量与向量的乘法非常直接,将向量的每一个分量都与标量相乘即可,标量与向量乘的顺序并不重要,但经常把标量写在左边,向量也能除以非零标量,效果等同于乘以标量的倒数</p>
+</li>
+</ul>
+<h6 id="标量与向量的乘法的几何意义"><a href="#标量与向量的乘法的几何意义" class="headerlink" title="标量与向量的乘法的几何意义:"></a>标量与向量的乘法的几何意义:</h6><ul>
+<li>几何上,向量乘以标量k的效果是以因子|k|缩放向量的长度,例如,为了使向量的长度加倍,应使向量乘以2,如果k&lt;0,则该向量的方向被倒转<br><a href="https://imgchr.com/i/PoVyWD" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoVyWD.png" alt="PoVyWD.png"></a>  </li>
+</ul>
+<h6 id="标量与向量的乘法的数学公式"><a href="#标量与向量的乘法的数学公式" class="headerlink" title="标量与向量的乘法的数学公式:"></a>标量与向量的乘法的数学公式:</h6><ul>
+<li><a href="https://imgchr.com/i/PoVfeI" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoVfeI.png" alt="PoVfeI.png"></a></li>
+</ul>
+<ul>
+<li><strong>注意:</strong><ul>
+<li><em>标量与向量相乘时,不需要写乘号,将两个向量挨着写即表示相乘(常将标量写在左边)</em></li>
+<li><em>标量与向量的乘法和除法优先级高于加减法,例如:3a+b是(3a)+b,而不是3(a+b)</em></li>
+<li><em>标量不能除以向量,并且向量不能除以另一个向量</em></li>
+<li><em>负向量能被认为是乘法的特殊情况,乘以标量-1</em></li>
+</ul>
+</li>
+</ul>
+<h5 id="标准化向量"><a href="#标准化向量" class="headerlink" title="标准化向量"></a>标准化向量</h5><ul>
+<li>对于许多向量,我们只关心它的方向而不关系其大小,如:”我面向的是什么方向”,在这种情况下,使用单位向量非常方便,<strong>单位向量就是大小为1的向量</strong>,单位向量经常被称作为<strong>标准化向量</strong>或者更简单的称为<strong>法线</strong></li>
+</ul>
+<h6 id="运算法则"><a href="#运算法则" class="headerlink" title="运算法则:"></a>运算法则:</h6><ul>
+<li>对任意非零的向量v,都能计算出一个和v方向相同的单位向量v(norm).这个过程被称作为”标准化”,<strong>要标准化向量,将向量除以它的大小(模)即可</strong><pre><code>V(normlize) = V / ||V||,V != 0
+</code></pre><ul>
+<li>零向量不能被标准化,数学上不允许,因为导致除0,几何上也没有任何意义,因为零向量没有方向</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>就是把一个向量(原来可能很长/或者很小的向量),把它的长度都变成单位长度(1),方向不改变;</strong></p>
+</li>
+<li><p>单位向量主要用于我们不关心向量的长度,只需要知道向量的方向的时候,使用单位向量;</p>
+</li>
+<li><strong>把一个普通的向量(不是单位向量的向量)变成单位化向量,就叫做标准化向量,标准化的结果就叫做单位向量</strong><br><a href="https://imgchr.com/i/PoVjwq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoVjwq.png" alt="PoVjwq.png"></a><br><a href="https://imgchr.com/i/PoVzkV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoVzkV.png" alt="PoVzkV.png"></a></li>
+</ul>
+<h5 id="向量的加法和减法"><a href="#向量的加法和减法" class="headerlink" title="向量的加法和减法"></a>向量的加法和减法</h5><h6 id="运算法则-1"><a href="#运算法则-1" class="headerlink" title="运算法则"></a>运算法则</h6><ul>
+<li><p>两个向量相加就是向量对应的数相加(标量不能与向量相加)<br><a href="https://imgchr.com/i/PoZCpF" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoZCpF.png" alt="PoZCpF.png"></a></p>
+</li>
+<li><p>向量的加法  </p>
+<p><a href="https://imgchr.com/i/PoZek6" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoZek6.png" alt="PoZek6.png"></a></p>
+</li>
+<li><p>向量的减法  </p>
+<p><a href="https://imgchr.com/i/PoZmtK" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoZmtK.png" alt="PoZmtK.png"></a></p>
+</li>
+<li><p><strong>注意:</strong></p>
+<ul>
+<li>向量不能与标量或者维度不同的向量相加减</li>
+<li>和标量加法一样,向量加法满足交换律,但向量减法不满足交换律,永远有a+b=b+a,但a-b=-(b-a),仅当a=b时,a-b=b-a</li>
+</ul>
+</li>
+</ul>
+<h6 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h6><ul>
+<li>向量ab相加的几何解释为:平移向量,使向量a的头连接向量b的尾,然后从a的尾向b的头画出一个向量,这就是向量加法的”三角形法则”</li>
+<li>减法b-a代表了从a到b的向量,简单的求”两点之间”的向量是没有意义的,因为没有指明方向,求一个点到另一个点的向量才有实际意义</li>
+</ul>
+<h5 id="距离公式"><a href="#距离公式" class="headerlink" title="距离公式"></a>距离公式</h5><ul>
+<li>我们可以利用向量的加减法运算来计算两个点之间的距离(主要是用减法运算)<br><a href="https://imgchr.com/i/PoZ3nA" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoZ3nA.png" alt="PoZ3nA.png"></a><pre><code>计算两点之间的距离:
+d = b-a = |bx - ax|
+          |by - ay|
+          |bz - az|
+a到b的距离等于向量d的长度
+    距离(a,b) = ||d|| = √dx^2+dy^2+dz^2
+将d带入:
+    距离(a,b) = ||b-a|| = √(bx-ax)^2+(by-ay)^2+(bz-az)^2
+</code></pre></li>
+</ul>
+<h5 id="向量的点乘-内积"><a href="#向量的点乘-内积" class="headerlink" title="向量的点乘(内积)"></a>向量的点乘(内积)</h5><h6 id="运算法则-2"><a href="#运算法则-2" class="headerlink" title="运算法则"></a>运算法则</h6><ul>
+<li><p>点乘a·b,与标量和向量的乘法相同,向量的点乘有优先级高于加法和减法,标量乘法和标量与向量的乘法经常可以省略乘号,但是在向量点乘中不能省略乘号</p>
+</li>
+<li><p><strong>向量点乘就是对应分量乘积的和,其结果是一个标量</strong></p>
+<pre><code>|ax| |bx|
+|ay| |by|
+|az|·|bz| = axbx+ayby+azbz+..+anbn
+|..| |..|
+|an| |bn|
+简写为:a·b = nΣi=1aibi
+</code></pre><p>应用到2d3d中为</p>
+<pre><code>a·b = axbx+ayby (ab是2d向量)
+a·b = axbx+ayby+azbz (ab是3d向量)
+</code></pre></li>
+<li>点乘满足交换律:a·b = b·a</li>
+</ul>
+<h6 id="几何解释-1"><a href="#几何解释-1" class="headerlink" title="几何解释"></a>几何解释</h6><ul>
+<li><p>点乘结果描述了两个向量的”相似”程度,点乘结果越大,两向量越接近<br><a href="https://imgchr.com/i/PowB7t" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PowB7t.png" alt="PowB7t.png"></a></p>
+</li>
+<li><p>点乘等于向量大小与向量夹角cos值得积:</p>
+<pre><code>a·b   = ||a|| ||b|| cosθ
+(3d中,两个向量的夹角是在包含两向量的平面中定义的)
+θ= arccos(a·b / ||a|| ||b||)
+</code></pre></li>
+<li>用点乘计算两个向量之间的夹角<ul>
+<li>如果两个向量ab是单位向量,就可以避免上面的除法运算,在这种情况下,上式中的分母是1;<pre><code>θ = arccos(a·b)  (ab是单位向量)
+</code></pre></li>
+</ul>
+</li>
+<li>计算两个向量的夹角:<ul>
+<li>如果不需要θ的确切值而只需要ab的夹角类型,就可以只取用点乘的结果的符号</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">a·b</th>
+<th style="text-align:center">θ</th>
+<th style="text-align:center">角度</th>
+<th style="text-align:center">a和b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&gt;0</td>
+<td style="text-align:center">0度 &lt;= θ &lt;90度</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">方向基本相同</td>
+</tr>
+<tr>
+<td style="text-align:center">=0</td>
+<td style="text-align:center">θ &lt;= 90度</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">正交</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;0</td>
+<td style="text-align:center">90度 &lt; θ &lt;=108度</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">方向基本相反</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>点乘的结果符号大致可以确定θ的类型<ul>
+<li><strong>向量的大小并不影响点乘结果的符号,所以和ab大小无关,注意:如果ab中任意一个为0,那么a·b的结果也等于0.因此,点乘对零向量的解释是:零向量和任意其他向量都垂直</strong></li>
+</ul>
+</li>
+</ul>
+<h5 id="向量的投影"><a href="#向量的投影" class="headerlink" title="向量的投影"></a>向量的投影</h5><ul>
+<li>给定两个向量v和n,能将v分解成两个向量:V|| 和V⊥.他们分别平行于和垂直于n,并满足v = V|| + V⊥.一般称平行分量V||为V在n上的投影<br><a href="https://imgchr.com/i/PofaPH" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PofaPH.png" alt="PofaPH.png"></a></li>
+<li>求V||:<ul>
+<li>V|| = n(||(V||)|| / ||n||)</li>
+<li>利用三角分解求||(V||)||<pre><code>Cosθ = ||(V||)|| / ||V||
+cosθ||V|| = ||(V||)||
+</code></pre></li>
+</ul>
+</li>
+<li><p>将||( V|| )||带入:</p>
+<pre><code>V|| = n(||V||cosθ / ||n||)
+    = n(||V|| ||n|| cosθ / ||n||^2)
+    = n(V·n / ||n||^2)
+</code></pre></li>
+<li><p>如果n是单位向量:</p>
+<pre><code>V⊥+V|| = ||V||
+V⊥     = ||V||-V||
+       = ||V|| - n(V·n / ||n||^2)
+</code></pre></li>
+</ul>
+<h5 id="向量的叉乘-差积"><a href="#向量的叉乘-差积" class="headerlink" title="向量的叉乘(差积)"></a>向量的叉乘(差积)</h5><ul>
+<li>点乘得到的是一个标量并满足交换律,向量叉乘得到的是一个向量,并且不满足交换律<h6 id="运算法则-3"><a href="#运算法则-3" class="headerlink" title="运算法则"></a>运算法则</h6></li>
+<li>叉乘axb,这里的x号不可以省略</li>
+<li><p>叉乘公式:</p>
+<pre><code>| x1 |   | x2 |   | x1z2 - z1y2 |
+| y1 | x | y2 | = | z1x2 - x1z2 |
+| z1 |   | z2 |   | x1y2 - y1x2 |
+</code></pre><p><a href="https://imgchr.com/i/PohtO0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PohtO0.png" alt="PohtO0.png"></a></p>
+</li>
+<li><p>叉乘的运算优先级和点乘一样,乘法在加减法之前计算,<strong>当点乘和叉乘在一起时,叉乘优先计算: a·b<em>c = a·(b</em>c).因为点乘返回的是一个标量,同时标量和向量之间不能叉乘,所以(a·b)* c没有定义</strong>.运算a·(b*c)称作三重积</p>
+</li>
+</ul>
+<h6 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h6><ul>
+<li>叉乘得到的向量垂直于原来的两个向量<br><a href="https://imgchr.com/i/PohT1A" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PohT1A.png" alt="PohT1A.png"></a><ul>
+<li>向量a和b在同一个平面上,向量axb指向该平面的正上方,垂直于a和b</li>
+</ul>
+</li>
+<li>axb的长度等于向量的大小与向量夹角sin值得积:<pre><code>||axb|| = ||a|| ||b|| sinθ
+</code></pre></li>
+<li>叉乘的长度与向量夹角的sin值有关,||axb||也等于a和b为两边的平行四边形的面积<br><a href="https://imgchr.com/i/Po5wRJ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/Po5wRJ.png" alt="Po5wRJ.png"></a></li>
+<li>由经典几何只是可以知道平行四边形的面积是bh,即底和高的乘积,通过把一段的三角形切下来移动到另一边,可以组成一个矩形</li>
+<li><p>加入ab分别为a,b的长度,sinθ = h/a</p>
+<pre><code>A = bh
+  = b(a sinθ)
+  = ||a|| ||b|| sinθ
+  = ||axb||
+</code></pre></li>
+<li><p>如果a,b平行或者任意一个为0,则axb=0,叉乘对于零向量的解释: 它平行于任意其他向量,这点和点乘的解释不同,点乘的解释是和任意其他向量垂直(当然,定义零向量挥着垂直于任意向量都是不对的,因为零向量没有方向)</p>
+</li>
+</ul>
+<p><a href="https://imgchr.com/i/PoIAW4" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/22/PoIAW4.png" alt="PoIAW4.png"></a></p>
+<ul>
+<li>已经证明了axb垂直于a,b但是垂直a,b有两个方向,通过将a的头与b的尾相接,并检查从a到b是顺时针还是逆时针,能够确定axb的方向<ul>
+<li>在左手坐标系中,如果a和b呈顺时针,那么axb指向你自己,如果呈逆时针axb远离你</li>
+<li>在右手坐标系中,如果a和b呈顺时针恰好相反,如果a和b呈顺时针axb远离你,如果a和b呈逆时针,那么axb指向你</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意:探测顺时针还是逆时针,必须让a的头与b的尾相接,a的尾跟b的尾相接是用来求向量之间的夹角,然而在决定顺时针还是逆时针,必须是头尾相接</strong></p>
+<p>角度转弧度 π/180×角度<br>弧度变角度 180/π×弧度</p>
+<h4 id="线性代数公式"><a href="#线性代数公式" class="headerlink" title="线性代数公式"></a>线性代数公式</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">公式</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a+b = b+a</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量的加法交换律</td>
+</tr>
+<tr>
+<td style="text-align:center">a-b = a+(-b)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量减法的定义</td>
+</tr>
+<tr>
+<td style="text-align:center">(a+b)+c = a+(b+c)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量加法结合律</td>
+</tr>
+<tr>
+<td style="text-align:center">s(ta) = (st)a</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">标量乘法结合律</td>
+</tr>
+<tr>
+<td style="text-align:center">k(a+b) = ka+kb</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">标量乘法对向量加法分配律</td>
+</tr>
+<tr>
+<td style="text-align:center">ka模 = k模a模</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量乘以标量相当于以标量的绝对值为因子缩放向量</td>
+</tr>
+<tr>
+<td style="text-align:center">a模 &gt;= 0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量的大小非负</td>
+</tr>
+<tr>
+<td style="text-align:center">a模^2+b模^2 = (a+b)模^2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">勾股定理在向量加法中的应用</td>
+</tr>
+<tr>
+<td style="text-align:center">a模+b模 &gt;= (a+b)模</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量加法的三角形法则</td>
+</tr>
+<tr>
+<td style="text-align:center">a·b = b·a</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">点乘的交换律</td>
+</tr>
+<tr>
+<td style="text-align:center">a模 = √a·a</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">用点乘定义向量大小</td>
+</tr>
+<tr>
+<td style="text-align:center">k(a·b) = (ka)·b = a·(kb)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">标量乘法对点乘的结合律</td>
+</tr>
+<tr>
+<td style="text-align:center">a·(b+c) = a·b+a·c</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">点乘对向量加减法的分配律</td>
+</tr>
+<tr>
+<td style="text-align:center">axa = 0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">任意向量与自身的叉乘等于0向量</td>
+</tr>
+<tr>
+<td style="text-align:center">axb = -(bxa)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">叉乘逆交换律</td>
+</tr>
+<tr>
+<td style="text-align:center">axb = (-a)x(-b)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">叉乘的操作数同时变负得到相同的结果</td>
+</tr>
+<tr>
+<td style="text-align:center">k(axb) = (ka)xb = ax(kb)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">标量乘法对叉乘的结合律</td>
+</tr>
+<tr>
+<td style="text-align:center">ax(b+c) = axb+axc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">叉乘对向量加法的分配律</td>
+</tr>
+<tr>
+<td style="text-align:center">a·(axb) = 0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">向量与另一向量的叉乘在点乘该向量本身等于0</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/05/24/3D数学_向量/">3d数学-向量</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 HusbandMan 的个人博客">HusbandMan</a></p>
+  <p><span>发布时间:</span>2019年05月24日 - 00:05</p>
+  <p><span>最后更新:</span>2018年08月22日 - 14:08</p>
+  <p><span>原始链接:</span><a href="/2019/05/24/3D数学_向量/" title="3d数学-向量">http://www.Husbandman.top/2019/05/24/3D数学_向量/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.Husbandman.top/2019/05/24/3D数学_向量/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="HusbandMan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="HusbandMan 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/3d数学/" rel="tag"><i class="fa fa-tag"></i> 3d数学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/获取AnimatorClip动画的时间长度/" rel="next" title="获取AnimatorClip动画的时间长度">
+                <i class="fa fa-chevron-left"></i> 获取AnimatorClip动画的时间长度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/24/3d数学_矩阵/" rel="prev" title="3d数学-矩阵">
+                3d数学-矩阵 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3d数学-向量"><span class="nav-number">1.</span> <span class="nav-text">3d数学-向量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的数学定义"><span class="nav-number">1.1.</span> <span class="nav-text">向量的数学定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的几何定义"><span class="nav-number">1.2.</span> <span class="nav-text">向量的几何定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量和点的关系"><span class="nav-number">1.3.</span> <span class="nav-text">向量和点的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的运算"><span class="nav-number">1.4.</span> <span class="nav-text">向量的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#零向量"><span class="nav-number">1.4.1.</span> <span class="nav-text">零向量</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#负向量"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">负向量</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量的大小-长度-模"><span class="nav-number">1.4.2.</span> <span class="nav-text">向量的大小,长度,模</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标量与向量的乘法"><span class="nav-number">1.4.3.</span> <span class="nav-text">标量与向量的乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#标量与向量的乘法的几何意义"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">标量与向量的乘法的几何意义:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#标量与向量的乘法的数学公式"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">标量与向量的乘法的数学公式:</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标准化向量"><span class="nav-number">1.4.4.</span> <span class="nav-text">标准化向量</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#运算法则"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">运算法则:</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量的加法和减法"><span class="nav-number">1.4.5.</span> <span class="nav-text">向量的加法和减法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#运算法则-1"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">运算法则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#几何解释"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">几何解释</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#距离公式"><span class="nav-number">1.4.6.</span> <span class="nav-text">距离公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量的点乘-内积"><span class="nav-number">1.4.7.</span> <span class="nav-text">向量的点乘(内积)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#运算法则-2"><span class="nav-number">1.4.7.1.</span> <span class="nav-text">运算法则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#几何解释-1"><span class="nav-number">1.4.7.2.</span> <span class="nav-text">几何解释</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量的投影"><span class="nav-number">1.4.8.</span> <span class="nav-text">向量的投影</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量的叉乘-差积"><span class="nav-number">1.4.9.</span> <span class="nav-text">向量的叉乘(差积)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#运算法则-3"><span class="nav-number">1.4.9.1.</span> <span class="nav-text">运算法则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#几何意义"><span class="nav-number">1.4.9.2.</span> <span class="nav-text">几何意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性代数公式"><span class="nav-number">1.5.</span> <span class="nav-text">线性代数公式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.2k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共69.2k字</span>
+</div>
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65959959";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

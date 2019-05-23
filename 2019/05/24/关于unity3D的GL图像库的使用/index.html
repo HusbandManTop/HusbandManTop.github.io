@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Unity," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HusbandMan" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="(转)关于unity3D的GL图像库的使用原文链接: https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创  GL图象库GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，">
+<meta name="keywords" content="Unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于unity3D的GL图像库的使用">
+<meta property="og:url" content="http://www.Husbandman.top/2019/05/24/关于unity3D的GL图像库的使用/index.html">
+<meta property="og:site_name" content="HusbandMan">
+<meta property="og:description" content="(转)关于unity3D的GL图像库的使用原文链接: https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创  GL图象库GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-12T03:19:51.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于unity3D的GL图像库的使用">
+<meta name="twitter:description" content="(转)关于unity3D的GL图像库的使用原文链接: https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创  GL图象库GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Hus'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.Husbandman.top/2019/05/24/关于unity3D的GL图像库的使用/"/>
+
+
+
+
+
+  <title>关于unity3D的GL图像库的使用 | HusbandMan</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9648022e5b5c1d7e68ba42a82827c30";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/HusbandManTop"><img style="position: absolute; top: 0; right: 0; border: 0;" 
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" 
+alt="Fork me on GitHub"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HusbandMan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Enjoy your life</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-massagebord">
+          <a href="/massagebord" rel="section">
+            
+            留言板
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/Photos" rel="section">
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/Books" rel="section">
+            
+            书籍
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/关于unity3D的GL图像库的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于unity3D的GL图像库的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:38+08:00">
+                2019-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/05/24/关于unity3D的GL图像库的使用/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/05/24/关于unity3D的GL图像库的使用/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,879
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  21
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="转-关于unity3D的GL图像库的使用"><a href="#转-关于unity3D的GL图像库的使用" class="headerlink" title="(转)关于unity3D的GL图像库的使用"></a>(转)关于unity3D的GL图像库的使用</h3><p>原文链接: <a href="https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创" target="_blank" rel="noopener">https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创</a></p>
+<hr>
+<h4 id="GL图象库"><a href="#GL图象库" class="headerlink" title="GL图象库"></a>GL图象库</h4><p>GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，<br>只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，不会因为摄象机的移动而<br>改变。2D图形的呈现方式和前面章节介绍的GUI有点类似，值得注意的是，绘制2D图像时，需要使用GL.LoadOrtho()方法将图形映射在<br>平面中；如果绘制的是3D图形，就无须使用此方法。  </p>
+<p>使用GL图象库时，需要将所有绘制相关的内容写在OnPostRender()方法中。此方法由系统自身调用，无法手动调用。此外，有关GL图象<br>库的脚本需要绑定在Hierarchy视图中的摄象机对象当中，否则将无法显示绘制的图形<br>绘制线   </p>
+<p>在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。<br>值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素<br>来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这<br>个浮点数来计算。  </p>
+<p>比如当前游戏屏幕的像素宽高是500<em>500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应<br>当是：500（屏幕宽） </em> 0.5（x坐标） = 250<br>500（屏幕高）* 0.5（x坐标） = 250</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//绘制线段材质</span></span><br><span class="line"><span class="keyword">public</span> Material material;</span><br><span class="line"><span class="comment">//此绘制方法由系统调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!material)</span><br><span class="line">&#123;</span><br><span class="line">Debug.LogError(“请给材质资源赋值”);</span><br><span class="line">Return;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">Material.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">GL.Begin(GL.LINES);</span><br><span class="line"><span class="comment">//绘制线段</span></span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">0</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">100</span>);</span><br><span class="line">DrawLine(<span class="number">0</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">GL.End();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1;<span class="keyword">float</span> x2,<span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高</span></span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>));</span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<h4 id="实例—-绘制曲线-228"><a href="#实例—-绘制曲线-228" class="headerlink" title="实例—-绘制曲线(228)"></a>实例—-绘制曲线(228)</h4><p>本例通过GL图象库记录鼠标移动的轨迹并且将其以曲线的形式显示在屏幕当中，如图所示，具体实现原理是：记录鼠标在Game视图中移动<br>时每一点的坐标,然后将鼠标移动的坐标存储在链表中使用绘制方法OnPostRender()遍历链表中记录的鼠标坐标点，最后通过GL图象库<br>绘制线段的方法将这些点两两连成一条线段<br>当前鼠标x轴位置：835<br>当前鼠标y轴位置：894</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//绘制线段材质</span></span><br><span class="line"><span class="keyword">public</span> Material material;</span><br><span class="line">Private List&lt;Vector&gt; lineInfo;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//初始化鼠标线段链表</span></span><br><span class="line">lineInfo = <span class="keyword">new</span> List&lt;Vector3&gt;();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//将每次鼠标改变的位置存储进链表</span></span><br><span class="line">lineInfo.Add(Input.mousePosition);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">GUILayout.Label(“当前鼠标x轴位置：” +Input.mousePosition.x)</span><br><span class="line">GUILayout.Label(“当前鼠标y轴位置：”+Input.mousePosition.y)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//此绘制方法又系统调用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!material)</span><br><span class="line">&#123;</span><br><span class="line">Debug.LogError(“请给材质资源赋值”);</span><br><span class="line">Return;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">material.SetPass(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//设置绘制2D图象</span></span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">GL.Begin(GL.LINES);</span><br><span class="line"><span class="comment">//得到鼠标信息的总数量</span></span><br><span class="line"><span class="keyword">int</span> size=lineInfo.Count;</span><br><span class="line"><span class="comment">//遍历鼠标点的链表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size<span class="number">-1</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">Vector3 start = lineInfo[i];</span><br><span class="line">Vector3 end = lineInfo[i+<span class="number">1</span>];</span><br><span class="line"><span class="comment">//绘制线段</span></span><br><span class="line">DrawLine(start.x,start.y,end.x,end.y);</span><br><span class="line"><span class="comment">//结束绘制</span></span><br><span class="line">GL.End();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1;<span class="keyword">float</span> x2,<span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高</span></span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector(x1/Screen.width,y1/Screen.height,<span class="number">0</span>));</span><br><span class="line">GL.Vetex(<span class="keyword">new</span> Vector(x2/Screen.width,y2/Screen.height,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，我们通过Update()方法获取当前鼠标的位置，将每帧的鼠标位置存储在lineInfo链表中，然后在OnPostRender()中遍历<br>这个链表，将链表中记录的鼠标坐标点连接起来绘制在屏幕当中。<br>绘制四边形  </p>
+<p>在平面内，由不在同一条直线的四条线段首尾顺序相接组成的图形就是四边形。要确定平面中的一个四边形，就需要知道4个点，然后将<br>这4个点连接起来即可。在GL中绘制四边形，需要使用GL.Begin(GL.QUADS)方法，该方法中参数表示需要绘制的图形为四边形。如果设置<br>的4个点在一条直线上，或者只设置了其中3个点，或者两个点重叠，无法让这4个点构成一个四边形，程序就无法绘制该图形，这里需要<br>读者注意.</p>
+<hr>
+<p>本例共绘制了三组几何图形——两个正四边形和一个无规则四边形<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> Material mat0;</span><br><span class="line"><span class="keyword">public</span> Material mat1;</span><br><span class="line"><span class="keyword">public</span> Material mat3;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制正四边形</span></span><br><span class="line">DrawRect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,mat0);</span><br><span class="line">DrawRect(<span class="number">250</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,mat1);</span><br><span class="line"><span class="comment">//绘制无规则四边形</span></span><br><span class="line">DrawQiads(<span class="number">15</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">115</span>,<span class="number">95</span>,<span class="number">110</span>,<span class="number">90</span>,<span class="number">10</span>,mat3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">绘制正四边形</span></span><br><span class="line"><span class="comment">float x:x轴起始坐标</span></span><br><span class="line"><span class="comment">float y:y轴起始坐标</span></span><br><span class="line"><span class="comment">float width:正四边形的宽</span></span><br><span class="line"><span class="comment">float height:正四边形的高</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawRect</span>(<span class="params"><span class="keyword">float</span> x,<span class="keyword">float</span> y,<span class="keyword">float</span> width,<span class="keyword">float</span> height,Material mat</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">GL.PushMatrix();</span><br><span class="line">mat.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//绘制类型为四边形</span></span><br><span class="line">GL.Begin(GL.QUADS);</span><br><span class="line">GL.Vertex3(x/Screen.width,y/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x/Screen.width,(y+height)/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x+width)/Screen.width,(y+height)/Screen.height,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">GL.End();</span><br><span class="line">GL.PopMatrix();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">绘制无规则的四边形</span></span><br><span class="line"><span class="comment">float x1:起始点1的横坐标</span></span><br><span class="line"><span class="comment">float y1:起始点1的横坐标</span></span><br><span class="line"><span class="comment">float x2:起始点2的横坐标</span></span><br><span class="line"><span class="comment">float y2:起始点2的横坐标</span></span><br><span class="line"><span class="comment">float x3:起始点3的横坐标</span></span><br><span class="line"><span class="comment">float y3:起始点3的横坐标</span></span><br><span class="line"><span class="comment">float x4:起始点4的横坐标</span></span><br><span class="line"><span class="comment">float y4:起始点4的横坐标</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawQuads</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1,<span class="keyword">float</span> x2,<span class="keyword">float</span> y2,<span class="keyword">float</span> x3,<span class="keyword">float</span> y3,<span class="keyword">float</span> x4,<span class="keyword">float</span> y4,Material mat</span>)</span></span><br><span class="line"><span class="function"></span>&#123;	GL.PushMatrix();</span><br><span class="line">mat.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//绘制类型为四边形</span></span><br><span class="line">GL.Begin(GL.QUADS);</span><br><span class="line">GL.Vertex3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x3/Screen.width,y3/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x4/Screen.width,y4/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.End();</span><br><span class="line">GL.PopMatrix();</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了说明正四边形和无规则四边形之间的区别,本例将它们封装成两个不同的方法,其中DrawRect()方法用于绘制无规则四边形。    </p>
+<p>在上述代码的最后，我们使用GL.End()方法绘制的四边形显示在屏幕中。</p>
+<hr>
+<h4 id="绘制三角形"><a href="#绘制三角形" class="headerlink" title="绘制三角形"></a>绘制三角形</h4><p>绘制三角形之前，需要确定平面中的3个点，并且保证这3个点能构成一个三角形，然后将3个点首尾连接起来即可。绘制三角形时，<br>可以使用GL.Begin(GL.TRIANGLE)方法,该方法的参数为三角形的类型.本例在屏幕中央绘制了一个正三角形,具体代码如代码清单<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//材质</span></span><br><span class="line"><span class="keyword">public</span> Material mat;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制三角形</span></span><br><span class="line">DrawTriangle(<span class="number">100</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">200</span>,<span class="number">100</span>,mat);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawTriangle</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1,<span class="keyword">float</span> x2,<span class="keyword">float</span> y2,<span class="keyword">float</span> x3,<span class="keyword">float</span> y3,Material mat</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">mat.SetPass(<span class="number">0</span>);</span><br><span class="line">GL.LoadOrtho();</span><br><span class="line"><span class="comment">//绘制三角形</span></span><br><span class="line">GL.Begin(GL.TRAINGLES);</span><br><span class="line">GL.Vertex3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x3/Screen.width,y3/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.End();</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上述代码中，我们使用 GL.Vertex3() 方法确定三角形三个顶点的位置,并将绘制三角形的所有方法封装在 DrawTriangle() 方法中，最后使用GL.End()方法将三角形显示在屏幕中。需要说明的是，在调用DrawTriangle()方法时，需要将三个点的坐标与材质传入该方法。    </p>
+<p>绘制3D几何图形<br>GL图形库不仅支持绘制2D几何图形，还支持绘制3D几何图形，而本例将在3D世界中绘制三个平面四边形，如图7-17所示，<br>为了让读者更方便看出立体效果，我们在Game视图中添加了一个立方体组件作为视图的参照物。通过随时移动鼠标来修改摄像机朝向<br>的位置，可以观察它们之间的区别。圆圈内就是使用GL绘制的图形，它会随着摄像机的位置改变而发生移动，<br>具体的代码如代码清单7-19所示</p>
+<p>####立方图形<br>代码7-19<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> Material mat0;</span><br><span class="line"><span class="keyword">public</span> Material mat1;</span><br><span class="line"><span class="keyword">public</span> Material mat3;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//绘制正四边形</span></span><br><span class="line">DrawRect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,mat0);</span><br><span class="line">DrawRect(<span class="number">250</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,mat1);</span><br><span class="line"><span class="comment">//绘制无规则四边形</span></span><br><span class="line">DrawQuads(<span class="number">15</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">115</span>,<span class="number">95</span>,<span class="number">110</span>,<span class="number">90</span>,<span class="number">10</span>,mat3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">绘制正四边形</span></span><br><span class="line"><span class="comment">float x:x轴起始坐标</span></span><br><span class="line"><span class="comment">float y:y轴起始坐标</span></span><br><span class="line"><span class="comment">float width:正四边形的宽</span></span><br><span class="line"><span class="comment">float height:正四边形的高</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawRect</span>(<span class="params"><span class="keyword">float</span> x,<span class="keyword">float</span> y,<span class="keyword">float</span> width,<span class="keyword">float</span> height,Material mat</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">GL.PushMatrix();</span><br><span class="line">mat.SetPass(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//绘制类型为四边形</span></span><br><span class="line">GL.Begin(GL.QUADS);</span><br><span class="line">GL.Vertex3(x/Screen.width,y/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x/Screen.width,(y+height)/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x+width)/Screen.width,(y+height)/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x+width)/Screen.width, y/Screen.height,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">GL.End();</span><br><span class="line">GL.PopMatrix();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">绘制无规则的四边形</span></span><br><span class="line"><span class="comment">float x1:起始点1的横坐标</span></span><br><span class="line"><span class="comment">float y1:起始点1的横坐标</span></span><br><span class="line"><span class="comment">float x2:起始点2的横坐标</span></span><br><span class="line"><span class="comment">float y2:起始点2的横坐标</span></span><br><span class="line"><span class="comment">float x3:起始点3的横坐标</span></span><br><span class="line"><span class="comment">float y3:起始点3的横坐标</span></span><br><span class="line"><span class="comment">float x4:起始点4的横坐标</span></span><br><span class="line"><span class="comment">float y4:起始点4的横坐标</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawQuads</span>(<span class="params"><span class="keyword">float</span> x1,<span class="keyword">float</span> y1,<span class="keyword">float</span> x2,<span class="keyword">float</span> y2,<span class="keyword">float</span> x3,<span class="keyword">float</span> y3,<span class="keyword">float</span> x4,<span class="keyword">float</span> y4,Material mat</span>)</span></span><br><span class="line"><span class="function"></span>&#123;	GL.PushMatrix();</span><br><span class="line">mat.SetPass(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//绘制类型为四边形</span></span><br><span class="line">GL.Begin(GL.QUADS);</span><br><span class="line">GL.Vertex3(x1/Screen.width,y1/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x2/Screen.width,y2/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x3/Screen.width,y3/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.Vertex3(x4/Screen.width,y4/Screen.height,<span class="number">0</span>);</span><br><span class="line">GL.End();</span><br><span class="line">GL.PopMatrix();</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在绘制四边形时，首先需要使用GL.Begin(GL.QUADS)方法设定渲染模型的类型为四边形，然后使用GL.Vertex3()设置<br>四边形每个点的坐标，最后使用GL.Eng() 方法将四边形渲染在屏幕当中移动摄像机的代码.<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">MoveCamera.cs</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MoveCamera</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//摄像机参照的模型</span></span><br><span class="line"><span class="keyword">public</span> Transform target;</span><br><span class="line"><span class="comment">//摄像机距离模型的默认距离</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> distance = <span class="number">2.0</span>f;</span><br><span class="line"><span class="comment">//鼠标在x轴和y轴方向移动的角度</span></span><br><span class="line"><span class="keyword">float</span> x;</span><br><span class="line"><span class="keyword">float</span> y;</span><br><span class="line"><span class="comment">//限制旋转角度的最小值与最大值</span></span><br><span class="line"><span class="keyword">float</span> yMinLimit=<span class="number">-20.0</span>f</span><br><span class="line"><span class="keyword">float</span> yMaxLimit=<span class="number">80.</span>f</span><br><span class="line"><span class="comment">//x和y轴方向的移动速度</span></span><br><span class="line"><span class="keyword">float</span> xSpeed = <span class="number">250.0</span>f;</span><br><span class="line"><span class="keyword">float</span> ySpeed = <span class="number">120.0</span>f;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//初始化和y轴角度等于参照模型的角度</span></span><br><span class="line">Vector2 angles =transform.eulerAngles;</span><br><span class="line">x=angles.y;</span><br><span class="line">y=angles.x;</span><br><span class="line"><span class="keyword">if</span>(rigidbody)</span><br><span class="line">&#123;</span><br><span class="line">rigidbody.freezeRotation = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LateUpdate</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(target)</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//根据鼠标的移动修改摄像机的角度</span></span><br><span class="line">x+=Input.GetAxis(<span class="string">"Mouse X"</span>)*xSpeed*<span class="number">0.02</span>f;</span><br><span class="line">y-=Input.GetAxis(<span class="string">"Mouse Y"</span>)*ySpeed*<span class="number">0.02</span>f;</span><br><span class="line">y = ClampAngle(y,yMinLimit,yMaxLimit);</span><br><span class="line">Quaternion rotation =Quaternion.Euler(y,x,<span class="number">0</span>);</span><br><span class="line">Vector3 position = rotation*<span class="keyword">new</span> Vector3(<span class="number">0.0</span>f,<span class="number">0.0</span>f,(-distance))+target.position;</span><br><span class="line"><span class="comment">//设置模型的位置与旋转</span></span><br><span class="line">transform.rotation =rotation;</span><br><span class="line">transform.position =position;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">ClampAngle</span>(<span class="params"><span class="keyword">float</span> angle,<span class="keyword">float</span> min,<span class="keyword">float</span> max</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在LateUpdate()方法中通过鼠标的移动来观察模型，该模型的对象包寻在target变量当中。</p>
+<hr>
+<h4 id="线渲染器"><a href="#线渲染器" class="headerlink" title="线渲染器"></a>线渲染器</h4><p>线渲染器主要用于在3D世界中渲染线段，与GL图象库渲染相比，它更加专业，可以控制线段的组细程度<br>以及线段的数量，并且以网格对象的形式出现在3D世界中。使用线渲染器绘制线段时，必须先确定这条线段两个<br>端点的位置。需要说明的是，这两个点不是平面中的点而是3D世界中的点<br>线渲染器以组件的形式出现Unity当中，所以需要将它绑定在某个游戏对象中。这里我们在Unity导航中选择<br>“GameObject”—&gt;”CreateEmpty”菜单项创建一个空的游戏对象，然后杂Hierarchy视图中选择该对象后，继续在<br>Unity导航菜单中选择”Component”–&gt;”Line Render”菜单项，即可将线渲染器组件添加至游戏对象中，接着是设置<br>参数。<br>本例中绘制了3条相连的线段，它是以4个顶点确定的3条线段，并且它们首尾相接成一条线。这个线段以立体的形式<br>出现在3D世界中<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//线段对象</span></span><br><span class="line"><span class="keyword">private</span> CameObject LineRenderGameObject;</span><br><span class="line"><span class="comment">//线段渲染器</span></span><br><span class="line"><span class="keyword">private</span> LineRenderer lineRenderer;</span><br><span class="line"><span class="comment">//设置线段的顶点数，4个点确定3条直线</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> lineLength = <span class="number">4</span>;</span><br><span class="line"><span class="comment">//记录4个点，连接一条线段</span></span><br><span class="line"><span class="keyword">private</span> Vector3 v0 = <span class="keyword">new</span> Vector3(<span class="number">1.0</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f);</span><br><span class="line"><span class="keyword">private</span> Vector3 v1 = <span class="keyword">new</span> Vector3(<span class="number">2.0</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f);</span><br><span class="line"><span class="keyword">private</span> Vector3 v2 = <span class="keyword">new</span> Vector3(<span class="number">3.0</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f);</span><br><span class="line"><span class="keyword">private</span> Vector3 v3 = <span class="keyword">new</span> Vector3(<span class="number">4.0</span>f,<span class="number">0.0</span>f,<span class="number">0.0</span>f);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//获得游戏对象</span></span><br><span class="line">LineRenderGameObject = GameObject.Find(<span class="string">"ObjLine"</span>);</span><br><span class="line"><span class="comment">//获得线渲染器组件</span></span><br><span class="line">lineRenderer = (LineRendererGameObject.GetComponent(<span class="string">"LineRenderer"</span>);</span><br><span class="line"><span class="comment">//设置线的顶点数</span></span><br><span class="line">lineRenderer.SetVertexCount(lineLength);</span><br><span class="line"><span class="comment">//设置线的宽度</span></span><br><span class="line">lineRenderer.SetWidth(<span class="number">0.1</span>f,<span class="number">0.1</span>f);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//使用4个顶点渲染3条线段</span></span><br><span class="line">lineRender.SetPosition(<span class="number">0</span>,v0);</span><br><span class="line">lineRender.SetPosition(<span class="number">1</span>,v1);</span><br><span class="line">lineRender.SetPosition(<span class="number">2</span>,v2);</span><br><span class="line">lineRender.SetPosition(<span class="number">3</span>,v3);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上述代码，我们首先获取了线渲染器组件对象，然后设置顶点的数量，最后调用SetPosition()方法将线段显示在屏幕中。<br>SetPosition()方法的第一个参数表示每个点的ID，让它保持唯一性，第一个参数表示该顶点的3D的位置.</p>
+<hr>
+<h4 id="网格渲染"><a href="#网格渲染" class="headerlink" title="网格渲染"></a>网格渲染</h4><p>“Component”?Mesh?”Mesh Filter”菜单项与”Mesh Renderer”菜单项，即可将组件添加至游戏对象本身。<br>本例在屏幕中渲染了两个网格面对象。因为网格面又三角形网格顶点的位置，三角形由3个顶点组成，所以它们的规律是:<br>一个三角形数组长度就是3，两个三角形数组长度就是6，依次类推该数组的长度只可能是3的倍数。最后绘制网格时使用triangles数组，<br>数组中的ID和Vertices(网格顶点)的顶点ID一一对应。<br>分5等份填充<br>完全填充<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//构成三角形1的位置</span></span><br><span class="line">Vector3 v0 = <span class="keyword">new</span> Vector3(<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">Vector3 v1 = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">5</span>,<span class="number">0</span>);</span><br><span class="line">Vector3 v2 = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//构成三角形2的位置</span></span><br><span class="line">Vector3 v3 = <span class="keyword">new</span> Vector3(<span class="number">-5</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">Vector3 v4 = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">-5</span>,<span class="number">0</span>);</span><br><span class="line">Vector3 v5 = <span class="keyword">new</span> Vector3(<span class="number">0</span>,<span class="number">0</span>,<span class="number">-5</span>);</span><br><span class="line"><span class="comment">//构成三角形1的贴图比例</span></span><br><span class="line">Vector2 u0 = <span class="keyword">new</span> Vector2(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">Vector2 u1 = <span class="keyword">new</span> Vector2(<span class="number">0</span>,<span class="number">5</span>);</span><br><span class="line">Vector2 u2 = <span class="keyword">new</span> Vector2(<span class="number">5</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//构成三角形2的贴图比例</span></span><br><span class="line">Vector2 u3 = <span class="keyword">new</span> Vector2(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">Vector2 u4 = <span class="keyword">new</span> Vector2(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">Vector2 u5 = <span class="keyword">new</span> Vector2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//得到网格渲染器对象</span></span><br><span class="line">MeshFilter meshFilter =(MeshFilter)GameObject.Find(<span class="string">"face"</span>).GetComponent(<span class="keyword">typeof</span>(MeshFilter));</span><br><span class="line"><span class="comment">//通过渲染器对象得到网格对象</span></span><br><span class="line">Mesh mesh = meshFilter.mesh;</span><br><span class="line"><span class="comment">//设置三角形顶点的数组，6个点表示设置了两个三角形</span></span><br><span class="line">mesh.Vertices = <span class="keyword">new</span> Vector3[]&#123;v0,v1,v2,v3,v4,v5&#125;;</span><br><span class="line"><span class="comment">//设置三角形面上的贴图比例</span></span><br><span class="line">mesh.uv = <span class="keyword">new</span> Vector2[] &#123;u0,u1,u2,u3,u4,u5&#125;;</span><br><span class="line"><span class="comment">//设置三角形索引，绘制三角形</span></span><br><span class="line">mesh.triangles = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码最后的mesh.triangles表示设定三角形的索引数组，该数组中的ID表示相对顶点数组中的坐标。目前这个数组中的元素是0、1、2、3、4和5，<br>对应顶点数组中6个顶点坐标。因为3个点确定一个三角形面，所以这里使用定点数组中0，1，2确定了一个三角形，3，4，5又确定了一个<br>三角形。</p>
+<p>游戏实例—控制人物移动<br>为了让读者更清晰地了解如何控制主角移动与播放骨骼动画，下面我们将角色控制器组件的人物动画拆开，使用代码自行实现他的行走动画。运行游戏后，按键盘键上的<br>“W”,”S”,”A”,”D”来移动主角。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Script</span>:<span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//人物行走的方向状态</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> HERO_UP=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> HERO_RIGHT=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> HERO_DOWN=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">const</span> <span class="keyword">int</span> HERO_LEFT=<span class="number">3</span>;</span><br><span class="line"><span class="comment">//人物当前的行走方向</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> state = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//人物移动速度</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> moveSpeed =<span class="number">10</span>;</span><br><span class="line"><span class="comment">//初始化人物的默认位置</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">state =HERO_DOWN;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//获取控制的方向数据</span></span><br><span class="line"><span class="keyword">float</span> KeyVertical =Input.GetAxis(<span class="string">"Vertical"</span>);</span><br><span class="line"><span class="keyword">float</span> KeyHorizontal = Input.GetAxis(<span class="string">"Horzontal"</span>);</span><br><span class="line"><span class="keyword">if</span>(KeyVertical ==<span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">setHeroState(HERO_LEFT);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(KeyVertical ==<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//设置人物动画往右行走</span></span><br><span class="line">setHeroState(HERO_RIGHT);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(KeyHorizontal ==<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">setHeroState(HERO_DOWN);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(KeyHorzontal ==<span class="number">-1</span>)</span><br><span class="line">&#123;</span><br><span class="line">setHeroState(HERO_UP);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(KeyVertical ==<span class="number">0</span> &amp;&amp;KeyHorizontal ==<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">animation.Play();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeroState</span>(<span class="params"><span class="keyword">int</span> newState</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//根据当前人物方向与上一次备份方向计算出模型旋转的角度</span></span><br><span class="line"><span class="keyword">int</span> rotateValue =(newState-state)*<span class="number">90</span>;</span><br><span class="line">Vector3 transformValue =<span class="keyword">new</span> Vector3();</span><br><span class="line"><span class="comment">//播放行走动画</span></span><br><span class="line">animation.Play(<span class="string">"walk"</span>);</span><br><span class="line"><span class="comment">//模型移动的位移的数值</span></span><br><span class="line"><span class="keyword">switch</span>(newState)&#123;</span><br><span class="line"><span class="keyword">case</span> HERO_UP:</span><br><span class="line">transformValue = Vector3.forward*Time.deltaTime;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> HERO_DOWN:</span><br><span class="line">transformValue =(-Vector3.forward).Time.deltaTime;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> HERO_LEFT:</span><br><span class="line">transformValue = Vector3.left*Time.deltaTime;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> HERO_RIGHT:</span><br><span class="line">transformValue = (-Vector3.left)*Time.deltaTime;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//模型旋转</span></span><br><span class="line">transform.Rotate(Vector3.up,rotateValue);</span><br><span class="line"><span class="comment">//移动人物</span></span><br><span class="line">transform.Translate(transformValue *moveSpeed,Space.World);</span><br><span class="line">state = newState;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本例使用游戏状态机将主角的行走分为4个状态：向前行走，向后行走，向左行走，向右行走。按下不同的方向键后，<br>使用animation.Play()方法播放行走动画，该方法的参数为动画名称，最后根据当前的行走状态计算模型的旋转角度，<br>使其按照正确的方向行走。<br>本章首先介绍了如何处理键盘与鼠标输入事件，比如按下事件，抬起事件和长按事件等，接着介绍了自定义按键事件、<br>模型与动画，然后介绍了如何使用GL图像库绘制2D与3D的线段与网络模型，以及线渲染器与网格渲染器的绘制方法，<br>最后以一个实例的形式向读者介绍如何使用键盘控制主角移动并且播放骨骼动画。</p>
+
+      
+    </div>
+    
+    
+    
+<div>
+      
+        
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="HusbandMan 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="HusbandMan 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------------------------本文结束<i class="fa fa-paw"></i>感谢阅读--------------------------</div>
+    
+</div>
+  
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Unity/" rel="tag"><i class="fa fa-tag"></i> Unity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/Unity鼠标/" rel="next" title="Unity 鼠标类">
+                <i class="fa fa-chevron-left"></i> Unity 鼠标类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/24/通过旋转理解左手坐标系/" rel="prev" title="旋转理解左手坐标系">
+                旋转理解左手坐标系 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg"
+                alt="HusbandMan" />
+            
+              <p class="site-author-name" itemprop="name">HusbandMan</p>
+              <p class="site-description motion-element" itemprop="description">做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/HusbandManTop" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:iamtuziyang@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/iamtuziyang" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://280828578@qq.com" target="_blank" title="Q-Mial">
+                      
+                        <i class="fa fa-fw fa-qq"></i>Q-Mial</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.xuanyusong.com/" title="雨松MOMO" target="_blank">雨松MOMO</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hackyin.com/" title="Hack_Yin" target="_blank">Hack_Yin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://docs.manew.com/" title="蛮牛手册" target="_blank">蛮牛手册</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.manew.com/" title="蛮牛论坛" target="_blank">蛮牛论坛</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wiki.unity3d.com/index.php/Main_Page" title="UnityWIKI" target="_blank">UnityWIKI</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ceeger.com/forum/" title="Unity圣典" target="_blank">Unity圣典</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/android-blogs/p/6136663.html" title="经典博客收录" target="_blank">经典博客收录</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#转-关于unity3D的GL图像库的使用"><span class="nav-number">1.</span> <span class="nav-text">(转)关于unity3D的GL图像库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GL图象库"><span class="nav-number">1.1.</span> <span class="nav-text">GL图象库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例—-绘制曲线-228"><span class="nav-number">1.2.</span> <span class="nav-text">实例—-绘制曲线(228)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制三角形"><span class="nav-number">1.3.</span> <span class="nav-text">绘制三角形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线渲染器"><span class="nav-number">1.4.</span> <span class="nav-text">线渲染器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网格渲染"><span class="nav-number">1.5.</span> <span class="nav-text">网格渲染</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=411921579&auto=1&height=66"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HusbandMan</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.2k</span>
+  
+</div>
+-->
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>-->
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共69.2k字</span>
+</div>
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65959959";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytBGGvOV';
+      var conf = '5781b8091f816e394a6ee7070dd8bdb6';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
