@@ -99,7 +99,7 @@
 <meta name="description" content="做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HusbandMan">
-<meta property="og:url" content="http://www.Husbandman.top/page/3/index.html">
+<meta property="og:url" content="https://fget.cn/page/3/index.html">
 <meta property="og:site_name" content="HusbandMan">
 <meta property="og:description" content="做一个无聊的人,做一些没有意义的事,写代码,喂马,劈柴,周游世界">
 <meta property="og:locale" content="zh-Hans">
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://www.Husbandman.top/page/3/"/>
+  <link rel="canonical" href="https://fget.cn/page/3/"/>
 
 
 
@@ -338,7 +338,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/GL库/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/12/UnityBit编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -357,7 +357,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/24/GL库/" itemprop="url">GL图像库</a></h1>
+                <a class="post-title-link" href="/2018/08/12/UnityBit编程/" itemprop="url">Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:37+08:00">
-                2019-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:14:53+08:00">
+                2018-08-12
               </time>
             
 
@@ -411,8 +411,214 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/05/24/GL库/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2019/05/24/GL库/" class="cy_cmt_count" data-xid="2019/05/24/GL库/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/12/UnityBit编程/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/12/UnityBit编程/" class="cy_cmt_count" data-xid="2018/08/12/UnityBit编程/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  854
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性"><a href="#转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性" class="headerlink" title="(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性"></a>(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性</h3><p>原文链接<a href="https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创</a></p>
+<hr>
+<p>在游戏开发中，有时候我们通过进行Bit级别的编程，可以实现技能解锁\装备购买等存储，并实现初步加密，降低内存所占空间，并极大提高数据安全性！</p>
+<p>假设当前角色共有8个技能，我用一个Byte来存储这些信息。</p>
+<p>0000  0000 表示当前我没有学习任何技能</p>
+<p>0000  0001 表示为当前我学习了第一个技能。</p>
+<p>这样大家可以初步看出我是通过Bit是否为true来判断仅能是否已经学习，0就是没有学习过，1就是已经学习过。</p>
+<p>我们通过&amp;、|、！运算，位移运算符&lt;&lt;  &gt;&gt;操作Byte实现Bit级别的编程</p>
+<h4 id="解锁技能表达式推导"><a href="#解锁技能表达式推导" class="headerlink" title="解锁技能表达式推导"></a>解锁技能表达式推导</h4><p>当前byte tmpByte = 0 即 0000  0000<br>解锁第一个技能：对tmpbyte进行I操作  </p>
+<p>0000  0000    –》当前技能<br>      |操作<br>0000  0001    –》解锁技能——要解锁1技能，1左移0<br>—————<br>0000  0001    –》解锁后技能<br>解锁第二个技能<br>0000  0001    –》当前技能<br>      |操作<br>0000  0010    –》解锁技能——要解锁2技能，1左移1<br>—————<br>0000  0011    –》解锁后技能  </p>
+<p>|的数值可以看出来是:  1&lt;&lt;n-1   </p>
+<p><strong>解锁技能的表达式：tmpByte | 1&lt;&lt;(n-1)</strong></p>
+<h4 id="判断技能是否解锁表达式推导"><a href="#判断技能是否解锁表达式推导" class="headerlink" title="判断技能是否解锁表达式推导"></a>判断技能是否解锁表达式推导</h4><p>判断第一个技能<br>0000  0011    –》当前技能<br>      &amp;操作<br>0000  0010    –》判断技能——要判断技能，1左移0<br>—————<br>0000  0011    –》运算后是否等于本身  </p>
+<p>解锁第二个技能<br>0000  0011    –》当前技能<br>      |操作<br>0000  0010    –》判断技能——要判断2技能，1左移1<br>—————<br>0000  0011    –》运算后是否等于本身  </p>
+<p>&amp;的数值可以看出来是：1&lt;&lt;n-1  </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/12/UnityBit编程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/12/GL库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/GL库/" itemprop="url">GL图像库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:13:21+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/12/GL库/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/12/GL库/" class="cy_cmt_count" data-xid="2018/08/12/GL库/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -488,7 +694,7 @@ alt="Fork me on GitHub"></a>
 <h4 id="一-绘制线"><a href="#一-绘制线" class="headerlink" title="一.绘制线"></a>一.绘制线</h4><p>别忘了添加物理材质public Material material;<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> GL 图像库</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 1、GL图像库是底层的图像库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 具有一定的特殊性，它们不属于3D网格图形，只会以面的形式渲染</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 2、绘制2D图像时，需要使用GL.LoadOrtho()方法来将图形映射在平面中，绘制的是3D图形，就无须使用此方法</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 3、使用GL图像库时，需要将所有绘制相关的内容写在OnPostRender()方法中</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">public class _7_5 : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 绘制线段的材质</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> Material material;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnPostRender</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!material)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">"请给材质资源赋值"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        material.SetPass(<span class="number">0</span>);<span class="comment">//设置该材质通道，0为默认值</span></span><br><span class="line">        GL.LoadOrtho();<span class="comment">//设置绘制2D图像</span></span><br><span class="line">        GL.Begin(GL.LINES);<span class="comment">//表示开始绘制，绘制类型为线段</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">100</span>);<span class="comment">//绘制线段0</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">150</span>);<span class="comment">//绘制线段1</span></span><br><span class="line">        DrawLine(<span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>);<span class="comment">//绘制线段2</span></span><br><span class="line">        GL.End();<span class="comment">//结束绘制</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DrawLine</span>(<span class="params"><span class="keyword">float</span> x1, <span class="keyword">float</span> y1, <span class="keyword">float</span> x2, <span class="keyword">float</span> y2</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//绘制线段，需要将屏幕中某个点的像素坐标除以屏幕宽或高</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x1 / Screen.width, y1 / Screen.height, <span class="number">0</span>));<span class="comment">// ['vɜ:teks] n. 最高点；顶点；&lt;数&gt;（三角形、圆锥体等与底相对的）顶；</span></span><br><span class="line">        GL.Vertex(<span class="keyword">new</span> Vector3(x2 / Screen.width, y2 / Screen.height, <span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/05/24/GL库/#more" rel="contents">
+            <a class="btn" href="/2018/08/12/GL库/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -543,7 +749,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/GL/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/12/GL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -562,7 +768,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/24/GL/" itemprop="url">Unity3D研究 GL详解</a></h1>
+                <a class="post-title-link" href="/2018/08/12/GL/" itemprop="url">Unity3D研究 GL详解</a></h1>
         
 
         <div class="post-meta">
@@ -574,8 +780,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:37+08:00">
-                2019-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T11:12:28+08:00">
+                2018-08-12
               </time>
             
 
@@ -616,8 +822,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/05/24/GL/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2019/05/24/GL/" class="cy_cmt_count" data-xid="2019/05/24/GL/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/12/GL/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/12/GL/" class="cy_cmt_count" data-xid="2018/08/12/GL/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -744,178 +950,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2019/05/24/FairyGUI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/24/FairyGUI/" itemprop="url">FairyGUI</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T00:00:37+08:00">
-                2019-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/05/24/FairyGUI/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2019/05/24/FairyGUI/" class="cy_cmt_count" data-xid="2019/05/24/FairyGUI/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  82
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="FairyGUI"><a href="#FairyGUI" class="headerlink" title="FairyGUI"></a>FairyGUI</h3><hr>
-<p><strong><a href="http://fairygui.com/" target="_blank" rel="noopener">FairyGUI下载地址</a></strong><br>重新定义UI制作流程，全可视化，零代码，是一款同时适用于程序员，设计师和游戏策划的UI制作工具。</p>
-<p>FairyGUI对比NGUI<br><a href="http://blog.csdn.net/andyqingliu/article/details/54706298" target="_blank" rel="noopener">http://blog.csdn.net/andyqingliu/article/details/54706298</a></p>
-<p>FairyGUI对比UGUI<br><a href="http://blog.csdn.net/qq_39718162/article/details/78951162" target="_blank" rel="noopener">http://blog.csdn.net/qq_39718162/article/details/78951162</a>  </p>
-<p>FairyGUI入门了解<br><a href="http://blog.csdn.net/qq_39718162/article/details/78951259" target="_blank" rel="noopener">http://blog.csdn.net/qq_39718162/article/details/78951259</a></p>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/08/获取AnimatorClip动画的时间长度/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/08/获取AnimatorClip动画的时间长度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -969,8 +1004,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sprite/" itemprop="url" rel="index">
-                    <span itemprop="name">Sprite</span>
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
                   </a>
                 </span>
 
@@ -989,7 +1024,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/08/获取AnimatorClip动画的时间长度/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/08/获取AnimatorClip动画的时间长度/" class="cy_cmt_count" data-xid="2018/08/08/获取AnimatorClip动画的时间长度/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/08/获取AnimatorClip动画的时间长度/" class="cy_cmt_count" data-xid="2018/08/08/获取AnimatorClip动画的时间长度/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1106,7 +1141,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/08/使用程序生成Texture2D并创建Sprite/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/08/使用程序生成Texture2D并创建Sprite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1160,8 +1195,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sprite/" itemprop="url" rel="index">
-                    <span itemprop="name">Sprite</span>
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
                   </a>
                 </span>
 
@@ -1180,7 +1215,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/08/使用程序生成Texture2D并创建Sprite/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/08/使用程序生成Texture2D并创建Sprite/" class="cy_cmt_count" data-xid="2018/08/08/使用程序生成Texture2D并创建Sprite/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/08/使用程序生成Texture2D并创建Sprite/" class="cy_cmt_count" data-xid="2018/08/08/使用程序生成Texture2D并创建Sprite/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1305,7 +1340,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1359,8 +1394,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Sprite/" itemprop="url" rel="index">
-                    <span itemprop="name">Sprite</span>
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
                   </a>
                 </span>
 
@@ -1379,7 +1414,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/" class="cy_cmt_count" data-xid="2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/" class="cy_cmt_count" data-xid="2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1501,7 +1536,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/Unity移动/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/Unity移动/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1575,7 +1610,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/04/Unity移动/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/Unity移动/" class="cy_cmt_count" data-xid="2018/08/04/Unity移动/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/04/Unity移动/" class="cy_cmt_count" data-xid="2018/08/04/Unity移动/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1715,7 +1750,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/GoogleAdMob广告接入/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/GoogleAdMob广告接入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1789,7 +1824,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/04/GoogleAdMob广告接入/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/GoogleAdMob广告接入/" class="cy_cmt_count" data-xid="2018/08/04/GoogleAdMob广告接入/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/04/GoogleAdMob广告接入/" class="cy_cmt_count" data-xid="2018/08/04/GoogleAdMob广告接入/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1917,7 +1952,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/AssetBundle基础篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1971,18 +2006,7 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/热更新/" itemprop="url" rel="index">
-                    <span itemprop="name">热更新</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/热更新/Unity/" itemprop="url" rel="index">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
                     <span itemprop="name">Unity</span>
                   </a>
                 </span>
@@ -2002,7 +2026,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/04/AssetBundle基础篇/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/AssetBundle基础篇/" class="cy_cmt_count" data-xid="2018/08/04/AssetBundle基础篇/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/04/AssetBundle基础篇/" class="cy_cmt_count" data-xid="2018/08/04/AssetBundle基础篇/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -2158,7 +2182,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.Husbandman.top/2018/08/04/BlendTree/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/BlendTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -2212,18 +2236,7 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MecanimAnimator/" itemprop="url" rel="index">
-                    <span itemprop="name">MecanimAnimator</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MecanimAnimator/Unity/" itemprop="url" rel="index">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
                     <span itemprop="name">Unity</span>
                   </a>
                 </span>
@@ -2243,7 +2256,7 @@ alt="Fork me on GitHub"></a>
               </span>
               
                 <a href="/2018/08/04/BlendTree/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://www.Husbandman.top/2018/08/04/BlendTree/" class="cy_cmt_count" data-xid="2018/08/04/BlendTree/" itemprop="commentsCount" ></span>
+                  <span id="url::https://fget.cn/2018/08/04/BlendTree/" class="cy_cmt_count" data-xid="2018/08/04/BlendTree/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -2397,7 +2410,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2408,7 +2421,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2419,7 +2432,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2467,6 +2480,12 @@ alt="Fork me on GitHub"></a>
                     <a href="https://blog.csdn.net/tutuziyang" target="_blank" title="CSDN">
                       
                         <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/caee6b28cc5c" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
                   </span>
                 
             </div>
