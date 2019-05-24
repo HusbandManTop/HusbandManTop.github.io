@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fget.cn/"/>
-  <updated>2019-05-23T16:09:02.190Z</updated>
+  <updated>2019-05-24T02:19:19.945Z</updated>
   <id>https://fget.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>3d数学-矩阵</title>
-    <link href="https://fget.cn/2018/08/22/3d%E6%95%B0%E5%AD%A6_%E7%9F%A9%E9%98%B5/"/>
-    <id>https://fget.cn/2018/08/22/3d数学_矩阵/</id>
-    <published>2018-08-22T09:32:04.000Z</published>
-    <updated>2019-05-23T16:09:02.190Z</updated>
+    <title>Linux配置VIM插件</title>
+    <link href="https://fget.cn/2019/05/24/Linux%E9%85%8D%E7%BD%AEVIM%E6%8F%92%E4%BB%B6/"/>
+    <id>https://fget.cn/2019/05/24/Linux配置VIM插件/</id>
+    <published>2019-05-24T02:18:42.000Z</published>
+    <updated>2019-05-24T02:19:19.945Z</updated>
     
     <summary type="html">
     
@@ -29,67 +29,50 @@
       
         
         
-          &lt;h3 id=&quot;3d数学-矩阵&quot;&gt;&lt;a href=&quot;#3d数学-矩阵&quot; class=&quot;headerlink&quot;
+          &lt;h4 id=&quot;Linux配置VIM插件&quot;&gt;&lt;a href=&quot;#Linux配置VIM插件&quot; class=&quot;headerlink&quot; title=&quot;Linux配置VIM插件&quot;&gt;&lt;/a&gt;Linux配置VIM插件&lt;/h4&gt;&lt;hr&gt;
+&lt;p&gt;An automatic
         
       
     
     </summary>
     
+      <category term="Linux" scheme="https://fget.cn/categories/Linux/"/>
     
-      <category term="3d数学" scheme="https://fget.cn/tags/3d%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="Linux" scheme="https://fget.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
-    <title>3d数学-向量</title>
-    <link href="https://fget.cn/2018/08/22/3D%E6%95%B0%E5%AD%A6_%E5%90%91%E9%87%8F/"/>
-    <id>https://fget.cn/2018/08/22/3D数学_向量/</id>
-    <published>2018-08-22T06:48:06.000Z</published>
-    <updated>2019-05-23T16:08:55.022Z</updated>
+    <title>MySQL 连接中断次数限制 mysql：is blocked because of many connection errors解决方案</title>
+    <link href="https://fget.cn/2019/05/24/MySQL-%E8%BF%9E%E6%8E%A5%E4%B8%AD%E6%96%AD%E6%AC%A1%E6%95%B0%E9%99%90%E5%88%B6-mysql%EF%BC%9Ais-blocked-because-of-many-connection-errors%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://fget.cn/2019/05/24/MySQL-连接中断次数限制-mysql：is-blocked-because-of-many-connection-errors解决方案/</id>
+    <published>2019-05-24T02:14:57.000Z</published>
+    <updated>2019-05-24T02:17:53.941Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;3d数学-向量&quot;&gt;&lt;a href=&quot;#3d数学-向量&quot; class=&quot;headerlink&quot; title=&quot;3d数学-向量&quot;&gt;&lt;/a&gt;3d数学-向量&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;向量的数学定义&quot;&gt;&lt;a href=&quot;#向量的数学定义&quot; class=&quot;headerlink&quot; title=&quot;向量的数学定义&quot;&gt;&lt;/a&gt;向量的数学定义&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;向量就是一个数字列表,很多个数字组成的列表,也叫做数组&lt;/li&gt;
-&lt;li&gt;如果只有一个数叫做一维行/列向量,一维也叫做标量&lt;/li&gt;
-&lt;li&gt;向量的维数: 2维,3维,4维,&lt;strong&gt;标量是1维向量&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;行向量,列向量&lt;/p&gt;
-&lt;p&gt;[1,2,3] 行向量  &lt;/p&gt;
-&lt;p&gt;|1| 列向量&lt;br&gt;|2|&lt;br&gt;|3|  &lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;向量的几何定义&quot;&gt;&lt;a href=&quot;#向量的几何定义&quot; class=&quot;headerlink&quot; title=&quot;向量的几何定义&quot;&gt;&lt;/a&gt;向量的几何定义&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;向量没有位置(向量的起点可以在任何位置),只有大小和方向&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;我们用一个向量在几何学上来表示位移而不是表示位置,即有方向又有大小的量就叫做向量  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://imgchr.com/i/PhaNHU&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhaNHU.png&quot; alt=&quot;PhaNHU.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;向量的表达,向量在每个维度上的有向位移&lt;br&gt;&lt;a href=&quot;https://imgchr.com/i/PhadN4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhadN4.png&quot; alt=&quot;PhadN4.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;向量和点的关系&quot;&gt;&lt;a href=&quot;#向量和点的关系&quot; class=&quot;headerlink&quot; title=&quot;向量和点的关系&quot;&gt;&lt;/a&gt;向量和点的关系&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;点有位置,但是没有实际的大小和厚度(厚度应该是指的是方向吧),向量有大小和方向,但是没有位置(位置可以在任何位置),所以使用”点”和”向量”的目的完全不同;”点”描述的是位置,”向量”描述的是位移,也包括相对位置;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;向量和点在数学上是完全一致的,概念是等价的&lt;br&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/22/Po0hxe.png&quot; alt=&quot;Po0hxe.png&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+      
+      
+        
+        
+          &lt;h3 id=&quot;MySQL-连接中断次数限制-mysql：is-blocked-because-of-many-connection-errors解决方案&quot;&gt;&lt;a
+        
+      
     
     </summary>
     
+      <category term="MySQL" scheme="https://fget.cn/categories/MySQL/"/>
     
-      <category term="3d数学" scheme="https://fget.cn/tags/3d%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
-    <title>FairyGUI</title>
-    <link href="https://fget.cn/2018/08/16/FairyGUI/"/>
-    <id>https://fget.cn/2018/08/16/FairyGUI/</id>
-    <published>2018-08-16T09:33:58.000Z</published>
-    <updated>2019-05-23T16:09:40.509Z</updated>
+    <title>Unity播放GIF</title>
+    <link href="https://fget.cn/2019/05/24/Unity%E6%92%AD%E6%94%BEGIF/"/>
+    <id>https://fget.cn/2019/05/24/Unity播放GIF/</id>
+    <published>2019-05-24T01:56:52.105Z</published>
+    <updated>2018-08-12T03:16:14.000Z</updated>
     
     <summary type="html">
     
@@ -97,24 +80,25 @@
       
         
         
-          &lt;h3 id=&quot;FairyGUI&quot;&gt;&lt;a href=&quot;#FairyGUI&quot; class=&quot;headerlink&quot; title=&quot;FairyGUI&quot;&gt;&lt;/a&gt;FairyGUI&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://fairygui.com/&quot;
+          &lt;h3 id=&quot;转-Unity——在游戏中播放Gif动图&quot;&gt;&lt;a href=&quot;#转-Unity——在游戏中播放Gif动图&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
     
-      <category term="FairyGUI" scheme="https://fget.cn/tags/FairyGUI/"/>
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
     
   </entry>
   
   <entry>
-    <title>OpenGL基础</title>
-    <link href="https://fget.cn/2018/08/16/OpenGL%E5%9F%BA%E7%A1%80/"/>
-    <id>https://fget.cn/2018/08/16/OpenGL基础/</id>
-    <published>2018-08-16T07:14:16.000Z</published>
-    <updated>2019-05-23T16:11:14.960Z</updated>
+    <title>Unity3D研究 GL详解</title>
+    <link href="https://fget.cn/2019/05/24/GL/"/>
+    <id>https://fget.cn/2019/05/24/GL/</id>
+    <published>2019-05-24T01:56:52.099Z</published>
+    <updated>2018-08-12T03:12:28.000Z</updated>
     
     <summary type="html">
     
@@ -122,22 +106,102 @@
       
         
         
-          &lt;h3 id=&quot;OpenGL基础&quot;&gt;&lt;a href=&quot;#OpenGL基础&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;转-Unity3D研究-GL详解&quot;&gt;&lt;a href=&quot;#转-Unity3D研究-GL详解&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D研究 GL详解&quot;&gt;&lt;/a&gt;(转)Unity3D研究 GL详解&lt;/h3&gt;&lt;p&gt;原文链接:&lt;a
         
       
     
     </summary>
     
+      <category term="C#" scheme="https://fget.cn/categories/C/"/>
     
-      <category term="OpenGL" scheme="https://fget.cn/tags/OpenGL/"/>
+    
+      <category term="C#" scheme="https://fget.cn/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于unity3D的GL图像库的使用</title>
+    <link href="https://fget.cn/2019/05/24/%E5%85%B3%E4%BA%8Eunity3D%E7%9A%84GL%E5%9B%BE%E5%83%8F%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://fget.cn/2019/05/24/关于unity3D的GL图像库的使用/</id>
+    <published>2019-05-24T01:56:51.893Z</published>
+    <updated>2018-08-12T03:19:52.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;转-关于unity3D的GL图像库的使用&quot;&gt;&lt;a href=&quot;#转-关于unity3D的GL图像库的使用&quot; class=&quot;headerlink&quot; title=&quot;(转)关于unity3D的GL图像库的使用&quot;&gt;&lt;/a&gt;(转)关于unity3D的GL图像库的使用&lt;/h3&gt;&lt;p&gt;原文链接: &lt;a href=&quot;https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;GL图象库&quot;&gt;&lt;a href=&quot;#GL图象库&quot; class=&quot;headerlink&quot; title=&quot;GL图象库&quot;&gt;&lt;/a&gt;GL图象库&lt;/h4&gt;&lt;p&gt;GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，&lt;br&gt;只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，不会因为摄象机的移动而&lt;br&gt;改变。2D图形的呈现方式和前面章节介绍的GUI有点类似，值得注意的是，绘制2D图像时，需要使用GL.LoadOrtho()方法将图形映射在&lt;br&gt;平面中；如果绘制的是3D图形，就无须使用此方法。  &lt;/p&gt;
+&lt;p&gt;使用GL图象库时，需要将所有绘制相关的内容写在OnPostRender()方法中。此方法由系统自身调用，无法手动调用。此外，有关GL图象&lt;br&gt;库的脚本需要绑定在Hierarchy视图中的摄象机对象当中，否则将无法显示绘制的图形&lt;br&gt;绘制线   &lt;/p&gt;
+&lt;p&gt;在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。&lt;br&gt;值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素&lt;br&gt;来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这&lt;br&gt;个浮点数来计算。  &lt;/p&gt;
+&lt;p&gt;比如当前游戏屏幕的像素宽高是500&lt;em&gt;500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应&lt;br&gt;当是：500（屏幕宽） &lt;/em&gt; 0.5（x坐标） = 250&lt;br&gt;500（屏幕高）* 0.5（x坐标） = 250&lt;/p&gt;
+&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Script&lt;/span&gt;:&lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段材质&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Material material;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//此绘制方法由系统调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnPostRender&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!material)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Debug.LogError(“请给材质资源赋值”);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Return;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置该材质通道，0为默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Material.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.LoadOrtho();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//表示开始绘制，绘制类型为线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Begin(GL.LINES);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.End();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DrawLine&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x1,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y1;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x2,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x1/Screen.width,y1/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x2/Screen.width,y2/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity计算屏幕宽高比</title>
+    <link href="https://fget.cn/2019/05/24/Unity%E8%AE%A1%E7%AE%97%E5%B1%8F%E5%B9%95%E5%AE%BD%E9%AB%98%E6%AF%94/"/>
+    <id>https://fget.cn/2019/05/24/Unity计算屏幕宽高比/</id>
+    <published>2019-05-24T01:56:51.888Z</published>
+    <updated>2018-08-12T03:17:14.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Unity计算屏幕宽高比&quot;&gt;&lt;a href=&quot;#Unity计算屏幕宽高比&quot; class=&quot;headerlink&quot; title=&quot;Unity计算屏幕宽高比&quot;&gt;&lt;/a&gt;Unity计算屏幕宽高比&lt;/h3&gt;&lt;p&gt;2d camera, unit坐标，单位换算&lt;/p&gt;
+&lt;p&gt;2d游戏可以使用平行投影的camera，这种camera需要设置size (orthographicSize)，size的含义为屏幕高度的一半，不过单位不是像素而是unit坐标，即通过pixels to units换算的坐标。例如：屏幕高度为640，pixels to units为100的情况下，orthographic size为640/2/100 = 3.2&lt;/p&gt;
+&lt;p&gt;unit坐标我理解就是一个统一化的坐标，不用担心他的实际含义，只是提供一个统一的坐标给游戏各个组成部分使用。相应的sprite的尺寸也可通过pixels to units换算成unit 坐标，并且每个sprite都可以单独设置，这等于给资源多加了一个调整的参数&lt;/p&gt;
+&lt;p&gt;设置camrea的size实际上控制了显示区域的大小，size越大，能看到的世界越大，当然世界里面的sprite会相应缩小，因为实际的屏幕就那么大。当然由于移动设备的屏幕尺寸多样，如何设置这个size就是多分辨率适配的策略了，比如设定size为某个值不变，这相当于fix height模式，由于不同屏幕宽高比不同，这会导致显示的宽度不一样，这就需要根据宽度调整显示的内容了（不过适配问题基本都是UI问题，而Unity的GUI自带了自适应的策略所以基本不是问题了，当然仍然要考虑非GUI部分的适应，比如不能让原计划一屏内显示的游戏关卡出屏被切）。再如设定一个固定的设计分辨率的宽度，然后通过宽高比来计算出camera size，这就属于fix width模式，这比较适合竖屏游戏。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;用于计算camera的unit单位尺寸的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Camera camera;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; aspectRatio ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SetResolution&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//基于iPhone4比例的单位高度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; devHeight = &lt;span class=&quot;number&quot;&gt;9.6&lt;/span&gt;f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//基于iPhone4比例的单位宽度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; devWidth = &lt;span class=&quot;number&quot;&gt;6.4&lt;/span&gt;f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  camera = Camera.main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//摄像机的尺寸&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  orthographic = camera.orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  把Projection改成Orthographic 也就是正交摄像机。 然后要说的就是size = 3.2。这个3.2是怎么来的呢？想想我们的分辨率的高是多少？&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  高是640.  640/2/100 ＝ 3.2. 除以2就是屏幕高的一半，除//以100就是上面我们设置的 pixels to units ＝100 .&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  再举个例子如果你开发时的分辨率是1280X720 那么此时你的高就是720了。 720/2/100 = 3.6 那么此时摄像机的size 就应该写成3.6了。。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  再唠叨一句，手游的分辨率自适应基本都是这样修改摄像机的size来实现的了&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//宽高比&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  aspectRatio = Screen.width * &lt;span class=&quot;number&quot;&gt;1.0&lt;/span&gt;f / Screen.height;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//摄像机的单位宽度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; cameraHeight = orthographicSize * &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; cameraWidth = cameraHeight * aspectRatio;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Debug.Log (&lt;span class=&quot;string&quot;&gt;&quot;camera size in unit=&quot;&lt;/span&gt; + cameraWidth + &lt;span class=&quot;string&quot;&gt;&quot;:&quot;&lt;/span&gt; + cameraHeight);&lt;span class=&quot;comment&quot;&gt;//宽高比&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//如果设备的宽度大于摄像机的宽度的时候  调整摄像机的orthographicSize&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (cameraWidth &amp;lt; devWidth)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        orthographicSize = devWidth / (&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * aspectRatio);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Debug.Log(&lt;span class=&quot;string&quot;&gt;&quot;new orthographicSize = &quot;&lt;/span&gt; + orthographicSize);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.GetComponent&amp;lt;Camera&amp;gt;().orthographicSize = orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Unity3D 小地图以角色为中心点等比例映射地图</title>
+    <link href="https://fget.cn/2019/05/24/UnityUnity3D%E4%BB%A5%E8%A7%92%E8%89%B2%E4%B8%BA%E4%B8%AD%E5%BF%83%E7%82%B9%E7%AD%89%E6%AF%94%E4%BE%8B%E6%98%A0%E5%B0%84%E5%9C%B0%E5%9B%BE/"/>
+    <id>https://fget.cn/2019/05/24/UnityUnity3D以角色为中心点等比例映射地图/</id>
+    <published>2019-05-24T01:56:51.813Z</published>
+    <updated>2018-08-12T03:15:26.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-Unity3D-小地图以角色为中心点等比例映射地图&quot;&gt;&lt;a href=&quot;#转-Unity3D-小地图以角色为中心点等比例映射地图&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D
+        
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
     
   </entry>
   
   <entry>
     <title>Unity基础(二)</title>
-    <link href="https://fget.cn/2018/08/16/Unity%E5%9F%BA%E7%A1%80(%E4%BA%8C)/"/>
-    <id>https://fget.cn/2018/08/16/Unity基础(二)/</id>
-    <published>2018-08-16T06:49:16.000Z</published>
+    <link href="https://fget.cn/2019/05/24/Unity%E5%9F%BA%E7%A1%80(%E4%BA%8C)/"/>
+    <id>https://fget.cn/2019/05/24/Unity基础(二)/</id>
+    <published>2019-05-24T01:56:51.796Z</published>
     <updated>2018-08-16T06:49:16.000Z</updated>
     
     <summary type="html">
@@ -159,11 +223,61 @@
   </entry>
   
   <entry>
+    <title>Unity将bit转换为Class</title>
+    <link href="https://fget.cn/2019/05/24/Unity%E5%B0%86bit%E8%BD%AC%E6%8D%A2%E4%B8%BAClass/"/>
+    <id>https://fget.cn/2019/05/24/Unity将bit转换为Class/</id>
+    <published>2019-05-24T01:56:51.756Z</published>
+    <updated>2018-08-12T03:18:06.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;转-Unity将bit转换为Class&quot;&gt;&lt;a href=&quot;#转-Unity将bit转换为Class&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>旋转理解左手坐标系</title>
+    <link href="https://fget.cn/2019/05/24/%E9%80%9A%E8%BF%87%E6%97%8B%E8%BD%AC%E7%90%86%E8%A7%A3%E5%B7%A6%E6%89%8B%E5%9D%90%E6%A0%87%E7%B3%BB/"/>
+    <id>https://fget.cn/2019/05/24/通过旋转理解左手坐标系/</id>
+    <published>2019-05-24T01:56:51.745Z</published>
+    <updated>2019-05-23T16:13:12.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;旋转理解左手坐标系&quot;&gt;&lt;a href=&quot;#旋转理解左手坐标系&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Unity基础</title>
-    <link href="https://fget.cn/2018/08/14/Unity%E5%9F%BA%E7%A1%80/"/>
-    <id>https://fget.cn/2018/08/14/Unity基础/</id>
-    <published>2018-08-14T06:40:40.000Z</published>
-    <updated>2019-05-23T16:11:55.802Z</updated>
+    <link href="https://fget.cn/2019/05/24/Unity%E5%9F%BA%E7%A1%80/"/>
+    <id>https://fget.cn/2019/05/24/Unity基础/</id>
+    <published>2019-05-24T01:56:51.700Z</published>
+    <updated>2019-05-23T16:11:56.000Z</updated>
     
     <summary type="html">
     
@@ -212,11 +326,11 @@
   </entry>
   
   <entry>
-    <title>旋转理解左手坐标系</title>
-    <link href="https://fget.cn/2018/08/13/%E9%80%9A%E8%BF%87%E6%97%8B%E8%BD%AC%E7%90%86%E8%A7%A3%E5%B7%A6%E6%89%8B%E5%9D%90%E6%A0%87%E7%B3%BB/"/>
-    <id>https://fget.cn/2018/08/13/通过旋转理解左手坐标系/</id>
-    <published>2018-08-13T06:10:48.000Z</published>
-    <updated>2018-08-13T06:10:48.000Z</updated>
+    <title>FairyGUI</title>
+    <link href="https://fget.cn/2019/05/24/FairyGUI/"/>
+    <id>https://fget.cn/2019/05/24/FairyGUI/</id>
+    <published>2019-05-24T01:56:51.625Z</published>
+    <updated>2019-05-23T16:09:40.000Z</updated>
     
     <summary type="html">
     
@@ -224,33 +338,42 @@
       
         
         
-          &lt;h3 id=&quot;旋转理解左手坐标系&quot;&gt;&lt;a href=&quot;#旋转理解左手坐标系&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;FairyGUI&quot;&gt;&lt;a href=&quot;#FairyGUI&quot; class=&quot;headerlink&quot; title=&quot;FairyGUI&quot;&gt;&lt;/a&gt;FairyGUI&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://fairygui.com/&quot;
         
       
     
     </summary>
     
     
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+      <category term="FairyGUI" scheme="https://fget.cn/tags/FairyGUI/"/>
     
   </entry>
   
   <entry>
-    <title>关于unity3D的GL图像库的使用</title>
-    <link href="https://fget.cn/2018/08/12/%E5%85%B3%E4%BA%8Eunity3D%E7%9A%84GL%E5%9B%BE%E5%83%8F%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://fget.cn/2018/08/12/关于unity3D的GL图像库的使用/</id>
-    <published>2018-08-12T03:19:51.000Z</published>
-    <updated>2018-08-12T03:19:51.000Z</updated>
+    <title>Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性</title>
+    <link href="https://fget.cn/2019/05/24/UnityBit%E7%BC%96%E7%A8%8B/"/>
+    <id>https://fget.cn/2019/05/24/UnityBit编程/</id>
+    <published>2019-05-24T01:56:51.517Z</published>
+    <updated>2018-08-12T03:14:54.000Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;转-关于unity3D的GL图像库的使用&quot;&gt;&lt;a href=&quot;#转-关于unity3D的GL图像库的使用&quot; class=&quot;headerlink&quot; title=&quot;(转)关于unity3D的GL图像库的使用&quot;&gt;&lt;/a&gt;(转)关于unity3D的GL图像库的使用&lt;/h3&gt;&lt;p&gt;原文链接: &lt;a href=&quot;https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/JLZT1223/p/6094404.html尊重作者原创&lt;/a&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot;&gt;&lt;a href=&quot;#转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot;&gt;&lt;/a&gt;(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&lt;/h3&gt;&lt;p&gt;原文链接&lt;a href=&quot;https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&quot;GL图象库&quot;&gt;&lt;a href=&quot;#GL图象库&quot; class=&quot;headerlink&quot; title=&quot;GL图象库&quot;&gt;&lt;/a&gt;GL图象库&lt;/h4&gt;&lt;p&gt;GL图象库是底层的图象库，主要功能是使用程序来绘制常见的2D与3D几何图形。这些图形具有一定的特殊性，他们不属于3D网格图形，&lt;br&gt;只会以面的形式渲染。使用GL图象库，可在屏幕中绘制2D几何图形，并且该几何图形将永远显示在屏幕当中，不会因为摄象机的移动而&lt;br&gt;改变。2D图形的呈现方式和前面章节介绍的GUI有点类似，值得注意的是，绘制2D图像时，需要使用GL.LoadOrtho()方法将图形映射在&lt;br&gt;平面中；如果绘制的是3D图形，就无须使用此方法。  &lt;/p&gt;
-&lt;p&gt;使用GL图象库时，需要将所有绘制相关的内容写在OnPostRender()方法中。此方法由系统自身调用，无法手动调用。此外，有关GL图象&lt;br&gt;库的脚本需要绑定在Hierarchy视图中的摄象机对象当中，否则将无法显示绘制的图形&lt;br&gt;绘制线   &lt;/p&gt;
-&lt;p&gt;在了解如何绘制线之前，先熟悉Unity中GL图象库的平面坐标系。按照箭头所指的方向，平面坐标系的原点（0，0）位于左下脚。&lt;br&gt;值得注意的是，GL图象库的平面坐标和普通坐标是有区别的，GL图象库的x轴的最大值是1，y轴的最大值也为1，而不是按照像素&lt;br&gt;来计算的，因此，在GL图象库的平面坐标系中，每个点的横坐标和纵坐标都应当是0与1之间的浮点数，而真实的像素坐标需要根据这&lt;br&gt;个浮点数来计算。  &lt;/p&gt;
-&lt;p&gt;比如当前游戏屏幕的像素宽高是500&lt;em&gt;500，在GL图象库平面上选择一个点(0.5f,0.5f),那么这个点的真实像素的横坐标和纵坐标应&lt;br&gt;当是：500（屏幕宽） &lt;/em&gt; 0.5（x坐标） = 250&lt;br&gt;500（屏幕高）* 0.5（x坐标） = 250&lt;/p&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Script&lt;/span&gt;:&lt;span class=&quot;title&quot;&gt;MonoBehaviour&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段材质&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Material material;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//此绘制方法由系统调用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnPostRender&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!material)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Debug.LogError(“请给材质资源赋值”);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Return;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//设置该材质通道，0为默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Material.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.LoadOrtho();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//表示开始绘制，绘制类型为线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Begin(GL.LINES);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DrawLine(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.End();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;DrawLine&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x1,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y1;&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; x2,&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; y2&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//绘制线段，需要将屏幕中某个点的像素坐标点除以屏幕完成宽或高&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x1/Screen.width,y1/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;GL.Vetex(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Vector3(x2/Screen.width,y2/Screen.height,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在游戏开发中，有时候我们通过进行Bit级别的编程，可以实现技能解锁\装备购买等存储，并实现初步加密，降低内存所占空间，并极大提高数据安全性！&lt;/p&gt;
+&lt;p&gt;假设当前角色共有8个技能，我用一个Byte来存储这些信息。&lt;/p&gt;
+&lt;p&gt;0000  0000 表示当前我没有学习任何技能&lt;/p&gt;
+&lt;p&gt;0000  0001 表示为当前我学习了第一个技能。&lt;/p&gt;
+&lt;p&gt;这样大家可以初步看出我是通过Bit是否为true来判断仅能是否已经学习，0就是没有学习过，1就是已经学习过。&lt;/p&gt;
+&lt;p&gt;我们通过&amp;amp;、|、！运算，位移运算符&amp;lt;&amp;lt;  &amp;gt;&amp;gt;操作Byte实现Bit级别的编程&lt;/p&gt;
+&lt;h4 id=&quot;解锁技能表达式推导&quot;&gt;&lt;a href=&quot;#解锁技能表达式推导&quot; class=&quot;headerlink&quot; title=&quot;解锁技能表达式推导&quot;&gt;&lt;/a&gt;解锁技能表达式推导&lt;/h4&gt;&lt;p&gt;当前byte tmpByte = 0 即 0000  0000&lt;br&gt;解锁第一个技能：对tmpbyte进行I操作  &lt;/p&gt;
+&lt;p&gt;0000  0000    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0001    –》解锁技能——要解锁1技能，1左移0&lt;br&gt;—————&lt;br&gt;0000  0001    –》解锁后技能&lt;br&gt;解锁第二个技能&lt;br&gt;0000  0001    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0010    –》解锁技能——要解锁2技能，1左移1&lt;br&gt;—————&lt;br&gt;0000  0011    –》解锁后技能  &lt;/p&gt;
+&lt;p&gt;|的数值可以看出来是:  1&amp;lt;&amp;lt;n-1   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解锁技能的表达式：tmpByte | 1&amp;lt;&amp;lt;(n-1)&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;判断技能是否解锁表达式推导&quot;&gt;&lt;a href=&quot;#判断技能是否解锁表达式推导&quot; class=&quot;headerlink&quot; title=&quot;判断技能是否解锁表达式推导&quot;&gt;&lt;/a&gt;判断技能是否解锁表达式推导&lt;/h4&gt;&lt;p&gt;判断第一个技能&lt;br&gt;0000  0011    –》当前技能&lt;br&gt;      &amp;amp;操作&lt;br&gt;0000  0010    –》判断技能——要判断技能，1左移0&lt;br&gt;—————&lt;br&gt;0000  0011    –》运算后是否等于本身  &lt;/p&gt;
+&lt;p&gt;解锁第二个技能&lt;br&gt;0000  0011    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0010    –》判断技能——要判断2技能，1左移1&lt;br&gt;—————&lt;br&gt;0000  0011    –》运算后是否等于本身  &lt;/p&gt;
+&lt;p&gt;&amp;amp;的数值可以看出来是：1&amp;lt;&amp;lt;n-1  &lt;/p&gt;
     
     </summary>
     
@@ -263,10 +386,10 @@
   
   <entry>
     <title>Unity自带GL讲解</title>
-    <link href="https://fget.cn/2018/08/12/Unity%E8%87%AA%E5%B8%A6GL%E8%AE%B2%E8%A7%A3/"/>
-    <id>https://fget.cn/2018/08/12/Unity自带GL讲解/</id>
-    <published>2018-08-12T03:19:17.000Z</published>
-    <updated>2018-08-12T03:19:17.000Z</updated>
+    <link href="https://fget.cn/2019/05/24/Unity%E8%87%AA%E5%B8%A6GL%E8%AE%B2%E8%A7%A3/"/>
+    <id>https://fget.cn/2019/05/24/Unity自带GL讲解/</id>
+    <published>2019-05-24T01:56:51.512Z</published>
+    <updated>2018-08-12T03:19:18.000Z</updated>
     
     <summary type="html">
     
@@ -298,38 +421,55 @@
   </entry>
   
   <entry>
-    <title>Unity 鼠标类</title>
-    <link href="https://fget.cn/2018/08/12/Unity%E9%BC%A0%E6%A0%87/"/>
-    <id>https://fget.cn/2018/08/12/Unity鼠标/</id>
-    <published>2018-08-12T03:18:39.000Z</published>
-    <updated>2018-08-12T03:18:39.000Z</updated>
+    <title>3d数学-向量</title>
+    <link href="https://fget.cn/2019/05/24/3D%E6%95%B0%E5%AD%A6_%E5%90%91%E9%87%8F/"/>
+    <id>https://fget.cn/2019/05/24/3D数学_向量/</id>
+    <published>2019-05-24T01:56:51.457Z</published>
+    <updated>2019-05-23T16:08:56.000Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;Unity鼠标&quot;&gt;&lt;a href=&quot;#Unity鼠标&quot; class=&quot;headerlink&quot; title=&quot;Unity鼠标&quot;&gt;&lt;/a&gt;Unity鼠标&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;隐藏鼠标&lt;br&gt;&lt;figure class=&quot;highlight
-        
-      
+      &lt;h3 id=&quot;3d数学-向量&quot;&gt;&lt;a href=&quot;#3d数学-向量&quot; class=&quot;headerlink&quot; title=&quot;3d数学-向量&quot;&gt;&lt;/a&gt;3d数学-向量&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;向量的数学定义&quot;&gt;&lt;a href=&quot;#向量的数学定义&quot; class=&quot;headerlink&quot; title=&quot;向量的数学定义&quot;&gt;&lt;/a&gt;向量的数学定义&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;向量就是一个数字列表,很多个数字组成的列表,也叫做数组&lt;/li&gt;
+&lt;li&gt;如果只有一个数叫做一维行/列向量,一维也叫做标量&lt;/li&gt;
+&lt;li&gt;向量的维数: 2维,3维,4维,&lt;strong&gt;标量是1维向量&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;行向量,列向量&lt;/p&gt;
+&lt;p&gt;[1,2,3] 行向量  &lt;/p&gt;
+&lt;p&gt;|1| 列向量&lt;br&gt;|2|&lt;br&gt;|3|  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;向量的几何定义&quot;&gt;&lt;a href=&quot;#向量的几何定义&quot; class=&quot;headerlink&quot; title=&quot;向量的几何定义&quot;&gt;&lt;/a&gt;向量的几何定义&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;一个向量就是有大小和方向的有向线段,线的长度是向量的大小,线的方向是向量的方向&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;向量没有位置(向量的起点可以在任何位置),只有大小和方向&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们用一个向量在几何学上来表示位移而不是表示位置,即有方向又有大小的量就叫做向量  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://imgchr.com/i/PhaNHU&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhaNHU.png&quot; alt=&quot;PhaNHU.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;向量的表达,向量在每个维度上的有向位移&lt;br&gt;&lt;a href=&quot;https://imgchr.com/i/PhadN4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/20/PhadN4.png&quot; alt=&quot;PhadN4.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;向量和点的关系&quot;&gt;&lt;a href=&quot;#向量和点的关系&quot; class=&quot;headerlink&quot; title=&quot;向量和点的关系&quot;&gt;&lt;/a&gt;向量和点的关系&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;点有位置,但是没有实际的大小和厚度(厚度应该是指的是方向吧),向量有大小和方向,但是没有位置(位置可以在任何位置),所以使用”点”和”向量”的目的完全不同;”点”描述的是位置,”向量”描述的是位移,也包括相对位置;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;向量和点在数学上是完全一致的,概念是等价的&lt;br&gt;&lt;img src=&quot;https://s1.ax1x.com/2018/08/22/Po0hxe.png&quot; alt=&quot;Po0hxe.png&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
     
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+      <category term="3d数学" scheme="https://fget.cn/tags/3d%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
-    <title>Unity将bit转换为Class</title>
-    <link href="https://fget.cn/2018/08/12/Unity%E5%B0%86bit%E8%BD%AC%E6%8D%A2%E4%B8%BAClass/"/>
-    <id>https://fget.cn/2018/08/12/Unity将bit转换为Class/</id>
-    <published>2018-08-12T03:18:06.000Z</published>
-    <updated>2018-08-12T03:18:06.000Z</updated>
+    <title>OpenGL基础</title>
+    <link href="https://fget.cn/2019/05/24/OpenGL%E5%9F%BA%E7%A1%80/"/>
+    <id>https://fget.cn/2019/05/24/OpenGL基础/</id>
+    <published>2019-05-24T01:56:51.426Z</published>
+    <updated>2019-05-23T16:11:14.000Z</updated>
     
     <summary type="html">
     
@@ -337,137 +477,23 @@
       
         
         
-          &lt;h3 id=&quot;转-Unity将bit转换为Class&quot;&gt;&lt;a href=&quot;#转-Unity将bit转换为Class&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;OpenGL基础&quot;&gt;&lt;a href=&quot;#OpenGL基础&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
     
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity计算屏幕宽高比</title>
-    <link href="https://fget.cn/2018/08/12/Unity%E8%AE%A1%E7%AE%97%E5%B1%8F%E5%B9%95%E5%AE%BD%E9%AB%98%E6%AF%94/"/>
-    <id>https://fget.cn/2018/08/12/Unity计算屏幕宽高比/</id>
-    <published>2018-08-12T03:17:14.000Z</published>
-    <updated>2018-08-12T03:17:14.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Unity计算屏幕宽高比&quot;&gt;&lt;a href=&quot;#Unity计算屏幕宽高比&quot; class=&quot;headerlink&quot; title=&quot;Unity计算屏幕宽高比&quot;&gt;&lt;/a&gt;Unity计算屏幕宽高比&lt;/h3&gt;&lt;p&gt;2d camera, unit坐标，单位换算&lt;/p&gt;
-&lt;p&gt;2d游戏可以使用平行投影的camera，这种camera需要设置size (orthographicSize)，size的含义为屏幕高度的一半，不过单位不是像素而是unit坐标，即通过pixels to units换算的坐标。例如：屏幕高度为640，pixels to units为100的情况下，orthographic size为640/2/100 = 3.2&lt;/p&gt;
-&lt;p&gt;unit坐标我理解就是一个统一化的坐标，不用担心他的实际含义，只是提供一个统一的坐标给游戏各个组成部分使用。相应的sprite的尺寸也可通过pixels to units换算成unit 坐标，并且每个sprite都可以单独设置，这等于给资源多加了一个调整的参数&lt;/p&gt;
-&lt;p&gt;设置camrea的size实际上控制了显示区域的大小，size越大，能看到的世界越大，当然世界里面的sprite会相应缩小，因为实际的屏幕就那么大。当然由于移动设备的屏幕尺寸多样，如何设置这个size就是多分辨率适配的策略了，比如设定size为某个值不变，这相当于fix height模式，由于不同屏幕宽高比不同，这会导致显示的宽度不一样，这就需要根据宽度调整显示的内容了（不过适配问题基本都是UI问题，而Unity的GUI自带了自适应的策略所以基本不是问题了，当然仍然要考虑非GUI部分的适应，比如不能让原计划一屏内显示的游戏关卡出屏被切）。再如设定一个固定的设计分辨率的宽度，然后通过宽高比来计算出camera size，这就属于fix width模式，这比较适合竖屏游戏。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;用于计算camera的unit单位尺寸的代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Camera camera;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; aspectRatio ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SetResolution&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//基于iPhone4比例的单位高度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; devHeight = &lt;span class=&quot;number&quot;&gt;9.6&lt;/span&gt;f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//基于iPhone4比例的单位宽度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; devWidth = &lt;span class=&quot;number&quot;&gt;6.4&lt;/span&gt;f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  camera = Camera.main;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//摄像机的尺寸&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  orthographic = camera.orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  把Projection改成Orthographic 也就是正交摄像机。 然后要说的就是size = 3.2。这个3.2是怎么来的呢？想想我们的分辨率的高是多少？&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  高是640.  640/2/100 ＝ 3.2. 除以2就是屏幕高的一半，除//以100就是上面我们设置的 pixels to units ＝100 .&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  再举个例子如果你开发时的分辨率是1280X720 那么此时你的高就是720了。 720/2/100 = 3.6 那么此时摄像机的size 就应该写成3.6了。。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  再唠叨一句，手游的分辨率自适应基本都是这样修改摄像机的size来实现的了&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//宽高比&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  aspectRatio = Screen.width * &lt;span class=&quot;number&quot;&gt;1.0&lt;/span&gt;f / Screen.height;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//摄像机的单位宽度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; cameraHeight = orthographicSize * &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; cameraWidth = cameraHeight * aspectRatio;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Debug.Log (&lt;span class=&quot;string&quot;&gt;&quot;camera size in unit=&quot;&lt;/span&gt; + cameraWidth + &lt;span class=&quot;string&quot;&gt;&quot;:&quot;&lt;/span&gt; + cameraHeight);&lt;span class=&quot;comment&quot;&gt;//宽高比&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//如果设备的宽度大于摄像机的宽度的时候  调整摄像机的orthographicSize&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (cameraWidth &amp;lt; devWidth)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        orthographicSize = devWidth / (&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * aspectRatio);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Debug.Log(&lt;span class=&quot;string&quot;&gt;&quot;new orthographicSize = &quot;&lt;/span&gt; + orthographicSize);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.GetComponent&amp;lt;Camera&amp;gt;().orthographicSize = orthographicSize;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity播放GIF</title>
-    <link href="https://fget.cn/2018/08/12/Unity%E6%92%AD%E6%94%BEGIF/"/>
-    <id>https://fget.cn/2018/08/12/Unity播放GIF/</id>
-    <published>2018-08-12T03:16:13.000Z</published>
-    <updated>2018-08-12T03:16:13.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity——在游戏中播放Gif动图&quot;&gt;&lt;a href=&quot;#转-Unity——在游戏中播放Gif动图&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity3D 小地图以角色为中心点等比例映射地图</title>
-    <link href="https://fget.cn/2018/08/12/UnityUnity3D%E4%BB%A5%E8%A7%92%E8%89%B2%E4%B8%BA%E4%B8%AD%E5%BF%83%E7%82%B9%E7%AD%89%E6%AF%94%E4%BE%8B%E6%98%A0%E5%B0%84%E5%9C%B0%E5%9B%BE/"/>
-    <id>https://fget.cn/2018/08/12/UnityUnity3D以角色为中心点等比例映射地图/</id>
-    <published>2018-08-12T03:15:26.000Z</published>
-    <updated>2018-08-12T03:15:26.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity3D-小地图以角色为中心点等比例映射地图&quot;&gt;&lt;a href=&quot;#转-Unity3D-小地图以角色为中心点等比例映射地图&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性</title>
-    <link href="https://fget.cn/2018/08/12/UnityBit%E7%BC%96%E7%A8%8B/"/>
-    <id>https://fget.cn/2018/08/12/UnityBit编程/</id>
-    <published>2018-08-12T03:14:53.000Z</published>
-    <updated>2018-08-12T03:14:53.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot;&gt;&lt;a href=&quot;#转-Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&quot;&gt;&lt;/a&gt;(转)Unity——Bit编程，可用于计算技能解锁装备购买并初步加密，降低内存占有量并提高安全性&lt;/h3&gt;&lt;p&gt;原文链接&lt;a href=&quot;https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/Htlas/article/details/79717990尊重作者原创&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;在游戏开发中，有时候我们通过进行Bit级别的编程，可以实现技能解锁\装备购买等存储，并实现初步加密，降低内存所占空间，并极大提高数据安全性！&lt;/p&gt;
-&lt;p&gt;假设当前角色共有8个技能，我用一个Byte来存储这些信息。&lt;/p&gt;
-&lt;p&gt;0000  0000 表示当前我没有学习任何技能&lt;/p&gt;
-&lt;p&gt;0000  0001 表示为当前我学习了第一个技能。&lt;/p&gt;
-&lt;p&gt;这样大家可以初步看出我是通过Bit是否为true来判断仅能是否已经学习，0就是没有学习过，1就是已经学习过。&lt;/p&gt;
-&lt;p&gt;我们通过&amp;amp;、|、！运算，位移运算符&amp;lt;&amp;lt;  &amp;gt;&amp;gt;操作Byte实现Bit级别的编程&lt;/p&gt;
-&lt;h4 id=&quot;解锁技能表达式推导&quot;&gt;&lt;a href=&quot;#解锁技能表达式推导&quot; class=&quot;headerlink&quot; title=&quot;解锁技能表达式推导&quot;&gt;&lt;/a&gt;解锁技能表达式推导&lt;/h4&gt;&lt;p&gt;当前byte tmpByte = 0 即 0000  0000&lt;br&gt;解锁第一个技能：对tmpbyte进行I操作  &lt;/p&gt;
-&lt;p&gt;0000  0000    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0001    –》解锁技能——要解锁1技能，1左移0&lt;br&gt;—————&lt;br&gt;0000  0001    –》解锁后技能&lt;br&gt;解锁第二个技能&lt;br&gt;0000  0001    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0010    –》解锁技能——要解锁2技能，1左移1&lt;br&gt;—————&lt;br&gt;0000  0011    –》解锁后技能  &lt;/p&gt;
-&lt;p&gt;|的数值可以看出来是:  1&amp;lt;&amp;lt;n-1   &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;解锁技能的表达式：tmpByte | 1&amp;lt;&amp;lt;(n-1)&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;判断技能是否解锁表达式推导&quot;&gt;&lt;a href=&quot;#判断技能是否解锁表达式推导&quot; class=&quot;headerlink&quot; title=&quot;判断技能是否解锁表达式推导&quot;&gt;&lt;/a&gt;判断技能是否解锁表达式推导&lt;/h4&gt;&lt;p&gt;判断第一个技能&lt;br&gt;0000  0011    –》当前技能&lt;br&gt;      &amp;amp;操作&lt;br&gt;0000  0010    –》判断技能——要判断技能，1左移0&lt;br&gt;—————&lt;br&gt;0000  0011    –》运算后是否等于本身  &lt;/p&gt;
-&lt;p&gt;解锁第二个技能&lt;br&gt;0000  0011    –》当前技能&lt;br&gt;      |操作&lt;br&gt;0000  0010    –》判断技能——要判断2技能，1左移1&lt;br&gt;—————&lt;br&gt;0000  0011    –》运算后是否等于本身  &lt;/p&gt;
-&lt;p&gt;&amp;amp;的数值可以看出来是：1&amp;lt;&amp;lt;n-1  &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+      <category term="OpenGL" scheme="https://fget.cn/tags/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title>Unity3D 运用GL屏幕画图(阴阳师画符)</title>
-    <link href="https://fget.cn/2018/08/12/GL%E5%B1%8F%E5%B9%95%E7%94%BB%E7%BA%BF%E4%BF%9D%E5%AD%98/"/>
-    <id>https://fget.cn/2018/08/12/GL屏幕画线保存/</id>
-    <published>2018-08-12T03:14:11.000Z</published>
-    <updated>2019-05-23T16:10:18.740Z</updated>
+    <link href="https://fget.cn/2019/05/24/GL%E5%B1%8F%E5%B9%95%E7%94%BB%E7%BA%BF%E4%BF%9D%E5%AD%98/"/>
+    <id>https://fget.cn/2019/05/24/GL屏幕画线保存/</id>
+    <published>2019-05-24T01:56:51.406Z</published>
+    <updated>2019-05-23T16:10:18.000Z</updated>
     
     <summary type="html">
     
@@ -496,11 +522,38 @@
   </entry>
   
   <entry>
+    <title>Unity 鼠标类</title>
+    <link href="https://fget.cn/2019/05/24/Unity%E9%BC%A0%E6%A0%87/"/>
+    <id>https://fget.cn/2019/05/24/Unity鼠标/</id>
+    <published>2019-05-24T01:56:51.379Z</published>
+    <updated>2018-08-12T03:18:40.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Unity鼠标&quot;&gt;&lt;a href=&quot;#Unity鼠标&quot; class=&quot;headerlink&quot; title=&quot;Unity鼠标&quot;&gt;&lt;/a&gt;Unity鼠标&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;隐藏鼠标&lt;br&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
+    
+    
+      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GL图像库</title>
-    <link href="https://fget.cn/2018/08/12/GL%E5%BA%93/"/>
-    <id>https://fget.cn/2018/08/12/GL库/</id>
-    <published>2018-08-12T03:13:21.000Z</published>
-    <updated>2018-08-12T03:13:21.000Z</updated>
+    <link href="https://fget.cn/2019/05/24/GL%E5%BA%93/"/>
+    <id>https://fget.cn/2019/05/24/GL库/</id>
+    <published>2019-05-24T01:56:51.323Z</published>
+    <updated>2018-08-12T03:13:22.000Z</updated>
     
     <summary type="html">
     
@@ -529,37 +582,11 @@
   </entry>
   
   <entry>
-    <title>Unity3D研究 GL详解</title>
-    <link href="https://fget.cn/2018/08/12/GL/"/>
-    <id>https://fget.cn/2018/08/12/GL/</id>
-    <published>2018-08-12T03:12:28.000Z</published>
-    <updated>2018-08-12T03:12:28.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-Unity3D研究-GL详解&quot;&gt;&lt;a href=&quot;#转-Unity3D研究-GL详解&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D研究 GL详解&quot;&gt;&lt;/a&gt;(转)Unity3D研究 GL详解&lt;/h3&gt;&lt;p&gt;原文链接:&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="C#" scheme="https://fget.cn/categories/C/"/>
-    
-    
-      <category term="C#" scheme="https://fget.cn/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
     <title>获取AnimatorClip动画的时间长度</title>
     <link href="https://fget.cn/2018/08/08/%E8%8E%B7%E5%8F%96AnimatorClip%E5%8A%A8%E7%94%BB%E7%9A%84%E6%97%B6%E9%97%B4%E9%95%BF%E5%BA%A6/"/>
     <id>https://fget.cn/2018/08/08/获取AnimatorClip动画的时间长度/</id>
     <published>2018-08-08T09:22:14.000Z</published>
-    <updated>2019-05-23T16:13:03.790Z</updated>
+    <updated>2019-05-23T16:13:04.000Z</updated>
     
     <summary type="html">
     
@@ -569,32 +596,6 @@
         
           &lt;h3 id=&quot;获取AnimatorClip&quot;&gt;&lt;a href=&quot;#获取AnimatorClip&quot; class=&quot;headerlink&quot; title=&quot;获取AnimatorClip&quot;&gt;&lt;/a&gt;获取AnimatorClip&lt;/h3&gt;&lt;hr&gt;
 &lt;h4
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Sprite" scheme="https://fget.cn/tags/Sprite/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果</title>
-    <link href="https://fget.cn/2018/08/08/%E4%BD%BF%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%94%9F%E6%88%90Texture2D%E5%B9%B6%E5%88%9B%E5%BB%BASprite/"/>
-    <id>https://fget.cn/2018/08/08/使用程序生成Texture2D并创建Sprite/</id>
-    <published>2018-08-08T07:22:14.000Z</published>
-    <updated>2019-05-23T16:12:30.004Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果&quot;&gt;&lt;a href=&quot;#转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果&quot; class=&quot;headerlink&quot;
         
       
     
