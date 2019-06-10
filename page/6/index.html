@@ -338,6 +338,205 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Unity文件操作路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Unity文件操作路径/" itemprop="url">Unity文件操作路径</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Unity文件操作路径/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/Unity文件操作路径/" class="cy_cmt_count" data-xid="2018/08/03/Unity文件操作路径/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,545
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="转-Unity文件操作路径"><a href="#转-Unity文件操作路径" class="headerlink" title="(转)Unity文件操作路径"></a>(转)Unity文件操作路径</h4><hr>
+<p>原博客地址:<a href="https://blog.csdn.net/linxinfa/article/details/51679528" target="_blank" rel="noopener">https://blog.csdn.net/linxinfa/article/details/51679528</a></p>
+<h5 id="1-1-IOS"><a href="#1-1-IOS" class="headerlink" title="1.1 IOS:"></a>1.1 IOS:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data</span><br><span class="line">Application.streamingAssetsPath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data/Raw</span><br><span class="line">Application.persistentDataPath :      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Documents</span><br><span class="line">Application.temporaryCachePath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Library/Caches</span><br></pre></td></tr></table></figure>
+<h5 id="1-2-Android"><a href="#1-2-Android" class="headerlink" title="1.2 Android:"></a>1.2 Android:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /data/app/xxx.xxx.xxx.apk</span><br><span class="line">Application.streamingAssetsPath :      jar:file:///data/app/xxx.xxx.xxx.apk/!/assets</span><br><span class="line">Application.persistentDataPath :         /data/data/xxx.xxx.xxx/files</span><br><span class="line">Application.temporaryCachePath :      /data/data/xxx.xxx.xxx/cache</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-Windows"><a href="#1-3-Windows" class="headerlink" title="1.3 Windows:"></a>1.3 Windows:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         C:/Users/xxxx/AppData/LocalLow/CompanyName/ProductName</span><br><span class="line">Application.temporaryCachePath :      C:/Users/xxxx/AppData/Local/Temp/CompanyName/ProductName</span><br></pre></td></tr></table></figure>
+<h5 id="1-4-Mac"><a href="#1-4-Mac" class="headerlink" title="1.4 Mac:"></a>1.4 Mac:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         /Users/xxxx/Library/Caches/CompanyName/Product Name</span><br><span class="line">Application.temporaryCachePath :     /var/folders/57/6b4_9w8113x2fsmzx_yhrhvh0000gn/T/CompanyName/Product Name</span><br></pre></td></tr></table></figure>
+<h5 id="1-5-Windows-Web-Player"><a href="#1-5-Windows-Web-Player" class="headerlink" title="1.5 Windows Web Player:"></a>1.5 Windows Web Player:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :             file:///D:/MyGame/WebPlayer (即导包后保存的文件夹，html文件所在文件夹)</span><br><span class="line">Application.streamingAssetsPath :</span><br><span class="line">Application.persistentDataPath :</span><br><span class="line">Application.temporaryCachePath :</span><br></pre></td></tr></table></figure>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Unity文件操作路径/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/CSharpDictionary字典/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2143,211 +2342,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2019/05/24/GL屏幕画线保存/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/24/GL屏幕画线保存/" itemprop="url">Unity3D 运用GL屏幕画图(阴阳师画符)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T09:56:51+08:00">
-                2019-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/05/24/GL屏幕画线保存/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2019/05/24/GL屏幕画线保存/" class="cy_cmt_count" data-xid="2019/05/24/GL屏幕画线保存/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  527
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="转-Unity3D-运用GL屏幕画图-阴阳师画符"><a href="#转-Unity3D-运用GL屏幕画图-阴阳师画符" class="headerlink" title="(转)Unity3D 运用GL屏幕画图(阴阳师画符)"></a>(转)Unity3D 运用GL屏幕画图(阴阳师画符)</h3><p>原文链接: <a href="https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创</a></p>
-<hr>
-<p>阴阳师火了之后，市面上很多游戏又多了一个模块——画符抽卡，可以通过使用Unity自带GL类来实现这个功能，上面一篇博客Unity研究 GL中有关于GL类的初步解析。今天直接来分析需求 看看阴阳师画符抽卡是怎么实现的：</p>
-<font size="5">1，绘图——鼠标按下进行拖拽，在屏幕中留下鼠标轨迹。</font><br><font size="5">2，存图——松开鼠标，绘制的图片按比例映射到Texture上。</font>
-
-<p>Unity的GL是通过两点之间连线来构成图像的。</p>
-<ul>
-<li><p>1，通过一个集合List<vector3> allPoints存储鼠标在屏幕上经过的轨迹（视图坐标系）</vector3></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            Vector3 tmpView = Camera.main.ScreenToViewportPoint(Input.mousePosition);</span><br><span class="line">            allPoints.Add(tmpView);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2，遍历集合，将集合中具有前后关系的点连接起来（点动成线）</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 使用GL画线的回调</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnRenderObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建材质球</span></span><br><span class="line">        CreateLineMaterial();</span><br><span class="line">        <span class="comment">//激活第一个着色器通过（在本例中，我们知道它是唯一的通过）</span></span><br><span class="line">        lineMaterial.SetPass(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//设置正交投影</span></span><br><span class="line">        GL.LoadOrtho();</span><br><span class="line">        <span class="comment">// 开始画线  在Begin——End之间写画线方式</span></span><br><span class="line">        GL.Begin(GL.LINES);</span><br><span class="line">        GL.Color(Color.red);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; allPoints.Count; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Vector3 tmpFront = allPoints[i - <span class="number">1</span>];</span><br><span class="line">            Vector3 tmpBack = allPoints[i];</span><br><span class="line">            GL.Vertex(tmpFront);</span><br><span class="line">            GL.Vertex(tmpBack);</span><br><span class="line">        &#125;</span><br><span class="line">        GL.End();</span><br><span class="line">        <span class="comment">//渲染出栈</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/24/GL屏幕画线保存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2402,7 +2396,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2567,7 +2561,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.5k</span>
+    <span title="Site words total count">71.7k</span>
   
 </div>
 -->
@@ -2588,7 +2582,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.5k字</span>
+  <span class="post-count">博客全站共71.7k字</span>
 </div>
         
 

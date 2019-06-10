@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fget.cn/"/>
-  <updated>2019-06-10T13:07:02.446Z</updated>
+  <updated>2019-06-10T13:43:16.801Z</updated>
   <id>https://fget.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS2015 cpp常用调试方法</title>
+    <link href="https://fget.cn/2019/06/10/VS2015-cpp%E5%B8%B8%E7%94%A8%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/"/>
+    <id>https://fget.cn/2019/06/10/VS2015-cpp常用调试方法/</id>
+    <published>2019-06-10T13:10:35.000Z</published>
+    <updated>2019-06-10T13:43:16.801Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;VS2015-cpp常用调试方法&quot;&gt;&lt;a href=&quot;#VS2015-cpp常用调试方法&quot; class=&quot;headerlink&quot; title=&quot;VS2015 cpp常用调试方法&quot;&gt;&lt;/a&gt;VS2015 cpp常用调试方法&lt;/h2&gt;&lt;hr&gt;
+&lt;h5 id=&quot;打印数据调试程序&quot;&gt;&lt;a href=&quot;#打印数据调试程序&quot; class=&quot;headerlink&quot; title=&quot;打印数据调试程序&quot;&gt;&lt;/a&gt;打印数据调试程序&lt;/h5&gt;&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;AddFunc&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;  &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;i&amp;lt;=&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;++i)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       a += i;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;ifdef&lt;/span&gt; _DEBUG&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;==i)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;printf&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;debug: a = %d\n&quot;&lt;/span&gt;,a);   &lt;span class=&quot;comment&quot;&gt;//--打印数据调试&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;endif&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="C++" scheme="https://fget.cn/categories/C/"/>
+    
+    
+      <category term="C++" scheme="https://fget.cn/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>创建一个易于管理的Cpp工程</title>
@@ -574,33 +595,6 @@
     
     
       <category term="GL" scheme="https://fget.cn/tags/GL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity 鼠标类</title>
-    <link href="https://fget.cn/2019/05/24/Unity%E9%BC%A0%E6%A0%87/"/>
-    <id>https://fget.cn/2019/05/24/Unity鼠标/</id>
-    <published>2019-05-24T01:56:51.379Z</published>
-    <updated>2018-08-12T03:18:40.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;Unity鼠标&quot;&gt;&lt;a href=&quot;#Unity鼠标&quot; class=&quot;headerlink&quot; title=&quot;Unity鼠标&quot;&gt;&lt;/a&gt;Unity鼠标&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;隐藏鼠标&lt;br&gt;&lt;figure class=&quot;highlight
-        
-      
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="Unity" scheme="https://fget.cn/tags/Unity/"/>
     
   </entry>
   

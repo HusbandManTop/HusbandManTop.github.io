@@ -338,7 +338,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/UnityLog/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/Unity创建解析Json/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -357,7 +357,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/UnityLog/" itemprop="url">Unity Log管理</a></h1>
+                <a class="post-title-link" href="/2018/08/04/Unity创建解析Json/" itemprop="url">Unity创建解析Json</a></h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@ alt="Fork me on GitHub"></a>
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
-                2018-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:04+08:00">
+                2018-08-04
               </time>
             
 
@@ -392,7 +392,18 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                  <a href="/categories/Json/" itemprop="url" rel="index">
+                    <span itemprop="name">Json</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Json/Unity/" itemprop="url" rel="index">
                     <span itemprop="name">Unity</span>
                   </a>
                 </span>
@@ -411,8 +422,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/UnityLog/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/UnityLog/" class="cy_cmt_count" data-xid="2018/08/03/UnityLog/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/04/Unity创建解析Json/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/04/Unity创建解析Json/" class="cy_cmt_count" data-xid="2018/08/04/Unity创建解析Json/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -434,7 +445,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  757
+                  721
                 </span>
               
 
@@ -450,7 +461,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -472,14 +483,27 @@ alt="Fork me on GitHub"></a>
 
       
         
-          <h3 id="Unity-Log"><a href="#Unity-Log" class="headerlink" title="Unity Log"></a>Unity Log</h3><hr>
-<p>这一段是参考雨凇MOMO的文章:<br><a href="https://www.xuanyusong.com/archives/2782" target="_blank" rel="noopener">https://www.xuanyusong.com/archives/2782</a></p>
-<p>在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Debuger</span>  &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">bool</span> EnableLog = <span class="literal">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Log(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.Log(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogError(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogError(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogWarning(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogWarning(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。</p>
+          <h3 id="Json操作-两种方式"><a href="#Json操作-两种方式" class="headerlink" title="Json操作 两种方式:"></a>Json操作 两种方式:</h3><ul>
+<li>一.<a href="https://litjson.net/" target="_blank" rel="noopener">LitJson</a></li>
+<li>二.Unity自带的解析类:JsonUtility</li>
+</ul>
+<hr>
+<h4 id="1-Josn的描述"><a href="#1-Josn的描述" class="headerlink" title="1.Josn的描述"></a>1.Josn的描述</h4><ul>
+<li><p>{“key”:”val”,”key”,”val”}</p>
+<ul>
+<li>//{“name”:”张三”,”age”:”18”}</li>
+</ul>
+</li>
+<li><p>Json中{} == C#中的对象</p>
+</li>
+<li><p>Json中[] == C#中的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.(json)[1,2,3] == (C#)int[]</span><br><span class="line"></span><br><span class="line">2.(json)[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;] == (C#)string[]</span><br><span class="line"></span><br><span class="line">3.(json)[&#123;&quot;name&quot;:&quot;Lili&quot;&#125;,&#123;&quot;age&quot;:&quot;16&quot;,&#123;&quot;gender&quot;:&quot;girl&quot;&#125;&#125;,</span><br><span class="line">  &#123;&quot;name&quot;:&quot;dashan&quot;&#125;,&#123;&quot;age&quot;:&quot;18&quot;,&#123;&quot;gender&quot;:&quot;boy&quot;&#125;&#125;] == (C#)Person[]</span><br><span class="line"></span><br><span class="line">Class Person</span><br><span class="line">&#123;</span><br><span class="line">  string name;</span><br><span class="line">  int age;</span><br><span class="line">  string gender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-1-使用JSonUtility创建Json"><a href="#1-1-使用JSonUtility创建Json" class="headerlink" title="1.1 使用JSonUtility创建Json"></a>1.1 使用JSonUtility创建Json</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreatJson</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="comment">//&#123;"name":"Lili" , "age":20 &#125;</span></span><br><span class="line"></span><br><span class="line">     Person p1 = <span class="keyword">new</span> Person();</span><br><span class="line">     p1.name = <span class="string">"Lili"</span>;</span><br><span class="line">     p1.age = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">     <span class="comment">//转换为Json字符串</span></span><br><span class="line">     <span class="keyword">string</span> jsonStr = JsonUtility.ToJson(p1);</span><br><span class="line"></span><br><span class="line">     <span class="comment">/*------------------------------------*/</span></span><br><span class="line"></span><br><span class="line">     <span class="comment">/*&#123;"Person":</span></span><br><span class="line"><span class="comment">      *  [</span></span><br><span class="line"><span class="comment">      *    &#123;</span></span><br><span class="line"><span class="comment">      *      "name" : "hehe",</span></span><br><span class="line"><span class="comment">      *      "age" : 34,</span></span><br><span class="line"><span class="comment">      *      "gender" : "boy"</span></span><br><span class="line"><span class="comment">      *    &#125;,</span></span><br><span class="line"><span class="comment">      *    &#123;</span></span><br><span class="line"><span class="comment">      *      "name" : "dada",</span></span><br><span class="line"><span class="comment">      *      "age" : 19,</span></span><br><span class="line"><span class="comment">      *      "gender" : "girl"</span></span><br><span class="line"><span class="comment">      *     &#125;</span></span><br><span class="line"><span class="comment">      *  ]</span></span><br><span class="line"><span class="comment">      * &#125;</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line"></span><br><span class="line">     Person p2 = <span class="keyword">new</span> Person();</span><br><span class="line">     p2.name = <span class="string">"hehe"</span>;</span><br><span class="line">     p2.age = <span class="number">34</span>;</span><br><span class="line">     p2.gender = <span class="string">"boy"</span>;</span><br><span class="line"></span><br><span class="line">     Person p3 = <span class="keyword">new</span> Person();</span><br><span class="line">     p3.name = <span class="string">"dada"</span>;</span><br><span class="line">     p3.age = <span class="number">19</span>;</span><br><span class="line">     p3.gender = <span class="string">"girl"</span>;</span><br><span class="line"></span><br><span class="line">     Person[] ps = <span class="keyword">new</span> Person[] &#123; p2, p3 &#125;;</span><br><span class="line">     Persons pers = <span class="keyword">new</span> Persons();</span><br><span class="line">     pers.persons = ps;</span><br><span class="line"></span><br><span class="line">     jsonStr = JsonUtility.ToJson(pers);</span><br><span class="line">     print(jsonStr);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Serializable</span>]<span class="comment">//要跟Json之间相互转换需要先序列化</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">string</span> name;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">string</span> gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Serializable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Persons</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">public</span> Person[] persons;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/UnityLog/#more" rel="contents">
+            <a class="btn" href="/2018/08/04/Unity创建解析Json/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -673,6 +697,397 @@ alt="Fork me on GitHub"></a>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SetResolution</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> heightScal = <span class="number">9.0</span>f;</span><br><span class="line">        <span class="keyword">float</span> widthScal = <span class="number">16.0</span>f;</span><br><span class="line">        <span class="keyword">int</span> screenWidth = Screen.currentResolution.width;</span><br><span class="line">        <span class="keyword">int</span> screenHeight = Screen.currentResolution.height;</span><br><span class="line">        <span class="keyword">int</span> width = Screen.width;</span><br><span class="line">        <span class="keyword">int</span> height = Screen.height;</span><br><span class="line">        <span class="keyword">if</span> (((widthScal * height) / heightScal) &gt; screenWidth)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * h) / heightScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> w = (<span class="keyword">int</span>)((widthScal * screenHeight) / heightScal);</span><br><span class="line">            <span class="keyword">int</span> h = (<span class="keyword">int</span>)((heightScal * screenWidth) / widthScal);</span><br><span class="line">            Screen.SetResolution(w, h, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
           
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/单例基类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/单例基类/" itemprop="url">单例基类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/单例基类/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/单例基类/" class="cy_cmt_count" data-xid="2018/08/03/单例基类/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  452
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="单例基类"><a href="#单例基类" class="headerlink" title="单例基类"></a>单例基类</h3><hr>
+<p>在unity中有两种单例类型，一种是普通单例，即普通c#类，另一种是继承了MonoBehaviour的单例。</p>
+<p>继承自MonoBehaciour的单例基类<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> MonoBehaviour的单例形式一，需要自行处理_instance的赋值和添加类的保护无参构造函数  </span></span><br><span class="line">public class Singleton &lt;T&gt; : MonoBehaviour</span><br><span class="line"><span class="keyword">where</span> T:MonoBehaviour&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        instance = <span class="keyword">this</span> <span class="keyword">as</span> T;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>MonoBehaviour的单例形式二<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> MonoBehaviour的单例形式二，无需关心加载对象本身时使用，脚本会自动加载  </span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 所有此种形式的单例脚本，将会加载到名为IndependentSingletonMonoObject同一对象上</span></span><br><span class="line">public class IndependentSingletonMono &lt;T&gt; : MonoBehaviour where T : IndependentSingletonMono &lt;T&gt;  </span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">static</span> T _instance;  </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> T Instance  </span><br><span class="line">   &#123;  </span><br><span class="line">       <span class="keyword">get</span>  </span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">           &#123;  </span><br><span class="line">               _instance = FindObjectOfType &lt;T&gt;();  </span><br><span class="line">               <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">var</span> go = GameObject.Find(GlobalStringRes.IndependentSingletonMonoObject);  </span><br><span class="line">                   <span class="keyword">if</span>(go == <span class="literal">null</span>)  </span><br><span class="line">                       go = <span class="keyword">new</span> GameObject(GlobalStringRes.IndependentSingletonMonoObject);  </span><br><span class="line">                   _instance = go.AddComponent&lt;T&gt;();  </span><br><span class="line">              &#125;   </span><br><span class="line">           &#125;   </span><br><span class="line">           <span class="keyword">return</span> _instance;  </span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;  </span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;  </span><br><span class="line"><span class="keyword">using</span> UnityEngine;  </span><br><span class="line">public class MonoSingle &lt;T&gt; : MonoBehaviour where T:MonoSingle&lt;T&gt;;  </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T _instance;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance  </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">            &#123;  </span><br><span class="line">                _instance = FindObjectOfType&lt;T&gt;();  </span><br><span class="line">                <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">                &#123;</span><br><span class="line">                    GameObject managerGo = <span class="keyword">new</span> GameObject(<span class="keyword">typeof</span>(T).Name);  </span><br><span class="line">                    _instance = managerGo.AddComponent&lt;T&gt;();  </span><br><span class="line">                &#125;  </span><br><span class="line">                _instance.Init();  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">return</span> _instance;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用法:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransformOperationControl</span> : <span class="title">Singleton</span> <span class="title">TransformOperationControl</span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MainControl</span> : <span class="title">SingletonMono</span> <span class="title">MainControl</span>  </span><br><span class="line">｛  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">MainControl</span>(<span class="params"></span>) ｛ _instance </span>= <span class="keyword">this</span>; ｝  </span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+<p>普通单例:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 非MonoBehaviour的单例形式，需要自行添加类的公有无参构造函数  </span></span><br><span class="line">public abstract class CSharpSingletion&lt;T&gt; where T : new() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> T();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用基类</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line">public class AudioSingletion : CSharpSingletion&lt;AudioSingletion&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/UnityLog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/UnityLog/" itemprop="url">Unity Log管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/UnityLog/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/UnityLog/" class="cy_cmt_count" data-xid="2018/08/03/UnityLog/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  757
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Unity-Log"><a href="#Unity-Log" class="headerlink" title="Unity Log"></a>Unity Log</h3><hr>
+<p>这一段是参考雨凇MOMO的文章:<br><a href="https://www.xuanyusong.com/archives/2782" target="_blank" rel="noopener">https://www.xuanyusong.com/archives/2782</a></p>
+<p>在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Debuger</span>  &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">bool</span> EnableLog = <span class="literal">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Log(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.Log(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogError(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogError(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogWarning(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogWarning(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/UnityLog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -938,212 +1353,6 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Array-ArrayList/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Array-ArrayList/" itemprop="url">Array/ArrayList</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C#</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Array-ArrayList/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/Array-ArrayList/" class="cy_cmt_count" data-xid="2018/08/03/Array-ArrayList/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  829
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Array-ArrayList-List之间的区别"><a href="#Array-ArrayList-List之间的区别" class="headerlink" title="Array/ArrayList/List之间的区别"></a>Array/ArrayList/List之间的区别</h3><hr>
-<h5 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组:"></a>1.数组:</h5><ul>
-<li>优点:在内存中是连续的,速度较快,操作简单;</li>
-<li>缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int [] i = new int[2];</span><br><span class="line">i[0] = 111;</span><br><span class="line">i[1] = 222;//赋值</span><br><span class="line">i[1] = 123; //修改</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="2-集合ArrayList"><a href="#2-集合ArrayList" class="headerlink" title="2.集合ArrayList:"></a>2.集合ArrayList:</h5><ul>
-<li>优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除;</li>
-<li><p>缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list = new ArrayList();</span><br><span class="line">list.Add(“aa”);</span><br><span class="line">list.Add(123);</span><br><span class="line">list[1] = 1;//修改值</span><br><span class="line">list.Remove(123);//移除</span><br><span class="line">list.RemoveAt(0);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>(装箱与拆箱:)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">装箱:就是想值类型转换为引用类型</span><br><span class="line">拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)</span><br><span class="line">int n = 10;</span><br><span class="line">object o = n;//装箱</span><br><span class="line">int b = (int)0;//拆箱</span><br><span class="line">看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;</span><br><span class="line">string  str = &quot;123&quot;;</span><br><span class="line">int n = Conver.Toint32(str);</span><br><span class="line">//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系</span><br><span class="line"></span><br><span class="line">int n = 10;</span><br><span class="line">IComparable  i = n;</span><br><span class="line">//这里发生了装箱.int32继承自IComparable;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Array-ArrayList/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Dropdow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1334,7 +1543,7 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/单例基类/">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Array-ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HusbandMan">
@@ -1353,7 +1562,7 @@ alt="Fork me on GitHub"></a>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/03/单例基类/" itemprop="url">单例基类</a></h1>
+                <a class="post-title-link" href="/2018/08/03/Array-ArrayList/" itemprop="url">Array/ArrayList</a></h1>
         
 
         <div class="post-meta">
@@ -1388,8 +1597,8 @@ alt="Fork me on GitHub"></a>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
                   </a>
                 </span>
 
@@ -1407,8 +1616,8 @@ alt="Fork me on GitHub"></a>
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/08/03/单例基类/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/单例基类/" class="cy_cmt_count" data-xid="2018/08/03/单例基类/" itemprop="commentsCount" ></span>
+                <a href="/2018/08/03/Array-ArrayList/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/Array-ArrayList/" class="cy_cmt_count" data-xid="2018/08/03/Array-ArrayList/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1430,7 +1639,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  452
+                  829
                 </span>
               
 
@@ -1446,7 +1655,7 @@ alt="Fork me on GitHub"></a>
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -1468,17 +1677,28 @@ alt="Fork me on GitHub"></a>
 
       
         
-          
-            <h3 id="单例基类"><a href="#单例基类" class="headerlink" title="单例基类"></a>单例基类</h3><hr>
-<p>在unity中有两种单例类型，一种是普通单例，即普通c#类，另一种是继承了MonoBehaviour的单例。</p>
-<p>继承自MonoBehaciour的单例基类<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> MonoBehaviour的单例形式一，需要自行处理_instance的赋值和添加类的保护无参构造函数  </span></span><br><span class="line">public class Singleton &lt;T&gt; : MonoBehaviour</span><br><span class="line"><span class="keyword">where</span> T:MonoBehaviour&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        instance = <span class="keyword">this</span> <span class="keyword">as</span> T;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>MonoBehaviour的单例形式二<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> MonoBehaviour的单例形式二，无需关心加载对象本身时使用，脚本会自动加载  </span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 所有此种形式的单例脚本，将会加载到名为IndependentSingletonMonoObject同一对象上</span></span><br><span class="line">public class IndependentSingletonMono &lt;T&gt; : MonoBehaviour where T : IndependentSingletonMono &lt;T&gt;  </span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">static</span> T _instance;  </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> T Instance  </span><br><span class="line">   &#123;  </span><br><span class="line">       <span class="keyword">get</span>  </span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">           &#123;  </span><br><span class="line">               _instance = FindObjectOfType &lt;T&gt;();  </span><br><span class="line">               <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">var</span> go = GameObject.Find(GlobalStringRes.IndependentSingletonMonoObject);  </span><br><span class="line">                   <span class="keyword">if</span>(go == <span class="literal">null</span>)  </span><br><span class="line">                       go = <span class="keyword">new</span> GameObject(GlobalStringRes.IndependentSingletonMonoObject);  </span><br><span class="line">                   _instance = go.AddComponent&lt;T&gt;();  </span><br><span class="line">              &#125;   </span><br><span class="line">           &#125;   </span><br><span class="line">           <span class="keyword">return</span> _instance;  </span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;  </span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;  </span><br><span class="line"><span class="keyword">using</span> UnityEngine;  </span><br><span class="line">public class MonoSingle &lt;T&gt; : MonoBehaviour where T:MonoSingle&lt;T&gt;;  </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T _instance;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance  </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span>  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">            &#123;  </span><br><span class="line">                _instance = FindObjectOfType&lt;T&gt;();  </span><br><span class="line">                <span class="keyword">if</span> (_instance == <span class="literal">null</span>)  </span><br><span class="line">                &#123;</span><br><span class="line">                    GameObject managerGo = <span class="keyword">new</span> GameObject(<span class="keyword">typeof</span>(T).Name);  </span><br><span class="line">                    _instance = managerGo.AddComponent&lt;T&gt;();  </span><br><span class="line">                &#125;  </span><br><span class="line">                _instance.Init();  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">return</span> _instance;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>用法:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TransformOperationControl</span> : <span class="title">Singleton</span> <span class="title">TransformOperationControl</span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MainControl</span> : <span class="title">SingletonMono</span> <span class="title">MainControl</span>  </span><br><span class="line">｛  </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">MainControl</span>(<span class="params"></span>) ｛ _instance </span>= <span class="keyword">this</span>; ｝  </span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-<p>普通单例:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 非MonoBehaviour的单例形式，需要自行添加类的公有无参构造函数  </span></span><br><span class="line">public abstract class CSharpSingletion&lt;T&gt; where T : new() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> T instance;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> T();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用基类</span></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line">public class AudioSingletion : CSharpSingletion&lt;AudioSingletion&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <h3 id="Array-ArrayList-List之间的区别"><a href="#Array-ArrayList-List之间的区别" class="headerlink" title="Array/ArrayList/List之间的区别"></a>Array/ArrayList/List之间的区别</h3><hr>
+<h5 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组:"></a>1.数组:</h5><ul>
+<li>优点:在内存中是连续的,速度较快,操作简单;</li>
+<li>缺点:定义数组时要定义其长度,不够灵活,过长容易造成资源浪费,过段会造成数据存储越界,不方便进行数据的添加,插入,移除;<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int [] i = new int[2];</span><br><span class="line">i[0] = 111;</span><br><span class="line">i[1] = 222;//赋值</span><br><span class="line">i[1] = 123; //修改</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-集合ArrayList"><a href="#2-集合ArrayList" class="headerlink" title="2.集合ArrayList:"></a>2.集合ArrayList:</h5><ul>
+<li>优点: 命名空间System.Collections下的一部分,大小是动态扩充和收缩,在声明ArrayList对象时不需要指定长度,ArrayList继承了IList接口,可以很方便的进行数据的添加,插入,删除;</li>
+<li><p>缺点:当想集合插入不同类型的数据后(ArrayList将数据当做object存储),在进行数据处理时容易出现类型不匹配的错误,使用时需要进行类型转换处理,存在装箱与拆箱的操作,造成性能的大量损耗;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ArrayList list = new ArrayList();</span><br><span class="line">list.Add(“aa”);</span><br><span class="line">list.Add(123);</span><br><span class="line">list[1] = 1;//修改值</span><br><span class="line">list.Remove(123);//移除</span><br><span class="line">list.RemoveAt(0);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(装箱与拆箱:)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">装箱:就是想值类型转换为引用类型</span><br><span class="line">拆箱:就是将引用类型转换为值类型(拆箱必须是由值类型转换未来的对象类型再转回值类型,只有装过箱的数据才能拆箱)</span><br><span class="line">int n = 10;</span><br><span class="line">object o = n;//装箱</span><br><span class="line">int b = (int)0;//拆箱</span><br><span class="line">看两种类型是否发生了装箱或者拆箱,要看这两种类型是否存在继承关系;</span><br><span class="line">string  str = &quot;123&quot;;</span><br><span class="line">int n = Conver.Toint32(str);</span><br><span class="line">//string是引用类型,int是值类型,但是他们之间没有发生装箱或者拆箱,没有具有继承关系</span><br><span class="line"></span><br><span class="line">int n = 10;</span><br><span class="line">IComparable  i = n;</span><br><span class="line">//这里发生了装箱.int32继承自IComparable;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/Array-ArrayList/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2131,205 +2351,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Unity文件操作路径/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Unity文件操作路径/" itemprop="url">Unity文件操作路径</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:14+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Unity文件操作路径/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/Unity文件操作路径/" class="cy_cmt_count" data-xid="2018/08/03/Unity文件操作路径/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,545
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="转-Unity文件操作路径"><a href="#转-Unity文件操作路径" class="headerlink" title="(转)Unity文件操作路径"></a>(转)Unity文件操作路径</h4><hr>
-<p>原博客地址:<a href="https://blog.csdn.net/linxinfa/article/details/51679528" target="_blank" rel="noopener">https://blog.csdn.net/linxinfa/article/details/51679528</a></p>
-<h5 id="1-1-IOS"><a href="#1-1-IOS" class="headerlink" title="1.1 IOS:"></a>1.1 IOS:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data</span><br><span class="line">Application.streamingAssetsPath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/xxx.app/Data/Raw</span><br><span class="line">Application.persistentDataPath :      Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Documents</span><br><span class="line">Application.temporaryCachePath :   Application/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Library/Caches</span><br></pre></td></tr></table></figure>
-<h5 id="1-2-Android"><a href="#1-2-Android" class="headerlink" title="1.2 Android:"></a>1.2 Android:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /data/app/xxx.xxx.xxx.apk</span><br><span class="line">Application.streamingAssetsPath :      jar:file:///data/app/xxx.xxx.xxx.apk/!/assets</span><br><span class="line">Application.persistentDataPath :         /data/data/xxx.xxx.xxx/files</span><br><span class="line">Application.temporaryCachePath :      /data/data/xxx.xxx.xxx/cache</span><br></pre></td></tr></table></figure>
-<h5 id="1-3-Windows"><a href="#1-3-Windows" class="headerlink" title="1.3 Windows:"></a>1.3 Windows:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         C:/Users/xxxx/AppData/LocalLow/CompanyName/ProductName</span><br><span class="line">Application.temporaryCachePath :      C:/Users/xxxx/AppData/Local/Temp/CompanyName/ProductName</span><br></pre></td></tr></table></figure>
-<h5 id="1-4-Mac"><a href="#1-4-Mac" class="headerlink" title="1.4 Mac:"></a>1.4 Mac:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :                         /Assets</span><br><span class="line">Application.streamingAssetsPath :      /Assets/StreamingAssets</span><br><span class="line">Application.persistentDataPath :         /Users/xxxx/Library/Caches/CompanyName/Product Name</span><br><span class="line">Application.temporaryCachePath :     /var/folders/57/6b4_9w8113x2fsmzx_yhrhvh0000gn/T/CompanyName/Product Name</span><br></pre></td></tr></table></figure>
-<h5 id="1-5-Windows-Web-Player"><a href="#1-5-Windows-Web-Player" class="headerlink" title="1.5 Windows Web Player:"></a>1.5 Windows Web Player:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Application.dataPath :             file:///D:/MyGame/WebPlayer (即导包后保存的文件夹，html文件所在文件夹)</span><br><span class="line">Application.streamingAssetsPath :</span><br><span class="line">Application.persistentDataPath :</span><br><span class="line">Application.temporaryCachePath :</span><br></pre></td></tr></table></figure>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/Unity文件操作路径/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2384,7 +2405,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2549,7 +2570,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.5k</span>
+    <span title="Site words total count">71.7k</span>
   
 </div>
 -->
@@ -2570,7 +2591,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.5k字</span>
+  <span class="post-count">博客全站共71.7k字</span>
 </div>
         
 
