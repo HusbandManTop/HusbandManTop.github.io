@@ -338,6 +338,212 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/CSharpDictionary字典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/CSharpDictionary字典/" itemprop="url">CSharpDictionary字典</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:20:29+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/CSharpDictionary字典/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/CSharpDictionary字典/" class="cy_cmt_count" data-xid="2018/08/03/CSharpDictionary字典/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  802
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="C-Dictionary-字典"><a href="#C-Dictionary-字典" class="headerlink" title="C# Dictionary 字典"></a>C# Dictionary 字典</h4><hr>
+<ul>
+<li><p>说明</p>
+<ul>
+<li>必须包含名空间System.Collection.Generic</li>
+<li>Dictionary里面的每一个元素都是一个键值对(由二个元素组成：键和值)</li>
+<li>键必须是唯一的,而值不需要唯一的</li>
+<li>键和值都可以是任何类型(比如：string, int, 自定义类型，等等)</li>
+<li>通过一个键读取一个值的时间是接近O(1)</li>
+<li>键值对之间的偏序可以不定义</li>
+</ul>
+</li>
+<li>定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Dictionary&lt;T, T&gt; openWith = new Dictionary&lt;T, T&gt;();</span><br><span class="line"></span><br><span class="line">1.常用属性</span><br><span class="line"></span><br><span class="line">    名称           说明</span><br><span class="line">    Comparer       获取用于确定字典中的键是否相等的 IEqualityComparer&lt;T&gt;。</span><br><span class="line">    Count          获取包含在 Dictionary&lt;TKey, TValue&gt; 中的键/值对的数目。</span><br><span class="line">    Item           获取或设置与指定的键相关联的值。</span><br><span class="line">    Keys           获取包含 Dictionary&lt;TKey, TValue&gt; 中的键的集合。</span><br><span class="line">    Values         获取包含 Dictionary&lt;TKey, TValue&gt; 中的值的集合。</span><br><span class="line"></span><br><span class="line">2.常用方法</span><br><span class="line">    名称                说明</span><br><span class="line">    Add                 将指定的键和值添加到字典中。</span><br><span class="line">    Clear               从 Dictionary&lt;TKey, TValue&gt; 中移除所有的键和值。</span><br><span class="line">    ContainsKey         确定 Dictionary&lt;TKey, TValue&gt; 是否包含指定的键。</span><br><span class="line">    ContainsValue       确定 Dictionary&lt;TKey, TValue&gt; 是否包含特定值。</span><br><span class="line">    Equals(Object)      确定指定的 Object 是否等于当前的 Object。 （继承自 Object。）</span><br><span class="line">    Finalize            允许对象在“垃圾回收”回收之前尝试释放资源并执行其他清理操作。 （继承自 Object。）</span><br><span class="line">    GetEnumerator       返回循环访问 Dictionary&lt;TKey, TValue&gt; 的枚举器。</span><br><span class="line">    GetHashCode         用作特定类型的哈希函数。 （继承自 Object。）</span><br><span class="line">    GetObjectData       实现 System.Runtime.Serialization.ISerializable 接口，并返回序列化 Dictionary&lt;TKey, TValue&gt; 实例所需的数据。</span><br><span class="line">    GetType             获取当前实例的 Type。 （继承自 Object。）</span><br><span class="line">    MemberwiseClone     创建当前 Object 的浅表副本。 （继承自 Object。）</span><br><span class="line">    OnDeserialization    实现 System.Runtime.Serialization.ISerializable 接口，并在完成反序列化之后引发反序列化事件。</span><br><span class="line">    Remove              从 Dictionary&lt;TKey, TValue&gt; 中移除所指定的键的值。</span><br><span class="line">    ToString            返回表示当前对象的字符串。 （继承自 Object。）</span><br><span class="line">    TryGetValue         获取与指定的键相关联的值。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/CSharpDictionary字典/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/CsharpToString/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2142,229 +2348,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/UnityAPI解析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/04/UnityAPI解析/" itemprop="url">UnityAPI解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:16:45+08:00">
-                2018-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/04/UnityAPI解析/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/04/UnityAPI解析/" class="cy_cmt_count" data-xid="2018/08/04/UnityAPI解析/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  936
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="UnityAPI文档"><a href="#UnityAPI文档" class="headerlink" title="UnityAPI文档"></a>UnityAPI文档</h3><p><a href="http://www.ceeger.com/Manual/" target="_blank" rel="noopener">Unity圣典</a><br><a href="https://docs.unity3d.com/ScriptReference/" target="_blank" rel="noopener">Unity官方手册</a><br><a href="http://docs.manew.com/" target="_blank" rel="noopener">蛮牛手册</a></p>
-<p><strong>API(Application Programming Interface),即应用程序编程接口,是一些预定义的函数,目的是提供应用程序与开发人员基于某软件或者硬件得以访问一组例程的能力,而无需访问源码,或去理解内部工作机制细节</strong></p>
-<h4 id="Unity-脚本事件函数执行顺序和生命周期"><a href="#Unity-脚本事件函数执行顺序和生命周期" class="headerlink" title="Unity 脚本事件函数执行顺序和生命周期:"></a>Unity 脚本事件函数执行顺序和生命周期:</h4><p><a href="https://imgchr.com/i/PB0AyR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PB0AyR.png" alt="PB0AyR.png"></a></p>
-<hr>
-<h4 id="第一章-Application类"><a href="#第一章-Application类" class="headerlink" title="第一章: Application类"></a>第一章: Application类</h4><p>Application类不含实例属性和实例方法,在脚本中通过直接调用Application类的静态属性和方法来控制程序的运行时的数据;<br>Application静态属性:</p>
-<ul>
-<li>1.dataPath属性: 数据文件路径 {public static string dataPath{get;}}</li>
-<li>2.Application.dataPath: 返回程序的数据文件所在文件夹的路径(只读).返回路径为相对路径,不同游戏平台的数据文件保存路径不同;</li>
-<li>3.Application.PersistentDataPath: 返回一个持久化数据存储目录的路径(只读),可以在此路径下存储一些持久化的数据文件.同一平台,不同程序中调用此属性,返回值相同.</li>
-<li>4.Application.streamingAssetsPath: 此属性用于返回流数据的缓存目录,返回路径为相对路径,适合设置一些外部文件的路径.</li>
-<li>5.Application.temporaryCachePath: 此属性用于返回一个临时数据目录(只读),对于同一平台,不同程序调用此属性,返回值相同.<br>loadedLevel属性 : 关卡索引</li>
-<li>1.public static int loadedLevel{ get; }</li>
-<li>2.Application.loadedLevel 返回当前场景的索引值</li>
-<li>3.Application.loadedLevelName 返回当前场景的名字</li>
-<li>4.Application.isLoadingLevel 是否有场景被加载</li>
-<li>5.Application.LevelCount 游戏中可被加载的场景数量</li>
-<li>6.Application.platform 当前游戏的运行平台,返回值为枚举类型</li>
-<li>7.Application.isPlaying 当前游戏是否正在运行</li>
-<li>8.Application.isEditor 游戏是否处于Unity编辑模式<br>Application类静态方法:</li>
-<li>1.CaptureScreenshot方法 : 截屏</li>
-<li>2.public static void CaptureScreenshot(string filename);</li>
-<li>3.public static void CaptureScreenshot(string filename, int superSize);<br>  参数filename 截屏文件名称 superSize放大系数,默认为0,即不放大<br>  此方法截取当前游戏画面并保存为PNG格式,文件默认保存在根目录下,若有重名文件则替换.</li>
-<li>4.LoadLevelAdditiveAsync方法 : 异步加载关卡</li>
-<li>5.public static AsynvOperation LoadLevelAdditiveAsync(int index);//参数关卡索引值</li>
-<li>6.public static AsynvOperation</li>
-<li>LoadLevelAdditiveAsync(string levelName);//参数关卡名称<br>  此方法用于按照关卡名字在后台异步加载关卡到当前场景中,此方法只是将新关卡加载到当前场景,当前场景的原有内容不会被销毁.</li>
-<li>7.AsynvOperation colve = public static AsynvOperation &gt;&gt;LoadLevelAdditiveAsync(int index);</li>
-<li>8.colve.isDone 是否加载完成</li>
-<li>9.colve.progress 加载进度</li>
-<li>10.RegisterLogCallback方法 :注册委托<br>  public static void RegisterLogCallback(Application.LogCallback handler);参数是委托的名字<br>  此方法用于注册一个委托来调用日志信息</li>
-</ul>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/04/UnityAPI解析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2419,7 +2402,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2584,7 +2567,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.4k</span>
+    <span title="Site words total count">71.5k</span>
   
 </div>
 -->
@@ -2605,7 +2588,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.4k字</span>
+  <span class="post-count">博客全站共71.5k字</span>
 </div>
         
 
