@@ -338,6 +338,218 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2019/06/11/typename和class区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/11/typename和class区别/" itemprop="url">typename和class区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T10:11:00+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/06/11/typename和class区别/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2019/06/11/typename和class区别/" class="cy_cmt_count" data-xid="2019/06/11/typename和class区别/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  433
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="C-模板中的typename和class区别"><a href="#C-模板中的typename和class区别" class="headerlink" title="C++模板中的typename和class区别"></a>C++模板中的typename和class区别</h3><hr>
+<blockquote>
+<p>在STL中基本上都使用了模板类的声明，即template。声明模板类的方式有两种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">template&lt;typename T&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>在声明一个 template type parameter（模板类型参数）的时候，class 和 typename 意味着完全相同的东西。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>但是在C++中，有时候必须要使用typename<br>关键字typename被用来作为型别之前的标识符号。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class T&gt;</span><br><span class="line">class MyClass&#123;</span><br><span class="line">    typename T::SubType * ptr;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这里，typename指出SubType是class T中定义的一个类别，因此ptr是一个指向T::SubType型别的指针。如果没有关键字typename，SubType会被当成一个static成员，于是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T::SubType * ptr</span><br></pre></td></tr></table></figure></p>
+<p>会被解释为型别T内的数值SubType与ptr的乘积。</p>
+<p>SubType成为一个型别的条件是,任何一个用来取代T的型别，其内部必须有一个内部型别(inner type)SubType的定义。例如，将型别Q当作template的参数。</p>
+<blockquote>
+<p>注意，如果要把一个template中的某个标识符号指定为一种类别，就算是意图显而易见，关键字typename也是不能省略的，<strong>因此C++的一般规则是，除了使用typename修饰之外，template内的任何标识符号都被视为一个值而不是一个类别(对象)。</strong></p>
+</blockquote>
+<h6 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h6><blockquote>
+<p>1.template<typename t="">与template<class t="">一般情况下这两个通用，但有一个特例，就是当 T 是一个类，而这个类又有子类(假设名为 innerClass) 时，应该用 template<typename>:</typename></class></typename></p>
+</blockquote>
+<blockquote>
+<p>2.typename T::innerClass myInnerObject;这里的 typename 告诉编译器，T::innerClass 是一个类，程序要声明一个 T::innerClass 类的对象，而不是声明 T 的静态成员，而 typename 如果换成 class 则语法错误。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2019/06/10/VS2015-cpp常用调试方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2490,273 +2702,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2019/05/24/Unity基础(二)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/24/Unity基础(二)/" itemprop="url">Unity基础(二)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T09:56:51+08:00">
-                2019-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2019/05/24/Unity基础(二)/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2019/05/24/Unity基础(二)/" class="cy_cmt_count" data-xid="2019/05/24/Unity基础(二)/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,756
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Unity基础-二"><a href="#Unity基础-二" class="headerlink" title="Unity基础(二)"></a>Unity基础(二)</h3><hr>
-<h4 id="游戏引擎介绍"><a href="#游戏引擎介绍" class="headerlink" title="游戏引擎介绍"></a>游戏引擎介绍</h4><p>为什么需要游戏引擎</p>
-<ul>
-<li><p>所谓游戏引擎是指一些已经编写好可编辑电脑游戏系统或者一些交互式图像应用程序的核心组件,这些系统为游戏设计者提供制作游戏所需要的各种工具,其目的在于让游戏设计者能够容易和快速地做出游戏格式而不用从零开始,大部分游戏引擎都支持跨平台;  </p>
-</li>
-<li><p>通常<strong>游戏包含以下系统: 渲染引擎(即:”渲染器”,含二维图像引擎和三维图像引擎),物理引擎,碰撞检测系统,音效,脚本引擎,动画,人工智能,网络引擎及场景管理</strong>等  </p>
-</li>
-<li><p>简单来说:引擎就是用于控制所以游戏功能的主程序,从计算碰撞,物理系统和物体的相对位置,在接受玩家的输入,以及按照正确的音量输出声音等等  </p>
-<p><a href="https://imgchr.com/i/P2FhuQ" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/14/P2FhuQ.png" alt="P2FhuQ.png"></a><br><a href="https://imgchr.com/i/P2F4Bj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/14/P2F4Bj.png" alt="P2F4Bj.png"></a></p>
-</li>
-</ul>
-<hr>
-<h4 id="3d图形学与核心类"><a href="#3d图形学与核心类" class="headerlink" title="3d图形学与核心类"></a>3d图形学与核心类</h4><h5 id="3d图形学"><a href="#3d图形学" class="headerlink" title="3d图形学"></a>3d图形学</h5><ul>
-<li><p>局部坐标系与世界坐标系  </p>
-<ul>
-<li><p>在二维空间中,描述一个点可以使用二维的笛卡尔坐标系,在三维空间中,可以使用三维笛卡尔坐标系来表示某点的控件位置  </p>
-</li>
-<li><p>游戏开发中用的最多的是局部坐标系与世界坐标系</p>
-</li>
-</ul>
-</li>
-<li><p>父子物体  </p>
-<ul>
-<li><p>场景中所以得物体都在世界坐标系中有特定的位置(平移,旋转,缩放),每个物体都有自己的局部坐标系,假设现在有两个物体A和B,B是以A的局部坐标系作为参考坐标系,那么可以称B是A的子物体,而A是B的父物体  </p>
-</li>
-<li><p>目前流向的游戏引擎中,父子关系的运用非常广泛,假设B是A的子物体是,当A进行移动,旋转,或者缩放时,B也会跟随进行变换,这种效果可以用来制作简单的摄像机跟随物体运动的效果,被跟随的物体作为父物体,摄像机作为子物体</p>
-</li>
-</ul>
-</li>
-<li><p>多边形,边,顶点,面片</p>
-<ul>
-<li><p>在目前三维建模中,多边形建模是用的最多的一种建模方式,在第三方建模软件中使用多边形建模方式建成的3d模型,便可以盗图到unity中,在导入的过程中unity会把组成模型的面片(meshes)转换为三角面,每个三边面称为一个多边形(polygon),而这个三边面由三条边(edge)组成,而每天边是由两个顶点(vertice)组成  </p>
-</li>
-<li><p><strong>多边形的数量以及顶点的数量是影响游戏渲染速度的一个重要的因素之一</strong>,在3d游戏场景的建模中,应该在模型效果与模型顶点数量之间取得一个平衡</p>
-</li>
-<li><p>现在有很多技术可以提高模型数据的处理速度和容纳更多的多边形,例如LOD(层级细节),Occludion Culling(遮挡剔除)等</p>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="Mesh网格系统组件"><a href="#Mesh网格系统组件" class="headerlink" title="Mesh网格系统组件"></a>Mesh网格系统组件</h5><ul>
-<li><p>Mesh Fillter网格适配器</p>
-<ul>
-<li>网格适配器用于从你的资源中获取网格数据(Mesh)冰将其传递到用于将其渲染到屏幕的网格渲染器当中</li>
-<li>网格过滤器与网格渲染器联合使用,使用模型显示到屏幕上,Unity中一般创建一个网格过滤器和一个网格渲染器.想要在场景中看到这个网格(Mesh),还需要为游戏对象添加一个网格渲染器(Mesh Render).它应该是自动被添加的,但是如果你将它从你的对象上一处.你必须手动重新添加它,如果网格渲染器(Mesh Render)不存在,这个网格扔将存在与你的场景中,但是它将不会被绘制</li>
-</ul>
-</li>
-<li><p><strong>Mesh Render网格渲染器</strong></p>
-<ul>
-<li>网格渲染器从网格适配器获得几何形状,并且根据物体的TransForm组件的定义位置进行渲染</li>
-</ul>
-</li>
-<li><p><strong>Skineed Mesh Render蒙皮网格渲染器</strong></p>
-<ul>
-<li>蒙皮网格渲染器是在网格渲染器的基础上,加入了对蒙皮网格的支持;</li>
-</ul>
-</li>
-</ul>
-<h4 id="贴图与材质"><a href="#贴图与材质" class="headerlink" title="贴图与材质"></a>贴图与材质</h4><h5 id="材质概述"><a href="#材质概述" class="headerlink" title="材质概述"></a>材质概述</h5><ul>
-<li><p>物体呈现我们面前除了形体外,还包括了”固有颜色”与”质地”(质感与光学性质)  </p>
-</li>
-<li><p>固有颜色让物体的表面看起来是什么颜色,而质感决定了该物质是使用什么材质制成的  </p>
-</li>
-<li><p>在三维建模软件中,一般使用三维建模工具创作质感的形体,使用贴图表现物体的固有颜色,使用材质表现物质的”质感”</p>
-</li>
-<li><p>在unity中,所以得材质都是有着色语言写出来的,由着色器语言编写的程序成为着色器  </p>
-</li>
-<li><p>每个物质除了形体,都具备”固有颜色”,”质感”,”光学性质”,这三种属性决定了该物质在视觉上的自身物理外观,以及在光线下呈现出的各种质感  </p>
-</li>
-</ul>
-<h5 id="二维贴图"><a href="#二维贴图" class="headerlink" title="二维贴图"></a>二维贴图</h5><ul>
-<li><p>贴图一般可以分为:</p>
-<ul>
-<li>二维贴图</li>
-<li>立方体贴图</li>
-<li>视频贴图</li>
-<li>渲染贴图</li>
-<li>程序贴图</li>
-</ul>
-</li>
-<li><p>Unity支持的图片格式: PSD,TIFF,JPG,TGA,PNG,BMP,IFF,PICT,我们一般使用PSD,TIFF,TGA等无压缩或者无损压缩的高质量高分辨率的图片文件格式来制作贴图</p>
-</li>
-<li><p>贴图尺寸:</p>
-<ul>
-<li>制作游戏模式时,建议贴图尺寸为2的n次幂,例如2,4,8,16,32,64,128,256,1024,2058等</li>
-</ul>
-</li>
-<li><p>贴图属性:</p>
-<ul>
-<li>Texture: 普通贴图</li>
-<li>Normal map: 法线贴图</li>
-<li>GUI GUI贴图</li>
-<li>Cursor 光标贴图</li>
-<li>Reflection: 反射贴图又称为立方体贴图,一般制作反射效果</li>
-<li>Cookie: 用于灯光遮罩贴图</li>
-<li>Lightmap: 光照贴图</li>
-<li>Advanced: 高级设置</li>
-<li>Sprite: 精灵</li>
-</ul>
-<font size="3" color="F111">大家对Lod应该都有所了解，其原理是根据摄像机和模型之间不同距离（准确地讲，应该是模型所占摄像机视口的比例，距离越远比例越小，反之越大）而采用不同精细度（网格的顶点数和三角形数量不一样）的网格mesh，距离越远采用精细度越低的网格（即顶点数和三角形数越少的网格），以提高渲染效率。<strong>mipmap有些像lod，不同的是，它在贴图上面动了手脚，根据不同距离采用不同精细度（贴图的像素不一样）的贴图。</strong><br>应用lod和mipmap都可以不同程度上提高渲染效率，但是由于都需要在内存里面放着多个不同精细度的副本，所以，代价是需要消耗更多的内存。<br>对于ui贴图来说，我们不必应用mipmap，因为一般的ui都是“平铺”在正交摄像机视口的，和摄像机木有距离这一概念，所以我们大可以把ui贴图的mipmap选项去掉，以节省内存。</font>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2811,7 +2756,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2822,7 +2767,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2833,7 +2778,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2976,7 +2921,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.7k</span>
+    <span title="Site words total count">72.2k</span>
   
 </div>
 -->
@@ -2997,7 +2942,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.7k字</span>
+  <span class="post-count">博客全站共72.2k字</span>
 </div>
         
 

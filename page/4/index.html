@@ -338,6 +338,205 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/08/使用程序生成Texture2D并创建Sprite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/08/使用程序生成Texture2D并创建Sprite/" itemprop="url">unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T15:22:14+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/08/使用程序生成Texture2D并创建Sprite/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/08/使用程序生成Texture2D并创建Sprite/" class="cy_cmt_count" data-xid="2018/08/08/使用程序生成Texture2D并创建Sprite/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  624
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果"><a href="#转-unity-使用程序生成Texture2D并创建Sprite，制作渐变背景的效果" class="headerlink" title="(转)unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果"></a>(转)unity 使用程序生成Texture2D并创建Sprite，制作渐变背景的效果</h3><p>原贴地址:<a href="https://blog.csdn.net/zgjllf1011/article/details/79261491尊重作者原创" target="_blank" rel="noopener">https://blog.csdn.net/zgjllf1011/article/details/79261491尊重作者原创</a></p>
+<hr>
+<p>首先创建脚本，命名为ScriptTexture.</p>
+<p>声明一个引用:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SpriteRenderer sr;</span><br></pre></td></tr></table></figure></p>
+<p>然后在初始化中创建我们需要的物体:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        GameObject obj = <span class="keyword">new</span> GameObject(<span class="string">"spriet"</span>);</span><br><span class="line"></span><br><span class="line">        sr = obj.AddComponent&lt;SpriteRenderer&gt;();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里首先创意一个gameobject，然后给这个物体添加一个SpriteRenderer脚本并保存到我们之前的全局变量中。<br>接下来生成纹理:<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GenerateSprite</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    Texture2D t = <span class="keyword">new</span> Texture2D(<span class="number">256</span>, <span class="number">512</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; width; w++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; height; h ++)&#123;</span><br><span class="line">            t.SetPixel(w,h,Color.yellow);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    t.Apply();</span><br><span class="line"></span><br><span class="line">    Sprite pic = Sprite.Create(t, <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, width, height), <span class="keyword">new</span> Vector2(<span class="number">0.5</span>f, <span class="number">0.5</span>f));</span><br><span class="line">    sr.sprite = pic;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们首先创建一个Texture2D，并指定宽高，接下来遍历Texture2D的每一像素点并赋值。</p>
+<p>然后使用Texture2D生成一个Sprite并赋值给之前创建的SpriteRenderer。</p>
+<p>最后在start中调用此方法，再把脚本挂到游戏摄像机上，运行场景看下效果:<br><a href="http://pd4nt2xc8.bkt.clouddn.com/1.png" target="_blank" rel="noopener">http://pd4nt2xc8.bkt.clouddn.com/1.png</a></p>
+<p>场景中出现了我们的sprite，接下来我们按照之前讲的shader中同样的方法来给精灵添加一个渐变的效果，直接给出修改后的完整代码:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScriptTexture</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">public</span> Color color1 = Color.green;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Color color2 = Color.blue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> width = <span class="number">640</span>, height = <span class="number">960</span>;</span><br><span class="line"></span><br><span class="line">    SpriteRenderer sr;</span><br><span class="line">    <span class="comment">// Use this for initialization</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        GameObject obj = <span class="keyword">new</span> GameObject(<span class="string">"spriet"</span>);</span><br><span class="line"></span><br><span class="line">        sr = obj.AddComponent&lt;SpriteRenderer&gt;();</span><br><span class="line"></span><br><span class="line">        GenerateSprite();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GenerateSprite</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Texture2D t = <span class="keyword">new</span> Texture2D(width, height);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; width; w++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; height; h++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">float</span> wrate = (<span class="keyword">float</span>)w / (<span class="keyword">float</span>)width;</span><br><span class="line">                <span class="keyword">float</span> hrate = (<span class="keyword">float</span>)h / (<span class="keyword">float</span>)height;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">float</span> bezieratVal = GetBezierat(<span class="number">0</span>, <span class="number">0.5</span>f, <span class="number">0.5</span>f, <span class="number">1</span>, hrate);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">float</span> dis = Vector2.Distance(<span class="keyword">new</span> Vector2(<span class="number">0.5</span>f, <span class="number">0.5</span>f),<span class="keyword">new</span> Vector2(wrate,hrate));</span><br><span class="line">                dis = <span class="number">1</span> - GetBezierat(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, dis) * <span class="number">0.6</span>f;  </span><br><span class="line"></span><br><span class="line">                Color c = <span class="keyword">new</span> Color();</span><br><span class="line">                c.r = Mathf.Lerp(color1.r, color2.r, bezieratVal) * dis;</span><br><span class="line">                c.g = Mathf.Lerp(color1.g, color2.g, bezieratVal) * dis;</span><br><span class="line">                c.b = Mathf.Lerp(color1.b, color2.b, bezieratVal) * dis;</span><br><span class="line">                c.a = <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">                t.SetPixel(w, h,c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        t.Apply();</span><br><span class="line"></span><br><span class="line">        Sprite pic = Sprite.Create(t, <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, width, height), <span class="keyword">new</span> Vector2(<span class="number">0.5</span>f, <span class="number">0.5</span>f));</span><br><span class="line">        sr.sprite = pic;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">float</span> <span class="title">GetBezierat</span>(<span class="params"><span class="keyword">float</span> a, <span class="keyword">float</span> b, <span class="keyword">float</span> c, <span class="keyword">float</span> d, <span class="keyword">float</span> t</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Mathf.Pow(<span class="number">1</span> - t, <span class="number">3</span>) * a +</span><br><span class="line">                <span class="number">3</span> * t * (Mathf.Pow(<span class="number">1</span> - t, <span class="number">2</span>)) * b +</span><br><span class="line">                <span class="number">3</span> * Mathf.Pow(t, <span class="number">2</span>) * (<span class="number">1</span> - t) * c +</span><br><span class="line">                Mathf.Pow(t, <span class="number">3</span>) * d);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看下最终效果:<br><a href="http://pd4nt2xc8.bkt.clouddn.com/1.png" target="_blank" rel="noopener">http://pd4nt2xc8.bkt.clouddn.com/1.png</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/05/Unity2D研究院之精灵Sprite与屏幕之间的关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2134,195 +2333,6 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/Unity获取设备分辨率/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/04/Unity获取设备分辨率/" itemprop="url">Unity获取设备分辨率</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:17+08:00">
-                2018-08-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/04/Unity获取设备分辨率/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/04/Unity获取设备分辨率/" class="cy_cmt_count" data-xid="2018/08/04/Unity获取设备分辨率/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  39
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Unity获取设备分辨率"><a href="#Unity获取设备分辨率" class="headerlink" title="Unity获取设备分辨率"></a>Unity获取设备分辨率</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span> &#123;    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">        Resolution[] resolutions = Screen.resolutions;    </span><br><span class="line">        <span class="comment">//设置分辨率</span></span><br><span class="line">        Screen.SetResolution(resolutions[<span class="number">0</span>].width, resolutions[<span class="number">0</span>].height, <span class="literal">true</span>);    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2377,7 +2387,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2388,7 +2398,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2399,7 +2409,7 @@ alt="Fork me on GitHub"></a>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2542,7 +2552,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.7k</span>
+    <span title="Site words total count">72.2k</span>
   
 </div>
 -->
@@ -2563,7 +2573,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.7k字</span>
+  <span class="post-count">博客全站共72.2k字</span>
 </div>
         
 

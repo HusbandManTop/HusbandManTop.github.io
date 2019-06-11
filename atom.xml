@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fget.cn/"/>
-  <updated>2019-06-10T13:43:16.801Z</updated>
+  <updated>2019-06-11T02:27:52.481Z</updated>
   <id>https://fget.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>typename和class区别</title>
+    <link href="https://fget.cn/2019/06/11/typename%E5%92%8Cclass%E5%8C%BA%E5%88%AB/"/>
+    <id>https://fget.cn/2019/06/11/typename和class区别/</id>
+    <published>2019-06-11T02:11:00.000Z</published>
+    <updated>2019-06-11T02:27:52.481Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;C-模板中的typename和class区别&quot;&gt;&lt;a href=&quot;#C-模板中的typename和class区别&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="c++" scheme="https://fget.cn/categories/c/"/>
+    
+    
+      <category term="c++" scheme="https://fget.cn/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>VS2015 cpp常用调试方法</title>
@@ -562,39 +588,6 @@
     
     
       <category term="OpenGL" scheme="https://fget.cn/tags/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Unity3D 运用GL屏幕画图(阴阳师画符)</title>
-    <link href="https://fget.cn/2019/05/24/GL%E5%B1%8F%E5%B9%95%E7%94%BB%E7%BA%BF%E4%BF%9D%E5%AD%98/"/>
-    <id>https://fget.cn/2019/05/24/GL屏幕画线保存/</id>
-    <published>2019-05-24T01:56:51.406Z</published>
-    <updated>2019-05-23T16:10:18.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;转-Unity3D-运用GL屏幕画图-阴阳师画符&quot;&gt;&lt;a href=&quot;#转-Unity3D-运用GL屏幕画图-阴阳师画符&quot; class=&quot;headerlink&quot; title=&quot;(转)Unity3D 运用GL屏幕画图(阴阳师画符)&quot;&gt;&lt;/a&gt;(转)Unity3D 运用GL屏幕画图(阴阳师画符)&lt;/h3&gt;&lt;p&gt;原文链接: &lt;a href=&quot;https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/Htlas/article/details/79759951尊重作者原创&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;阴阳师火了之后，市面上很多游戏又多了一个模块——画符抽卡，可以通过使用Unity自带GL类来实现这个功能，上面一篇博客Unity研究 GL中有关于GL类的初步解析。今天直接来分析需求 看看阴阳师画符抽卡是怎么实现的：&lt;/p&gt;
-&lt;font size=&quot;5&quot;&gt;1，绘图——鼠标按下进行拖拽，在屏幕中留下鼠标轨迹。&lt;/font&gt;&lt;br&gt;&lt;font size=&quot;5&quot;&gt;2，存图——松开鼠标，绘制的图片按比例映射到Texture上。&lt;/font&gt;
-
-&lt;p&gt;Unity的GL是通过两点之间连线来构成图像的。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1，通过一个集合List&lt;vector3&gt; allPoints存储鼠标在屏幕上经过的轨迹（视图坐标系）&lt;/vector3&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (Input.GetMouseButton(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Vector3 tmpView = Camera.main.ScreenToViewportPoint(Input.mousePosition);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            allPoints.Add(tmpView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2，遍历集合，将集合中具有前后关系的点连接起来（点动成线）&lt;/p&gt;
-&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; 使用GL画线的回调&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;&lt;span class=&quot;doctag&quot;&gt;///&lt;/span&gt; &lt;span class=&quot;doctag&quot;&gt;&amp;lt;/summary&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnRenderObject&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;    &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//创建材质球&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        CreateLineMaterial();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//激活第一个着色器通过（在本例中，我们知道它是唯一的通过）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lineMaterial.SetPass(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//设置正交投影&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.LoadOrtho();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 开始画线  在Begin——End之间写画线方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Begin(GL.LINES);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.Color(Color.red);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; i &amp;lt; allPoints.Count; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Vector3 tmpFront = allPoints[i - &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Vector3 tmpBack = allPoints[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            GL.Vertex(tmpFront);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            GL.Vertex(tmpBack);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        GL.End();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//渲染出栈&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Unity" scheme="https://fget.cn/categories/Unity/"/>
-    
-    
-      <category term="GL" scheme="https://fget.cn/tags/GL/"/>
     
   </entry>
   
