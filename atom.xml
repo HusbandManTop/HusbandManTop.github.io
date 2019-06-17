@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fget.cn/"/>
-  <updated>2019-06-11T02:27:52.481Z</updated>
+  <updated>2019-06-17T10:10:47.150Z</updated>
   <id>https://fget.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lua-Next使用</title>
+    <link href="https://fget.cn/2019/06/17/Lua-Next%E4%BD%BF%E7%94%A8/"/>
+    <id>https://fget.cn/2019/06/17/Lua-Next使用/</id>
+    <published>2019-06-17T10:05:41.000Z</published>
+    <updated>2019-06-17T10:10:47.150Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Lua-Next使用&quot;&gt;&lt;a href=&quot;#Lua-Next使用&quot; class=&quot;headerlink&quot; title=&quot;Lua-Next使用&quot;&gt;&lt;/a&gt;Lua-Next使用&lt;/h3&gt;&lt;hr&gt;
+&lt;h5 id=&quot;next-允许程序遍历表中的每一个字段，返回下一索引和该索引的值。&quot;&gt;&lt;a href=&quot;#next-允许程序遍历表中的每一个字段，返回下一索引和该索引的值。&quot; class=&quot;headerlink&quot; title=&quot;next 允许程序遍历表中的每一个字段，返回下一索引和该索引的值。&quot;&gt;&lt;/a&gt;next 允许程序遍历表中的每一个字段，返回下一索引和该索引的值。&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;local a = &amp;#123;a = &amp;quot;a&amp;quot;, b = &amp;quot;b&amp;quot;, c = &amp;quot;c&amp;quot;, d = &amp;quot;d&amp;quot;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;local value&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;while next(a, value) do&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    print(next(a, value))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    value = next(a, value)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;输出如下：&lt;img src=&quot;https://s2.ax1x.com/2019/06/17/VHx3aF.png&quot; alt=&quot;VHx3aF.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Lua" scheme="https://fget.cn/categories/Lua/"/>
+    
+    
+      <category term="Lua" scheme="https://fget.cn/tags/Lua/"/>
+    
+  </entry>
   
   <entry>
     <title>typename和class区别</title>
@@ -564,30 +586,6 @@
     
     
       <category term="3d数学" scheme="https://fget.cn/tags/3d%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OpenGL基础</title>
-    <link href="https://fget.cn/2019/05/24/OpenGL%E5%9F%BA%E7%A1%80/"/>
-    <id>https://fget.cn/2019/05/24/OpenGL基础/</id>
-    <published>2019-05-24T01:56:51.426Z</published>
-    <updated>2019-05-23T16:11:14.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;OpenGL基础&quot;&gt;&lt;a href=&quot;#OpenGL基础&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="OpenGL" scheme="https://fget.cn/tags/OpenGL/"/>
     
   </entry>
   

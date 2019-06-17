@@ -338,6 +338,201 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/不用第三变量交换两个变量的值/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/04/不用第三变量交换两个变量的值/" itemprop="url">不用第三变量交换两个变量的值</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T01:00:31+08:00">
+                2018-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/04/不用第三变量交换两个变量的值/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/04/不用第三变量交换两个变量的值/" class="cy_cmt_count" data-xid="2018/08/04/不用第三变量交换两个变量的值/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,125
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="C-不使用第三变量交换两个变量的值"><a href="#C-不使用第三变量交换两个变量的值" class="headerlink" title="C#不使用第三变量交换两个变量的值"></a>C#不使用第三变量交换两个变量的值</h3><hr>
+<h4 id="1-算术运算"><a href="#1-算术运算" class="headerlink" title="1.算术运算"></a>1.算术运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">简单来说，就是通过普通的+和-运算来实现。代码如下：  </span><br><span class="line">int a,b;  </span><br><span class="line">a=10;b=12;  </span><br><span class="line">a=b-a;  //a=2;b=12  </span><br><span class="line">b=b-a;  //a=2;b=10  </span><br><span class="line">a=b+a;  //a=10;b=10</span><br><span class="line">通过以上运算，a和b中的值就进行了交换。表面上看起来很简单，但是不容易想到，尤其是在习惯标准算法之后。  </span><br><span class="line">它的原理是：把a、b看做数轴上的点，围绕两点间的距离来进行计算。  </span><br><span class="line">具体过程：第一句“a=b-a”求出ab两点的距离，并且将其保存在a中；第二句“b=b-a”求出a到原点的距离（b到原点的距离与ab两点距离之差），并且将其保存在b中；第三句“a=b+a”求出b到原点的距离（a到原点距离与ab两点距离之和），并且将其保存在a中。完成交换。  </span><br><span class="line">此算法与标准算法相比，多了三个计算的过程，但是没有借助临时变量。（以下称为算术算法）</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-位运算"><a href="#2-位运算" class="headerlink" title="2.位运算"></a>2.位运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通过异或运算也能实现变量的交换，这也许是最为神奇的，请看以下代码：  </span><br><span class="line">int a=10,b=12; //a=1010^b=1100;  </span><br><span class="line">a=a^b;         //a=0110^b=1100;  </span><br><span class="line">b=a^b;         //a=0110^b=1010;  </span><br><span class="line">a=a^b;         //a=1100=12;b=1010;  </span><br><span class="line">此算法能够实现是由异或运算的特点决定的，通过异或运算能够使数据中的某些位翻转，其他位不变。这就意味着任意一个数与任意一个给定的值连续异或两次，值不变。  </span><br><span class="line">即：a^b^b=a。将a=a^b代入b=a^b则得b=a^b^b=a;同理可以得到a=b^a^a=b;轻松完成交换。</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/04/不用第三变量交换两个变量的值/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/04/Unity获取设备分辨率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -747,392 +942,6 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Dropdow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/Dropdow/" itemprop="url">Dropdow</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/Dropdow/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/Dropdow/" class="cy_cmt_count" data-xid="2018/08/03/Dropdow/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  129
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Dropdow"><a href="#Dropdow" class="headerlink" title="Dropdow"></a>Dropdow</h3><hr>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dropdown dropdownItem;</span><br><span class="line">List&lt;<span class="keyword">string</span>&gt; tempNames;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化Dropdow列表</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UpdateDropdownView</span>(<span class="params">List&lt;<span class="keyword">string</span>&gt; showNames</span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     dropdownItem.options.Clear();</span><br><span class="line">     Dropdown.OptionData tempData;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; showNames.Count; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         tempData = <span class="keyword">new</span> Dropdown.OptionData();</span><br><span class="line">         tempData.text = showNames[i];</span><br><span class="line">         dropdownItem.options.Add(tempData);</span><br><span class="line">     &#125;</span><br><span class="line">     dropdownItem.captionText.text = showNames[<span class="number">0</span>];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>核心的一句话就是在刷数据那个方法里，先定义一个Dropdown.OptionData类型的，然后往里面填数据，最后别忘了最后一句话，把显示的值换成选项里的第一个也就是ShowNames[0]</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/UnityLog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/UnityLog/" itemprop="url">Unity Log管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/UnityLog/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/UnityLog/" class="cy_cmt_count" data-xid="2018/08/03/UnityLog/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  757
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Unity-Log"><a href="#Unity-Log" class="headerlink" title="Unity Log"></a>Unity Log</h3><hr>
-<p>这一段是参考雨凇MOMO的文章:<br><a href="https://www.xuanyusong.com/archives/2782" target="_blank" rel="noopener">https://www.xuanyusong.com/archives/2782</a></p>
-<p>在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Debuger</span>  &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">bool</span> EnableLog = <span class="literal">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Log(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.Log(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogError(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogError(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogWarning(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogWarning(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/03/UnityLog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Array-ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1289,6 +1098,196 @@ alt="Fork me on GitHub"></a>
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Dropdow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/Dropdow/" itemprop="url">Dropdow</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/Dropdow/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/Dropdow/" class="cy_cmt_count" data-xid="2018/08/03/Dropdow/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  129
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Dropdow"><a href="#Dropdow" class="headerlink" title="Dropdow"></a>Dropdow</h3><hr>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Dropdown dropdownItem;</span><br><span class="line">List&lt;<span class="keyword">string</span>&gt; tempNames;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化Dropdow列表</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">UpdateDropdownView</span>(<span class="params">List&lt;<span class="keyword">string</span>&gt; showNames</span>)</span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     dropdownItem.options.Clear();</span><br><span class="line">     Dropdown.OptionData tempData;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; showNames.Count; i++)</span><br><span class="line">     &#123;</span><br><span class="line">         tempData = <span class="keyword">new</span> Dropdown.OptionData();</span><br><span class="line">         tempData.text = showNames[i];</span><br><span class="line">         dropdownItem.options.Add(tempData);</span><br><span class="line">     &#125;</span><br><span class="line">     dropdownItem.captionText.text = showNames[<span class="number">0</span>];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>核心的一句话就是在刷数据那个方法里，先定义一个Dropdown.OptionData类型的，然后往里面填数据，最后别忘了最后一句话，把显示的值换成选项里的第一个也就是ShowNames[0]</p>
+
+          
         
       
     </div>
@@ -1749,6 +1748,202 @@ alt="Fork me on GitHub"></a>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/UnityLog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HusbandMan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HusbandMan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/03/UnityLog/" itemprop="url">Unity Log管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:22:14+08:00">
+                2018-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index">
+                    <span itemprop="name">Unity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/03/UnityLog/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://fget.cn/2018/08/03/UnityLog/" class="cy_cmt_count" data-xid="2018/08/03/UnityLog/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  757
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Unity-Log"><a href="#Unity-Log" class="headerlink" title="Unity Log"></a>Unity Log</h3><hr>
+<p>这一段是参考雨凇MOMO的文章:<br><a href="https://www.xuanyusong.com/archives/2782" target="_blank" rel="noopener">https://www.xuanyusong.com/archives/2782</a></p>
+<p>在开发Unity的时候，在输出log的时候大家都会采用Debug.log()的方式来输出Log，但是游戏发布的时候这样的Log是不能关闭的，在用户手机运行产生一堆LOG也不是啥好事，一定要关闭才行、主要是unity官方也没有提供直接关闭的方法</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Debuger</span>  &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">bool</span> EnableLog = <span class="literal">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Log(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Log</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.Log(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogError(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogError</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogError(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		LogWarning(message,<span class="literal">null</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LogWarning</span>(<span class="params"><span class="keyword">object</span> message, Object context</span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(EnableLog)</span><br><span class="line">		&#123;</span><br><span class="line">			Debug.LogWarning(message,context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 但是这样问题又来了，因为我如果直接这样写的话，如下图所示，当我输出Log以后，我在Console窗口中双击Log 这时候代码会定位在Debuger这个类的Log方法，这太麻烦了我需要定位在调用Debuger.log()的方法上。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/03/UnityLog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+<div>
+      
+</div>
+    
+
+    
+
+    
+<div>
+  
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/Unity屏幕分辨率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2135,220 +2330,11 @@ alt="Fork me on GitHub"></a>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fget.cn/2018/08/03/协程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HusbandMan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s1.ax1x.com/2018/08/03/PBFQFH.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HusbandMan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/03/协程/" itemprop="url">协程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-03T23:21:50+08:00">
-                2018-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index">
-                    <span itemprop="name">Unity</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/08/03/协程/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://fget.cn/2018/08/03/协程/" class="cy_cmt_count" data-xid="2018/08/03/协程/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  347
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Unity协程"><a href="#Unity协程" class="headerlink" title="Unity协程"></a>Unity协程</h3><hr>
-<h4 id="Invoke延迟执行"><a href="#Invoke延迟执行" class="headerlink" title="Invoke延迟执行"></a>Invoke延迟执行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.invoke(function_Name,time);</span><br><span class="line">  第一为为无参函数,第二个为执行时间  </span><br><span class="line"></span><br><span class="line">2.invokeRpeating(function_Namem,frist_time,time);</span><br><span class="line">  无参函数名,首次执行时间,执行间隔时间  </span><br><span class="line"></span><br><span class="line">3.Cancelinvoke(function_Name);//取消延迟函数</span><br><span class="line">  如果不写参数则取消所有invoke函数</span><br></pre></td></tr></table></figure>
-<h4 id="Coroutine"><a href="#Coroutine" class="headerlink" title="Coroutine"></a>Coroutine</h4><ul>
-<li>协程是一个分部执行的方法,遇到条件(yield return)会挂起,知道条件满足才继续执行后面的代码</li>
-<li>协程其实就是一个IEnumerator(迭代器)</li>
-<li><p>协程和invoke函数最大的不同是可以在执行时添加参数</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">function_Name</span>(<span class="params">parameter,parameter,...</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="keyword">return</span> ....;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>例如:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">RunTimes</span>(<span class="params"><span class="keyword">float</span> time</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params">time</span>)</span>;</span><br><span class="line">  Debug.Log(<span class="string">" is Run"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>例如参数time = 3f,协程执行遇到yield return语句后就会停止在yield reurn语句位置等待3s后在继续往下面去执行</strong><br><a href="https://imgchr.com/i/PBdguq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/08/04/PBdguq.png" alt="PBdguq.png"></a></p>
-<hr>
-<ul>
-<li><p>开启协程:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StartCoroutine(协程函数名());</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止协程:</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>通过字符串方法可以停止一个协程;</span><br><span class="line"><span class="number">2.</span>注意:直接用StopCoroutine直接像StartCoroutine一样里面加方法是不能停止该协程的,通过把协程赋予到变量在控制此变量来停止才能中断此协程;</span><br><span class="line">StartCoroutine(<span class="string">"function_Name"</span>,time);<span class="comment">//如果用字符串传参的话可能效率会低一些</span></span><br><span class="line">StopCoroutine(<span class="string">"function_Name"</span>);</span><br><span class="line">StopAllCoroutine();<span class="comment">//停止所有这个类中的协程函数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-<div>
-      
-</div>
-    
-
-    
-
-    
-<div>
-  
-</div>
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2398,7 +2384,7 @@ alt="Fork me on GitHub"></a>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2563,7 +2549,7 @@ alt="Fork me on GitHub"></a>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72.2k</span>
+    <span title="Site words total count">72.4k</span>
   
 </div>
 -->
@@ -2584,7 +2570,7 @@ alt="Fork me on GitHub"></a>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共72.2k字</span>
+  <span class="post-count">博客全站共72.4k字</span>
 </div>
         
 
